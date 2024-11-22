@@ -2,6 +2,11 @@
   <v-container class="flex-fill" style="height: 100%;">
 
     <div v-if="!kernel">
+      <v-alert v-if="error" type="error" class="mb-4" dense>
+        <strong>Error:</strong>
+        {{ error }}
+      </v-alert>
+
       <p>Specify the URL of your Jupyter Kernel Gateway to connect to it:</p>
       <v-text-field
         label="Jupyter Kernel Gateway URL"
@@ -17,7 +22,7 @@
         Connect
       </v-btn>
       <p>Start your Jupyter Kernel Gateway with:</p>
-      <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
+      <pre class="pa-3" style="overflow: auto; background-color: black; color: #0f0;">$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
     </div>
 
     <v-row justify="center" v-if="kernel" class="flex-fill" style="height: 100%">
@@ -26,9 +31,21 @@
           <div class="border-thin">
             <codemirror v-model="pythonCode" ref="editor" style="height: 500px;" />
           </div>
-          <v-btn color="primary" class="mt-4" @click="executeCode">
+          <v-btn
+            color="primary"
+            class="mt-4 mr-2"
+            :disabled="currentFuture"
+            @click="executeCode">
             <v-icon icon="mdi-play-speed" />
             Run Code
+          </v-btn>
+          <v-btn 
+            color="error" 
+            class="mt-4" 
+            @click="stopExecution" 
+            :disabled="!currentFuture">
+            <v-icon icon="mdi-stop-circle-outline" />
+            Stop Execution
           </v-btn>
         </div>
       </v-col>
@@ -36,10 +53,7 @@
         <div v-if="output" class="output-wrapper">
           <pre class="output">{{ output }}</pre>
         </div>
-        <v-alert v-if="error" type="error" class="mt-4" dense>
-          <strong>Error:</strong>
-          {{ error }}
-        </v-alert>
+        
       </v-col>
     </v-row>
   </v-container>
@@ -63,6 +77,8 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
 ).subscribe(lambda x: print(str(x)))
 
 `, // Default Python code
+      kernelManager: null,
+      currentFuture: null,
     };
   },
   methods: {
@@ -70,15 +86,13 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
       this.error = "";
       this.output = "";
       try {
-        // Create server settings
         const serverSettings = ServerConnection.makeSettings({
           baseUrl: this.serverUrl,
-          token: "", // Add a token here if your gateway uses authentication
+          token: "",
         });
 
-        // Connect to the kernel manager
-        const kernelManager = new KernelManager({ serverSettings });
-        this.kernel = await kernelManager.startNew();
+        this.kernelManager = new KernelManager({ serverSettings });
+        this.kernel = await this.kernelManager.startNew();
         console.log("Connected to kernel:", this.kernel);
       } catch (err) {
         this.error = `Failed to connect to Jupyter Kernel Gateway: ${err.message}`;
@@ -89,23 +103,35 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
         this.error = "Not connected to a kernel.";
         return;
       }
-      this.output = ""; // Clear previous output
-      this.error = ""; // Clear previous errors
-      try {
-        // Send code to the kernel
-        const future = this.kernel.requestExecute({ code: this.pythonCode });
+      this.output = "";
+      this.error = "";
 
-        // Listen for output messages
+      try {
+        // Initiate code execution
+        const future = this.kernel.requestExecute({ code: this.pythonCode });
+        this.currentFuture = future; // Track the execution
+
+        // Listen for output
         future.onIOPub = (msg) => {
           if (msg.content.text) {
-            this.output += msg.content.text + "\n"; // Append the output
+            this.output += msg.content.text + "\n";
           }
         };
 
         // Wait for execution to complete
         await future.done;
+        this.currentFuture = null; // Clear once done
       } catch (err) {
         this.error = `Failed to execute code: ${err.message}`;
+        this.currentFuture = null; // Clear on error
+      }
+    },
+    async stopExecution() {
+      if (this.currentFuture) {
+        this.currentFuture.dispose(); // Stop execution
+        this.currentFuture = null;
+        this.kernel = await this.kernelManager.startNew();
+        this.error = "Execution stopped by the user.";
       }
     },
   },
@@ -151,7 +177,6 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
 
 .output {
   white-space: pre-wrap;
-  word-wrap: break-word;
   background: #000;
   color: #0f0;
   flex-grow: 1;
