@@ -14,7 +14,6 @@ import { python } from '@codemirror/lang-python'
 createApp(App)
   .use(vuetify)
   .use(VueCodemirror, {
-    disabled: true,
     extensions: [ basicSetup, python() ],
   })
   .mount('#app')
