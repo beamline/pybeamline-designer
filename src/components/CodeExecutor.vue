@@ -156,7 +156,7 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
   color: #0f0;
   flex-grow: 1;
   padding: 5px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 </style>
