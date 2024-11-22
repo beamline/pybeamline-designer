@@ -1,44 +1,43 @@
 <template>
   <v-container>
-    <v-row justify="center">
-      <v-col cols="12" md="8">
-        <v-card>
-          <v-card-title class="text-h5">Python Code Executor via Jupyter Kernel Gateway</v-card-title>
-          <v-card-text>
-            <div v-if="!kernel">
-              <p>Start your jupyter server with</p>
-              <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
-            </div>
-            
-            <v-text-field
-              v-if="!kernel"
-              label="Jupyter Server URL"
-              v-model="serverUrl"
-              outlined
-              placeholder="e.g., http://localhost:8888"
-              class="mt-2"
-            ></v-text-field>
-            <v-btn
-              v-if="!kernel"
-              color="primary"
-              class="mt-2"
-              @click="connectToServer">
-              Connect to Jupyter Kernel Gateway
-            </v-btn>
-            <codemirror v-if="kernel" v-model="pythonCode" style="height: 300px;" />
-            <v-btn color="primary" class="mt-4" @click="executeCode" v-if="kernel">
-              Run Code
-            </v-btn>
-            <v-alert v-if="output" type="info" class="mt-4" dense>
-              <strong>Output:</strong>
-              <pre class="output">{{ output }}</pre>
-            </v-alert>
-            <v-alert v-if="error" type="error" class="mt-4" dense>
-              <strong>Error:</strong>
-              {{ error }}
-            </v-alert>
-          </v-card-text>
-        </v-card>
+
+    <div v-if="!kernel">
+      <p>Specify the URL of your Jupyter Kernel Gateway to connect to it:</p>
+      <v-text-field
+        label="Jupyter Server URL"
+        v-model="serverUrl"
+        outlined
+        placeholder="e.g., http://localhost:8888"
+        class="mt-2"
+      ></v-text-field>
+      <v-btn
+        color="primary"
+        class="mt-2 mb-4"
+        @click="connectToServer">
+        Connect to Jupyter Kernel Gateway
+      </v-btn>
+      <p>Start your jupyter server with</p>
+      <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
+    </div>
+
+    <v-row justify="center" v-if="kernel">
+      <v-col cols="6">
+        <div class="border-thin">
+          <codemirror v-model="pythonCode" style="height: 500px;" />
+        </div>
+        <v-btn color="primary" class="mt-4" @click="executeCode">
+          <v-icon icon="mdi-play-speed" />
+          Run Code
+        </v-btn>  
+      </v-col>
+      <v-col cols="6">
+        <div v-if="output">
+          <pre class="output">{{ output }}</pre>
+        </div>
+        <v-alert v-if="error" type="error" class="mt-4" dense>
+          <strong>Error:</strong>
+          {{ error }}
+        </v-alert>
       </v-col>
     </v-row>
   </v-container>
@@ -54,9 +53,14 @@ export default {
       output: "", // Output from the kernel
       error: "", // Error messages
       kernel: null, // Connected kernel instance
-      pythonCode: `a = 1
-b = 2
-print(a + b * 3)`, // Default Python code
+      pythonCode: `from pybeamline.sources import string_test_source
+from pybeamline.filters import excludes_activity_filter
+
+string_test_source(["ABC", "ACB", "EFG"]).pipe(
+  excludes_activity_filter(["E", "G"])
+).subscribe(lambda x: print(str(x)))
+
+`, // Default Python code
     };
   },
   methods: {

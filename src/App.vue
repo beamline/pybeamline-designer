@@ -85,18 +85,13 @@ export default {
   },
   data: () => ({
       tab: null,
-      code: `import reactivex
-from reactivex import operators as ops
+      code: `from pybeamline.sources import string_test_source
+from pybeamline.filters import excludes_activity_filter
 
-log_with_drift.pipe(
-  ops.buffer_with_count(40),
-  ops.flat_map(lambda events: reactivex.from_iterable(events).pipe(
-      ops.pairwise(),
-      ops.filter(lambda x: x[0].get_trace_name() == x[1].get_trace_name() and x[0].get_event_name() == "B" and x[1].get_event_name() == "C"),
-      ops.count()
-      )
-  )
-).subscribe(lambda x: print(x))
+string_test_source(["ABC", "ACB", "EFG"]).pipe(
+  excludes_activity_filter(["E", "G"])
+).subscribe(lambda x: print(str(x)))
+
 `
     })
 };
