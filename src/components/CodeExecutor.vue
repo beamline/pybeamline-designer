@@ -4,7 +4,7 @@
     <div v-if="!kernel">
       <p>Specify the URL of your Jupyter Kernel Gateway to connect to it:</p>
       <v-text-field
-        label="Jupyter Server URL"
+        label="Jupyter Kernel Gateway URL"
         v-model="serverUrl"
         outlined
         placeholder="e.g., http://localhost:8888"
@@ -12,11 +12,11 @@
       ></v-text-field>
       <v-btn
         color="primary"
-        class="mt-2 mb-4"
+        class="mt-2 mb-10"
         @click="connectToServer">
-        Connect to Jupyter Kernel Gateway
+        Connect
       </v-btn>
-      <p>Start your jupyter server with</p>
+      <p>Start your Jupyter Kernel Gateway with:</p>
       <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
     </div>
 
