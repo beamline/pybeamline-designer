@@ -5,8 +5,11 @@
         <v-card>
           <v-card-title class="text-h5">Python Code Executor via Jupyter Kernel Gateway</v-card-title>
           <v-card-text>
-            <p>Start your jupyter server with</p>
-            <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
+            <div v-if="!kernel">
+              <p>Start your jupyter server with</p>
+              <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
+            </div>
+            
             <v-text-field
               v-if="!kernel"
               label="Jupyter Server URL"
