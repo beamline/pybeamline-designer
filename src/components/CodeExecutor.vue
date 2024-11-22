@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="flex-fill" style="height: 100%;">
 
     <div v-if="!kernel">
       <p>Specify the URL of your Jupyter Kernel Gateway to connect to it:</p>
@@ -20,18 +20,20 @@
       <pre>$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
     </div>
 
-    <v-row justify="center" v-if="kernel">
-      <v-col cols="6">
-        <div class="border-thin">
-          <codemirror v-model="pythonCode" style="height: 500px;" />
+    <v-row justify="center" v-if="kernel" class="flex-fill" style="height: 100%">
+      <v-col cols="6" class="editor-column">
+        <div class="codemirror-wrapper">
+          <div class="border-thin">
+            <codemirror v-model="pythonCode" ref="editor" style="height: 500px;" />
+          </div>
+          <v-btn color="primary" class="mt-4" @click="executeCode">
+            <v-icon icon="mdi-play-speed" />
+            Run Code
+          </v-btn>
         </div>
-        <v-btn color="primary" class="mt-4" @click="executeCode">
-          <v-icon icon="mdi-play-speed" />
-          Run Code
-        </v-btn>  
       </v-col>
-      <v-col cols="6">
-        <div v-if="output">
+      <v-col cols="6" class="output-column">
+        <div v-if="output" class="output-wrapper">
           <pre class="output">{{ output }}</pre>
         </div>
         <v-alert v-if="error" type="error" class="mt-4" dense>
@@ -111,18 +113,50 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
 </script>
 
 <style>
-pre {
-  background: #f4f4f4;
+.full-height-row {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.editor-column,
+.output-column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-column {
   padding: 10px;
-  border: 1px solid #ccc;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.output-column {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.codemirror-wrapper {
+  flex-grow: 1;
+  /* height: 95%; */
+  margin-bottom: 10px;
+}
+
+.output-wrapper {
+  height: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .output {
   white-space: pre-wrap;
   word-wrap: break-word;
   background: #000;
-  color: #fff;
+  color: #0f0;
+  flex-grow: 1;
+  padding: 5px;
+  overflow-x: scroll;
 }
+
 </style>
