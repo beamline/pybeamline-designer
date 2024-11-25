@@ -4,7 +4,8 @@
     <v-toolbar color="primary">
       <v-toolbar-title>
         <v-row align="center" no-gutters>
-          <img :src="require('@/assets/dtu.png')" class="mr-3" alt="DTU" height="40" />
+          <img :src="require('@/assets/dtu.png')" class="mr-1" alt="DTU" height="40" />
+          <img src="https://beamline.cloud/img/logo.svg" class="mr-3" height=40 />
           <v-app-bar-title>pyBeamline Designer</v-app-bar-title>
         </v-row>
       </v-toolbar-title>
