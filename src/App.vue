@@ -73,13 +73,11 @@
 				</v-tabs-window-item>
 				<v-tabs-window-item value="exec" class="flex-fill">
 					<v-container class="flex-fill" style="height: 100%;">
-						<h1 class="mb-3">Code Execution</h1>
 						<CodeExecutor />
 					</v-container>
 				</v-tabs-window-item>
 				<v-tabs-window-item value="exec" class="flex-fill">
 					<v-container class="flex-fill" style="height: 100%;">
-						<h1 class="mb-3">MQTT Visualizer</h1>
 						<MQTTVisualizer />
 					</v-container>
 				</v-tabs-window-item>

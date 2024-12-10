@@ -1,4 +1,6 @@
 <template>
+	<h1 class="mb-3">MQTT Visualizer</h1>
+	
 	<v-container class="flex-fill" style="height: 100%;">
 		<!-- Top Panel -->
 		<div v-if="!connected">

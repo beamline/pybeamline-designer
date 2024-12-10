@@ -1,5 +1,17 @@
 <template>
-	<v-container class="flex-fill" style="height: 100%;">
+	<div v-if="kernel" class="float-right">
+		<v-btn color="primary" class="mt-4 mr-2" :disabled="currentFuture" @click="executeCode">
+			<v-icon icon="mdi-play-speed" />
+			Run Code
+		</v-btn>
+		<v-btn color="error" class="mt-4" @click="stopExecution" :disabled="!currentFuture">
+			<v-icon icon="mdi-stop-circle-outline" />
+			Stop Execution
+		</v-btn>
+	</div>
+	
+	<h1 class="mb-3">Code Execution</h1>
+	<v-container>
 
 		<div v-if="!kernel">
 			<v-alert v-if="error" type="error" class="mb-4" dense>
@@ -18,27 +30,18 @@
 				style="overflow: auto; background-color: black; color: #0f0;">$ jupyter-kernelgateway --KernelGatewayApp.allow_origin="*" --KernelGatewayApp.auth_token='' --KernelGatewayApp.allow_headers="Content-Type, Authorization, X-XSRFToken"</pre>
 		</div>
 
-		<v-row justify="center" v-if="kernel" class="flex-fill" style="height: 100%">
-			<v-col cols="6" class="editor-column">
-				<div class="codemirror-wrapper">
-					<div class="border-thin">
-						<codemirror v-model="pythonCode" ref="editor" style="height: 500px;" />
-					</div>
-					<v-btn color="primary" class="mt-4 mr-2" :disabled="currentFuture" @click="executeCode">
-						<v-icon icon="mdi-play-speed" />
-						Run Code
-					</v-btn>
-					<v-btn color="error" class="mt-4" @click="stopExecution" :disabled="!currentFuture">
-						<v-icon icon="mdi-stop-circle-outline" />
-						Stop Execution
-					</v-btn>
+		<v-row justify="center" v-if="kernel">
+			<v-col cols="12">
+				<div class="border-thin">
+					<codemirror v-model="pythonCode" ref="editor" style="height: 300px;" />
 				</div>
 			</v-col>
-			<v-col cols="6" class="output-column">
-				<div v-if="output" class="output-wrapper">
+		</v-row>
+		<v-row justify="center" v-if="kernel">
+			<v-col cols="12">
+				<v-card v-if="output">
 					<pre class="output">{{ output }}</pre>
-				</div>
-
+				</v-card>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -128,48 +131,10 @@ string_test_source(["ABC", "ACB", "EFG"]).pipe(
 </script>
 
 <style>
-.full-height-row {
-	height: 100%;
-	display: flex;
-	flex-direction: row;
-}
-
-.editor-column,
-.output-column {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.editor-column {
-	padding: 10px;
-	overflow: hidden;
-}
-
-.output-column {
-	padding: 10px;
-	overflow: hidden;
-}
-
-.codemirror-wrapper {
-	flex-grow: 1;
-	/* height: 95%; */
-	margin-bottom: 10px;
-}
-
-.output-wrapper {
-	height: calc(100% - 20px);
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-}
-
 .output {
 	white-space: pre-wrap;
 	background: #000;
 	color: #0f0;
-	flex-grow: 1;
-	padding: 5px;
-	overflow-x: auto;
+	padding: 15px;
 }
 </style>
