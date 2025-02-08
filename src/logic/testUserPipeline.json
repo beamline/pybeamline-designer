@@ -4,7 +4,7 @@
 
     "blocks" : [
       {
-        "id" : 0,
+        "id" : "0",
         "category" : {
           "type" : "source",
           "name" : "string_test_source"
@@ -12,11 +12,11 @@
         "parameters" : {
           "iterable" : ["A", "B", "C"]
         },
-        "outputs" : [1]
+        "outputs" : ["1","3"]
       },
 
       {
-        "id" : 1,
+        "id" : "1",
         "category" : {
           "type" : "filter",
           "name" : "excludes_activity_filter"
@@ -24,16 +24,31 @@
         "parameters" : {
           "concept" : "A"
         },
-        "outputs" : [2]
+        "input" : "1",
+        "outputs" : ["2"]
+      },
+      {
+        "id" : "3",
+        "category" : {
+          "type" : "filter",
+          "name" : "excludes_activity_filter"
+        },
+        "parameters" : {
+          "concept" : "A"
+        },
+        "input" : "1",
+        "outputs" : ["2"]
       },
 
       {
-        "id" : 2,
+        "id" : "2",
         "category" : {
           "type" : "sink",
           "name" : "sink"
         },
-        "parameters" : "print(str(x))"
+        "parameters" : "print(str(x))",
+        "input" : "2",
+        "outputs": []
       }
 
     ]
