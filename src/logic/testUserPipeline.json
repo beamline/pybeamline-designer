@@ -1,0 +1,42 @@
+{
+  "flow1" : {
+
+
+    "blocks" : [
+      {
+        "id" : 0,
+        "category" : {
+          "type" : "source",
+          "name" : "string_test_source"
+        },
+        "parameters" : {
+          "iterable" : ["A", "B", "C"]
+        },
+        "outputs" : [1]
+      },
+
+      {
+        "id" : 1,
+        "category" : {
+          "type" : "filter",
+          "name" : "excludes_activity_filter"
+        },
+        "parameters" : {
+          "concept" : "A"
+        },
+        "outputs" : [2]
+      },
+
+      {
+        "id" : 2,
+        "category" : {
+          "type" : "sink",
+          "name" : "sink"
+        },
+        "parameters" : "print(str(x))"
+      }
+
+    ]
+
+  }
+}
