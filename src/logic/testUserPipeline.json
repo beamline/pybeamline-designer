@@ -10,7 +10,7 @@
           "name" : "string_test_source"
         },
         "parameters" : {
-          "iterable" : ["A", "B", "C"]
+          "iterable" : "['A', 'B', 'C']"
         },
         "outputs" : ["1","3"]
       },
@@ -22,7 +22,7 @@
           "name" : "excludes_activity_filter"
         },
         "parameters" : {
-          "concept" : "A"
+          "concept" : "'A'"
         },
         "input" : "1",
         "outputs" : ["2"]
@@ -34,8 +34,8 @@
           "name" : "excludes_activity_filter"
         },
         "parameters" : {
-          "param1" : "stringGen",
-          "param2" : "Test"
+          "param1" : "'stringGen'",
+          "param2" : "'other'"
         },
         "input" : "1",
         "outputs" : ["2"]
@@ -45,7 +45,7 @@
         "id" : "2",
         "category" : {
           "type" : "sink",
-          "name" : "sink"
+          "name" : ".subscribe"
         },
         "parameters" : "print(str(x))",
         "input" : "2",
