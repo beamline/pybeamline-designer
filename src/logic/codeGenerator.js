@@ -35,9 +35,16 @@ let counter = 0
 
 
 //block json -> string for the function, with parameters and arguments
-//function addParametersToFunction(block) {
+function addParametersToFunction(block) {
 
-//}
+    let resultString = block.category.name + "("
+    for (const parameter in block.parameters) {
+        resultString += `${parameter} = ${block.parameters[parameter]},`;
+    }
+
+    return resultString + ")"
+
+}
 
 function stringGenerator(currentString, block){
     let newString = currentString
@@ -52,7 +59,8 @@ function stringGenerator(currentString, block){
         finalString += newString + ").subscribe\n"
     }
     else{
-        newString += block.category.name+",\n"
+
+        newString += addParametersToFunction(block) + ",\n"
     }
 
     return newString

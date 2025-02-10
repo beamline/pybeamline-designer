@@ -34,7 +34,8 @@
           "name" : "excludes_activity_filter"
         },
         "parameters" : {
-          "concept" : "A"
+          "param1" : "stringGen",
+          "param2" : "Test"
         },
         "input" : "1",
         "outputs" : ["2"]
