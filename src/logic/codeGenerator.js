@@ -1,4 +1,3 @@
-
 import json from './testUserPipeline.json' assert { type: 'json' };
 
 // Function to traverse the diagram in topological order
@@ -17,10 +16,10 @@ function traverseDiagram(diagram, callback) {
 
 
         // Process the block
-        const new_string=callback(current_string,blocks[blockId]);
+        const newString =callback(current_string,blocks[blockId]);
 
         // Visit all outputs (following the one-way directional constraint)
-        blocks[blockId].outputs=blocks[blockId].outputs.reduce((acc,id) => {return [...acc, {"id": id,"log":new_string}] },[])
+        blocks[blockId].outputs=blocks[blockId].outputs.reduce((acc,id) => {return [...acc, {"id": id,"log":newString}] },[])
         blocks[blockId].outputs.forEach(visit);
     };
 
@@ -30,22 +29,35 @@ function traverseDiagram(diagram, callback) {
         .forEach(block => visit({"id": block.id,"log":""}));
 }
 
-let final_string=""
-let counter=0
-function string_generator(current_string, block){
-    let new_string=current_string
-    if (block.category.type=="source"){
-        final_string+="source_"+counter+"="+block.category.name+"\n"
-        new_string+="source_"+counter+".pipe(\n"
+let finalString = ""
+
+let counter = 0
+
+
+//block json -> string for the function, with parameters and arguments
+//function addParametersToFunction(block) {
+
+//}
+
+function stringGenerator(currentString, block){
+    let newString = currentString
+
+
+    if (block.category.type === "source"){
+        finalString += "source_" + counter + " = " + block.category.name + "\n"
+        newString+="source_"+counter+".pipe(\n"
         counter++
-    }else{
-        new_string+=block.category.name+",\n"
     }
-    if (block.outputs==false){
-        final_string+=new_string+")\n"
+    else if (block.category.type === "sink") {
+        finalString += newString + ").subscribe\n"
     }
-    return new_string
+    else{
+        newString += block.category.name+",\n"
+    }
+
+    return newString
 }
+
 // Example: Print block details during traversal
-traverseDiagram(json, string_generator);
-console.log(final_string)
+traverseDiagram(json, stringGenerator);
+console.log(finalString)
