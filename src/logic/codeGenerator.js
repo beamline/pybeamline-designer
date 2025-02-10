@@ -40,7 +40,7 @@ function addParametersToFunction(block) {
     let resultString = block.category.name + "("
 
     for (const parameter in block.parameters) {
-            resultString += ((block.category.type !== "sink") ? `${parameter} = ` : ("")) + `${block.parameters[parameter]}, `;
+            resultString += `${parameter} = ` + `${block.parameters[parameter]}, `;
         }
 
     return resultString + ")"

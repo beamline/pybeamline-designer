@@ -48,7 +48,7 @@
           "name" : ".subscribe"
         },
         "parameters" : {
-          "lfunc" : "lambda x : print(str(x))"
+          "on_next" : "lambda x : print(str(x))"
         },
         "input" : "2",
         "outputs": []
