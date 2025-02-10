@@ -40,8 +40,9 @@ function addParametersToFunction(block) {
     let resultString = block.category.name + "("
 
     for (const parameter in block.parameters) {
-        resultString += `${parameter} = ${block.parameters[parameter]}, `;
-    }
+            resultString += ((block.category.type !== "sink") ? `${parameter} = ` : ("")) + `${block.parameters[parameter]}, `;
+        }
+
     return resultString + ")"
 }
 
@@ -55,8 +56,8 @@ function stringGenerator(currentString, block){
         newString+="source_"+counter+".pipe(\n"
         counter++
     }
-    else if (block.category.type === "sink") {
-        finalString += newString + ").subscribe\n"
+    else if (block.outputs == false) {
+        finalString += newString + ")" + addParametersToFunction(block) + "\n"
     }
     else{
         newString += addParametersToFunction(block) + ",\n"

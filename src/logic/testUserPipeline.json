@@ -47,7 +47,9 @@
           "type" : "sink",
           "name" : ".subscribe"
         },
-        "parameters" : "print(str(x))",
+        "parameters" : {
+          "lfunc" : "lambda x : print(str(x))"
+        },
         "input" : "2",
         "outputs": []
       }
