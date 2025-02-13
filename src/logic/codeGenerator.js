@@ -36,14 +36,21 @@ let counter = 0
 
 //block.json -> string + any arguments needed
 function addParametersToFunction(block) {
+    let resultString = block.category.name + "(";
+    let parameters = block.parameters;
 
-    let resultString = block.category.name + "("
-
-    for (const parameter in block.parameters) {
-            resultString += `${parameter} = ` + `${block.parameters[parameter]}, `;
+    // Check if there are parameters
+    if (Object.keys(parameters).length > 0) {
+        // Add parameters to the result string
+        for (const parameter in parameters) {
+            resultString += `${parameter} = ${parameters[parameter]}, `;
         }
+        // Remove the comma and space
+        resultString = resultString.slice(0, -2);
+    }
 
-    return resultString + ")"
+    // Close the bracket and return the result
+    return resultString + ")";
 }
 
 //string -> block.json -> string
@@ -57,7 +64,8 @@ function stringGenerator(currentString, block){
         counter++
     }
     else if (block.outputs == false) {
-        finalString += newString + ")" + addParametersToFunction(block) + "\n"
+        //removes ", " from the last element
+        finalString += newString.slice(0, -2) + "\n)" + addParametersToFunction(block) + "\n"
     }
     else{
         newString += addParametersToFunction(block) + ",\n"
