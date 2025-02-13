@@ -55,8 +55,8 @@
           "input_type": null,
           "required_arguments": {},
           "optional_arguments": {
-            "host": {"type": "string"},
-            "port": {"type":  "integer"}
+            "host": {"type": ["string"]},
+            "port": {"type":  ["integer"]}
           }
         }
     },
@@ -65,46 +65,46 @@
       "retains_on_event_attribute_equal_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "attribute_name": {"type": "string"},
-          "attribute_values": {"type": "list"}
+          "attribute_name": {"type": ["string"]},
+          "attribute_values": {"type": ["list"]}
         },
         "optional_arguments": {}
       },
       "excludes_on_event_attribute_equal_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "attribute_name": {"type": "string"},
-          "attribute_values": {"type": "list"}
+          "attribute_name": {"type": ["string"]},
+          "attribute_values": {"type": ["list"]}
         },
         "optional_arguments": {}
       },
       "retains_on_trace_attribute_equal_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "attribute_name": {"type": "string"},
-          "attribute_values": {"type": "list"}
+          "attribute_name": {"type": ["string"]},
+          "attribute_values": {"type": ["list"]}
         },
         "optional_arguments": {}
       },
       "excludes_on_trace_attribute_equal_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "attribute_name": {"type": "string"},
-          "attribute_values": {"type": "list"}
+          "attribute_name": {"type": ["string"]},
+          "attribute_values": {"type": ["list"]}
         },
         "optional_arguments": {}
       },
       "retains_activity_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "activity_names": {"type": "string list"}
+          "activity_names": {"type": ["string list"]}
         },
         "optional_arguments": {}
       },
       "excludes_activity_filter": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "activity_names": {"type": "string list"}
+          "activity_names": {"type": ["string list"]}
         },
         "optional_arguments": {}
       }
@@ -119,40 +119,49 @@
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {},
         "optional_arguments": {
-          "model_update_frequency": {"type": "float"},
-          "min_relative_frequency": {"type": "float"}
+          "model_update_frequency": {"type": ["float"]},
+          "min_relative_frequency": {"type": ["float"]}
         }
       },
       "heuristics_miner_lossy_counting": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {},
         "optional_arguments": {
-          "model_update_frequency": {"type": "float"},
-          "max_approx_error": {"type": "float"},
-          "dependency_threshold": {"type": "float"},
-          "and_threshold": {"type": "float"}
+          "model_update_frequency": {"type": ["float"]},
+          "max_approx_error": {"type": ["float"]},
+          "dependency_threshold": {"type": ["float"]},
+          "and_threshold": {"type": ["float"]}
         }
       },
       "heuristics_miner_lossy_counting_budget": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {},
         "optional_arguments": {
-          "model_update_frequency": {"type": "float"},
-          "budget": {"type": "float"},
-          "dependency_threshold": {"type": "float"},
-          "and_threshold": {"type": "float"}
+          "model_update_frequency": {"type": ["float"]},
+          "budget": {"type": ["float"]},
+          "dependency_threshold": {"type": ["float"]},
+          "and_threshold": {"type": ["float"]}
         }
       },
       "behavioral_conformance": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {
-          "model": {"type": "model"}
+          "model": {"type": ["model"]}
         },
         "optional_arguments": {}
       },
       "sliding_window_to_log": {
         "input_type": ["Sources","Filters","Miners"],
         "required_arguments": {},
+        "optional_arguments": {}
+      }
+    },
+    "Utilities": {
+      "dfg_to_graphviz": {
+        "input_type": ["Sink"],
+        "required_arguments": {
+          "dfg": {"type": ["TBD"]}
+        },
         "optional_arguments": {}
       }
     }
