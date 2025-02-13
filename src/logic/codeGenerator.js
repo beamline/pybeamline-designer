@@ -1,4 +1,15 @@
-import json from './testUserPipeline.json' assert { type: 'json' };
+import { readFile } from 'fs/promises';
+
+async function loadJson(filePath) {
+    const data = await readFile(filePath, 'utf8');
+    return JSON.parse(data);
+}
+
+let filePath = "./testUserPipeline.json";
+
+let userPipeline = await loadJson(filePath)
+
+
 
 // Function to traverse the diagram in topological order
 function traverseDiagram(diagram, callback) {
@@ -29,9 +40,7 @@ function traverseDiagram(diagram, callback) {
         .forEach(block => visit({"id": block.id,"log":""}));
 }
 
-let finalString = ""
 
-let counter = 0
 
 
 //block.json -> string + any arguments needed
@@ -74,6 +83,9 @@ function stringGenerator(currentString, block){
     return newString
 }
 
-// Example: Print block details during traversal
-traverseDiagram(json, stringGenerator);
+let finalString = ""
+let counter = 0
+
+
+traverseDiagram(userPipeline, stringGenerator);
 console.log(finalString)
