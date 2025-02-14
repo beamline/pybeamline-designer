@@ -12,7 +12,7 @@ let userPipeline = await loadJson(filePath)
 
 
 // Function to traverse the diagram in topological order
-function traverseDiagram(diagram, callback) {
+function traverseDiagram(diagram, callback = stringGenerator) {
     const blocks = diagram.flow1.blocks.reduce((acc, block) => {
         acc[block.id] = { ...block, visited: false };
         return acc;
@@ -87,5 +87,5 @@ let finalString = ""
 let counter = 0
 
 
-traverseDiagram(userPipeline, stringGenerator);
+traverseDiagram(userPipeline);
 console.log(finalString)
