@@ -13,11 +13,12 @@ let userPipeline = await loadJson(filePath)
 
 // Function to traverse the diagram in topological order
 function traverseDiagram(diagram, callback = stringGenerator) {
-    const blocks = diagram.flow1.blocks.reduce((acc, block) => {
-        acc[block.id] = { ...block, visited: false };
+    const blocks = diagram.blocks.reduce((acc, block) => {
+        acc[block.id] = { ...block};
         return acc;
     }, {});
 
+    console.log(blocks);
     const visit = (block_info) => {
         const blockId=block_info["id"]
         const current_string=block_info["log"]
