@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { UserPipeline, Block, Category, Params, Graph } from "./Syntaxes.js";
+import { UserPipeline, Block, Category, Params, Graph } from "./Syntax.js";
 
 
 
