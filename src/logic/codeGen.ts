@@ -8,17 +8,22 @@ export class CodeGen {
     private finalString: string;
     private counter : number = 0;
 
-    private userPipeline : UserPipeline;
+    private userPipeline : any;
 
     public constructor(filePath: string) {
         this.filePath = filePath;
-        this.userPipeline = JSON.parse(readFileSync(this.filePath,"utf-8"));
+
+        if (this.filePath !== "") {
+            this.userPipeline = JSON.parse(readFileSync(this.filePath, "utf-8"));
+        }
+
         this.finalString = "";
 
     }
 
-    public traverseDiagram (diagram : UserPipeline = this.userPipeline, callback : Function = this.stringGenerator.bind(this) ) {
-
+    public traverseDiagram (diagram : UserPipeline = this.userPipeline, callback : Function = this.stringGenerator.bind(this) ) : string {
+        //Reset the finalString
+        this.finalString = "";
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
         const blocks : Graph = diagram.blocks.reduce((acc : Graph, block : Block ) => {
             acc[block.id] = block;
@@ -37,6 +42,8 @@ export class CodeGen {
         Object.values(blocks)
             .filter(block => !block.input)
             .forEach(block => visit(block.id,""));
+
+        return this.finalString;
 
     }
 
@@ -78,22 +85,27 @@ export class CodeGen {
         return newString
     }
 
-    public printCode() {
-        console.log(this.finalString)
-    }
 
     public updateFilepath (newFilePath : string) {
         this.filePath = newFilePath;
 
+        if (this.filePath !== "") {
+            this.userPipeline = JSON.parse(readFileSync(this.filePath, "utf-8"));
+        }
         //Reset the finalString
         this.finalString = "";
     }
 
-    public returnCode () {
-        return this.finalString;
+
+    //For debugging purposes
+    public printCode() {
+        console.log(this.finalString)
     }
+
 }
 
+/*
 const codeGenerator : CodeGen = new CodeGen("./tests/test1.json");
 codeGenerator.traverseDiagram()
 codeGenerator.printCode()
+*/
