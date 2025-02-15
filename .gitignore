@@ -28,3 +28,5 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+/src/logic/Syntax.js
+/src/logic/codeGen.js

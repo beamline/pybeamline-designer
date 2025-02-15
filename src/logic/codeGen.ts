@@ -89,10 +89,11 @@ export class CodeGen {
         this.finalString = "";
     }
 
+    public returnCode () {
+        return this.finalString;
+    }
 }
 
-
-//Test code
-var myVar = new CodeGen("./testUserPipeline.json")
-myVar.traverseDiagram()
-myVar.printCode()
+const codeGenerator : CodeGen = new CodeGen("./tests/test1.json");
+codeGenerator.traverseDiagram()
+codeGenerator.printCode()
