@@ -82,6 +82,13 @@ export class CodeGen {
         console.log(this.finalString)
     }
 
+    public updateFilepath (newFilePath : string) {
+        this.filePath = newFilePath;
+
+        //Reset the finalString
+        this.finalString = "";
+    }
+
 }
 
 
