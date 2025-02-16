@@ -5,7 +5,7 @@
       "type": "array",
       "items": {
         "anyOf": [
-          {"$ref": "string_source.json"},
+          {"$ref": "string_test_source.json"},
           {"$ref": "xes_log_source.json"},
           {"$ref": "xes_log_source_from_file.json"},
           {"$ref": "mqttxes_source.json"},
