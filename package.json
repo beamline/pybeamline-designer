@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@imhonglu/json-schema": "^1.1.1",
+    "ajv": "^8.17.1",
     "vue": "^3.5.13"
   },
   "devDependencies": {
