@@ -1,0 +1,16 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "",
+      "outputs" : []
+    }
+  ]
+}

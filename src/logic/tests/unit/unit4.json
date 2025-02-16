@@ -1,0 +1,15 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "['A', 'B', 'C']"
+      },
+      "outputs" : []
+    }
+  ]
+}

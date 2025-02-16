@@ -1,0 +1,51 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "'x'"
+      },
+      "outputs" : ["2"]
+    },
+    {
+      "id" : "1",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "'y'"
+      },
+      "outputs" : ["3"]
+    },
+    {
+      "id" : "3",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "1",
+      "outputs" : []
+    },
+    {
+      "id" : "2",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "0",
+      "outputs" : []
+    }
+
+  ]
+}

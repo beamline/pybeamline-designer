@@ -2,7 +2,7 @@ import {Traverser} from "./Traverser.ts"
 import {sanityChecker} from "./sanityChecker.ts";
 import {readFileSync} from "fs";
 import {UserPipeline} from "./Syntax.js";
-import { ValidationFailedError} from "@imhonglu/json-schema";
+import { ValidationFailedError } from "@imhonglu/json-schema";
 
 
 function generateCode (filePathToJSON : string) {

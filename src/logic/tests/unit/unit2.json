@@ -1,0 +1,39 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'z']"
+      },
+      "outputs" : ["1"]
+    },
+    {
+      "id" : "1",
+      "category" : {
+        "type" : "filter",
+        "name" : "retains_activity_filter"
+      },
+      "parameters" : {
+        "activity_names" : "{'x', 'z'}"
+      },
+      "input" : "0",
+      "outputs": ["2"]
+    },
+    {
+      "id" : "2",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "1",
+      "outputs": []
+    }
+  ]
+}
