@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "source"},
+        "name": {"const":  "wikimedia_source"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    }
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}
