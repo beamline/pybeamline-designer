@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "source"},
+        "name": {"const":  "mqttxes_source"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "broker": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "base_topic": {
+          "type": "string"
+        }
+      },
+      "required": ["broker","port","base_topic"]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    }
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}
