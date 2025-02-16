@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "source"},
+        "name": {"const":  "string_test_source"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "iterable": {
+          "type": "string",
+          "pattern": "^\\['([^']+)'(, '[^']+')*\\]$"
+        },
+        "scheduler": {
+          "type": "string"
+        }
+      },
+      "required": ["iterable"]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    }
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}
