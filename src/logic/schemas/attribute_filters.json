@@ -27,7 +27,7 @@
       "type": "array",
       "items": {"type":  "string","pattern": "^[0-9]+$"}
     },
-    "input": {"type":  "string","pattern": "^[0-9]+$"}
+    "input": {"type":  "string","pattern": "^[sfmt]\\d+$"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false
