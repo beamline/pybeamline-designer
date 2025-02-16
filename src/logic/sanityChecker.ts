@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 function sanityChecker(diagram:Object): boolean{
 
     // Read the schema from a separate file
-    const schemaData= JSON.parse(readFileSync("./test.json", "utf8"));
+    const schemaData = JSON.parse(readFileSync("./test.json", "utf8"));
 
     // Create a schema instance
     const schema = new Schema(schemaData);

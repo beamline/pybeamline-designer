@@ -29,4 +29,4 @@ coverage
 
 *.tsbuildinfo
 /src/logic/Syntax.js
-/src/logic/codeGen.js
+/src/logic/Traverser.js

@@ -3,16 +3,16 @@ import { UserPipeline, Block, Category, Params, Graph } from "./Syntax.js";
 
 
 
-export class CodeGen {
+export class Traverser {
 
     private finalString: string = "";
     private counter : number = 0;
 
 
-    public traverseDiagram (filePath : string ,  callback : Function = this.stringGenerator.bind(this) ) : string {
-        //Reset the finalString
-        const userPipeline : UserPipeline = JSON.parse(readFileSync(filePath, "utf-8"));
+    public traverseDiagram (userPipeline : UserPipeline ,  callback : Function = this.stringGenerator.bind(this) ) : string {
+        //Reset the variables
         this.finalString = "";
+        this.counter = 0;
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
         const blocks : Graph = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
             acc[block.id] = block;
@@ -81,9 +81,3 @@ export class CodeGen {
     }
 
 }
-
-/*
-const codeGenerator : CodeGen = new CodeGen;
-codeGenerator.traverseDiagram("./testing/test1.json")
-codeGenerator.printCode()
-*/
