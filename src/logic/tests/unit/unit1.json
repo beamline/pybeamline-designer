@@ -1,7 +1,7 @@
 {
   "blocks" : [
     {
-      "id" : "0",
+      "id" : "s0",
       "category" : {
         "type" : "source",
         "name" : "string_test_source"
@@ -9,10 +9,10 @@
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["1"]
+      "outputs" : ["t0"]
     },
     {
-      "id" : "1",
+      "id" : "t0",
       "category" : {
         "type" : "sink",
         "name" : ".subscribe"
@@ -20,7 +20,7 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "0",
+      "input" : "s0",
       "outputs": []
     }
     ]

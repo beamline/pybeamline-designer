@@ -1,7 +1,7 @@
 {
   "blocks" : [
     {
-      "id" : "0",
+      "id" : "t0",
       "category" : {
         "type" : "sink",
         "name" : ".subscribe"
