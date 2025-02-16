@@ -13,10 +13,8 @@
       "type": "object",
       "properties":{
         "iterable": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string",
+          "pattern": "^\\['([^']+)'(, '[^']+')*\\]$"
         },
         "scheduler": {
           "type": "string"
