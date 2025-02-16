@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "filter"},
+        "name": {"enum":  ["excludes_activity_filter","retains_activity_filter"]}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "activity_names": {
+          "type": "string",
+          "pattern": "^\\['([^']+)'(, '[^']+')*\\]$"
+        }
+      },
+      "required": ["activity_names"]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    },
+    "input": {"type":  "string","pattern": "^[0-9]+$"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}
