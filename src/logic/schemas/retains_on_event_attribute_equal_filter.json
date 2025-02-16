@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "filter"},
+        "name": {"const":  "retains_on_event_attribute_equal_filter"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "attribute_name": {
+          "type": "string"
+        },
+        "attribute_values": {
+          "type": "string",
+          "pattern": "^\\[.*?(, .*?)*\\]$"
+        }
+      },
+      "required": ["attribute_name","attribute_values"]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    }
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}
