@@ -6,7 +6,8 @@
       "type": "object",
       "properties": {
         "type": {"const":  "filter"},
-        "name": {"const":  "retains_on_event_attribute_equal_filter"}
+        "name": {"enum":  ["retains_on_trace_attribute_equal_filter","excludes_on_trace_attribute_equal_filter",
+          "retains_on_event_attribute_equal_filter","excludes_on_event_attribute_equal_filter"]}
       }
     },
     "parameters": {
@@ -25,8 +26,9 @@
     "outputs": {
       "type": "array",
       "items": {"type":  "string","pattern": "^[0-9]+$"}
-    }
+    },
+    "input": {"type":  "string","pattern": "^[0-9]+$"}
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false
 }

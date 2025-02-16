@@ -11,8 +11,7 @@
           {"$ref": "mqttxes_source.json"},
           {"$ref": "wikimedia_source.json"},
           {"$ref": "ais_source.json"},
-          {"$ref": "retains_on_event_attribute_equal_filter.json"},
-          {"$ref": "excludes_on_event_attribute_equal_filter.json"}
+          {"$ref": "attribute_filters.json"}
         ]
       }
     }
