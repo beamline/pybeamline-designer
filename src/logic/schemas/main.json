@@ -1,7 +1,16 @@
 {
   "type": "object",
   "properties": {
-    "blocks": {"$ref": "t"}
+    "blocks": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {"$ref": "string_source.json"},
+          {"$ref": "xes_log_source.json"},
+          {"$ref": "xes_log_source_from_file.json"}
+        ]
+      }
+    }
   },
   "required": ["blocks"]
 }

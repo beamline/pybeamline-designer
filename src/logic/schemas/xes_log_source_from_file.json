@@ -6,17 +6,15 @@
       "type": "object",
       "properties": {
         "type": {"const":  "source"},
-        "name": {"const":  "xes_log_source"}
+        "name": {"const":  "xes_log_source_from_file"}
       }
     },
     "parameters": {
       "type": "object",
       "properties":{
         "log": {
-          "type": "string"
-        },
-        "scheduler": {
-          "type": "string"
+          "type": "string",
+          "pattern": ".*\\.xes$"
         }
       },
       "required": ["log"]
