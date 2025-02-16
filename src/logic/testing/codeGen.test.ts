@@ -3,7 +3,7 @@ import { expect, test } from '@jest/globals';
 
 
 //Initial setup
-const pathToTests : string = "src/logic/tests/";
+const pathToTests : string = "src/logic/testing/tests";
 const codeGenerator : CodeGen = new CodeGen;
 
 

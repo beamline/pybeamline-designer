@@ -84,6 +84,6 @@ export class CodeGen {
 
 /*
 const codeGenerator : CodeGen = new CodeGen;
-codeGenerator.traverseDiagram("./tests/test1.json")
+codeGenerator.traverseDiagram("./testing/test1.json")
 codeGenerator.printCode()
 */
