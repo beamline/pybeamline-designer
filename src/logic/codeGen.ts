@@ -4,28 +4,17 @@ import { UserPipeline, Block, Category, Params, Graph } from "./Syntax.js";
 
 
 export class CodeGen {
-    private filePath : string;
-    private finalString: string;
+
+    private finalString: string = "";
     private counter : number = 0;
 
-    private userPipeline : any;
 
-    public constructor(filePath: string) {
-        this.filePath = filePath;
-
-        if (this.filePath !== "") {
-            this.userPipeline = JSON.parse(readFileSync(this.filePath, "utf-8"));
-        }
-
-        this.finalString = "";
-
-    }
-
-    public traverseDiagram (diagram : UserPipeline = this.userPipeline, callback : Function = this.stringGenerator.bind(this) ) : string {
+    public traverseDiagram (filePath : string ,  callback : Function = this.stringGenerator.bind(this) ) : string {
         //Reset the finalString
+        const userPipeline : UserPipeline = JSON.parse(readFileSync(filePath, "utf-8"));
         this.finalString = "";
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
-        const blocks : Graph = diagram.blocks.reduce((acc : Graph, block : Block ) => {
+        const blocks : Graph = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
             acc[block.id] = block;
             return acc;
         }, {});
@@ -70,7 +59,7 @@ export class CodeGen {
 
         if (block.category.type === "source"){
             this.finalString += "source_" + this.counter + " = " + this.addParametersToPipeline(block) + "\n"
-            newString+="source_" + this.counter + ".pipe(\n"
+            newString+="source_" + this.counter + ".pipe( \n"
             this.counter++
 
         }
@@ -86,17 +75,6 @@ export class CodeGen {
     }
 
 
-    public updateFilepath (newFilePath : string) {
-        this.filePath = newFilePath;
-
-        if (this.filePath !== "") {
-            this.userPipeline = JSON.parse(readFileSync(this.filePath, "utf-8"));
-        }
-        //Reset the finalString
-        this.finalString = "";
-    }
-
-
     //For debugging purposes
     public printCode() {
         console.log(this.finalString)
@@ -105,7 +83,7 @@ export class CodeGen {
 }
 
 /*
-const codeGenerator : CodeGen = new CodeGen("./tests/test1.json");
-codeGenerator.traverseDiagram()
+const codeGenerator : CodeGen = new CodeGen;
+codeGenerator.traverseDiagram("./tests/test1.json")
 codeGenerator.printCode()
 */
