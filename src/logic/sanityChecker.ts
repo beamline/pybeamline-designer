@@ -33,5 +33,5 @@ function sanityChecker(diagram:Object): boolean{
 
 
 
-const schemaData= JSON.parse(readFileSync("./test.json", "utf8"));
-console.log(sanityChecker(schemaData))
+//const schemaData= JSON.parse(readFileSync("./test.json", "utf8"));
+//console.log(sanityChecker(schemaData))
