@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/minerId"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "miner"},
+        "name": {"const":  "simple_dfg_miner"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "model_update_frequency": {"type":  "number"},
+        "min_relative_frequency": {"type":  "number"}
+      }
+    },
+    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
+    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}

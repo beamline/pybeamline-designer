@@ -1,7 +1,30 @@
 {
   "type": "object",
   "properties": {
-    "blocks": {"$ref": "t"}
+    "blocks": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {"$ref": "string_test_source.json"},
+          {"$ref": "xes_log_source.json"},
+          {"$ref": "xes_log_source_from_file.json"},
+          {"$ref": "mqttxes_source.json"},
+          {"$ref": "wikimedia_source.json"},
+          {"$ref": "ais_source.json"},
+          {"$ref": "attribute_filters.json"},
+          {"$ref": "activity_filters.json"},
+          {"$ref":  "infinite_size_directly_follows_mapper.json"},
+          {"$ref":  "simple_dfg_miner.json"},
+          {"$ref":  "heuristics_miner_lossy_counting.json"},
+          {"$ref":  "heuristics_miner_lossy_counting_budget.json"},
+          {"$ref":  "behavioral_conformance.json"},
+          {"$ref": "sliding_window_to_log.json"},
+          {"$ref": "union.json"}
+
+
+        ]
+      }
+    }
   },
   "required": ["blocks"]
 }

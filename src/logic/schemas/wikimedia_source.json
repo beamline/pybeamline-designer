@@ -1,25 +1,17 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/sourceId"},
+    "id":{"$ref": "definitions.json#/definitions/sourceId"},
     "category": {
       "type": "object",
       "properties": {
         "type": {"const":  "source"},
-        "name": {"const":  "xes_log_source"}
+        "name": {"const":  "wikimedia_source"}
       }
     },
     "parameters": {
       "type": "object",
-      "properties":{
-        "log": {
-          "type": "string"
-        },
-        "scheduler": {
-          "type": "string"
-        }
-      },
-      "required": ["log"]
+      "additionalProperties": false
     },
     "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
   },

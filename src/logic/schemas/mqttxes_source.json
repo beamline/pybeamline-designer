@@ -6,20 +6,24 @@
       "type": "object",
       "properties": {
         "type": {"const":  "source"},
-        "name": {"const":  "xes_log_source"}
+        "name": {"const":  "mqttxes_source"}
       }
     },
     "parameters": {
       "type": "object",
       "properties":{
-        "log": {
+        "broker": {
           "type": "string"
         },
-        "scheduler": {
+        "port": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "base_topic": {
           "type": "string"
         }
       },
-      "required": ["log"]
+      "required": ["broker","port","base_topic"]
     },
     "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
   },

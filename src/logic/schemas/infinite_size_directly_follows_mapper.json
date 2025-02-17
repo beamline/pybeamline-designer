@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/minerId"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "miner"},
+        "name": {"const":  "infinite_size_directly_follows_mapper"}
+      }
+    },
+    "parameters": {},
+    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
+    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}
