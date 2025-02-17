@@ -12,7 +12,8 @@
           {"$ref": "wikimedia_source.json"},
           {"$ref": "ais_source.json"},
           {"$ref": "attribute_filters.json"},
-          {"$ref": "activity_filters.json"}
+          {"$ref": "activity_filters.json"},
+          {"$ref":  "infinite_size_directly_follows_mapper.json"}
         ]
       }
     }
