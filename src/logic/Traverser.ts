@@ -1,40 +1,50 @@
 import { readFileSync } from "fs";
-import { UserPipeline, Block, Category, Params, Graph } from "./Syntax.js";
+import { UserPipeline, Block, Category, Params, Graph, UnionCounters} from "./Syntax.js";
 
 
 
 export class Traverser {
 
+    private blocks: Graph={};
     private finalString: string = "";
-    private counter : number = 0;
+    private sourceCounter : number = 0;
+    private pipeCounter : number = 0;
+    private unionCounters: UnionCounters = {};
 
 
-    public traverseDiagram (userPipeline : UserPipeline ,  callback : Function = this.stringGenerator.bind(this) ) : string {
+    public traverseDiagram (userPipeline : UserPipeline ) : string {
         //Reset the variables
         this.finalString = "";
-        this.counter = 0;
+        this.sourceCounter = 0;
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
-        const blocks : Graph = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
+        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
             acc[block.id] = block;
             return acc;
         }, {});
 
-        const visit = (blockId : string, currentString : string) => {
-            // Process the block
-            const newString =callback (currentString, blocks[blockId]);
-
-            // Visit all outputs (following the one-way directional constraint)
-            blocks[blockId].outputs.forEach((id)=>visit(id, newString));
-        };
-
         // Find and start traversal from all source blocks (blocks with no input)
-        Object.values(blocks)
+        Object.values(this.blocks)
             .filter(block => !block.input)
-            .forEach(block => visit(block.id,""));
+            .forEach(block => this.visit(block.id,""));
 
         return this.finalString;
 
     }
+
+    private visit (blockId : string, currentString : string){
+
+        if (this.blocks[blockId].category.type === "union"){
+            this.union(blockId, currentString)
+        } else {
+            // Process the block
+            const newString =this.stringGenerator.bind(this)(currentString, this.blocks[blockId]);
+
+            // Visit all outputs (following the one-way directional constraint)
+            this.blocks[blockId].outputs.forEach((id)=>this.visit(id, newString));
+        }
+
+
+    };
 
 
     private addParametersToPipeline (block : Block) : string {
@@ -58,9 +68,9 @@ export class Traverser {
         let newString : string = currentString;
 
         if (block.category.type === "source"){
-            this.finalString += "source_" + this.counter + " = " + this.addParametersToPipeline(block) + "\n"
-            newString+="source_" + this.counter + ".pipe( \n"
-            this.counter++
+            this.finalString += "source_" + this.sourceCounter + " = " + this.addParametersToPipeline(block) + "\n"
+            newString+="source_" + this.sourceCounter + ".pipe( \n"
+            this.sourceCounter++
 
         }
         else if (block.outputs.length === 0) {
@@ -72,6 +82,32 @@ export class Traverser {
         }
 
         return newString
+    }
+
+    private union(blockId:string,currentString:string){
+        if (blockId in this.unionCounters){
+            this.finalString += "pipe_"+this.pipeCounter+" = "+ currentString.slice(0, -2) + ")\n"
+            this.unionCounters[blockId].mergeString+= ", pipe_"+this.pipeCounter
+            this.unionCounters[blockId].counter-=1
+            this.pipeCounter+=1
+            if (this.unionCounters[blockId].counter == 0){
+                this.unionCounters[blockId].mergeString += ")"
+                if (this.blocks[blockId].outputs.length != 0){
+                    this.unionCounters[blockId].mergeString += ".pipe( \n"
+                    this.blocks[blockId].outputs.forEach((id)=>this.visit(id, this.unionCounters[blockId].mergeString));
+                } else {
+                    this.unionCounters[blockId].mergeString += "\n"
+                }
+            }
+        } else {
+            //@ts-ignore
+            this.unionCounters[blockId] = {"counter" : this.blocks[blockId].input.length,
+                "mergeString" : this.blocks[blockId].category.name+"( "}
+            this.finalString += "pipe_"+this.pipeCounter+" = "+ currentString.slice(0, -2) + ")\n"
+            this.unionCounters[blockId].mergeString+= "pipe_"+this.pipeCounter
+            this.unionCounters[blockId].counter-=1
+            this.pipeCounter+=1
+        }
     }
 
 
