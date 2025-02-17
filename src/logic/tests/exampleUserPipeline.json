@@ -31,7 +31,7 @@
         "parameters" : {
 
         },
-        "input" : ["s0", "f0"],
+        "input" : ["s1", "f0"],
         "outputs" : ["t0"]
       },
       {
