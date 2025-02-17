@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/minerId"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "miner"},
+        "name": {"const":  "behavioral_conformance"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "model": {"type":  "string"}
+      }
+    },
+    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
+    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}
