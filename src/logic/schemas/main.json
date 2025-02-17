@@ -18,7 +18,9 @@
           {"$ref":  "heuristics_miner_lossy_counting.json"},
           {"$ref":  "heuristics_miner_lossy_counting_budget.json"},
           {"$ref":  "behavioral_conformance.json"},
-          {"$ref": "sliding_window_to_log.json"}
+          {"$ref": "sliding_window_to_log.json"},
+          {"$ref": "union.json"}
+
 
         ]
       }
