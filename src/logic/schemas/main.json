@@ -15,7 +15,8 @@
           {"$ref": "activity_filters.json"},
           {"$ref":  "infinite_size_directly_follows_mapper.json"},
           {"$ref":  "simple_dfg_miner.json"},
-          {"ref":  "heuristics_miner_lossy_counting.json"}
+          {"ref":  "heuristics_miner_lossy_counting.json"},
+          {"ref":  "heuristics_miner_lossy_counting_budget.json"}
         ]
       }
     }
