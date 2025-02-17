@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"type":  "string","pattern": "^m[0-9]+$"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "miner"},
+        "name": {"const":  "simple_dfg_miner"}
+      }
+    },
+    "parameters": {
+      "model_update_frequency": {"type":  "number"},
+      "min_relative_frequency": {"type":  "number"}
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type":  "string","pattern": "^[0-9]+$"}
+    },
+    "input": {"type":  "string","pattern": "^[sfmt]\\d+$"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}
