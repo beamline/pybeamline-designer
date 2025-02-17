@@ -1,7 +1,7 @@
 {
   "blocks" : [
     {
-      "id" : "0",
+      "id" : "s0",
       "category" : {
         "type" : "source",
         "name" : "string_test_source"
@@ -9,10 +9,10 @@
       "parameters" : {
         "iterable" : "['x', 'y']"
       },
-      "outputs" : ["1", "2"]
+      "outputs" : ["f0", "f1"]
     },
     {
-      "id" : "1",
+      "id" : "f0",
       "category" : {
         "type" : "filter",
         "name" : "retains_activity_filter"
@@ -20,11 +20,11 @@
       "parameters" : {
         "iterable" : "'y'"
       },
-      "input" : "0",
-      "outputs" : ["3"]
+      "input" : "s0",
+      "outputs" : ["t0"]
     },
     {
-      "id" : "2",
+      "id" : "f1",
       "category" : {
         "type" : "filter",
         "name" : "retains_activity_filter"
@@ -32,11 +32,11 @@
       "parameters" : {
         "iterable" : "'x'"
       },
-      "input" : "0",
-      "outputs" : ["4"]
+      "input" : "s0",
+      "outputs" : ["t1"]
     },
     {
-      "id" : "3",
+      "id" : "t0",
       "category" : {
         "type" : "sink",
         "name" : ".subscribe"
@@ -44,11 +44,11 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
+      "input" : "f0",
       "outputs" : []
     },
     {
-      "id" : "4",
+      "id" : "t1",
       "category" : {
         "type" : "sink",
         "name" : ".subscribe"
@@ -56,7 +56,7 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "2",
+      "input" : "f1",
       "outputs" : []
     }
 
