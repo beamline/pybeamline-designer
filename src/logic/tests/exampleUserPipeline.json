@@ -9,35 +9,43 @@
         "parameters" : {
           "iterable" : "['A', 'B', 'C']"
         },
-        "outputs" : ["f0","f1"]
+        "outputs" : ["f0"]
       },
+      {
+      "id" : "s1",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "['f', 'd']"
+      },
+      "outputs" : ["u0"]
+      },
+      {
+        "id" : "u0",
+        "category" : {
+          "type" : "union",
+          "name" : "merge"
+        },
+        "parameters" : {
 
+        },
+        "input" : ["s0", "f0"],
+        "outputs" : ["t0"]
+      },
       {
         "id" : "f0",
         "category" : {
           "type" : "filter",
-          "name" : "excludes_activity_filter"
+          "name" : "retains_activity_filter"
         },
         "parameters" : {
-          "concept" : "'A'"
+          "activity_names" : "'A'"
         },
-        "input" : "s0",
-        "outputs" : ["t0"]
+        "input" : "s0" ,
+        "outputs" : ["u0"]
       },
-      {
-        "id" : "f1",
-        "category" : {
-          "type" : "filter",
-          "name" : "excludes_activity_filter"
-        },
-        "parameters" : {
-          "param1" : "'stringGen'",
-          "param2" : "'other'"
-        },
-        "input" : "s0",
-        "outputs" : ["t0"]
-      },
-
       {
         "id" : "t0",
         "category" : {
@@ -47,10 +55,9 @@
         "parameters" : {
           "on_next" : "lambda x : print(str(x))"
         },
-        "input" : "2",
-        "outputs": []
+        "input" : "u0" ,
+        "outputs" : []
       }
-
     ]
 
 }

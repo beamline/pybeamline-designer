@@ -11,7 +11,7 @@ interface Block {
     id: string;
     category: Category;
     parameters: Params;
-    input?: string;         // Optional: Not all blocks have an input
+    input?: string | string[];         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
 }
 
