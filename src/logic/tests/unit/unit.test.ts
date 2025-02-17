@@ -77,3 +77,10 @@ TODO:   source0  ->
 TODO:                (merge/concat) => sink0
 TODO:   source1  ->
 */
+
+/*
+TODO: Test 8 :
+TODO:   source0  ->  filter0 ->
+TODO:                        (merge/concat) => sink0
+TODO:   source1  ->  filter1 ->
+*/
