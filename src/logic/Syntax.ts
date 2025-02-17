@@ -24,4 +24,11 @@ interface Graph {
     [key : string] : Block;
 }
 
-export { UserPipeline, Category, Params, Block, Graph };
+interface UnionCounters {
+    [key : string] : {
+        counter : number;
+        mergeString : string;
+    }
+}
+
+export { UserPipeline, Category, Params, Block, Graph, UnionCounters };
