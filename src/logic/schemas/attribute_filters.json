@@ -1,7 +1,7 @@
 {
   "type": "object",
   "properties": {
-    "id": {"type":  "string","pattern": "^f[0-9]+$"},
+    "id": {"$ref": "definitions.json#/definitions/filterId"},
     "category": {
       "type": "object",
       "properties": {
@@ -23,11 +23,8 @@
       },
       "required": ["attribute_name","attribute_values"]
     },
-    "outputs": {
-      "type": "array",
-      "items": {"type":  "string","pattern": "^[0-9]+$"}
-    },
-    "input": {"type":  "string","pattern": "^[sfmt]\\d+$"}
+    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
+    "input": {"$ref": "definitions.json#/definitions/generalInput"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false

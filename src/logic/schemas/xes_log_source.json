@@ -1,7 +1,7 @@
 {
   "type": "object",
   "properties": {
-    "id": {"type":  "string","pattern": "^s[0-9]+$"},
+    "id": {"$ref": "definitions.json#/definitions/sourceId"},
     "category": {
       "type": "object",
       "properties": {
@@ -21,10 +21,7 @@
       },
       "required": ["log"]
     },
-    "outputs": {
-      "type": "array",
-      "items": {"type":  "string","pattern": "^[0-9]+$"}
-    }
+    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

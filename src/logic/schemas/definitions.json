@@ -1,0 +1,11 @@
+{
+  "definitions": {
+    "sourceId": {"type":  "string","pattern": "^s[0-9]+$"},
+    "filterId": {"type":  "string","pattern": "^f[0-9]+$"},
+    "minerId": {"type":  "string","pattern": "^m[0-9]+$"},
+    "utilityId": {"type":  "string","pattern": "^u[0-9]+$"},
+    "sinkId": {"type":  "string","pattern": "^t[0-9]+$"},
+    "generalInput": {"type":  "string","pattern": "^[sfmut]\\d+$"},
+    "generalOutput": {"type":  "array", "items": {"type":  "string","pattern": "^[fmut]\\d+$"}}
+  }
+}
