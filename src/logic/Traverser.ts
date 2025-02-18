@@ -102,6 +102,7 @@ export class Traverser {
         this.unionCounters[blockId].counter--;
         this.pipeCounter++;
 
+        //TODO: Fix bug causing merge (...) to not have a closing )
         if (this.unionCounters[blockId].counter === 0) {
             this.unionCounters[blockId].mergeString += this.blocks[blockId].outputs.length ? `.pipe(\n` : `\n`;
             this.blocks[blockId].outputs.forEach((id) => this.visit(id, this.unionCounters[blockId].mergeString));
