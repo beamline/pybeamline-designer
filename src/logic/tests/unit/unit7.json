@@ -1,0 +1,50 @@
+{
+  "blocks" : [
+    {
+      "id" : "s0",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "['A', 'B', 'C']"
+      },
+      "outputs" : ["u0"]
+    },
+    {
+      "id" : "s1",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'z']"
+      },
+      "outputs" : ["u0"]
+    },
+    {
+      "id" : "u0",
+      "category" : {
+        "type" : "union",
+        "name" : "merge"
+      },
+      "parameters" : {
+
+      },
+      "input" : ["s1", "s0"],
+      "outputs" : ["t0"]
+    },
+    {
+      "id" : "t0",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "u0",
+      "outputs": []
+    }
+  ]
+}
