@@ -84,31 +84,30 @@ export class Traverser {
         return newString
     }
 
-    private union(blockId:string,currentString:string){
-        if (blockId in this.unionCounters){
-            this.finalString += "pipe_"+this.pipeCounter+" = "+ currentString.slice(0, -2) + ")\n"
-            this.unionCounters[blockId].mergeString+= ", pipe_"+this.pipeCounter
-            this.unionCounters[blockId].counter-=1
-            this.pipeCounter+=1
-            if (this.unionCounters[blockId].counter == 0){
-                this.unionCounters[blockId].mergeString += ")"
-                if (this.blocks[blockId].outputs.length != 0){
-                    this.unionCounters[blockId].mergeString += ".pipe( \n"
-                    this.blocks[blockId].outputs.forEach((id)=>this.visit(id, this.unionCounters[blockId].mergeString));
-                } else {
-                    this.unionCounters[blockId].mergeString += "\n"
-                }
-            }
-        } else {
-            //@ts-ignore
-            this.unionCounters[blockId] = {"counter" : this.blocks[blockId].input.length,
-                "mergeString" : this.blocks[blockId].category.name+"( "}
-            this.finalString += "pipe_"+this.pipeCounter+" = "+ currentString.slice(0, -2) + ")\n"
-            this.unionCounters[blockId].mergeString+= "pipe_"+this.pipeCounter
-            this.unionCounters[blockId].counter-=1
-            this.pipeCounter+=1
+    private union(blockId: string, currentString: string) {
+        const pipeName = `pipe_${this.pipeCounter}`;
+        const trimmedString = currentString.slice(0, -2); // Removing last ", "
+
+        if (!(blockId in this.unionCounters)) {
+            this.unionCounters[blockId] = {
+                //@ts-ignore
+                counter: this.blocks[blockId].input.length,
+                mergeString: `${this.blocks[blockId].category.name}( `
+            };
+        }
+
+        this.finalString += `${pipeName} = ${trimmedString})\n`;
+        //@ts-ignore
+        this.unionCounters[blockId].mergeString += `${this.unionCounters[blockId].counter < this.blocks[blockId].input.length ? ", " : ""}${pipeName}`;
+        this.unionCounters[blockId].counter--;
+        this.pipeCounter++;
+
+        if (this.unionCounters[blockId].counter === 0) {
+            this.unionCounters[blockId].mergeString += this.blocks[blockId].outputs.length ? `.pipe(\n` : `\n`;
+            this.blocks[blockId].outputs.forEach((id) => this.visit(id, this.unionCounters[blockId].mergeString));
         }
     }
+
 
 
     //For debugging purposes
