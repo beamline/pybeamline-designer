@@ -110,10 +110,4 @@ export class Traverser {
     }
 
 
-
-    //For debugging purposes
-    public printCode() {
-        console.log(this.finalString)
-    }
-
 }
