@@ -30,23 +30,25 @@ export class Traverser {
         // Find and start traversal from all source blocks (blocks with no input)
         Object.values(this.blocks)
             .filter(block => !block.input)
-            .forEach(block => this.visit(block.id,""));
+            .forEach(block => this.visitBlockById(block.id,""));
 
         return this.finalString;
 
     }
 
-    private visit (blockId : string, currentString : string){
+    private visitBlockById (blockId : string, currentString : string){
 
         if (this.blocks[blockId].category.type === "union"){
             this.union(blockId, currentString)
-        } else {
-            // Process the block
-            const newString =this.stringGenerator.bind(this)(currentString, this.blocks[blockId]);
-
-            // Visit all outputs (following the one-way directional constraint)
-            this.blocks[blockId].outputs.forEach((id)=>this.visit(id, newString));
+            return
         }
+
+        // Process the block
+        const newString =this.stringGenerator.bind(this)(currentString, this.blocks[blockId]);
+
+        // Visit all outputs (following the one-way directional constraint)
+        this.blocks[blockId].outputs.forEach((id)=>this.visitBlockById(id, newString));
+
 
 
     };
@@ -110,7 +112,7 @@ export class Traverser {
 
         if (this.unionCounters[blockId].counter === 0) {
             this.unionCounters[blockId].mergeString += this.blocks[blockId].outputs.length ? `).pipe( \n` : `\n`;
-            this.blocks[blockId].outputs.forEach((id) => this.visit(id, this.unionCounters[blockId].mergeString));
+            this.blocks[blockId].outputs.forEach((id) => this.visitBlockById(id, this.unionCounters[blockId].mergeString));
         }
     }
 
