@@ -89,11 +89,24 @@ retains_activity_filter(activity_names = 'x')
 
 
 /*
-TODO: Test 7 :
-TODO:   source0  ->
-TODO:                (merge/concat) => sink0
-TODO:   source1  ->
+ * Test 7 :
+ *   source0  ->
+ *                (merge/concat) => sink0
+ *   source1  ->
 */
+
+test("Test 7: 2 sources merge towards 1 sinks", () => {
+    expect(generateCode(pathToTests + "unit7.json"))
+        .toBe(
+`source_0 = string_test_source(iterable = ['A', 'B', 'C'])
+pipe_0 = source_0.pipe()
+source_1 = string_test_source(iterable = ['x', 'y', 'z'])
+pipe_1 = source_1.pipe()
+merge(pipe_0, pipe_1).pipe(
+).subscribe(on_next = lambda x : print(str(x)))
+`)
+})
+
 
 /*
 TODO: Test 8 :
@@ -101,3 +114,4 @@ TODO:   source0  ->  filter0 ->
 TODO:                        (merge/concat) => sink0
 TODO:   source1  ->  filter1 ->
 */
+
