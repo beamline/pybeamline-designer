@@ -5,13 +5,16 @@ import { UserPipeline, Block, Category, Params, Graph, UnionCounters} from "./Sy
 
 export class Traverser {
 
-    private blocks: Graph={};
+    private blocks: Graph = {};
     private finalString: string = "";
     private sourceCounter : number = 0;
     private pipeCounter : number = 0;
     private unionCounters: UnionCounters = {};
 
-
+/*
+* Prepares the user pipeline for traversal
+* Starts visiting the users pipeline at the sources
+*/
     public traverseDiagram (userPipeline : UserPipeline ) : string {
 
 
@@ -36,33 +39,42 @@ export class Traverser {
 
     }
 
+
+/*
+*  Calls for handling the string the given block produces
+*  Visits the blocks to which this block outputs to
+*/
+
     private visitBlockById (blockId : string, currentString : string){
 
         if (this.blocks[blockId].category.type === "union"){
-            this.union(blockId, currentString)
+            this.unionBlockHandler(blockId, currentString)
             return
         }
 
         // Process the block
-        const newString =this.stringGenerator.bind(this)(currentString, this.blocks[blockId]);
+        const newString = this.stringGenerator.bind(this)(currentString, this.blocks[blockId]);
 
         // Visit all outputs (following the one-way directional constraint)
-        this.blocks[blockId].outputs.forEach((id)=>this.visitBlockById(id, newString));
+        this.blocks[blockId].outputs.forEach( id=>
+            this.visitBlockById(id, newString)
+        );
 
 
 
     };
 
-
+/*
+* Reads a blocks parameters and adds them to the final string
+*/
     private addParametersToPipeline (block : Block) : string {
         let resultString : string = block.category.name + "(";
-        let parameters : Params = block.parameters;
 
         // Check if there are parameters
-        if (Object.keys(parameters).length > 0) {
+        if (Object.keys(block.parameters).length > 0) {
             // Add parameters to the result string
-            for (const parameter in parameters) {
-                resultString += `${parameter} = ${parameters[parameter]}, `;
+            for (const parameter in block.parameters) {
+                resultString += `${parameter} = ${block.parameters[parameter]}, `;
             }
             // Remove the comma and space
             resultString = resultString.slice(0, -2);
@@ -71,27 +83,46 @@ export class Traverser {
         return resultString + ")";
     }
 
+
+
+
+/*
+  * Handles the string the current block produces
+  * Updates the currentString following the traversal
+*/
     private stringGenerator(currentString : string, block : Block) : string {
         let newString : string = currentString;
 
         if (block.category.type === "source"){
-            this.finalString += "source_" + this.sourceCounter + " = " + this.addParametersToPipeline(block) + "\n"
-            newString+="source_" + this.sourceCounter + ".pipe( \n"
+
+            this.finalString += `source_${this.sourceCounter} = ${this.addParametersToPipeline(block)}\n`
+            newString        += `source_${this.sourceCounter}.pipe( \n`
             this.sourceCounter++
 
+            return newString
         }
-        else if (block.outputs.length === 0) {
-            //removes ", " from the sink (for readability purposes)
-            this.finalString += newString.slice(0, -2) + "\n)" + this.addParametersToPipeline(block) + "\n"
+
+        if (block.outputs.length === 0) {
+            //removes ", " from the last element (for readability purposes)
+            this.finalString += `${newString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n`
+
+            return newString
         }
-        else {
-            newString += this.addParametersToPipeline(block) + ",\n"
-        }
+
+        newString += `${this.addParametersToPipeline(block)},\n`
 
         return newString
+
     }
 
-    private union(blockId: string, currentString: string) {
+
+/*
+    * Handles specifically pipeline merges/concatenations
+*/
+
+    //TODO: Try and refactor unionBlockHandler into a more readable version
+
+    private unionBlockHandler(blockId: string, currentString: string) {
         const pipeName = `pipe_${this.pipeCounter}`;
         const trimmedString = currentString.slice(0, -2); // Removing last ", "
 
