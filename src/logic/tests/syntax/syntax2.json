@@ -1,0 +1,27 @@
+{
+  "blocks" : [
+    {
+      "id" : "s0",
+      "category" : {
+        "type" : "source",
+        "name" : "string_test_source"
+      },
+      "parameters" : {
+
+      },
+      "outputs" : ["t0"]
+    },
+    {
+      "id" : "t0",
+      "category" : {
+        "type" : "sink",
+        "name" : ".subscribe"
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "s0",
+      "outputs": []
+    }
+  ]
+}
