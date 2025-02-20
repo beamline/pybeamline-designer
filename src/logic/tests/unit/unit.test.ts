@@ -64,12 +64,29 @@ test("Test 5: source -> sink, source1 -> sink1", () => {
 })
 
 
+
+
+
 /*
-TODO: Test 6 :
-TODO:            ->  filter0 -> sink0
-TODO:   source0
-TODO:            ->  filter1 -> sink1
+ * Test 6 :
+ *            ->  filter0 -> sink0
+ *  source0
+ *            ->  filter1 -> sink1
 */
+
+test("Test 6: 1 source goes to 2 sinks", () => {
+    expect(generateCode(pathToTests + "unit6.json"))
+        .toBe(
+`source_0 = string_test_source(iterable = ['x', 'y'])
+source_0.pipe( 
+retains_activity_filter(activity_names = 'y')
+).subscribe(on_next = lambda x : print(str(x)))
+source_0.pipe( 
+retains_activity_filter(activity_names = 'x')
+).subscribe(on_next = lambda x : print(str(x)))
+`)
+})
+
 
 /*
 TODO: Test 7 :

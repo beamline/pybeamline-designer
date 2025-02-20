@@ -18,7 +18,7 @@
         "name" : "retains_activity_filter"
       },
       "parameters" : {
-        "iterable" : "'y'"
+        "activity_names" : "'y'"
       },
       "input" : "s0",
       "outputs" : ["t0"]
@@ -30,7 +30,7 @@
         "name" : "retains_activity_filter"
       },
       "parameters" : {
-        "iterable" : "'x'"
+        "activity_names" : "'x'"
       },
       "input" : "s0",
       "outputs" : ["t1"]
