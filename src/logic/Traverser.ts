@@ -13,9 +13,14 @@ export class Traverser {
 
 
     public traverseDiagram (userPipeline : UserPipeline ) : string {
-        //Reset the variables
+
+
+        //Variable reset
         this.finalString = "";
         this.sourceCounter = 0;
+        this.pipeCounter = 0;
+        this.unionCounters = {};
+
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
         this.blocks = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
             acc[block.id] = block;
