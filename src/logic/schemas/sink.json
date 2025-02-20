@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/sinkId"},
+    "category": {
+      "type": "object",
+      "properties": {
+        "type": {"const":  "sink"},
+        "name": {"const":  ".subscribe"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "on_next": {
+          "type": "string"
+        }
+      }
+    },
+    "outputs":{"const":  []},
+    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+  },
+  "required": ["id", "parameters", "outputs", "input"],
+  "additionalProperties": false
+}

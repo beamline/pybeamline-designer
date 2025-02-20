@@ -19,7 +19,6 @@ function sanityChecker(diagram:Object): boolean{
 
     // Read the schema from a separate file
     const schemaData= JSON.parse(readFileSync("./schemas/main.json", "utf8"));
-    console.log(schemaData)
 
     // Create a schema instance
     const validator = ajv.compile(schemaData);
