@@ -19,6 +19,6 @@ function generateCode (filePathToJSON : string) {
     return traverser.traverseDiagram(userPipeline);
 }
 
-console.log(generateCode("./tests/unit/unit1.json"))
+//console.log(generateCode("./tests/unit/unit1.json"))
 
 export { generateCode }

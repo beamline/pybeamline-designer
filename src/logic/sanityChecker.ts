@@ -7,10 +7,10 @@ function sanityChecker(diagram:Object): boolean{
 
     // Initialize Ajv validator
     const ajv = new Ajv();
-    const schemasReferences=readdirSync("./schemas")
+    const schemasReferences=readdirSync("src/logic/schemas")
     schemasReferences.forEach((reference) => {
 
-        const filePath = "./schemas/"+reference;
+        const filePath = "src/logic/schemas/"+reference;
         const schema = JSON.parse(readFileSync(filePath, "utf8"));
 
         // Add schema to Ajv, using the filename (or a URL-like identifier) as the schema ID
@@ -18,7 +18,7 @@ function sanityChecker(diagram:Object): boolean{
     });
 
     // Read the schema from a separate file
-    const schemaData= JSON.parse(readFileSync("./schemas/main.json", "utf8"));
+    const schemaData= JSON.parse(readFileSync("src/logic/schemas/main.json", "utf8"));
 
     // Create a schema instance
     const validator = ajv.compile(schemaData);
