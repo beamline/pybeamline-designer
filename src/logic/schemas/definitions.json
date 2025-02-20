@@ -6,6 +6,8 @@
     "utilityId": {"type":  "string","pattern": "^u[0-9]+$"},
     "sinkId": {"type":  "string","pattern": "^t[0-9]+$"},
     "generalInput": {"type":  "string","pattern": "^[sfmu]\\d+$"},
-    "generalOutput": {"type":  "array", "items": {"type":  "string","pattern": "^[fmut]\\d+$"}}
+    "generalOutput": {"type":  "array", "items": {"type":  "string","pattern": "^[fmut]\\d+$"}},
+    "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
+      "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]}
   }
 }

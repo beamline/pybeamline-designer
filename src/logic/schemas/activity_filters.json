@@ -12,10 +12,7 @@
     "parameters": {
       "type": "object",
       "properties":{
-        "activity_names": {
-          "type": "string",
-          "pattern": "^\\['([^']+)'(, '[^']+')*\\]$"
-        }
+        "activity_names": {"$ref": "definitions.json#/definitions/iterableStr"}
       },
       "required": ["activity_names"]
     },

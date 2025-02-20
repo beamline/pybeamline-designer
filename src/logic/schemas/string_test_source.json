@@ -12,10 +12,7 @@
     "parameters": {
       "type": "object",
       "properties":{
-        "iterable": {
-          "type": "string",
-          "pattern": "^\\['([^']+)'(, '[^']+')*\\]$"
-        },
+        "iterable": {"$ref": "definitions.json#/definitions/iterableStr"},
         "scheduler": {
           "type": "string"
         }
