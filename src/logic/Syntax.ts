@@ -17,14 +17,18 @@ interface Block {
 }
 
 
+//Object with array containing all the blocks in the pipeline
 interface UserPipeline {
     blocks: Block[];
 }
 
+
+//Object mapping IDs to blocks
 interface Graph {
     [key : string] : Block;
 }
 
+//Object containing the union blocks ids and their strings, counters
 interface UnionCounters {
     [key : string] : {
         counter : number;
