@@ -6,7 +6,7 @@
       "type" : "object",
       "properties" : {
         "name": {"const": "wikimedia_source"},
-        "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }
     },

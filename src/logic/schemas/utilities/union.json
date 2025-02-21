@@ -6,8 +6,8 @@
       "type" : "object",
       "properties" : {
       "name": {"enum":  ["merge","concat"]},
-      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
-      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+      "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },
     "parameters": {
