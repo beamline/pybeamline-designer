@@ -3,9 +3,12 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
-      "name": {"const": "xes_log_source_from_file"},
-      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
-      "inputType": {"const":  null}
+      "type" : "object",
+      "properties" : {
+        "name": {"const": "xes_log_source_from_file"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+        "inputType": {"const": null}
+      }
     },
     "parameters": {
       "type": "object",

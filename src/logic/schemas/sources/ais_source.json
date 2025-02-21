@@ -5,16 +5,10 @@
     "descriptors": {
       "type": "object",
       "properties" : {
-      "name": {
-        "const": "ais_source"
-      },
-      "outputType": {
-        "$ref": "definitions.json#/definitions/streamTypes/event"
-      },
-      "inputType": {
-        "const": null
+      "name": {"const": "ais_source"},
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+        "inputType": {"const": null}
       }
-    }
     },
     "parameters": {
       "type": "object",

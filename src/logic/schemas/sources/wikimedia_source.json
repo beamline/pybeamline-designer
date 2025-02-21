@@ -3,9 +3,12 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
-      "name": {"const": "wikimedia_source"},
-      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
-      "inputType": {"const":  null}
+      "type" : "object",
+      "properties" : {
+        "name": {"const": "wikimedia_source"},
+        "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+        "inputType": {"const": null}
+      }
     },
     "parameters": {
       "type": "object",
