@@ -1,62 +1,67 @@
 {
   "blocks" : [
     {
-      "id" : "s0",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
       },
       "parameters" : {
-        "iterable" : "['x', 'y']"
+        "iterable" : "['x', 'y', 'c']"
       },
-      "outputs" : ["f0", "f1"]
+      "outputs" : ["1", "2"]
     },
     {
-      "id" : "f0",
-      "category" : {
-        "type" : "filter",
-        "name" : "retains_activity_filter"
+      "id" : "1",
+      "descriptors": {
+        "name": "retains_activity_filter",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
         "activity_names" : "'y'"
       },
-      "input" : "s0",
-      "outputs" : ["t0"]
+      "input" : "0",
+      "outputs" : ["3"]
     },
     {
-      "id" : "f1",
-      "category" : {
-        "type" : "filter",
-        "name" : "retains_activity_filter"
+      "id" : "2",
+      "descriptors": {
+        "name": "retains_activity_filter",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
         "activity_names" : "'x'"
       },
-      "input" : "s0",
-      "outputs" : ["t1"]
+      "input" : "0",
+      "outputs" : ["4"]
     },
     {
-      "id" : "t0",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "id" : "3",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": "null",
+        "inputType": "any"
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "f0",
+      "input" : "1",
       "outputs" : []
     },
     {
-      "id" : "t1",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "id" : "4",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": "null",
+        "inputType": "any"
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "f1",
+      "input" : "2",
       "outputs" : []
     }
 
