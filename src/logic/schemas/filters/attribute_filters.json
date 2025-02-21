@@ -3,10 +3,13 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
+      "type" : "object",
+      "properties" : {
       "name": {"enum":  ["retains_on_trace_attribute_equal_filter","excludes_on_trace_attribute_equal_filter",
         "retains_on_event_attribute_equal_filter","excludes_on_event_attribute_equal_filter"]},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      }
     },
     "parameters": {
       "type": "object",
