@@ -9,5 +9,12 @@
     "generalOutput": {"type":  "array", "items": {"type":  "string","pattern": "^[fmut]\\d+$"}},
     "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
       "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]}
+  },
+  "primitiveTypes": {
+    "event": {"const": "event"},
+    "petrinet": {"const": "petrinet"},
+    "heuristics": {"const":  "heuristics"},
+    "model": {"const": "model"},
+    "conformance": {"const":  "conformance"}
   }
 }

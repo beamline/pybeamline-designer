@@ -2,6 +2,7 @@ import Ajv from "ajv";
 import { readFileSync,readdirSync } from "fs";
 import {resolve, dirname} from "path";
 import { fileURLToPath } from "url";
+import {Block} from "./Syntax.js";
 export {sanityChecker}
 
 function addReference(filePath:string,reference:string, ajv: Ajv){
@@ -22,6 +23,30 @@ function addAllReferences(directoryPath: string, ajv: Ajv){
     })
 }
 
+function addKeywords(ajv:Ajv){
+    ajv.addKeyword({
+        keyword: "validConnections",
+        type: "array",
+        validate: function (_, outputs: string[], parentSchema) {
+
+            if (!parentSchema) return false
+
+            const blocks: Block[] = parentSchema.parentData.blocks; // Get all blocks
+            const currentBlock = parentSchema.parentData; // The block being validated
+
+            return outputs.every(outputId => {
+
+                // We find the block with the specific ID
+                const targetBlock = blocks.find(block => block.id === outputId);
+
+                // check input and output types match
+                return targetBlock && targetBlock.inputType === currentBlock.outputType;
+            });
+        },
+        errors: false
+    });
+}
+
 
 function sanityChecker(diagram:Object): boolean{
 
@@ -31,7 +56,10 @@ function sanityChecker(diagram:Object): boolean{
     const path= resolve(__dirname, "./schemas")
 
     // Initialize Ajv validator
-    const ajv = new Ajv();
+    const ajv = new Ajv({ allErrors: true });
+
+    // Add customizable keywords
+
 
     //adding reference schemas
     addAllReferences(path,ajv)
