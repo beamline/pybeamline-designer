@@ -1,6 +1,4 @@
-import { readFileSync } from "fs";
-import { UserPipeline, Block, Category, Params, Graph, UnionCounters} from "./Syntax.js";
-
+import { UserPipeline, Block, Descriptor, Params, Graph, UnionCounters} from "./Syntax.js";
 
 
 export class Traverser {
@@ -47,7 +45,7 @@ export class Traverser {
 
     private visitBlockById (blockId : string, currentString : string){
 
-        if (this.blocks[blockId].category.type === "union"){
+        if (this.blocks[blockId].descriptors.inputType === "null"){
             this.unionBlockHandler(blockId, currentString)
             return
         }
@@ -68,7 +66,7 @@ export class Traverser {
 * Reads a blocks parameters and adds them to the final string
 */
     private addParametersToPipeline (block : Block) : string {
-        let resultString : string = block.category.name + "(";
+        let resultString : string = block.descriptors.name + "(";
 
         // Check if there are parameters
         if (Object.keys(block.parameters).length > 0) {
@@ -93,7 +91,7 @@ export class Traverser {
     private stringGenerator(currentString : string, block : Block) : string {
         let newString : string = currentString;
 
-        if (block.category.type === "source"){
+        if (block.descriptors.inputType === "null"){
 
             this.finalString += `source_${this.sourceCounter} = ${this.addParametersToPipeline(block)}\n`
             newString        += `source_${this.sourceCounter}.pipe( \n`
@@ -102,7 +100,7 @@ export class Traverser {
             return newString
         }
 
-        if (block.outputs.length === 0) {
+        if (block.descriptors.outputType === "null") {
             //removes ", " from the last element (for readability purposes)
             this.finalString += `${newString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n`
 
@@ -130,7 +128,7 @@ export class Traverser {
             this.unionCounters[blockId] = {
                 //@ts-ignore
                 counter: this.blocks[blockId].input.length,
-                mergeString: `${this.blocks[blockId].category.name}(`
+                mergeString: `${this.blocks[blockId].descriptors.name}(`
             };
         }
 
