@@ -3,6 +3,8 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
+      "type" : "object",
+      "properties" : {
       "name": {"const": "simple_dfg_miner"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}

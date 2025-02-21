@@ -3,9 +3,12 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
-      "name": {"const": "sliding_window_to_log"},
-      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
-      "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type" : "object",
+      "properties" : {
+        "name": {"const": "sliding_window_to_log"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
+        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      }
     },
     "parameters": {},
     "outputs":{"$ref": "definitions.json#/definitions/output"},

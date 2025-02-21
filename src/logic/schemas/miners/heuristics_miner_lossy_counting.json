@@ -3,9 +3,12 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
+      "type" : "object",
+      "properties" : {
       "name": {"const": "heuristics_miner_lossy_counting"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      }
     },
     "parameters": {
       "type": "object",
