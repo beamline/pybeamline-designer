@@ -4,8 +4,8 @@
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
       "name": {"enum":  ["excludes_activity_filter","retains_activity_filter"]},
-      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
-      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+      "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
     },
     "parameters": {
       "type": "object",

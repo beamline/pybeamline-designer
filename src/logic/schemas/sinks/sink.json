@@ -7,7 +7,7 @@
       "properties":{
         "name": {"const": ".subscribe"},
         "outputType": {"const":  null},
-        "inputType": {"$ref": "definitions.json#/streamTypes/any"}
+        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/any"}
       }
     },
     "parameters": {

@@ -4,7 +4,7 @@
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
       "name": {"const": "xes_log_source"},
-      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
       "inputType": {"const":  null}
     },
     "parameters": {

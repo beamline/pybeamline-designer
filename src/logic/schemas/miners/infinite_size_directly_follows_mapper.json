@@ -4,8 +4,8 @@
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
       "name": {"const": "infinite_size_directly_follows_mapper"},
-      "outputType": {"$ref": "definitions.json#/streamTypes/model"},
-      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
+      "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
     },
     "parameters": {},
     "outputs":{"$ref": "definitions.json#/definitions/output"},

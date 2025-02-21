@@ -3,9 +3,18 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
-      "name": {"const": "ais_source"},
-      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
-      "inputType": {"const":  null}
+      "type": "object",
+      "properties" : {
+      "name": {
+        "const": "ais_source"
+      },
+      "outputType": {
+        "$ref": "definitions.json#/definitions/streamTypes/event"
+      },
+      "inputType": {
+        "const": null
+      }
+    }
     },
     "parameters": {
       "type": "object",
