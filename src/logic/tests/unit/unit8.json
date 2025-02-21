@@ -1,74 +1,79 @@
 {
   "blocks" : [
     {
-      "id" : "s0",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'c']"
+      },
+      "outputs" : ["9"]
+    },
+    {
+      "id" : "1",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
       },
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["f0"]
+      "outputs" : ["8"]
     },
     {
-      "id" : "s1",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "2",
+      "descriptors": {
+        "name": "merge",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
       },
-      "outputs" : ["f1"]
+      "input" : ["8", "9"],
+      "outputs" : ["3"]
     },
     {
-      "id" : "u0",
-      "category" : {
-        "type" : "union",
-        "name" : "merge"
-      },
-      "parameters" : {
-
-      },
-      "input" : ["f1", "f0"],
-      "outputs" : ["t0"]
-    },
-    {
-      "id" : "t0",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "id" : "3",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": "null",
+        "inputType": "any"
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "u0",
-      "outputs": []
+      "input" : "2",
+      "outputs" : []
     },
     {
-      "id" : "f0",
-      "category" : {
-        "type" : "filter",
-        "name" : "excludes_activity_filter"
+      "id" : "8",
+      "descriptors": {
+        "name": "excludes_activity_filter",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
         "activity_names" : "{'A'}"
       },
-      "input" : "s0",
-      "outputs": ["u0"]
+      "input" : "0",
+      "outputs": ["3"]
     },
     {
-      "id" : "f1",
-      "category" : {
-        "type" : "filter",
-        "name" : "retains_activity_filter"
+      "id" : "9",
+      "descriptors": {
+        "name": "retains_activity_filter",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
         "activity_names" : "{'x', 'z'}"
       },
-      "input" : "s1",
-      "outputs": ["u0"]
+      "input" : "1",
+      "outputs": ["3"]
     }
   ]
 }
