@@ -1,6 +1,7 @@
-interface Category {
-    type: string;
+interface Descriptor {
     name: string;
+    inputType : string;
+    outputType : string;
 }
 
 interface Params {
@@ -9,7 +10,7 @@ interface Params {
 
 interface Block {
     id: string;
-    category: Category;
+    descriptors: Descriptor;
     parameters: Params;
     input?: string | string[];         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
@@ -31,4 +32,4 @@ interface UnionCounters {
     }
 }
 
-export { UserPipeline, Category, Params, Block, Graph, UnionCounters };
+export { UserPipeline, Descriptor, Params, Block, Graph, UnionCounters };
