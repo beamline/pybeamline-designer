@@ -120,7 +120,7 @@ merge(pipe_0, pipe_1).pipe(
 test("Test 8: 2 sources extended with sinks merge towards 1 sinks", () => {
     expect(generateCode(pathToTests + "unit8.json"))
         .toBe(
-            `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
+`source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
 excludes_activity_filter(activity_names = {'A'}))
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])

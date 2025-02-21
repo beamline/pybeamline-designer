@@ -20,7 +20,7 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
+        "iterable" : "'y'"
       },
       "outputs" : ["3"]
     },

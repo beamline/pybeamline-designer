@@ -8,7 +8,7 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['x', 'y', 'c']"
+        "iterable" : "['A', 'B', 'C']"
       },
       "outputs" : ["9"]
     },
@@ -20,7 +20,7 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['A', 'B', 'C']"
+        "iterable" : "['x', 'y', 'z']"
       },
       "outputs" : ["8"]
     },
@@ -52,19 +52,6 @@
     {
       "id" : "8",
       "descriptors": {
-        "name": "excludes_activity_filter",
-        "outputType": ["event"],
-        "inputType": ["event"]
-      },
-      "parameters" : {
-        "activity_names" : "{'A'}"
-      },
-      "input" : "0",
-      "outputs": ["3"]
-    },
-    {
-      "id" : "9",
-      "descriptors": {
         "name": "retains_activity_filter",
         "outputType": ["event"],
         "inputType": ["event"]
@@ -73,7 +60,20 @@
         "activity_names" : "{'x', 'z'}"
       },
       "input" : "1",
-      "outputs": ["3"]
+      "outputs": ["2"]
+    },
+    {
+      "id" : "9",
+      "descriptors": {
+        "name": "excludes_activity_filter",
+        "outputType": ["event"],
+        "inputType": ["event"]
+      },
+      "parameters" : {
+        "activity_names" : "{'A'}"
+      },
+      "input" : "0",
+      "outputs": ["2"]
     }
   ]
 }

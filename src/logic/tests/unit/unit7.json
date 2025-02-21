@@ -8,7 +8,7 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['x', 'y', 'c']"
+        "iterable" : "['A', 'B', 'C']"
       },
       "outputs" : ["2"]
     },
@@ -20,7 +20,7 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['A', 'B', 'C']"
+        "iterable" : "['x', 'y', 'z']"
       },
       "outputs" : ["2"]
     },
