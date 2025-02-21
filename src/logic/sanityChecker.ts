@@ -23,7 +23,7 @@ function addAllReferences(directoryPath: string, ajv: Ajv){
     })
 }
 
-function addKeywords(ajv:Ajv){
+function addKeywords (ajv : Ajv){
     ajv.addKeyword({
         keyword: "validConnections",
         type: "array",
@@ -40,7 +40,7 @@ function addKeywords(ajv:Ajv){
                 const targetBlock = blocks.find(block => block.id === outputId);
 
                 // check input and output types match
-                return targetBlock && targetBlock.inputType === currentBlock.outputType;
+                return targetBlock && targetBlock.descriptors.inputType === currentBlock.outputType;
             });
         },
         errors: false
