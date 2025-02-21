@@ -1,5 +1,6 @@
 import { generateCode } from "../../codeGenerator.ts";
-import { expect, test } from '@jest/globals';
+import { expect, test } from 'vitest';
+
 
 
 //Initial setup
