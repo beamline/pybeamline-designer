@@ -45,7 +45,7 @@ export class Traverser {
 
     private visitBlockById (blockId : string, currentString : string){
 
-        if (this.blocks[blockId].descriptors.inputType === "null"){
+        if (this.blocks[blockId].descriptors.inputType === "merge" || "concat"){
             this.unionBlockHandler(blockId, currentString)
             return
         }
