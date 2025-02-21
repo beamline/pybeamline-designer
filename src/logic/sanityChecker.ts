@@ -27,11 +27,13 @@ function addKeywords (ajv : Ajv){
     ajv.addKeyword({
         keyword: "validConnections",
         type: "array",
-        validate: function (_, outputs: string[], parentSchema) {
+        validate: function (_, outputs: string[], __, parentSchema) {
 
             if (!parentSchema) return false
+            if (outputs.length==0) return true
 
-            const blocks: Block[] = parentSchema.parentData.blocks; // Get all blocks
+            // @ts-ignore
+            const blocks: Block[] = parentSchema.rootData.blocks; // Get all blocks
             const currentBlock = parentSchema.parentData; // The block being validated
 
             return outputs.every(outputId => {
@@ -40,7 +42,7 @@ function addKeywords (ajv : Ajv){
                 const targetBlock = blocks.find(block => block.id === outputId);
 
                 // check input and output types match
-                return targetBlock && targetBlock.descriptors.inputType.some(item => currentBlock.outputType.includes(item));
+                return targetBlock && targetBlock.descriptors.inputType.some(item => currentBlock.descriptors.outputType.includes(item));
             });
         },
         errors: false
@@ -80,5 +82,5 @@ function sanityChecker(diagram:Object): boolean{
 
 
 
-//const schemaData= JSON.parse(readFileSync("./tests/unit/unit1.json", "utf8"));
-//console.log(sanityChecker(schemaData))
+const schemaData= JSON.parse(readFileSync("test.json", "utf8"));
+console.log(sanityChecker(schemaData))
