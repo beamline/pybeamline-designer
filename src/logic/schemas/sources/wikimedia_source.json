@@ -1,19 +1,17 @@
 {
   "type": "object",
   "properties": {
-    "id":{"$ref": "definitions.json#/definitions/sourceId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "source"},
-        "name": {"const":  "wikimedia_source"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "wikimedia_source"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+      "inputType": {"const":  null}
     },
     "parameters": {
       "type": "object",
       "additionalProperties": false
     },
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

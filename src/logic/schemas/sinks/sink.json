@@ -1,13 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/sinkId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "sink"},
-        "name": {"const":  ".subscribe"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": ".subscribe"},
+      "outputType": {"const":  null},
+      "inputType": {"$ref": "definitions.json#/streamTypes/any"}
     },
     "parameters": {
       "type": "object",
@@ -18,7 +16,7 @@
       }
     },
     "outputs":{ "const":  [] },
-    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+    "input": {"$ref": "definitions.json#/definitions/input"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false

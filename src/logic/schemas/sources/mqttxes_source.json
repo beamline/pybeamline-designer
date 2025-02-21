@@ -1,13 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/sourceId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "source"},
-        "name": {"const":  "mqttxes_source"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "mqttxes_source"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+      "inputType": {"const":  null}
     },
     "parameters": {
       "type": "object",
@@ -25,7 +23,7 @@
       },
       "required": ["broker","port","base_topic"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

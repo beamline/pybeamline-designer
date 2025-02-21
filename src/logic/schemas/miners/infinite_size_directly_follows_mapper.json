@@ -1,17 +1,15 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/minerId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "miner"},
-        "name": {"const":  "infinite_size_directly_follows_mapper"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "infinite_size_directly_follows_mapper"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/model"},
+      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
-    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "input": {"$ref": "definitions.json#/definitions/input"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false

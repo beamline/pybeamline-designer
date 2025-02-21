@@ -1,13 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/minerId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "miner"},
-        "name": {"const":  "simple_dfg_miner"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "simple_dfg_miner"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/model"},
+      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
     },
     "parameters": {
       "type": "object",
@@ -16,8 +14,8 @@
         "min_relative_frequency": {"type":  "number"}
       }
     },
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
-    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "input": {"$ref": "definitions.json#/definitions/input"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false

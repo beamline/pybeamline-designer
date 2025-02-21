@@ -1,13 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/sourceId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "source"},
-        "name": {"const":  "string_test_source"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "string_test_source"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/event"},
+      "inputType": {"const":  null}
     },
     "parameters": {
       "type": "object",
@@ -19,7 +17,7 @@
       },
       "required": ["iterable"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

@@ -1,20 +1,17 @@
 {
   "definitions": {
-    "sourceId": {"type":  "string","pattern": "^s[0-9]+$"},
-    "filterId": {"type":  "string","pattern": "^f[0-9]+$"},
-    "minerId": {"type":  "string","pattern": "^m[0-9]+$"},
-    "utilityId": {"type":  "string","pattern": "^u[0-9]+$"},
-    "sinkId": {"type":  "string","pattern": "^t[0-9]+$"},
-    "generalInput": {"type":  "string","pattern": "^[sfmu]\\d+$"},
-    "generalOutput": {"type":  "array", "items": {"type":  "string","pattern": "^[fmut]\\d+$"}},
+    "id": {"type":  "string","pattern": "^[0-9]+$"},
+    "output": { "type": "array", "items": { "type": "string" }, "validConnections": true },
+    "input": {"type":  "string","pattern": "^[0-9]+$"},
     "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
       "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]}
   },
-  "primitiveTypes": {
-    "event": {"const": "event"},
-    "petrinet": {"const": "petrinet"},
-    "heuristics": {"const":  "heuristics"},
-    "model": {"const": "model"},
-    "conformance": {"const":  "conformance"}
+  "streamTypes": {
+    "event": {"const": ["event"]},
+    "petrinet": {"const": ["petrinet"]},
+    "heuristics": {"const":  ["heuristics"]},
+    "model": {"const": ["model"]},
+    "conformance": {"const":  ["conformance"]},
+    "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance"]}
   }
 }

@@ -1,17 +1,15 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/minerId"},
-    "category": {
-      "type": "object",
-      "properties": {
-        "type": {"const":  "miner"},
-        "name": {"const":  "sliding_window_to_log"}
-      }
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "name": {"const": "sliding_window_to_log"},
+      "outputType": {"$ref": "definitions.json#/streamTypes/model"},
+      "inputType": {"$ref": "definitions.json#/streamTypes/event"}
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/generalOutput"},
-    "input": {"$ref": "definitions.json#/definitions/generalInput"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "input": {"$ref": "definitions.json#/definitions/input"}
   },
   "required": ["id", "parameters", "outputs", "input"],
   "additionalProperties": false
