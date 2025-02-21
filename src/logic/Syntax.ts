@@ -1,7 +1,7 @@
 interface Descriptor {
     name: string;
-    inputType : string;
-    outputType : string;
+    inputType : string[];
+    outputType : string[];
 }
 
 interface Params {

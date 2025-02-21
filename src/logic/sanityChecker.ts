@@ -40,7 +40,7 @@ function addKeywords (ajv : Ajv){
                 const targetBlock = blocks.find(block => block.id === outputId);
 
                 // check input and output types match
-                return targetBlock && targetBlock.descriptors.inputType === currentBlock.outputType;
+                return targetBlock && targetBlock.descriptors.inputType.some(item => currentBlock.outputType.includes(item));
             });
         },
         errors: false
@@ -59,7 +59,7 @@ function sanityChecker(diagram:Object): boolean{
     const ajv = new Ajv({ allErrors: true });
 
     // Add customizable keywords
-
+    addKeywords(ajv)
 
     //adding reference schemas
     addAllReferences(path,ajv)
