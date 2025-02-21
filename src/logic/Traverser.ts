@@ -45,7 +45,7 @@ export class Traverser {
 
     private visitBlockById (blockId : string, currentString : string){
 
-        if (this.blocks[blockId].descriptors.inputType === "merge" || "concat"){
+        if (this.blocks[blockId].descriptors.name === "merge" || this.blocks[blockId].descriptors.name === "concat"){
             this.unionBlockHandler(blockId, currentString)
             return
         }
@@ -91,7 +91,7 @@ export class Traverser {
     private stringGenerator(currentString : string, block : Block) : string {
         let newString : string = currentString;
 
-        if (block.descriptors.inputType === "null"){
+        if (block.descriptors.inputType === null){
 
             this.finalString += `source_${this.sourceCounter} = ${this.addParametersToPipeline(block)}\n`
             newString        += `source_${this.sourceCounter}.pipe( \n`
@@ -100,7 +100,7 @@ export class Traverser {
             return newString
         }
 
-        if (block.descriptors.outputType === "null") {
+        if (block.descriptors.outputType === null) {
             //removes ", " from the last element (for readability purposes)
             this.finalString += `${newString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n`
 

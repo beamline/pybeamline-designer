@@ -3,9 +3,12 @@
   "properties": {
     "id": {"$ref": "definitions.json#/definitions/id"},
     "descriptors": {
-      "name": {"const": ".subscribe"},
-      "outputType": {"const":  null},
-      "inputType": {"$ref": "definitions.json#/streamTypes/any"}
+      "type": "object",
+      "properties":{
+        "name": {"const": ".subscribe"},
+        "outputType": {"const":  null},
+        "inputType": {"$ref": "definitions.json#/streamTypes/any"}
+      }
     },
     "parameters": {
       "type": "object",

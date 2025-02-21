@@ -4,14 +4,14 @@
     "output": { "type": "array", "items": { "type": "string" }, "validConnections": true },
     "input": {"type":  "string","pattern": "^[0-9]+$"},
     "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
-      "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]}
-  },
-  "streamTypes": {
-    "event": {"const": ["event"]},
-    "petrinet": {"const": ["petrinet"]},
-    "heuristics": {"const":  ["heuristics"]},
-    "model": {"const": ["model"]},
-    "conformance": {"const":  ["conformance"]},
-    "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance"]}
+      "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]},
+    "streamTypes": {
+      "event": {"const": ["event"]},
+      "petrinet": {"const": ["petrinet"]},
+      "heuristics": {"const":  ["heuristics"]},
+      "model": {"const": ["model"]},
+      "conformance": {"const":  ["conformance"]},
+      "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance"]}
+    }
   }
 }
