@@ -4,8 +4,8 @@
     "id" : "0",
     "descriptors": {
       "name": "string_test_source",
-      "outputType": "event",
-      "inputType": "null"
+      "outputType": ["event"],
+      "inputType": null
     },
     "parameters" : {
       "iterable" : "['x', 'y', 'z']"

@@ -4,8 +4,8 @@
       "id" : "0",
       "descriptors": {
         "name": "string_test_source",
-        "outputType": "event",
-        "inputType": "null"
+        "outputType": ["event"],
+        "inputType": null
       },
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
@@ -16,8 +16,8 @@
       "id" : "1",
       "descriptors": {
         "name": ".subscribe",
-        "outputType": "null",
-        "inputType": "any"
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"

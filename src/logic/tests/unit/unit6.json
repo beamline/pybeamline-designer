@@ -4,8 +4,8 @@
       "id" : "0",
       "descriptors": {
         "name": "string_test_source",
-        "outputType": "event",
-        "inputType": "null"
+        "outputType": ["event"],
+        "inputType": null
       },
       "parameters" : {
         "iterable" : "['x', 'y', 'c']"
@@ -16,8 +16,8 @@
       "id" : "1",
       "descriptors": {
         "name": "retains_activity_filter",
-        "outputType": "event",
-        "inputType": "event"
+        "outputType": ["event"],
+        "inputType": ["event"]
       },
       "parameters" : {
         "activity_names" : "'y'"
@@ -29,8 +29,8 @@
       "id" : "2",
       "descriptors": {
         "name": "retains_activity_filter",
-        "outputType": "event",
-        "inputType": "event"
+        "outputType": ["event"],
+        "inputType": ["event"]
       },
       "parameters" : {
         "activity_names" : "'x'"
@@ -42,8 +42,8 @@
       "id" : "3",
       "descriptors": {
         "name": ".subscribe",
-        "outputType": "null",
-        "inputType": "any"
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
@@ -55,8 +55,8 @@
       "id" : "4",
       "descriptors": {
         "name": ".subscribe",
-        "outputType": "null",
-        "inputType": "any"
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
