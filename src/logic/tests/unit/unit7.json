@@ -1,50 +1,53 @@
 {
   "blocks" : [
     {
-      "id" : "s0",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'c']"
+      },
+      "outputs" : ["2"]
+    },
+    {
+      "id" : "1",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
       },
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["u0"]
+      "outputs" : ["2"]
     },
     {
-      "id" : "s1",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "2",
+      "descriptors": {
+        "name": "merge",
+        "outputType": "event",
+        "inputType": "event"
       },
       "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
       },
-      "outputs" : ["u0"]
+      "input" : ["1", "0"],
+      "outputs" : ["3"]
     },
     {
-      "id" : "u0",
-      "category" : {
-        "type" : "union",
-        "name" : "merge"
-      },
-      "parameters" : {
-
-      },
-      "input" : ["s1", "s0"],
-      "outputs" : ["t0"]
-    },
-    {
-      "id" : "t0",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "id" : "3",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": "null",
+        "inputType": "any"
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "u0",
-      "outputs": []
+      "input" : "2",
+      "outputs" : []
     }
   ]
 }
