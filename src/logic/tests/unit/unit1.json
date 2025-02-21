@@ -1,26 +1,28 @@
 {
   "blocks" : [
     {
-      "id" : "s0",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": "event",
+        "inputType": "null"
       },
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["t0"]
+      "outputs" : ["1"]
     },
     {
-      "id" : "t0",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "id" : "1",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": "null",
+        "inputType": "any"
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "s0",
+      "input" : "0",
       "outputs": []
     }
     ]
