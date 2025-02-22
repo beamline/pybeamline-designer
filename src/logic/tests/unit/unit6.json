@@ -8,35 +8,33 @@
         "inputType": null
       },
       "parameters" : {
-        "iterable" : "['x', 'y']"
+        "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["1", "2"]
+      "outputs" : ["9"]
     },
     {
       "id" : "1",
       "descriptors": {
-        "name": "retains_activity_filter",
+        "name": "string_test_source",
         "outputType": ["event"],
-        "inputType": ["event"]
+        "inputType": null
       },
       "parameters" : {
-        "activity_names" : "'y'"
+        "iterable" : "['x', 'y', 'z']"
       },
-      "input" : "0",
-      "outputs" : ["3"]
+      "outputs" : ["8"]
     },
     {
       "id" : "2",
       "descriptors": {
-        "name": "retains_activity_filter",
+        "name": "merge",
         "outputType": ["event"],
         "inputType": ["event"]
       },
       "parameters" : {
-        "activity_names" : "'x'"
       },
-      "input" : "0",
-      "outputs" : ["4"]
+      "input" : ["8", "9"],
+      "outputs" : ["3"]
     },
     {
       "id" : "3",
@@ -48,22 +46,34 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
+      "input" : "2",
       "outputs" : []
     },
     {
-      "id" : "4",
+      "id" : "8",
       "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+        "name": "retains_activity_filter",
+        "outputType": ["event"],
+        "inputType": ["event"]
       },
       "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
+        "activity_names" : "{'x', 'z'}"
       },
-      "input" : "2",
-      "outputs" : []
+      "input" : "1",
+      "outputs": ["2"]
+    },
+    {
+      "id" : "9",
+      "descriptors": {
+        "name": "excludes_activity_filter",
+        "outputType": ["event"],
+        "inputType": ["event"]
+      },
+      "parameters" : {
+        "activity_names" : "{'A'}"
+      },
+      "input" : "0",
+      "outputs": ["2"]
     }
-
   ]
 }

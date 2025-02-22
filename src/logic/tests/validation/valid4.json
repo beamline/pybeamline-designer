@@ -1,0 +1,16 @@
+{
+  "blocks" : [
+    {
+    "id" : "0",
+    "descriptors": {
+      "name": "string_test_source",
+      "outputType": ["event"],
+      "inputType": null
+    },
+    "parameters" : {
+      "iterable" : "['x', 'y', 'z']"
+    },
+    "outputs" : []
+  }
+  ]
+}

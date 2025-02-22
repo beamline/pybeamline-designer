@@ -31,51 +31,30 @@ test("Test 2: Source -> Filter -> Sink", () => {
             `source_0 = string_test_source(iterable = ['x', 'y', 'z'])\nsource_0.pipe( \nretains_activity_filter(activity_names = {'x', 'z'})\n).subscribe(on_next = lambda x : print(str(x)))\n`)
 })
 
-/*
-//  ########
-//  Test 3 : [sink]  ERROR
-//  ########
 
-test("Test 3: Sink", () => {
-    expect(generateCode(pathToTests + "unit3.json"))
-        .toBe("User diagram is not valid")
-})
 
 
 //  ########
-//  Test 4 : [source]  ERROR
-//  ########
-
-test("Test 4: Source", () => {
-    expect(generateCode(pathToTests + "unit4.json"))
-        .toBe("User diagram is not valid")
-})
-*/
-
-
-//  ########
-//  Test 5 : [source0] -> [sink0]  (disconnected diagram)
+//  Test 3 : [source0] -> [sink0]  (disconnected diagram)
 //           [source1] -> [sink1]
 //  ########
 
-test("Test 5: source -> sink, source1 -> sink1", () => {
-    expect(generateCode(pathToTests + "unit5.json"))
+test("Test 3: source -> sink, source1 -> sink1", () => {
+    expect(generateCode(pathToTests + "unit3.json"))
         .toBe("source_0 = string_test_source(iterable = 'x')\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\nsource_1 = string_test_source(iterable = 'y')\nsource_1.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n")
 })
 
 
 
-
-
 /*
- * Test 6 :
+ * Test 4 :
  *            ->  filter0 -> sink0
  *  source0
  *            ->  filter1 -> sink1
 */
 
-test("Test 6: 1 source goes to 2 sinks", () => {
-    expect(generateCode(pathToTests + "unit6.json"))
+test("Test 4: 1 source goes to 2 sinks", () => {
+    expect(generateCode(pathToTests + "unit4.json"))
         .toBe(
 `source_0 = string_test_source(iterable = ['x', 'y'])
 source_0.pipe( 
@@ -89,14 +68,14 @@ retains_activity_filter(activity_names = 'x')
 
 
 /*
- * Test 7 :
+ * Test 5 :
  *   source0  ->
  *                (merge/concat) => sink0
  *   source1  ->
 */
 
-test("Test 7: 2 sources merge towards 1 sinks", () => {
-    expect(generateCode(pathToTests + "unit7.json"))
+test("Test 5: 2 sources merge towards 1 sinks", () => {
+    expect(generateCode(pathToTests + "unit5.json"))
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
@@ -111,14 +90,14 @@ merge(pipe_0, pipe_1).pipe(
 
 
 /*
- * Test 8 :
+ * Test 6 :
  *   source0  ->  filter0 ->
  *                        (merge/concat) => sink0
  *   source1  ->  filter1 ->
 */
 
-test("Test 8: 2 sources extended with sinks merge towards 1 sinks", () => {
-    expect(generateCode(pathToTests + "unit8.json"))
+test("Test 6: 2 sources extended with sinks merge towards 1 sinks", () => {
+    expect(generateCode(pathToTests + "unit6.json"))
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
