@@ -30,7 +30,7 @@ export class Traverser {
 
         // Find and start traversal from all source blocks (blocks with no input)
         Object.values(this.blocks)
-            .filter(block => !block.input)
+            .filter(block => !block.descriptors.inputType)
             .forEach(block => this.visitBlockById(block.id,""));
 
         return this.finalString;
@@ -45,7 +45,7 @@ export class Traverser {
 
     private visitBlockById (blockId : string, currentString : string){
 
-        if (this.blocks[blockId].descriptors.name === "merge" || this.blocks[blockId].descriptors.name === "concat"){
+        if ( Array.isArray(this.blocks[blockId].input )){
             this.unionBlockHandler(blockId, currentString)
             return
         }
@@ -66,6 +66,12 @@ export class Traverser {
 * Reads a blocks parameters and adds them to the final string
 */
     private addParametersToPipeline (block : Block) : string {
+
+        if (block.descriptors.name === "custom") {
+            //add custom function name to pipeline
+            return block.parameters.functionName + "()"
+        }
+
         let resultString : string = block.descriptors.name + "(";
 
         // Check if there are parameters
@@ -90,6 +96,10 @@ export class Traverser {
 */
     private stringGenerator(currentString : string, block : Block) : string {
         let newString : string = currentString;
+
+        if (block.descriptors.name === "custom"){
+            this.finalString += block.parameters.functionBody + "\n"
+        }
 
         if (block.descriptors.inputType === null){
 
@@ -125,10 +135,14 @@ export class Traverser {
         const trimmedString = currentString.slice(0, -2); // Removing last ", "
 
         if (!(blockId in this.unionCounters)) {
+            const functionName =
+                this.blocks[blockId].descriptors.name === "custom" ?
+                    this.blocks[blockId].parameters.functionName : this.blocks[blockId].descriptors.name
+
             this.unionCounters[blockId] = {
                 //@ts-ignore
                 counter: this.blocks[blockId].input.length,
-                mergeString: `${this.blocks[blockId].descriptors.name}(`
+                mergeString: `${functionName}(`
             };
         }
 
