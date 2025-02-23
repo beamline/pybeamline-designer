@@ -26,7 +26,8 @@
       },
       "required": ["broker","port","base_topic"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "input": {"const":  ""}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

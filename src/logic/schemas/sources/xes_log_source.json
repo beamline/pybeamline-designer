@@ -22,7 +22,8 @@
       },
       "required": ["log"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "input": {"const":  ""}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
