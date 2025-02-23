@@ -18,8 +18,7 @@
           "type": "string"
         },
         "attribute_values": {
-          "type": "string",
-          "pattern": "^\\[.*?(, .*?)*\\]$"
+          "$ref": "definitions.json#/definitions/iterable"
         }
       },
       "required": ["attribute_name","attribute_values"]

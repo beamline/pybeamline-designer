@@ -45,7 +45,7 @@ export class Traverser {
 
     private visitBlockById (blockId : string, currentString : string){
 
-        if ( Array.isArray(this.blocks[blockId].input )){
+        if ( Array.isArray(this.blocks[blockId].input ) && this.blocks[blockId].input.length>0){
             this.unionBlockHandler(blockId, currentString)
             return
         }

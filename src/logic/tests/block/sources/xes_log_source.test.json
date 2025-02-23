@@ -1,0 +1,16 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "xes_log_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+        "log" : "pm4py.read_xes(\"test.xes\")"
+      },
+      "outputs" : []
+    }
+  ]
+}

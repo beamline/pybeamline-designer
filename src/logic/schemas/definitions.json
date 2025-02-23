@@ -5,6 +5,8 @@
     "input": {"type":  "string","pattern": "^[0-9]+$"},
     "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
       "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]},
+    "iterable" : {"oneOf": [{"type": "string"}, {"type": "string",
+      "pattern": "^\\s(\\[|\\(|\\{)\\s*([^,\\]\\)\\}]+)(\\s*,\\s*([^,\\]\\)\\}]+))*\\s*(\\]|\\)|\\})\\s*$"}]},
     "streamTypes": {
       "event": {"const": ["event"]},
       "petrinet": {"const": ["petrinet"]},

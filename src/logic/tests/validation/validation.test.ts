@@ -9,19 +9,19 @@ let pathToTests : string = "src/logic/tests/validation/";
 
 
 //  ########
-//  Test 1 : [source] -> [sink]
+//  Test 1 : [source] -> [sinks]
 //  ######## string_test_source is not written correctly
 
 
 //  ########
-//  Test 2 : [source] -> [sink]
+//  Test 2 : [source] -> [sinks]
 //  ######## string_test_source is missing argument 'iterable' (required)
 
 
 
 /*
 //  ########
-//  Test 3 : [sink]  ERROR
+//  Test 3 : [sinks]  ERROR
 //  ########
 
 test("Test 3: Sink", () => {

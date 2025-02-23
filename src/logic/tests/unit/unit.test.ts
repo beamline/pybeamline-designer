@@ -6,11 +6,13 @@ import { expect, test } from 'vitest';
 let pathToTests : string = "src/logic/tests/unit/";
 
 
-
+/*
+This test series checks for simple (unit) pipelines the user can make.
+*/
 
 
 //  ########
-//  Test 1 : [source] -> [sink]
+//  Test 1 : [source] -> [sinks]
 //  ########
 
 test("Test 1: Source -> Sink", () => {
@@ -22,7 +24,7 @@ test("Test 1: Source -> Sink", () => {
 
 
 //  ########
-//  Test 2 : [source] -> [filter] -> [sink]
+//  Test 2 : [source] -> [filter] -> [sinks]
 //  ########
 
 test("Test 2: Source -> Filter -> Sink", () => {
@@ -39,7 +41,7 @@ test("Test 2: Source -> Filter -> Sink", () => {
 //           [source1] -> [sink1]
 //  ########
 
-test("Test 3: source -> sink, source1 -> sink1", () => {
+test("Test 3: source -> sinks, source1 -> sink1", () => {
     expect(generateCode(pathToTests + "unit3.json"))
         .toBe("source_0 = string_test_source(iterable = 'x')\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\nsource_1 = string_test_source(iterable = 'y')\nsource_1.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n")
 })
