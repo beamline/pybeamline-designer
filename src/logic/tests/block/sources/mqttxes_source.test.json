@@ -1,0 +1,18 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "mqttxes_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+        "broker": "'broker.mqtt.cool'",
+        "port": 1883,
+        "base_topic": "'base/topic/'"
+      },
+      "outputs" : []
+    }
+  ]
+}

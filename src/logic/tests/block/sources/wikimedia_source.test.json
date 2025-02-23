@@ -1,0 +1,15 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "wikimedia_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+      },
+      "outputs" : []
+    }
+  ]
+}
