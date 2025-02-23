@@ -6,7 +6,9 @@ import { expect, test } from 'vitest';
 let pathToTests : string = "src/logic/tests/unit/";
 
 
-
+/*
+This test series checks for simple (unit) pipelines the user can make.
+*/
 
 
 //  ########
