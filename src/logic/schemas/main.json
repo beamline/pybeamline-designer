@@ -21,7 +21,8 @@
           {"$ref":  "behavioral_conformance.json"},
           {"$ref": "sliding_window_to_log.json"},
           {"$ref": "union.json"},
-          {"$ref": "sink.json"}
+          {"$ref": "sink.json"},
+          {"$ref": "custom.json"}
         ]
       }
     }

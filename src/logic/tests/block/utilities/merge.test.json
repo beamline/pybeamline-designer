@@ -1,0 +1,53 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+        "iterable" : "['A', 'B', 'C']"
+      },
+      "outputs" : ["2"]
+    },
+    {
+      "id" : "1",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'z']"
+      },
+      "outputs" : ["2"]
+    },
+    {
+      "id" : "2",
+      "descriptors": {
+        "name": "merge",
+        "outputType": ["event"],
+        "inputType": ["event"]
+      },
+      "parameters" : {
+      },
+      "input" : ["1", "0"],
+      "outputs" : ["3"]
+    },
+    {
+      "id" : "3",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "2",
+      "outputs" : []
+    }
+  ]
+}
