@@ -6,9 +6,8 @@ import { expect, test } from 'vitest';
 let pathToTests : string = "src/logic/tests/block/sources/";
 
 
-//This test series will cover each single block used within a legal unit pipeline
+//This test series will cover each single source used within a legal unit pipeline
 
-//SOURCES
 
 test("ais_source", () => {
     expect(generateCode(pathToTests + "ais_source.test.json"))

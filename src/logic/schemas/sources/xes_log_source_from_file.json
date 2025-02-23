@@ -15,7 +15,7 @@
       "properties":{
         "log": {
           "type": "string",
-          "pattern": ".*\\.xes"
+          "pattern": ".*\\.xes\"$"
         }
       },
       "required": ["log"]
