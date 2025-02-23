@@ -8,6 +8,7 @@
           {"$ref": "string_test_source.json"},
           {"$ref": "xes_log_source.json"},
           {"$ref": "xes_log_source_from_file.json"},
+          {"$ref": "log_source.json"},
           {"$ref": "mqttxes_source.json"},
           {"$ref": "wikimedia_source.json"},
           {"$ref": "ais_source.json"},
