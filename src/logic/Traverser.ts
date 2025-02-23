@@ -127,37 +127,37 @@ export class Traverser {
 /*
     * Handles specifically pipeline merges/concatenations
 */
-
-    //TODO: Try and refactor unionBlockHandler into a more readable version
-
     private unionBlockHandler(blockId: string, currentString: string) {
-        const pipeName = `pipe_${this.pipeCounter}`;
-        const trimmedString = currentString.slice(0, -2); // Removing last ", "
+        //retrieving block information
+        const block = this.blocks[blockId]
+        if (!block.input) return
 
+        //adding block to counter if not already in
         if (!(blockId in this.unionCounters)) {
             const functionName =
-                this.blocks[blockId].descriptors.name === "custom" ?
-                    this.blocks[blockId].parameters.functionName : this.blocks[blockId].descriptors.name
+                block.descriptors.name === "custom" ? block.parameters.functionName : block.descriptors.name
 
-            this.unionCounters[blockId] = {
-                //@ts-ignore
-                counter: this.blocks[blockId].input.length,
-                mergeString: `${functionName}(`
-            };
+            this.unionCounters[blockId] = { counter: block.input.length, mergeString: `${functionName}(`};
         }
 
+        //adding new pipeline variable
+        const pipeName: string  = `pipe_${this.pipeCounter}`;
+        const trimmedString: string = currentString.slice(0, -2); // Removing last ", "
         this.finalString += `${pipeName} = ${trimmedString})\n`;
-        //@ts-ignore
-        this.unionCounters[blockId].mergeString += `${this.unionCounters[blockId].counter < this.blocks[blockId].input.length ? ", " : ""}${pipeName}`;
-        this.unionCounters[blockId].counter--;
         this.pipeCounter++;
 
+        // adding pipeline inside the union function
+        const unionCounter=this.unionCounters[blockId]
+        unionCounter.mergeString += `${unionCounter.counter < block.input.length ? ", " : ""}${pipeName}`;
+        unionCounter.counter--;
 
-        if (this.unionCounters[blockId].counter === 0) {
-            this.unionCounters[blockId].mergeString += this.blocks[blockId].outputs.length ? `).pipe( \n` : `\n`;
-            this.blocks[blockId].outputs.forEach((id) => this.visitBlockById(id, this.unionCounters[blockId].mergeString));
+        //close the function and continue with the diagram
+        if (unionCounter.counter === 0) {
+            unionCounter.mergeString += block.outputs.length ? `).pipe( \n` : `\n`;
+            block.outputs.forEach((id) => this.visitBlockById(id, unionCounter.mergeString));
         }
     }
+
 
 
 }
