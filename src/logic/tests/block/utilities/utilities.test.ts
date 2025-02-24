@@ -44,3 +44,49 @@ test("custom (as source)", () => {
 source_0 = user_made_function_as_source()
 `
         )})
+
+
+test("custom (as filter)", () => {
+    expect(generateCode(pathToTests + "customFilter.test.json"))
+        .toBe(
+`example_function_body
+\toperation1
+\toperation2
+\treturn ans
+source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+source_0.pipe( 
+user_made_function_as_filter()
+).subscribe(on_next = lambda x : print(str(x)))
+`
+)})
+
+
+test("custom (as miner)", () => {
+    expect(generateCode(pathToTests + "customMiner.test.json"))
+        .toBe(
+`example_function_body
+\toperation1
+\toperation2
+\treturn ans
+source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+source_0.pipe( 
+user_made_function_as_miner()
+).subscribe(on_next = lambda x : print(str(x)))
+`)})
+
+
+test("custom (as union)", () => {
+    expect(generateCode(pathToTests + "customUnion.test.json"))
+        .toBe(
+`example_function_body
+\toperation1
+\toperation2
+\treturn ans
+source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+pipe_0 = source_0.pipe()
+source_1 = string_test_source(iterable = ['A', 'B', 'C'])
+pipe_1 = source_1.pipe()
+user_made_function_as_merger(pipe_0, pipe_1).pipe(
+).subscribe(on_next = lambda x : print(str(x)))
+`
+)})

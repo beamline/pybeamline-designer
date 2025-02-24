@@ -1,0 +1,43 @@
+{
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": ["event"],
+        "inputType": null
+      },
+      "parameters" : {
+        "iterable" : "['x', 'y', 'z']"
+      },
+      "outputs" : ["1"]
+    },
+    {
+      "id" : "1",
+      "descriptors": {
+        "name": "custom",
+        "outputType": ["event", "petrinet", "heuristics", "model", "conformance"],
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      },
+      "parameters" : {
+        "functionName" : "user_made_function_as_miner",
+        "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
+      },
+      "input" : ["0"],
+      "outputs" : ["2"]
+    },
+    {
+      "id" : "2",
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      },
+      "parameters" : {
+        "on_next" : "lambda x : print(str(x))"
+      },
+      "input" : "1",
+      "outputs": []
+    }
+  ]
+}
