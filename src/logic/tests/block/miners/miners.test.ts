@@ -16,7 +16,7 @@ test("sliding_window_to_log", () => {
         .toBe(
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-sliding_window_to_log()
+\tsliding_window_to_log()
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -24,9 +24,9 @@ sliding_window_to_log()
 test("simple_dfg_miner", () => {
     expect(generateCode(pathToTests + "simple_dfg_miner.test.json"))
         .toBe(
-            `source_0 = xes_log_source_from_file(log = "test.xes")
+`source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-simple_dfg_miner(model_update_frequency = 20, min_relative_frequency = 3)
+\tsimple_dfg_miner(model_update_frequency = 20, min_relative_frequency = 3)
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -35,9 +35,9 @@ simple_dfg_miner(model_update_frequency = 20, min_relative_frequency = 3)
 test("infinite_size_directly_follows_mapper", () => {
     expect(generateCode(pathToTests + "infinite_size_directly_follows_mapper.test.json"))
         .toBe(
-            `source_0 = xes_log_source_from_file(log = "test.xes")
+`source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-infinite_size_directly_follows_mapper()
+\tinfinite_size_directly_follows_mapper()
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -45,9 +45,9 @@ infinite_size_directly_follows_mapper()
 test("heuristics_miner_lossy_counting_budget", () => {
     expect(generateCode(pathToTests + "heuristics_miner_lossy_counting_budget.test.json"))
         .toBe(
-            `source_0 = xes_log_source_from_file(log = "test.xes")
+`source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-heuristics_miner_lossy_counting_budget(model_update_frequency = 1, budget = 2, dependency_threshold = 3, and_threshold = 4)
+\theuristics_miner_lossy_counting_budget(model_update_frequency = 1, budget = 2, dependency_threshold = 3, and_threshold = 4)
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -57,7 +57,7 @@ test("heuristics_miner_lossy_counting", () => {
         .toBe(
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-heuristics_miner_lossy_counting(model_update_frequency = 1, max_approx_error = 2, dependency_threshold = 3, and_threshold = 4)
+\theuristics_miner_lossy_counting(model_update_frequency = 1, max_approx_error = 2, dependency_threshold = 3, and_threshold = 4)
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -67,7 +67,7 @@ test("behavioral_conformance", () => {
         .toBe(
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-behavioral_conformance(mmamma mia)
+\tbehavioral_conformance(mmamma mia)
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })

@@ -30,7 +30,7 @@ test("Test 1: Source -> Sink", () => {
 test("Test 2: Source -> Filter -> Sink", () => {
     expect(generateCode(pathToTests + "unit2.json"))
         .toBe(
-            `source_0 = string_test_source(iterable = ['x', 'y', 'z'])\nsource_0.pipe( \nretains_activity_filter(activity_names = {'x', 'z'})\n).subscribe(on_next = lambda x : print(str(x)))\n`)
+            `source_0 = string_test_source(iterable = ['x', 'y', 'z'])\nsource_0.pipe( \n\tretains_activity_filter(activity_names = {'x', 'z'})\n).subscribe(on_next = lambda x : print(str(x)))\n`)
 })
 
 
@@ -60,10 +60,10 @@ test("Test 4: 1 source goes to 2 sinks", () => {
         .toBe(
 `source_0 = string_test_source(iterable = ['x', 'y'])
 source_0.pipe( 
-retains_activity_filter(activity_names = 'y')
+\tretains_activity_filter(activity_names = 'y')
 ).subscribe(on_next = lambda x : print(str(x)))
 source_0.pipe( 
-retains_activity_filter(activity_names = 'x')
+\tretains_activity_filter(activity_names = 'x')
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -104,10 +104,10 @@ test("Test 6: 2 sources extended with sinks merge towards 1 sinks", () => {
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
-excludes_activity_filter(activity_names = {'A'}))
+\texcludes_activity_filter(activity_names = {'A'}))
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe( 
-retains_activity_filter(activity_names = {'x', 'z'}))
+\tretains_activity_filter(activity_names = {'x', 'z'}))
 union_0 = merge(pipe_0, pipe_1)
 union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))

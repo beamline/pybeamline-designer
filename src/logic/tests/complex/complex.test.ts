@@ -18,14 +18,14 @@ test("Complex pipeline 1", () => {
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
-retains_activity_filter(activity_names = {'x', 'z'}))
+\tretains_activity_filter(activity_names = {'x', 'z'}))
 source_1 = string_test_source(iterable = ['E', 'F', 'G'])
 pipe_1 = source_1.pipe()
 union_0 = merge(pipe_0, pipe_1)
 union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 union_0.pipe( 
-simple_dfg_miner()
+\tsimple_dfg_miner()
 ).subscribe(on_next = lambda y : print(str(y)))
 `
 )})
@@ -43,14 +43,14 @@ test("Complex pipeline 2", () => {
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
-retains_activity_filter(activity_names = {'x', 'z'}))
+\tretains_activity_filter(activity_names = {'x', 'z'}))
 source_1 = string_test_source(iterable = ['E', 'F', 'G'])
 pipe_1 = source_1.pipe()
 union_0 = merge(pipe_0, pipe_1)
 pipe_2 = union_0.pipe( 
-retains_activity_filter(activity_names = 'E'))
+\tretains_activity_filter(activity_names = 'E'))
 pipe_3 = union_0.pipe( 
-retains_activity_filter(activity_names = 'F'))
+\tretains_activity_filter(activity_names = 'F'))
 union_1 = concat(pipe_2, pipe_3)
 union_1.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
@@ -94,10 +94,10 @@ test("Complex pipeline 4 - long single pipeline", () => {
         .toBe(
 `source_0 = string_test_source(iterable = ['A', 'B', 'C', 'D', 'E'])
 source_0.pipe( 
-excludes_activity_filter(activity_names = 'E'),
-excludes_activity_filter(activity_names = 'D'),
-excludes_activity_filter(activity_names = 'C'),
-excludes_activity_filter(activity_names = 'B')
+\texcludes_activity_filter(activity_names = 'E'),
+\texcludes_activity_filter(activity_names = 'D'),
+\texcludes_activity_filter(activity_names = 'C'),
+\texcludes_activity_filter(activity_names = 'B')
 ).subscribe(on_next = lambda x : print(str(x)))
 `
         )})
