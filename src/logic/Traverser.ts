@@ -118,7 +118,7 @@ export class Traverser {
             return newString
         }
 
-        newString += `${this.addParametersToPipeline(block)},\n`
+        newString += `\t${this.addParametersToPipeline(block)},\n`
 
         return newString
 
