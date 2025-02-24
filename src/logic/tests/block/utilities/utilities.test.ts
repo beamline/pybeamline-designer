@@ -86,7 +86,8 @@ source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_1 = source_1.pipe()
-user_made_function_as_merger(pipe_0, pipe_1).pipe(
+union_0 = user_made_function_as_merger(pipe_0, pipe_1)
+union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 `
 )})

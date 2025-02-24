@@ -156,6 +156,7 @@ export class Traverser {
         if (unionCounter.counter === 0) {
             this.finalString += "union_" + this.uVarCount + " = " + unionCounter.mergeString + ")\n"
             const newString = "union_" + this.uVarCount + ".pipe( \n"
+            this.uVarCount++;
             block.outputs.forEach((id) => this.visitBlockById(id, newString));
         }
     }

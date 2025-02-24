@@ -83,7 +83,8 @@ test("Test 5: 2 sources merge towards 1 sinks", () => {
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe()
-merge(pipe_0, pipe_1).pipe(
+union_0 = merge(pipe_0, pipe_1)
+union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
@@ -107,7 +108,8 @@ excludes_activity_filter(activity_names = {'A'}))
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe( 
 retains_activity_filter(activity_names = {'x', 'z'}))
-merge(pipe_0, pipe_1).pipe(
+union_0 = merge(pipe_0, pipe_1)
+union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })
