@@ -14,7 +14,8 @@ test("union (concat)", () => {
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe()
-concat(pipe_0, pipe_1).pipe(
+union_0 = concat(pipe_0, pipe_1)
+union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 `
 )})
@@ -28,7 +29,8 @@ test("union (merge)", () => {
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe()
-merge(pipe_0, pipe_1).pipe(
+union_0 = merge(pipe_0, pipe_1)
+union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 `
 )})
@@ -55,7 +57,7 @@ test("custom (as filter)", () => {
 \treturn ans
 source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
-user_made_function_as_filter()
+\tuser_made_function_as_filter()
 ).subscribe(on_next = lambda x : print(str(x)))
 `
 )})
@@ -70,7 +72,7 @@ test("custom (as miner)", () => {
 \treturn ans
 source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
-user_made_function_as_miner()
+\tuser_made_function_as_miner()
 ).subscribe(on_next = lambda x : print(str(x)))
 `)})
 
