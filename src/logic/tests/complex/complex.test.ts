@@ -84,3 +84,19 @@ merge(pipe_0, pipe_1, pipe_2, pipe_3, pipe_4).pipe(
 `
         )})
 
+
+
+
+test("Complex pipeline 4 - long single pipeline", () => {
+    expect(generateCode(pathToTests + "complex4.json"))
+        .toBe(
+`source_0 = string_test_source(iterable = ['A', 'B', 'C', 'D', 'E'])
+source_0.pipe( 
+excludes_activity_filter(activity_names = 'E'),
+excludes_activity_filter(activity_names = 'D'),
+excludes_activity_filter(activity_names = 'C'),
+excludes_activity_filter(activity_names = 'B')
+).subscribe(on_next = lambda x : print(str(x)))
+`
+        )})
+
