@@ -8,6 +8,7 @@ export class Traverser {
     private sourceCounter : number = 0;
     private pipeCounter : number = 0;
     private unionCounters: UnionCounters = {};
+    private uVarCount: number = 0
 
 /*
 * Prepares the user pipeline for traversal
@@ -137,7 +138,7 @@ export class Traverser {
             const functionName =
                 block.descriptors.name === "custom" ? block.parameters.functionName : block.descriptors.name
 
-            this.unionCounters[blockId] = { counter: block.input.length, mergeString: `${functionName}(`};
+            this.unionCounters[blockId] = {counter: block.input.length, mergeString: `${functionName}(`};
         }
 
         //adding new pipeline variable
@@ -153,8 +154,9 @@ export class Traverser {
 
         //close the function and continue with the diagram
         if (unionCounter.counter === 0) {
-            unionCounter.mergeString += block.outputs.length ? `).pipe( \n` : `\n`;
-            block.outputs.forEach((id) => this.visitBlockById(id, unionCounter.mergeString));
+            this.finalString += "union_" + this.uVarCount + " = " + unionCounter.mergeString + ")\n"
+            const newString = "union_" + this.uVarCount + ".pipe( \n"
+            block.outputs.forEach((id) => this.visitBlockById(id, newString));
         }
     }
 
