@@ -76,7 +76,24 @@ function sanityChecker(diagram:Object): boolean{
     if  (validator(diagram)){
         return true
     } else {
-        throw (validator.errors)
+
+
+        //@ts-ignore
+        const sampledError = validator.errors[0].instancePath;
+        //Gets the block id number that raised the problem
+        const match : string = sampledError.match(/\/blocks\/(\d+)/)[1];
+
+        if (match !== null) {
+            const stopBlock = diagram.blocks.filter(element => element.id == match)[0];
+            const errorBlocks = diagram.blocks.filter( element => stopBlock.outputs.includes(element.id))
+            const errorBlocksName = errorBlocks.map (element => element.descriptors.name)
+            throw (Error(`Error: at block(s) ${errorBlocksName}`))
+
+        } else throw (Error("Unknown error"))
+
+
+        //throw (validator.errors)
+
     }
 }
 

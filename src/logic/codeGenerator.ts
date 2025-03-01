@@ -14,12 +14,12 @@ function generateCode (filePathToJSON : string) {
     try {
         sanityChecker(userPipeline);
     } catch (error) {
-        return error
+        return error.message
     }
 
     return compiler.compilePipeline(userPipeline);
 }
 
-//console.log(generateCode("./tests/unit/unit1.json"))
+console.log(generateCode("./tests/validation/valid3.json"))
 
 export { generateCode }
