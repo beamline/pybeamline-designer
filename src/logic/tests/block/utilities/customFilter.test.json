@@ -23,7 +23,6 @@
         "functionName" : "user_made_function_as_filter",
         "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
-      "input" : ["0"],
       "outputs" : ["2"]
     },
     {
@@ -36,7 +35,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
       "outputs": []
     }
   ]

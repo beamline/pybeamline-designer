@@ -11,9 +11,8 @@
       }
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "input": {"$ref": "definitions.json#/definitions/input"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"}
   },
-  "required": ["id", "parameters", "outputs", "input"],
+  "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
 }

@@ -25,7 +25,6 @@
         "dependency_threshold": 3,
         "and_threshold": 4
       },
-      "input" : "0",
       "outputs" : ["2"]
     },
     {
@@ -38,7 +37,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
       "outputs": []
     }
   ]

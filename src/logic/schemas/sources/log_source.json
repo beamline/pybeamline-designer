@@ -19,8 +19,7 @@
       },
       "required": ["log"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "input": {"const":  ""}
+    "outputs":{"$ref": "definitions.json#/definitions/output"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

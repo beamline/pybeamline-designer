@@ -82,7 +82,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "2",
       "outputs" : []
     }
   ]

@@ -46,7 +46,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "2",
       "outputs" : []
     },
     {
@@ -59,7 +58,6 @@
       "parameters" : {
         "activity_names" : "{'x', 'z'}"
       },
-      "input" : "1",
       "outputs": ["2"]
     },
     {
@@ -72,7 +70,6 @@
       "parameters" : {
         "activity_names" : "{'A'}"
       },
-      "input" : "0",
       "outputs": ["2"]
     }
   ]

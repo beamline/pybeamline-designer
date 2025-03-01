@@ -22,7 +22,6 @@
       "parameters" : {
         "activity_names" : "'y'"
       },
-      "input" : "0",
       "outputs" : ["3"]
     },
     {
@@ -35,7 +34,6 @@
       "parameters" : {
         "activity_names" : "'x'"
       },
-      "input" : "0",
       "outputs" : ["4"]
     },
     {
@@ -48,7 +46,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
       "outputs" : []
     },
     {
@@ -61,7 +58,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "2",
       "outputs" : []
     }
 

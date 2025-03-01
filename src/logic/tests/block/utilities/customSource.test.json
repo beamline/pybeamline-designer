@@ -11,7 +11,6 @@
         "functionName" : "user_made_function_as_source",
         "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
-      "input" : [],
       "outputs" : []
     }
   ]

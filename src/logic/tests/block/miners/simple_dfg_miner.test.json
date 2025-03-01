@@ -23,7 +23,6 @@
         "model_update_frequency": 20,
         "min_relative_frequency": 3
       },
-      "input" : "0",
       "outputs" : ["2"]
     },
     {
@@ -36,7 +35,6 @@
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
       },
-      "input" : "1",
       "outputs": []
     }
   ]

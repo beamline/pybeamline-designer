@@ -18,9 +18,8 @@
         }
       }
     },
-    "outputs":{ "const":  [] },
-    "input": {"$ref": "definitions.json#/definitions/input"}
+    "outputs":{ "const":  [] }
   },
-  "required": ["id", "parameters", "outputs", "input"],
+  "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
 }

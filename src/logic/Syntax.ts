@@ -12,7 +12,7 @@ interface Block {
     id: string;
     descriptors: Descriptor;
     parameters: Params;
-    input?: string | string[];         // Optional: Not all blocks have an input
+    input?: string[];         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
 }
 
