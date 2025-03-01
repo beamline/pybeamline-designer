@@ -2,9 +2,10 @@
   "blocks" : [
     {
       "id" : "0",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+      "descriptors": {
+        "name": "string_test_source",
+        "outputType": ["event"],
+        "inputType": null
       },
       "parameters" : {
 
@@ -13,9 +14,10 @@
     },
     {
       "id" : "1",
-      "category" : {
-        "type" : "sink",
-        "name" : ".subscribe"
+      "descriptors": {
+        "name": ".subscribe",
+        "outputType": null,
+        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
       },
       "parameters" : {
         "on_next" : "lambda x : print(str(x))"
