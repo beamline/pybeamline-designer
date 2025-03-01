@@ -33,7 +33,8 @@ export class Handler {
             this.defineCustom(block, currentString)
         }
 
-        if (block.input && block.input?.length > 1) {
+        //Checks if the block has an input property, i.e. is a union (or a custom union)
+        if (block.input) {
             return this.handleUnion(block, currentString);
         }
         if (block.descriptors.inputType === null) {
