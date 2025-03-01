@@ -1,0 +1,94 @@
+import {Block, Graph, UserPipeline} from "./Syntax.js";
+import {Handler} from "./Handler.js";
+
+
+/*
+The structure of the generated code follows this structure:
+
+[headString]
+[bodyString]
+
+
+* headString is responsible for holding the imports
+* function declarations for custom blocks
+* and user-defined parameters
+
+* bodyString will hold the source and pipeline definitions.
+
+This Compiler class is responsible for going through the JSON pipeline and
+hold the string that interprets as valid python code.
+
+It is NOT responsible for knowing what to do with each block, it simply goes through
+the pipeline and calls for its helper class to return the string associated with the
+block it visits.
+*/
+
+export class Compiler {
+
+    private blocks : Graph = {};
+
+    private headString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n";
+    private bodyString : string = "";
+    private handler : Handler;
+
+    public constructor () {
+        this.handler = new Handler(this);
+    }
+
+    private readUserPipeline (userPipeline : UserPipeline) {
+
+        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
+            acc[block.id] = block;
+            return acc;
+        }, {});
+
+    }
+
+    public compilePipeline (userPipeline : UserPipeline) {
+
+        //Variable reset
+        this.headString = "from pybeamline import *\nfrom reactivex import merge, concat\n\n";
+        this.bodyString = "";
+        this.handler.resetCounters();
+
+
+        this.readUserPipeline(userPipeline);
+
+        // Find and start traversal from all source blocks (blocks with no input)
+        Object.values(this.blocks)
+            .filter(block => !block.descriptors.inputType)
+            .forEach(block => this.visitBlock(block,""));
+
+        return this.headString + this.bodyString;
+
+    }
+
+    private visitBlock (block : Block, currentString : string){
+
+
+        const newString = this.handler.processBlock(block,  currentString);
+
+        //See if allowed to continue
+        if (!this.handler.tryPass(block)) {
+            return
+        }
+        // Visit all outputs (following the one-way directional constraint)
+        block.outputs.forEach( id =>
+            this.visitBlock(this.blocks[id], newString)
+        );
+
+
+
+    };
+
+
+    //Functions appending to the final code
+    public appendBodyString = (stringToAppend : string) => {
+        this.bodyString += stringToAppend;
+    }
+    public appendHeadString = (stringToAppend : string) => {
+        this.headString += stringToAppend;
+    }
+
+
+}

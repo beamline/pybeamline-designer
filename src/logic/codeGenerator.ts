@@ -1,14 +1,15 @@
-import {Traverser} from "./Traverser.ts"
+import {Traverser} from "./deprecated/Traverser.ts"
 import {sanityChecker} from "./sanityChecker.ts";
 import {readFileSync} from "fs";
 import {UserPipeline} from "./Syntax.js";
 import Ajv, {ErrorObject} from "ajv";
+import {Compiler} from "./Compiler.js";
 
 
 function generateCode (filePathToJSON : string) {
 
     let userPipeline : UserPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
-    const traverser : Traverser = new Traverser();
+    const compiler : Compiler = new Compiler();
 
     try {
         sanityChecker(userPipeline);
@@ -16,7 +17,7 @@ function generateCode (filePathToJSON : string) {
         return error
     }
 
-    return traverser.traverseDiagram(userPipeline);
+    return compiler.compilePipeline(userPipeline);
 }
 
 //console.log(generateCode("./tests/unit/unit1.json"))

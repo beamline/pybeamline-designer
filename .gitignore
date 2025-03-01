@@ -30,3 +30,5 @@ coverage
 *.tsbuildinfo
 /src/logic/Syntax.js
 /src/logic/Traverser.js
+src/logic/deprecated/Traverser.ts
+src/logic/deprecated/Traverser.js

@@ -29,11 +29,12 @@ interface Graph {
 }
 
 //Object containing the union blocks ids and their strings, counters
-interface UnionCounters {
+interface UnionData {
     [key : string] : {
         counter : number;
         mergeString : string;
+        pass : boolean;
     }
 }
 
-export { UserPipeline, Descriptor, Params, Block, Graph, UnionCounters };
+export { UserPipeline, Descriptor, Params, Block, Graph, UnionData };

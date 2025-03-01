@@ -4,7 +4,7 @@ import { expect, test } from 'vitest';
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/miners/";
-
+let importString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n\n"
 
 
 //This test series will cover each single filter used within a legal unit pipeline
@@ -13,7 +13,7 @@ let pathToTests : string = "src/logic/tests/block/miners/";
 
 test("sliding_window_to_log", () => {
     expect(generateCode(pathToTests + "sliding_window_to_log.test.json"))
-        .toBe(
+        .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \tsliding_window_to_log()
@@ -23,7 +23,7 @@ source_0.pipe(
 
 test("simple_dfg_miner", () => {
     expect(generateCode(pathToTests + "simple_dfg_miner.test.json"))
-        .toBe(
+        .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \tsimple_dfg_miner(model_update_frequency = 20, min_relative_frequency = 3)
@@ -34,7 +34,7 @@ source_0.pipe(
 
 test("infinite_size_directly_follows_mapper", () => {
     expect(generateCode(pathToTests + "infinite_size_directly_follows_mapper.test.json"))
-        .toBe(
+        .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \tinfinite_size_directly_follows_mapper()
@@ -44,7 +44,7 @@ source_0.pipe(
 
 test("heuristics_miner_lossy_counting_budget", () => {
     expect(generateCode(pathToTests + "heuristics_miner_lossy_counting_budget.test.json"))
-        .toBe(
+        .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \theuristics_miner_lossy_counting_budget(model_update_frequency = 1, budget = 2, dependency_threshold = 3, and_threshold = 4)
@@ -54,7 +54,7 @@ source_0.pipe(
 
 test("heuristics_miner_lossy_counting", () => {
     expect(generateCode(pathToTests + "heuristics_miner_lossy_counting.test.json"))
-        .toBe(
+        .toBe(importString +
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \theuristics_miner_lossy_counting(model_update_frequency = 1, max_approx_error = 2, dependency_threshold = 3, and_threshold = 4)
@@ -64,10 +64,10 @@ source_0.pipe(
 
 test("behavioral_conformance", () => {
     expect(generateCode(pathToTests + "behavioral_conformance.test.json"))
-        .toBe(
+        .toBe(importString +
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-\tbehavioral_conformance(mmamma mia)
+\tbehavioral_conformance(model = user_defined_parameter)
 ).subscribe(on_next = lambda x : print(str(x)))
 `)
 })

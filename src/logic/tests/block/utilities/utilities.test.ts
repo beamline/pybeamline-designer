@@ -4,12 +4,12 @@ import { expect, test } from 'vitest';
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/utilities/";
-
+let importString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n\n"
 
 
 test("union (concat)", () => {
     expect(generateCode(pathToTests + "concat.test.json"))
-        .toBe(
+        .toBe( importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
@@ -24,8 +24,8 @@ union_0.pipe(
 
 test("union (merge)", () => {
     expect(generateCode(pathToTests + "merge.test.json"))
-        .toBe(
-`source_0 = string_test_source(iterable = ['A', 'B', 'C'])
+        .toBe(importString +
+            `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe()
@@ -38,8 +38,8 @@ union_0.pipe(
 
 test("custom (as source)", () => {
     expect(generateCode(pathToTests + "customSource.test.json"))
-        .toBe(
-`example_function_body
+        .toBe(importString +
+            `example_function_body
 \toperation1
 \toperation2
 \treturn ans
@@ -50,8 +50,8 @@ source_0 = user_made_function_as_source()
 
 test("custom (as filter)", () => {
     expect(generateCode(pathToTests + "customFilter.test.json"))
-        .toBe(
-`example_function_body
+        .toBe(importString +
+            `example_function_body
 \toperation1
 \toperation2
 \treturn ans
@@ -65,8 +65,8 @@ source_0.pipe(
 
 test("custom (as miner)", () => {
     expect(generateCode(pathToTests + "customMiner.test.json"))
-        .toBe(
-`example_function_body
+        .toBe(importString +
+            `example_function_body
 \toperation1
 \toperation2
 \treturn ans
@@ -79,8 +79,8 @@ source_0.pipe(
 
 test("custom (as union)", () => {
     expect(generateCode(pathToTests + "customUnion.test.json"))
-        .toBe(
-`example_function_body
+        .toBe(importString +
+            `example_function_body
 \toperation1
 \toperation2
 \treturn ans

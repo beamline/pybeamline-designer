@@ -20,7 +20,7 @@
         "inputType": ["event"]
       },
       "parameters" : {
-        "model": "mmamma mia"
+        "model": "user_defined_parameter"
       },
       "input" : "0",
       "outputs" : ["2"]

@@ -1,4 +1,4 @@
-import { UserPipeline, Block, Descriptor, Params, Graph, UnionCounters} from "./Syntax.js";
+import { UserPipeline, Block, Descriptor, Params, Graph, UnionCounters} from "../Syntax.js";
 
 
 export class Traverser {

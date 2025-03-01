@@ -18,7 +18,7 @@ This test series checks for simple (unit) pipelines the user can make.
 test("Test 1: Source -> Sink", () => {
     expect(generateCode(pathToTests + "unit1.json"))
             .toBe(
-                `source_0 = string_test_source(iterable = ['A', 'B', 'C'])\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n`)
+                `from pybeamline import *\nfrom reactivex import merge, concat\n\nsource_0 = string_test_source(iterable = ['A', 'B', 'C'])\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n`)
 })
 
 
@@ -30,7 +30,7 @@ test("Test 1: Source -> Sink", () => {
 test("Test 2: Source -> Filter -> Sink", () => {
     expect(generateCode(pathToTests + "unit2.json"))
         .toBe(
-            `source_0 = string_test_source(iterable = ['x', 'y', 'z'])\nsource_0.pipe( \n\tretains_activity_filter(activity_names = {'x', 'z'})\n).subscribe(on_next = lambda x : print(str(x)))\n`)
+            `from pybeamline import *\nfrom reactivex import merge, concat\n\nsource_0 = string_test_source(iterable = ['x', 'y', 'z'])\nsource_0.pipe( \n\tretains_activity_filter(activity_names = {'x', 'z'})\n).subscribe(on_next = lambda x : print(str(x)))\n`)
 })
 
 
@@ -43,7 +43,7 @@ test("Test 2: Source -> Filter -> Sink", () => {
 
 test("Test 3: source -> sinks, source1 -> sink1", () => {
     expect(generateCode(pathToTests + "unit3.json"))
-        .toBe("source_0 = string_test_source(iterable = 'x')\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\nsource_1 = string_test_source(iterable = 'y')\nsource_1.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n")
+        .toBe("from pybeamline import *\nfrom reactivex import merge, concat\n\nsource_0 = string_test_source(iterable = 'x')\nsource_0.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\nsource_1 = string_test_source(iterable = 'y')\nsource_1.pipe(\n).subscribe(on_next = lambda x : print(str(x)))\n")
 })
 
 
@@ -58,7 +58,8 @@ test("Test 3: source -> sinks, source1 -> sink1", () => {
 test("Test 4: 1 source goes to 2 sinks", () => {
     expect(generateCode(pathToTests + "unit4.json"))
         .toBe(
-`source_0 = string_test_source(iterable = ['x', 'y'])
+`from pybeamline import *\nfrom reactivex import merge, concat\n
+source_0 = string_test_source(iterable = ['x', 'y'])
 source_0.pipe( 
 \tretains_activity_filter(activity_names = 'y')
 ).subscribe(on_next = lambda x : print(str(x)))
@@ -79,7 +80,8 @@ source_0.pipe(
 test("Test 5: 2 sources merge towards 1 sinks", () => {
     expect(generateCode(pathToTests + "unit5.json"))
         .toBe(
-`source_0 = string_test_source(iterable = ['A', 'B', 'C'])
+`from pybeamline import *\nfrom reactivex import merge, concat\n
+source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_1 = source_1.pipe()
@@ -102,7 +104,8 @@ union_0.pipe(
 test("Test 6: 2 sources extended with sinks merge towards 1 sinks", () => {
     expect(generateCode(pathToTests + "unit6.json"))
         .toBe(
-`source_0 = string_test_source(iterable = ['A', 'B', 'C'])
+`from pybeamline import *\nfrom reactivex import merge, concat\n
+source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe( 
 \texcludes_activity_filter(activity_names = {'A'}))
 source_1 = string_test_source(iterable = ['x', 'y', 'z'])
