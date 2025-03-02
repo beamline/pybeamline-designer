@@ -1,5 +1,5 @@
 import {Compiler} from "./Compiler.js";
-import {Block, UnionData } from "./Syntax.js";
+import {ExtendedBlock, UnionData } from "./Syntax.js";
 
 
 export class Handler {
@@ -27,7 +27,7 @@ export class Handler {
         this.unionData = {};
     }
 
-    public processBlock (block : Block,  currentString : string) : string {
+    public processBlock (block : ExtendedBlock, currentString : string) : string {
 
         if (block.descriptors.name === "custom") {
             this.defineCustom(block, currentString)
@@ -49,18 +49,18 @@ export class Handler {
 
     }
 
-    private handleDefault (block : Block,  currentString : string) : string {
+    private handleDefault (block : ExtendedBlock, currentString : string) : string {
         return `${currentString}\t${this.addParametersToPipeline(block)},\n`
     }
 
-    private handleSink(block : Block,  currentString : string) :string {
+    private handleSink(block : ExtendedBlock, currentString : string) :string {
 
         this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n`)
         return currentString
 
     }
 
-    private handleUnion (block : Block, currentString : string) : string {
+    private handleUnion (block : ExtendedBlock, currentString : string) : string {
 
         let newString = "";
 
@@ -96,7 +96,7 @@ export class Handler {
         return newString;
     }
 
-    public tryPass( block : Block ) : boolean {
+    public tryPass( block : ExtendedBlock ) : boolean {
 
         if ((this.unionData[block.id] === undefined)) {
             return true
@@ -105,7 +105,7 @@ export class Handler {
 
     }
 
-    private defineCustom (block : Block,  currentString : string) : void {
+    private defineCustom (block : ExtendedBlock, currentString : string) : void {
 
         //Add the function definition to the head code
         this.compiler.appendHeadString(block.parameters.functionBody + "\n")
@@ -113,7 +113,7 @@ export class Handler {
 
     }
 
-    private handleSource (block : Block, currentString : string) : string {
+    private handleSource (block : ExtendedBlock, currentString : string) : string {
 
         this.compiler.appendBodyString(`source_${this.counters.source} = ${this.addParametersToPipeline(block)}\n`)
 
@@ -124,7 +124,7 @@ export class Handler {
 
     }
 
-    private addParametersToPipeline (block : Block) : string {
+    private addParametersToPipeline (block : ExtendedBlock) : string {
 
         //TODO: Move this block of code to the customHandler maybe
         if (block.descriptors.name === "custom") {

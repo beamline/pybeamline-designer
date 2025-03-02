@@ -1,14 +1,14 @@
 interface Descriptor {
     name: string;
-    inputType : string[];
-    outputType : string[];
+    inputType : string[] | null;
+    outputType : string[] | null;
 }
 
 interface Params {
     [key: string]: any;
 }
 
-interface Block {
+interface ExtendedBlock {
     id: string;
     descriptors: Descriptor;
     parameters: Params;
@@ -16,16 +16,28 @@ interface Block {
     outputs: string[];      // Outputs will always be an array of strings
 }
 
+interface GuiBlock {
+    id : string;
+    name : string;
+    parameters: Params;
+    outputs : string[];
+}
+
+interface GuiPipeline {
+    GuiBlocks : GuiBlock[];
+}
+
 
 //Object with array containing all the blocks in the pipeline
-interface UserPipeline {
-    blocks: Block[];
+//Extended with input/output types and other necessary information
+interface ExtendedPipeline {
+    blocks: ExtendedBlock[];
 }
 
 
 //Object mapping IDs to blocks
 interface Graph {
-    [key : string] : Block;
+    [key : string] : ExtendedBlock;
 }
 
 //Object containing the union blocks ids and their strings, counters
@@ -37,4 +49,4 @@ interface UnionData {
     }
 }
 
-export { UserPipeline, Descriptor, Params, Block, Graph, UnionData };
+export { ExtendedPipeline, Descriptor, Params, ExtendedBlock, Graph, UnionData , GuiBlock, GuiPipeline};

@@ -1,63 +1,23 @@
 {
-    "blocks" : [
-      {
-        "id" : "s0",
-        "category" : {
-          "type" : "source",
-          "name" : "string_test_source"
-        },
-        "parameters" : {
-          "iterable" : "['A', 'B', 'C']"
-        },
-        "outputs" : ["f0"]
-      },
-      {
-      "id" : "s1",
-      "category" : {
-        "type" : "source",
-        "name" : "string_test_source"
+  "blocks" : [
+    {
+      "id" : "0",
+      "descriptors": {
+        "name": "StringTestSource"
       },
       "parameters" : {
-        "iterable" : "['f', 'd']"
+        "iterable" : "['A', 'B', 'C']"
       },
-      "outputs" : ["u0"]
+      "outputs" : ["1"]
+    },
+    {
+      "id" : "1",
+      "descriptors": {
+        "name": "PrintSink"
       },
-      {
-        "id" : "u0",
-        "category" : {
-          "type" : "union",
-          "name" : "merge"
-        },
-        "parameters" : {
-
-        },
-        "input" : ["s1", "f0"],
-        "outputs" : ["t0"]
+      "parameters" : {
       },
-      {
-        "id" : "f0",
-        "category" : {
-          "type" : "filter",
-          "name" : "retains_activity_filter"
-        },
-        "parameters" : {
-          "activity_names" : "'A'"
-        },
-        "input" : "s0" ,
-        "outputs" : ["u0"]
-      },
-      {
-        "id" : "t0",
-        "category" : {
-          "type" : "sink",
-          "name" : ".subscribe"
-        },
-        "parameters" : {
-          "on_next" : "lambda x : print(str(x))"
-        },
-        "input" : "u0" ,
-        "outputs" : []
-      }
-    ]
-
+      "outputs": []
+    }
+  ]
 }

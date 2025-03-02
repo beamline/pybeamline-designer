@@ -1,4 +1,4 @@
-import { UserPipeline, Block, Descriptor, Params, Graph, UnionCounters} from "../Syntax.js";
+import { ExtendedPipeline, ExtendedBlock, Descriptor, Params, Graph, UnionCounters} from "../Syntax.js";
 
 
 export class Traverser {
@@ -14,7 +14,7 @@ export class Traverser {
 * Prepares the user pipeline for traversal
 * Starts visiting the users pipeline at the sources
 */
-    public traverseDiagram (userPipeline : UserPipeline ) : string {
+    public traverseDiagram (userPipeline : ExtendedPipeline ) : string {
 
 
         //Variable reset
@@ -24,7 +24,7 @@ export class Traverser {
         this.unionCounters = {};
 
         //Iterates through block and assigns id as key, Object is { id : block } for all ids and blocks
-        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
+        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : ExtendedBlock ) => {
             acc[block.id] = block;
             return acc;
         }, {});
@@ -66,7 +66,7 @@ export class Traverser {
 /*
 * Reads a blocks parameters and adds them to the final string
 */
-    private addParametersToPipeline (block : Block) : string {
+    private addParametersToPipeline (block : ExtendedBlock) : string {
 
         if (block.descriptors.name === "custom") {
             //add custom function name to pipeline
@@ -95,7 +95,7 @@ export class Traverser {
   * Handles the string the current block produces
   * Updates the currentString following the traversal
 */
-    private stringGenerator(currentString : string, block : Block) : string {
+    private stringGenerator(currentString : string, block : ExtendedBlock) : string {
         let newString : string = currentString;
 
         if (block.descriptors.name === "custom"){

@@ -1,4 +1,4 @@
-import {Block, Graph, UserPipeline} from "./Syntax.js";
+import {ExtendedBlock, Graph, ExtendedPipeline} from "./Syntax.js";
 import {Handler} from "./Handler.js";
 
 
@@ -35,16 +35,16 @@ export class Compiler {
         this.handler = new Handler(this);
     }
 
-    private readUserPipeline (userPipeline : UserPipeline) {
+    private readUserPipeline (userPipeline : ExtendedPipeline) {
 
-        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : Block ) => {
+        this.blocks = userPipeline.blocks.reduce((acc : Graph, block : ExtendedBlock ) => {
             acc[block.id] = block;
             return acc;
         }, {});
 
     }
 
-    public compilePipeline (userPipeline : UserPipeline) {
+    public compilePipeline (userPipeline : ExtendedPipeline) {
 
         //Variable reset
         this.headString = "from pybeamline import *\nfrom reactivex import merge, concat\n\n";
@@ -63,7 +63,7 @@ export class Compiler {
 
     }
 
-    private visitBlock (block : Block, currentString : string){
+    private visitBlock (block : ExtendedBlock, currentString : string){
 
 
         const newString = this.handler.processBlock(block,  currentString);

@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import { readFileSync,readdirSync } from "fs";
 import {resolve, dirname} from "path";
 import { fileURLToPath } from "url";
-import {Block} from "./Syntax.js";
+import {ExtendedBlock} from "./Syntax.js";
 export {sanityChecker}
 
 function addReference(filePath:string,reference:string, ajv: Ajv){
@@ -33,7 +33,7 @@ function addKeywords (ajv : Ajv){
             if (outputs.length==0) return true
 
             // @ts-ignore
-            const blocks: Block[] = parentSchema.rootData.blocks; // Get all blocks
+            const blocks: ExtendedBlock[] = parentSchema.rootData.blocks; // Get all blocks
             const currentBlock = parentSchema.parentData; // The block being validated
 
             return outputs.every(outputId => {
@@ -77,7 +77,8 @@ function sanityChecker(diagram:Object): boolean{
         return true
     } else {
 
-
+        //TODO: Experiment with this to see if we can reach the actual problem in the pipeline
+        //TODO: Experiment with pipelines containing 2 or more errors and see the error trace
         //@ts-ignore
         const sampledError = validator.errors[0].instancePath;
         //Gets the block id number that raised the problem
