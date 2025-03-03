@@ -1,25 +1,29 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "String test source",
-      "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['x', 'y', 'z']"
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Excludes activity filter",
-      "parameters" : {
-        "activity_names" : "{'x', 'z'}"
+      "id": "1",
+      "name": "excludes_activity_filter",
+      "parameters": {
+        "activity_names": "{'x', 'z'}"
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

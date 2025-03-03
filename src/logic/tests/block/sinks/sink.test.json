@@ -1,16 +1,17 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Ais source",
-      "parameters" : {
-      },
-      "outputs" : ["1"]
+      "id": "0",
+      "name": "ais_source",
+      "parameters": {},
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "1",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

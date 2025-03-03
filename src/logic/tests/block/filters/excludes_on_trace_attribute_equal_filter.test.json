@@ -1,26 +1,30 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Xes log source from file",
-      "parameters" : {
-        "log" : "\"test.xes\""
+      "id": "0",
+      "name": "xes_log_source_from_file",
+      "parameters": {
+        "log": "\"test.xes\""
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Excludes on trace attribute equal filter",
-      "parameters" : {
-        "attribute_name" : "'attrib1'",
-        "attribute_values" : "{'A', 'B'}"
+      "id": "1",
+      "name": "excludes_on_trace_attribute_equal_filter",
+      "parameters": {
+        "attribute_name": "'attrib1'",
+        "attribute_values": "{'A', 'B'}"
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

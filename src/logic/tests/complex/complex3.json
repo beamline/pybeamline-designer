@@ -1,88 +1,71 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['A', 'B', 'C']"
       },
-      "parameters" : {
-        "iterable" : "['A', 'B', 'C']"
-      },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "4",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "4",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['D', 'E', 'F']"
       },
-      "parameters" : {
-        "iterable" : "['D', 'E', 'F']"
-      },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "1",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "1",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['G', 'H', 'I']"
       },
-      "parameters" : {
-        "iterable" : "['G', 'H', 'I']"
-      },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "5",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "5",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['J', 'K', 'L']"
       },
-      "parameters" : {
-        "iterable" : "['J', 'K', 'L']"
-      },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "6",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "6",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['M', 'N', 'Ñ']"
       },
-      "parameters" : {
-        "iterable" : "['M', 'N', 'Ñ']"
-      },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "descriptors": {
-        "name": "merge",
-        "outputType": ["event"],
-        "inputType": ["event"]
-      },
-      "parameters" : {
-      },
-      "input" : ["1", "0", "4", "5", "6"],
-      "outputs" : ["3"]
+      "id": "2",
+      "name": "merge",
+      "parameters": {},
+      "input": 5,
+      "outputs": [
+        "3"
+      ]
     },
     {
-      "id" : "3",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      "id": "3",
+      "name": ".subscribe",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
       },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
-      "outputs" : []
+      "outputs": []
     }
   ]
 }

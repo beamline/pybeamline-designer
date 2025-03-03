@@ -1,12 +1,12 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Log source",
-      "parameters" : {
-        "log" : "['T', 'E', 'S', 'T']"
+      "id": "0",
+      "name": "log_source",
+      "parameters": {
+        "log": "['T', 'E', 'S', 'T']"
       },
-      "outputs" : []
+      "outputs": []
     }
   ]
 }

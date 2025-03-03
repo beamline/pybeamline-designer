@@ -1,26 +1,30 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "String test source",
-      "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['x', 'y', 'z']"
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Custom",
-      "parameters" : {
-        "functionName" : "user_made_function_as_filter",
-        "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
+      "id": "1",
+      "name": "custom",
+      "parameters": {
+        "functionName": "user_made_function_as_filter",
+        "functionBody": "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

@@ -1,11 +1,10 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Ais source",
-      "parameters" : {
-      },
-      "outputs" : []
+      "id": "0",
+      "name": "ais_source",
+      "parameters": {},
+      "outputs": []
     }
   ]
 }

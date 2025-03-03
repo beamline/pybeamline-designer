@@ -1,26 +1,30 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Xes log source from file",
-      "parameters" : {
-        "log" : "\"test.xes\""
+      "id": "0",
+      "name": "xes_log_source_from_file",
+      "parameters": {
+        "log": "\"test.xes\""
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Simple dfg miner",
-      "parameters" : {
+      "id": "1",
+      "name": "simple_dfg_miner",
+      "parameters": {
         "model_update_frequency": 20,
         "min_relative_frequency": 3
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

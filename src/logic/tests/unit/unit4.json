@@ -1,65 +1,51 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "0",
+      "descriptors": "string_test_source",
+      "parameters": {
+        "iterable": "['x', 'y']"
       },
-      "parameters" : {
-        "iterable" : "['x', 'y']"
-      },
-      "outputs" : ["1", "2"]
+      "outputs": [
+        "1",
+        "2"
+      ]
     },
     {
-      "id" : "1",
-      "descriptors": {
-        "name": "retains_activity_filter",
-        "outputType": ["event"],
-        "inputType": ["event"]
+      "id": "1",
+      "descriptors": "retains_activity_filter",
+      "parameters": {
+        "activity_names": "'y'"
       },
-      "parameters" : {
-        "activity_names" : "'y'"
-      },
-      "outputs" : ["3"]
+      "outputs": [
+        "3"
+      ]
     },
     {
-      "id" : "2",
-      "descriptors": {
-        "name": "retains_activity_filter",
-        "outputType": ["event"],
-        "inputType": ["event"]
+      "id": "2",
+      "descriptors": "retains_activity_filter",
+      "parameters": {
+        "activity_names": "'x'"
       },
-      "parameters" : {
-        "activity_names" : "'x'"
-      },
-      "outputs" : ["4"]
+      "outputs": [
+        "4"
+      ]
     },
     {
-      "id" : "3",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      "id": "3",
+      "descriptors": ".subscribe",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
       },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
-      "outputs" : []
+      "outputs": []
     },
     {
-      "id" : "4",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
+      "id": "4",
+      "descriptors": ".subscribe",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
       },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
-      "outputs" : []
+      "outputs": []
     }
-
   ]
 }

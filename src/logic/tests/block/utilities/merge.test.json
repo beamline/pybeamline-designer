@@ -1,34 +1,42 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "String test source",
-      "parameters" : {
-        "iterable" : "['A', 'B', 'C']"
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['A', 'B', 'C']"
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "1",
-      "name": "String test source",
-      "parameters" : {
-        "iterable" : "['x', 'y', 'z']"
+      "id": "1",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['x', 'y', 'z']"
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Merge",
-      "parameters" : {
-      },
-      "input" : ["1", "0"],
-      "outputs" : ["3"]
+      "id": "2",
+      "name": "merge",
+      "parameters": {},
+      "input": [
+        "1",
+        "0"
+      ],
+      "outputs": [
+        "3"
+      ]
     },
     {
-      "id" : "3",
-      "name": "Print sink",
-      "parameters" : {},
-      "outputs" : []
+      "id": "3",
+      "name": "print_sink",
+      "parameters": {},
+      "outputs": []
     }
   ]
 }

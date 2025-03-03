@@ -1,12 +1,12 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Xes log source",
-      "parameters" : {
-        "log" : "pm4py.read_xes(\"test.xes\")"
+      "id": "0",
+      "name": "xes_log_source",
+      "parameters": {
+        "log": "pm4py.read_xes(\"test.xes\")"
       },
-      "outputs" : []
+      "outputs": []
     }
   ]
 }

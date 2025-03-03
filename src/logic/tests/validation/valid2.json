@@ -1,26 +1,18 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
-      "parameters" : {
-
-      },
-      "outputs" : ["1"]
+      "id": "0",
+      "descriptors": "string_test_source",
+      "parameters": {},
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
+      "id": "1",
+      "descriptors": ".subscribe",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
       },
       "outputs": []
     }

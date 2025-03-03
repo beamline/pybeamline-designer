@@ -1,28 +1,32 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Xes log source from file",
-      "parameters" : {
-        "log" : "\"test.xes\""
+      "id": "0",
+      "name": "xes_log_source_from_file",
+      "parameters": {
+        "log": "\"test.xes\""
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Heuristics miner lossy counting",
-      "parameters" : {
+      "id": "1",
+      "name": "heuristics_miner_lossy_counting",
+      "parameters": {
         "model_update_frequency": 1,
         "max_approx_error": 2,
         "dependency_threshold": 3,
         "and_threshold": 4
       },
-      "outputs" : ["2"]
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

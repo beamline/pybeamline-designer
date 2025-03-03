@@ -1,23 +1,27 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Xes log source from file",
-      "parameters" : {
-        "log" : "\"test.xes\""
+      "id": "0",
+      "name": "xes_log_source_from_file",
+      "parameters": {
+        "log": "\"test.xes\""
       },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "name": "Sliding window to log",
-      "parameters" : {},
-      "outputs" : ["2"]
+      "id": "1",
+      "name": "sliding_window_to_log",
+      "parameters": {},
+      "outputs": [
+        "2"
+      ]
     },
     {
-      "id" : "2",
-      "name": "Print sink",
-      "parameters" : {},
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
       "outputs": []
     }
   ]

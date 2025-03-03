@@ -1,11 +1,10 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Wikimedia source",
-      "parameters" : {
-      },
-      "outputs" : []
+      "id": "0",
+      "name": "wikimedia_source",
+      "parameters": {},
+      "outputs": []
     }
   ]
 }

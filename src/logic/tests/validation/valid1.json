@@ -1,26 +1,20 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "descriptors": {
-        "name": "string_source",
-        "outputType": ["event"],
-        "inputType": null
+      "id": "0",
+      "descriptors": "string_source",
+      "parameters": {
+        "iterable": "['A', 'B', 'C']"
       },
-      "parameters" : {
-        "iterable" : "['A', 'B', 'C']"
-      },
-      "outputs" : ["1"]
+      "outputs": [
+        "1"
+      ]
     },
     {
-      "id" : "1",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
+      "id": "1",
+      "descriptors": ".subscribe",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
       },
       "outputs": []
     }

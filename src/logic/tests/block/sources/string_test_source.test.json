@@ -1,12 +1,12 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "String test source",
-      "parameters" : {
-        "iterable" : "['T', 'E', 'S', 'T']"
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['T', 'E', 'S', 'T']"
       },
-      "outputs" : []
+      "outputs": []
     }
   ]
 }

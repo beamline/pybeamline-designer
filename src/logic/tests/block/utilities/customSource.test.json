@@ -1,13 +1,13 @@
 {
-  "blocks" : [
+  "blocks": [
     {
-      "id" : "0",
-      "name": "Custom",
-      "parameters" : {
-        "functionName" : "user_made_function_as_source",
-        "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
+      "id": "0",
+      "name": "custom",
+      "parameters": {
+        "functionName": "user_made_function_as_source",
+        "functionBody": "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
-      "outputs" : []
+      "outputs": []
     }
   ]
 }
