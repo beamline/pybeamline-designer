@@ -2,25 +2,15 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "ais_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "Ais source",
       "parameters" : {
       },
       "outputs" : ["1"]
     },
     {
       "id" : "1",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
+      "name": "Print sink",
+      "parameters" : {},
       "outputs": []
     }
   ]

@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "log_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "Log source",
       "parameters" : {
         "log" : "['T', 'E', 'S', 'T']"
       },

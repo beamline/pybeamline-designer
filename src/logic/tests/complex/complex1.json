@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "String test source",
       "parameters" : {
         "iterable" : "['A', 'B', 'C']"
       },
@@ -14,11 +10,7 @@
     },
     {
     "id" : "1",
-    "descriptors": {
-      "name": "retains_activity_filter",
-      "outputType": ["event"],
-      "inputType": ["event"]
-    },
+      "name": "Retains activity filter",
     "parameters" : {
       "activity_names" : "{'x', 'z'}"
     },
@@ -27,11 +19,7 @@
     },
     {
       "id" : "2",
-      "descriptors": {
-        "name": "merge",
-        "outputType": ["event"],
-        "inputType": ["event"]
-      },
+      "name": "Merge",
       "parameters" : {
       },
       "input" : ["1", "3"],
@@ -39,11 +27,7 @@
     },
     {
       "id" : "3",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "String test source",
       "parameters" : {
         "iterable" : "['E', 'F', 'G']"
       },
@@ -51,23 +35,13 @@
     },
     {
       "id" : "4",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
+      "name": "Print sink",
+      "parameters" : {},
       "outputs": []
     },
     {
       "id" : "5",
-      "descriptors": {
-        "name": "simple_dfg_miner",
-        "outputType": ["model"],
-        "inputType": ["event"]
-      },
+      "name": "Simple dfg miner",
       "parameters" : {
 
       },
@@ -76,14 +50,8 @@
     },
     {
       "id" : "6",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda y : print(str(y))"
-      },
+      "name": "Print sink",
+      "parameters" : {},
 
       "outputs": []
     }

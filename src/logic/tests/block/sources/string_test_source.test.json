@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "String test source",
       "parameters" : {
         "iterable" : "['T', 'E', 'S', 'T']"
       },

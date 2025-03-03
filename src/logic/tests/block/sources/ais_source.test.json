@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "ais_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "Ais source",
       "parameters" : {
       },
       "outputs" : []

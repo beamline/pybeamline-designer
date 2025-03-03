@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "xes_log_source_from_file",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "Xes log source from file",
       "parameters" : {
         "log" : "\"test.xes\""
       },

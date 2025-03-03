@@ -1,7 +1,5 @@
 import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline} from "./Syntax.js";
 import Ajv from "ajv";
-import {readdirSync, readFileSync} from "fs";
-import {resolve} from "path";
 
 
 export class Translator {

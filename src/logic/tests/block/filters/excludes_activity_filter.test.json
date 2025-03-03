@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "string_test_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "String test source",
       "parameters" : {
         "iterable" : "['x', 'y', 'z']"
       },
@@ -14,11 +10,7 @@
     },
     {
       "id" : "1",
-      "descriptors": {
-        "name": "excludes_activity_filter",
-        "outputType": ["event"],
-        "inputType": ["event"]
-      },
+      "name": "Excludes activity filter",
       "parameters" : {
         "activity_names" : "{'x', 'z'}"
       },
@@ -26,14 +18,8 @@
     },
     {
       "id" : "2",
-      "descriptors": {
-        "name": ".subscribe",
-        "outputType": null,
-        "inputType": ["event", "petrinet", "heuristics", "model", "conformance"]
-      },
-      "parameters" : {
-        "on_next" : "lambda x : print(str(x))"
-      },
+      "name": "Print sink",
+      "parameters" : {},
       "outputs": []
     }
   ]

@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "custom",
-        "outputType": ["event", "petrinet", "heuristics", "model", "conformance"],
-        "inputType": null
-      },
+      "name": "Custom",
       "parameters" : {
         "functionName" : "user_made_function_as_source",
         "functionBody" : "example_function_body\n\toperation1\n\toperation2\n\treturn ans"

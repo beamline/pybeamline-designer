@@ -2,11 +2,7 @@
   "blocks" : [
     {
       "id" : "0",
-      "descriptors": {
-        "name": "wikimedia_source",
-        "outputType": ["event"],
-        "inputType": null
-      },
+      "name": "Wikimedia source",
       "parameters" : {
       },
       "outputs" : []
