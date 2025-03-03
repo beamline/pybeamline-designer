@@ -7,7 +7,6 @@
         "anyOf": [
           {"$ref": "String test source"},
           {"$ref": "Xes log source"},
-
           {"$ref": "Xes log source from file"},
           {"$ref": "Mqttxes source"},
           {"$ref": "Log source"},
@@ -32,8 +31,13 @@
           {"$ref": "Print sink"},
           {"$ref": "Dummy sink"},
 
-          {"$ref": "union.json"},
-          {"$ref": "custom.json"}
+
+          {"$ref": "Concat"},
+          {"$ref": "Merge"},
+
+          {"$ref": "Custom"}
+
+
         ]
       }
     }

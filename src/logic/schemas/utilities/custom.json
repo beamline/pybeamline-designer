@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "custom"},
+        "name": {"const": "Custom"},
         "outputType": { "oneOf" : [
           {"const" : null},
           {"$ref": "definitions.json#/definitions/streamTypes/any"}
@@ -25,7 +25,8 @@
       "required" : ["functionName", "functionBody"]
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "input": {"type":  "array", "items": {"$ref": "definitions.json#/definitions/input"} }
+    "input": {"type":  "array", "items": {"$ref": "definitions.json#/definitions/input"} },
+
   },
   "required": ["id", "parameters", "outputs"]
 }
