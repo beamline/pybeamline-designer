@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "log_source"},
+        "name": {"const": "Log source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }
@@ -19,7 +19,8 @@
       },
       "required": ["log"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "log_source()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

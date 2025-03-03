@@ -5,7 +5,7 @@
     "descriptors": {
       "type": "object",
       "properties" : {
-      "name": {"const": "ais_source"},
+      "name": {"const": "Ais source"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }
@@ -18,7 +18,8 @@
       },
       "additionalProperties": false
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "ais_source()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

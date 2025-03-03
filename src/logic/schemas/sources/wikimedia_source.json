@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "wikimedia_source"},
+        "name": {"const": "Wikimedia source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }
@@ -14,7 +14,8 @@
       "type": "object",
       "additionalProperties": false
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "wikimedia_source()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

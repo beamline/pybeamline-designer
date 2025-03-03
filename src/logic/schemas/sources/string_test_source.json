@@ -5,7 +5,7 @@
     "descriptors": {
       "type": "object",
       "properties": {
-        "name": {"const": "string_test_source"},
+        "name": {"const": "String test source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const":  null}
       }
@@ -20,7 +20,8 @@
       },
       "required": ["iterable"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "string_test_source()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

@@ -5,13 +5,14 @@
       "type": "array",
       "items": {
         "anyOf": [
-          {"$ref": "string_test_source.json"},
-          {"$ref": "xes_log_source.json"},
-          {"$ref": "xes_log_source_from_file.json"},
-          {"$ref": "log_source.json"},
-          {"$ref": "mqttxes_source.json"},
-          {"$ref": "wikimedia_source.json"},
-          {"$ref": "ais_source.json"},
+          {"$ref": "String test source"},
+          {"$ref": "Xes log source"},
+
+          {"$ref": "Xes log source from file"},
+          {"$ref": "Mqttxes source"},
+          {"$ref": "Log source"},
+          {"$ref": "Wikimedia source"},
+          {"$ref": "Ais source"},
 
           {"$ref": "Retains on trace attribute equal filter"},
           {"$ref": "Excludes on trace attribute equal filter"},

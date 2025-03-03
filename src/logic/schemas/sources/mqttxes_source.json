@@ -5,7 +5,7 @@
     "descriptors": {
       "type": "object",
       "properties": {
-        "name": {"const": "mqttxes_source"},
+        "name": {"const": "Mqttxes source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const":  null}
       }
@@ -26,7 +26,8 @@
       },
       "required": ["broker","port","base_topic"]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "mqttxes_source()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
