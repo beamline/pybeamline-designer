@@ -12,8 +12,14 @@
           {"$ref": "mqttxes_source.json"},
           {"$ref": "wikimedia_source.json"},
           {"$ref": "ais_source.json"},
-          {"$ref": "attribute_filters.json"},
-          {"$ref": "activity_filters.json"},
+
+          {"$ref": "Retains on trace attribute equal filter"},
+          {"$ref": "Excludes on trace attribute equal filter"},
+          {"$ref": "Retains on event attribute equal filter"},
+          {"$ref": "Excludes on event attribute equal filter"},
+          {"$ref": "Retains activity filter"},
+          {"$ref": "Excludes activity filter"},
+
           {"$ref":  "infinite_size_directly_follows_mapper.json"},
           {"$ref":  "simple_dfg_miner.json"},
           {"$ref":  "heuristics_miner_lossy_counting.json"},

@@ -61,7 +61,7 @@ export class Translator {
 
     }
 
-    private getType(typeName:string,blockSchema){
+    private getType(typeName:string,blockSchema : any){
         const type = blockSchema.properties.descriptors.properties[typeName]
         if ("const" in type){
             return type.const

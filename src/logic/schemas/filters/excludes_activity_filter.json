@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "type" : "object",
+      "properties" : {
+        "name": {"const" : "Excludes activity filter"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "activity_names": {"$ref": "definitions.json#/definitions/iterableStr"}
+      },
+      "required": ["activity_names"]
+    },
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "excludes_activity_filter"}
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}

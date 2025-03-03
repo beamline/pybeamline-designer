@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {"$ref": "definitions.json#/definitions/id"},
+    "descriptors": {
+      "type" : "object",
+      "properties" : {
+        "name": {"const": "Retains on event attribute equal filter"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
+        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties":{
+        "attribute_name": {
+          "type": "string"
+        },
+        "attribute_values": {
+          "$ref": "definitions.json#/definitions/iterable"
+        }
+      },
+      "required": ["attribute_name","attribute_values"]
+    },
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "retains_on_event_attribute_equal_filter"}
+  },
+  "required": ["id", "parameters", "outputs"],
+  "additionalProperties": false
+}
