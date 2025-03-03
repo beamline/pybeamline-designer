@@ -8,12 +8,14 @@
     "iterable" : {"oneOf": [{"type": "string"}, {"type": "string",
       "pattern": "^\\s(\\[|\\(|\\{)\\s*([^,\\]\\)\\}]+)(\\s*,\\s*([^,\\]\\)\\}]+))*\\s*(\\]|\\)|\\})\\s*$"}]},
     "streamTypes": {
+      "tuple" : {"const": ["tuple"] },
+      "dataframe" : {"const": ["dataframe"]},
       "event": {"const": ["event"]},
       "petrinet": {"const": ["petrinet"]},
       "heuristics": {"const":  ["heuristics"]},
       "model": {"const": ["model"]},
       "conformance": {"const":  ["conformance"]},
-      "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance"]}
+      "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance", "dataframe", "tuples"]}
     }
   }
 }
