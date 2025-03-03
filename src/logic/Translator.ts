@@ -1,22 +1,30 @@
 import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline} from "./Syntax.js";
+import Ajv from "ajv";
+import {readdirSync, readFileSync} from "fs";
+import {resolve} from "path";
 
 
 export class Translator {
 
+    private ajv: Ajv
 
-/*
-Objective:
+    public constructor(ajv: Ajv) {
+        this.ajv = ajv
+    }
 
-GuiPipeline -> ExtendedPipeline
+    /*
+    Objective:
 
-for each GuiBlock in GuiPipeline:
-    apply fun(GuiBlock -> ExtendedBlock)
+    GuiPipeline -> ExtendedPipeline
 
- */
-    public translatePipeline (guiPipeline : GuiPipeline) : ExtendedPipeline {
-        const ExtendedBlocksArr : ExtendedBlock[] = [];
+    for each GuiBlock in GuiPipeline:
+        apply fun(GuiBlock -> ExtendedBlock)
 
-        for (let guiBlock in guiPipeline.GuiBlocks) {
+     */
+    public translatePipeline(guiPipeline: GuiPipeline): ExtendedPipeline {
+        const ExtendedBlocksArr: ExtendedBlock[] = [];
+
+        for (let guiBlock of guiPipeline.GuiBlocks) {
             //@ts-ignore
             ExtendedBlocksArr.push(this.translateBlock(guiBlock, guiPipeline))
         }
@@ -26,79 +34,43 @@ for each GuiBlock in GuiPipeline:
 
     }
 
-    public translateBlock (guiBlock : GuiBlock, guiPipeline : GuiPipeline) : ExtendedBlock {
+    public translateBlock(guiBlock: GuiBlock, guiPipeline: GuiPipeline): ExtendedBlock {
 
-        const extendedBlockTemplate : ExtendedBlock = {
-            "id" : guiBlock.id,
-            descriptors : {
-                "name" : "",
-                "inputType" : [],
-                "outputType" : []
+        const blockSchema = this.ajv.getSchema(guiBlock.name+".json")?.schema;
+        let inputCounter = 0
+        const inputType = this.getType("inputType",blockSchema)
+        const outputType = this.getType("outputType",blockSchema)
+
+        const extendedBlockTemplate: ExtendedBlock = {
+            "id": guiBlock.id,
+            descriptors: {
+                "name": guiBlock.name,
+                "inputType": inputType,
+                "outputType": outputType
             },
-            parameters :  guiBlock.parameters,
-            outputs : guiBlock.outputs
+            parameters: guiBlock.parameters,
+            outputs: guiBlock.outputs
         }
 
-        //This part could be redundant/changed, depends on the information fetch from the schemas
-            switch (true) {
-                case guiBlock.name.includes("Sink") :
-                    return this.translateSink(guiBlock, extendedBlockTemplate);
-                case guiBlock.name.includes("Source"):
-                    return this.translateSource(guiBlock, extendedBlockTemplate);
-                case guiBlock.name.includes("Miner"):
-                    return this.translateMiner(guiBlock, extendedBlockTemplate);
-                case guiBlock.name.includes("Filter"):
-                    return this.translateFilter(guiBlock, extendedBlockTemplate);
-                case guiBlock.name.includes("Custom"):
-                    return this.translateCustom(guiBlock, extendedBlockTemplate, guiPipeline);
-                case guiBlock.name.includes("Union"):
-                    //Count the number of blocks in the pipeline that have this union block in their output
-                    //Add an "Inputs" : number tag maybe, or just use inputs : ["2", "3"]
-                    return this.translateUnion(guiBlock, extendedBlockTemplate, guiPipeline);
-                default:
-                    throw Error("Unknown block")
-            }
+        for (let element of guiPipeline.GuiBlocks) {
+            //@ts-ignore
+            if (element.outputs.includes(guiBlock.id)){inputCounter++}
+        }
+        if (inputCounter>1){extendedBlockTemplate["input"]=inputCounter}
+
+        return extendedBlockTemplate
+
 
     }
 
-    //This part could be redundant, depends on the information fetch from the schemas
-    private translateSink(guiBlock : GuiBlock, extendedBlock : ExtendedBlock) : ExtendedBlock {
-
-        return extendedBlock;
+    private getType(typeName:string,blockSchema){
+        const type = blockSchema.properties.descriptors.properties[typeName]
+        if ("const" in type){
+            return type.const
+        }
+        if ("$ref" in type) {
+            const sc = this.ajv.getSchema(type["$ref"])
+            return sc?.schema.const
+        }
     }
-
-    //This part could be redundant, depends on the information fetch from the schemas
-    //Maybe give it the GuiPipeline to see if pipe is empty to omit the .pipe, add it to the schemas
-    //bla bla
-    private translateSource(guiBlock : GuiBlock, extendedBlock : ExtendedBlock) : ExtendedBlock {
-
-        return extendedBlock;
-    }
-
-    //This part could be redundant, depends on the information fetch from the schemas
-    private translateMiner(guiBlock : GuiBlock, extendedBlock : ExtendedBlock) : ExtendedBlock {
-
-        return extendedBlock;
-    }
-
-    //This part could be redundant, depends on the information fetch from the schemas
-    private translateFilter(guiBlock : GuiBlock, extendedBlock : ExtendedBlock) : ExtendedBlock {
-
-        return extendedBlock;
-    }
-
-    //This part could be redundant, depends on the information fetch from the schemas
-    private translateUnion(guiBlock : GuiBlock, extendedBlock : ExtendedBlock, guiPipeline : GuiPipeline) : ExtendedBlock {
-
-        return extendedBlock;
-    }
-
-    //This part could be redundant, depends on the information fetch from the schemas
-    private translateCustom(guiBlock : GuiBlock, extendedBlock : ExtendedBlock, guiPipeline : GuiPipeline) : ExtendedBlock {
-
-        return extendedBlock;
-    }
-
-
-
 }

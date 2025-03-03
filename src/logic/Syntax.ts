@@ -12,7 +12,7 @@ interface ExtendedBlock {
     id: string;
     descriptors: Descriptor;
     parameters: Params;
-    input?: string[];         // Optional: Not all blocks have an input
+    input?: number;         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
 }
 
