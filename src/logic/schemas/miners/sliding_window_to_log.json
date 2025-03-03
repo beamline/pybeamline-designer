@@ -6,7 +6,7 @@
       "type" : "object",
       "properties" : {
         "name": {"const": "sliding_window_to_log"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/dataframe"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },

@@ -6,7 +6,7 @@
       "type" : "object",
       "properties" : {
       "name": {"const": "heuristics_miner_lossy_counting"},
-      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
+      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/heuristics"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },
