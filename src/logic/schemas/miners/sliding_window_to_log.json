@@ -5,13 +5,14 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "sliding_window_to_log"},
+        "name": {"const": "Sliding window to log"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/dataframe"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "sliding_window_to_log"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

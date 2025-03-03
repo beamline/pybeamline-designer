@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-      "name": {"const": "heuristics_miner_lossy_counting"},
+      "name": {"const": "Heuristics miner lossy counting"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/heuristics"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
@@ -19,7 +19,8 @@
         "and_threshold": {"type":  "number"}
       }
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "heuristics_miner_lossy_counting"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

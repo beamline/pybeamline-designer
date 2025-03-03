@@ -5,13 +5,14 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "infinite_size_directly_follows_mapper"},
+        "name": {"const": "Infinite size directly follows mapper"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/tuple"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "infinite_size_directly_follows_mapper"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

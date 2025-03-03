@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-      "name": {"const": "simple_dfg_miner"},
+      "name": {"const": "Simple dfg miner"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
     }
@@ -17,7 +17,8 @@
         "min_relative_frequency": {"type":  "number"}
       }
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"}
+    "outputs":{"$ref": "definitions.json#/definitions/output"},
+    "function" : {"const" : "simple_dfg_miner"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
