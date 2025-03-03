@@ -6,7 +6,7 @@
       "type" : "object",
       "properties" : {
         "name": {"const": "infinite_size_directly_follows_mapper"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
+        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/tuple"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }
     },
