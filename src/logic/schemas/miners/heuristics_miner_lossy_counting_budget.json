@@ -20,7 +20,7 @@
       }
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "heuristics_miner_lossy_counting_budget"}
+    "function" : {"const" : "heuristics_miner_lossy_counting_budget()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

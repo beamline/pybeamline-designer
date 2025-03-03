@@ -12,7 +12,7 @@
     },
     "parameters": {},
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "infinite_size_directly_follows_mapper"}
+    "function" : {"const" : "infinite_size_directly_follows_mapper()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

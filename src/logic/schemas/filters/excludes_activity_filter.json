@@ -18,7 +18,7 @@
       "required": ["activity_names"]
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "excludes_activity_filter"}
+    "function" : {"const" : "excludes_activity_filter()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

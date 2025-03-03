@@ -20,7 +20,7 @@
       }
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "heuristics_miner_lossy_counting"}
+    "function" : {"const" : "heuristics_miner_lossy_counting()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

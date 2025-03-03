@@ -27,8 +27,11 @@
           {"$ref": "Behavioral conformance"},
           {"$ref": "Sliding window to log"},
 
+          {"$ref": "Sink"},
+          {"$ref": "Print sink"},
+          {"$ref": "Dummy sink"},
+
           {"$ref": "union.json"},
-          {"$ref": "sink.json"},
           {"$ref": "custom.json"}
         ]
       }

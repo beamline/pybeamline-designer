@@ -17,7 +17,7 @@
       }
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "behavioral_conformance"}
+    "function" : {"const" : "behavioral_conformance()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

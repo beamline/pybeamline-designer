@@ -5,21 +5,14 @@
     "descriptors": {
       "type": "object",
       "properties":{
-        "name": {"const": "Sink"},
+        "name": {"const": "Dummy sink"},
         "outputType": {"const":  null},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/any"}
       }
     },
-    "parameters": {
-      "type": "object",
-      "properties":{
-        "on_next": {
-          "type": "string"
-        }
-      }
-    },
+    "parameters": {},
     "outputs":{ "const":  [] },
-    "function" : {"const" : ".subscribe()"}
+    "function" : {"const" : ".subscribe(lambda _ : None)"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

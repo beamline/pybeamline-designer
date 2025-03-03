@@ -12,7 +12,7 @@
     },
     "parameters": {},
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "sliding_window_to_log"}
+    "function" : {"const" : "sliding_window_to_log()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

@@ -23,7 +23,7 @@
       "required": ["attribute_name","attribute_values"]
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "excludes_on_event_attribute_equal_filter"}
+    "function" : {"const" : "excludes_on_event_attribute_equal_filter()"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false
