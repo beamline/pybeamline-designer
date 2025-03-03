@@ -24,7 +24,7 @@ interface GuiBlock {
 }
 
 interface GuiPipeline {
-    GuiBlocks : GuiBlock[];
+    blocks : GuiBlock[];
 }
 
 
