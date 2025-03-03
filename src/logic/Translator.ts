@@ -10,20 +10,12 @@ export class Translator {
         this.ajv = ajv
     }
 
-    /*
-    Objective:
 
-    GuiPipeline -> ExtendedPipeline
-
-    for each GuiBlock in GuiPipeline:
-        apply fun(GuiBlock -> ExtendedBlock)
-
-     */
     public translatePipeline(guiPipeline: GuiPipeline): ExtendedPipeline {
         const ExtendedBlocksArr: ExtendedBlock[] = [];
 
-        for (let guiBlock of guiPipeline.GuiBlocks) {
-            //@ts-ignore
+        for (let guiBlock of guiPipeline.blocks) {
+
             ExtendedBlocksArr.push(this.translateBlock(guiBlock, guiPipeline))
         }
 
@@ -38,6 +30,7 @@ export class Translator {
         let inputCounter = 0
         const inputType = this.getType("inputType",blockSchema)
         const outputType = this.getType("outputType",blockSchema)
+        const funName = this.getFunction(blockSchema)
 
         const extendedBlockTemplate: ExtendedBlock = {
             "id": guiBlock.id,
@@ -50,7 +43,7 @@ export class Translator {
             outputs: guiBlock.outputs
         }
 
-        for (let element of guiPipeline.GuiBlocks) {
+        for (let element of guiPipeline.blocks) {
             //@ts-ignore
             if (element.outputs.includes(guiBlock.id)){inputCounter++}
         }
@@ -71,4 +64,11 @@ export class Translator {
             return sc?.schema.const
         }
     }
+
+    private getFunction(blockSchema : any) {
+        const type = blockSchema.properties.function;
+        return type.const
+    }
+
+
 }

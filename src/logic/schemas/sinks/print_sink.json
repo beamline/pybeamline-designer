@@ -12,7 +12,7 @@
     },
     "parameters": {},
     "outputs":{ "const":  [] },
-    "function" : {"const" : ".subscribe(lambda x : print(str(x)))"}
+    "function" : {"const" : ".subscribe(on_next = lambda x : print(str(x)))"}
   },
   "required": ["id", "parameters", "outputs"],
   "additionalProperties": false

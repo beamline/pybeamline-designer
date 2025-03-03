@@ -1,19 +1,21 @@
-import {Traverser} from "./deprecated/Traverser.ts"
+
 import {sanityChecker} from "./sanityChecker.ts";
 import {readFileSync} from "fs";
-import {ExtendedPipeline} from "./Syntax.js";
+import {ExtendedPipeline, GuiPipeline} from "./Syntax.js";
 import {Compiler} from "./Compiler.js";
 import {fileURLToPath} from "url";
 import {dirname, resolve} from "path";
 import Ajv from "ajv";
 import {addAllReferences, addKeywords} from "./ajvConfig.js";
+import {Translator} from "./Translator.js";
+
 
 
 
 
 function generateCode (filePathToJSON : string) {
 
-    let userPipeline : ExtendedPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
+    let userPipeline : GuiPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
     const compiler : Compiler = new Compiler();
 
 
@@ -32,20 +34,22 @@ function generateCode (filePathToJSON : string) {
 
     const schemaData= JSON.parse(readFileSync(resolve(path,"main.json"), "utf8"));
 
-    //Translation layer goes here
-    ////////////////
 
-    ///////////////
+    const translator : Translator = new Translator(ajv);
+    const extendedPipe : ExtendedPipeline = translator.translatePipeline(userPipeline)
 
+
+    //TODO: Fix sanity checker to allow for this new intermediate json to pass
+    console.log(JSON.stringify(extendedPipe))
     try {
-        sanityChecker(userPipeline, ajv, schemaData);
+        sanityChecker(extendedPipe, ajv, schemaData);
     } catch (error : any) {
         return error.message
     }
 
-    return compiler.compilePipeline(userPipeline);
+    return compiler.compilePipeline(extendedPipe);
 }
 
-//console.log(generateCode("./tests/validation/valid3.json"))
+console.log(generateCode("./tests/block/filters/excludes_activity_filter.test.json"))
 
 export { generateCode }

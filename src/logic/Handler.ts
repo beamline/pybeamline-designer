@@ -132,7 +132,8 @@ export class Handler {
             return block.parameters.functionName + "()"
         }
 
-        let resultString : string = block.descriptors.name + "(";
+        //Open bracket
+        let resultString : string = block.descriptors.name.slice(0, -1);
 
         //If there are no parameters return
         if (Object.keys(block.parameters).length == 0) {
