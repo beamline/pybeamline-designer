@@ -3,13 +3,10 @@ import {readdirSync, readFileSync} from "fs";
 import {resolve} from "path";
 import {ExtendedBlock} from "./Syntax.js";
 
-function addReference(filePath:string, ajv: Ajv) {
+function addReference(filePath:string, ajv: Ajv, reference : string) {
     const schema = JSON.parse(readFileSync(filePath, "utf8"));
     // Add schema to Ajv, using the filename (or a URL-like identifier) as the schema ID
-    console.log(schema)
-    const name = schema.properties.descriptors.properties.name.const;
-
-    ajv.addSchema(schema,name);
+    ajv.addSchema(schema,reference);
 }
 
 export function addAllReferences(directoryPath: string, ajv: Ajv){
@@ -17,7 +14,7 @@ export function addAllReferences(directoryPath: string, ajv: Ajv){
     schemasReferences.forEach((reference) => {
         const filePath = resolve(directoryPath, reference)
         if (reference.endsWith(".json")) {
-            addReference(filePath, ajv)
+            addReference(filePath, ajv, reference)
         } else {
             addAllReferences(filePath, ajv)
         }
