@@ -5,37 +5,36 @@
       "type": "array",
       "items": {
         "anyOf": [
-          {"$ref": "String test source"},
-          {"$ref": "Xes log source"},
-          {"$ref": "Xes log source from file"},
-          {"$ref": "Mqttxes source"},
-          {"$ref": "Log source"},
-          {"$ref": "Wikimedia source"},
-          {"$ref": "Ais source"},
+          {"$ref": "string_test_source.json"},
+          {"$ref": "xes_log_source.json"},
+          {"$ref": "xes_log_source_from_file.json"},
+          {"$ref": "mqttxes_source.json"},
+          {"$ref": "log_source.json"},
+          {"$ref": "wikimedia_source.json"},
+          {"$ref": "ais_source.json"},
 
-          {"$ref": "Retains on trace attribute equal filter"},
-          {"$ref": "Excludes on trace attribute equal filter"},
-          {"$ref": "Retains on event attribute equal filter"},
-          {"$ref": "Excludes on event attribute equal filter"},
-          {"$ref": "Retains activity filter"},
-          {"$ref": "Excludes activity filter"},
+          {"$ref": "retains_on_trace_attribute_equal_filter.json"},
+          {"$ref": "excludes_on_trace_attribute_equal_filter.json"},
+          {"$ref": "retains_on_event_attribute_equal_filter.json"},
+          {"$ref": "excludes_on_event_attribute_equal_filter.json"},
+          {"$ref": "retains_activity_filter.json"},
+          {"$ref": "excludes_activity_filter.json"},
 
-          {"$ref": "Infinite size directly follows mapper"},
-          {"$ref": "Simple dfg miner"},
-          {"$ref": "Heuristics miner lossy counting"},
-          {"$ref": "Heuristics miner lossy counting budget"},
-          {"$ref": "Behavioral conformance"},
-          {"$ref": "Sliding window to log"},
+          {"$ref": "infinite_size_directly_follows_mapper.json"},
+          {"$ref": "simple_dfg_miner.json"},
+          {"$ref": "heuristics_miner_lossy_counting.json"},
+          {"$ref": "heuristics_miner_lossy_counting_budget.json"},
+          {"$ref": "behavioral_conformance.json"},
+          {"$ref": "sliding_window_to_log.json"},
 
-          {"$ref": "Sink"},
-          {"$ref": "Print sink"},
-          {"$ref": "Dummy sink"},
+          {"$ref": "sink.json"},
+          {"$ref": "print_sink.json"},
+          {"$ref": "dummy_sink.json"},
 
 
-          {"$ref": "Concat"},
-          {"$ref": "Merge"},
-
-          {"$ref": "Custom"}
+          {"$ref": "concat.json"},
+          {"$ref": "merge.json"},
+          {"$ref": "custom.json"}
 
 
         ]

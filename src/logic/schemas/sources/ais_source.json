@@ -5,7 +5,7 @@
     "descriptors": {
       "type": "object",
       "properties" : {
-      "name": {"const": "Ais source"},
+      "name": {"const": "ais_source"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }

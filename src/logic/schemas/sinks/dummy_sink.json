@@ -5,7 +5,7 @@
     "descriptors": {
       "type": "object",
       "properties":{
-        "name": {"const": "Dummy sink"},
+        "name": {"const": "dummy_sink"},
         "outputType": {"const":  null},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/any"}
       }

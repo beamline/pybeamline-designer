@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const" : "Concat"},
+        "name": {"const" : "concat"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }

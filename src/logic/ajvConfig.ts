@@ -6,7 +6,10 @@ import {ExtendedBlock} from "./Syntax.js";
 function addReference(filePath:string, ajv: Ajv) {
     const schema = JSON.parse(readFileSync(filePath, "utf8"));
     // Add schema to Ajv, using the filename (or a URL-like identifier) as the schema ID
-    ajv.addSchema(schema,schema.name);
+    console.log(schema)
+    const name = schema.properties.descriptors.properties.name.const;
+
+    ajv.addSchema(schema,name);
 }
 
 export function addAllReferences(directoryPath: string, ajv: Ajv){

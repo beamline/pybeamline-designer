@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "Xes log source"},
+        "name": {"const": "xes_log_source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }

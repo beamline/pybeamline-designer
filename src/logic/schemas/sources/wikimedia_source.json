@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "Wikimedia source"},
+        "name": {"const": "wikimedia_source"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"const": null}
       }

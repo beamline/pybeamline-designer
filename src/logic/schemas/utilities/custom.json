@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "Custom"},
+        "name": {"const": "custom"},
         "outputType": { "oneOf" : [
           {"const" : null},
           {"$ref": "definitions.json#/definitions/streamTypes/any"}

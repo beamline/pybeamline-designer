@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const": "Sliding window to log"},
+        "name": {"const": "sliding_window_to_log"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/dataframe"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }

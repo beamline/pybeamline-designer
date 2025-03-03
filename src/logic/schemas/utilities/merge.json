@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-        "name": {"const" : "Merge"},
+        "name": {"const" : "merge"},
         "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
         "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
       }

@@ -5,7 +5,7 @@
     "descriptors": {
       "type" : "object",
       "properties" : {
-      "name": {"const": "Simple dfg miner"},
+      "name": {"const": "simple_dfg_miner"},
       "outputType": {"$ref": "definitions.json#/definitions/streamTypes/model"},
       "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
     }
