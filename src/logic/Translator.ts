@@ -40,7 +40,8 @@ export class Translator {
                 "outputType": outputType
             },
             parameters: guiBlock.parameters,
-            outputs: guiBlock.outputs
+            outputs: guiBlock.outputs,
+            function : funName
         }
 
         for (let element of guiPipeline.blocks) {

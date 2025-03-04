@@ -40,7 +40,7 @@ function generateCode (filePathToJSON : string) {
 
 
     //TODO: Fix sanity checker to allow for this new intermediate json to pass
-    console.log(JSON.stringify(extendedPipe))
+    //console.log(JSON.stringify(extendedPipe))
     try {
         sanityChecker(extendedPipe, ajv, schemaData);
     } catch (error : any) {
@@ -50,6 +50,6 @@ function generateCode (filePathToJSON : string) {
     return compiler.compilePipeline(extendedPipe);
 }
 
-console.log(generateCode("./tests/block/filters/excludes_activity_filter.test.json"))
+//console.log(generateCode("./tests/block/filters/retains_activity_filter.test.json"))
 
 export { generateCode }

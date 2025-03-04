@@ -14,6 +14,7 @@ interface ExtendedBlock {
     parameters: Params;
     input?: number;         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
+    function : string       //python code that calls the function
 }
 
 interface GuiBlock {

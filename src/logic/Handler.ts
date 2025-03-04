@@ -67,12 +67,13 @@ export class Handler {
         //Adds the union block to the counter if not already existing
         if (!(block.id in this.unionData)) {
             const functionName =
-                block.descriptors.name === "custom" ? block.parameters.functionName : block.descriptors.name
+                block.descriptors.name === "custom" ? block.parameters.functionName : block.function
 
             this.unionData[block.id] = {
                 //@ts-ignore
                 counter: block.input.length,
-                mergeString: `${functionName}(`,
+                //open the bracket of the union()
+                mergeString: functionName.slice(0, -1),
                 pass : false
             };
         }
@@ -133,7 +134,7 @@ export class Handler {
         }
 
         //Open bracket
-        let resultString : string = block.descriptors.name.slice(0, -1);
+        let resultString : string = block.function.slice(0, -1);
 
         //If there are no parameters return
         if (Object.keys(block.parameters).length == 0) {
