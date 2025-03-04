@@ -39,6 +39,14 @@ export function addKeywords (ajv : Ajv){
                 // We find the block with the specific ID
                 const targetBlock = blocks.find(block => block.id === outputId);
 
+
+                //Checks if the current outputType or target inputType is any
+                //if so, automatic true
+                if (targetBlock !== undefined
+                    && (targetBlock.descriptors.inputType?.includes("any")
+                        || currentBlock.descriptors.outputType.includes("any"))) {
+                    return true
+                }
                 // check input and output types match
                 //@ts-ignore
                 return targetBlock && targetBlock.descriptors.inputType.some(item => currentBlock.descriptors.outputType.includes(item));
