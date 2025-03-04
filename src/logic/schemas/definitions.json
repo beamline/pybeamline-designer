@@ -2,7 +2,7 @@
   "definitions": {
     "id": {"type":  "string","pattern": "^[0-9]+$"},
     "output": { "type": "array", "items": { "type": "string" }, "validConnections": true },
-    "input": {"type":  "string","pattern": "^[0-9]+$"},
+    "input": {"type":  "number"},
     "iterableStr" : {"oneOf": [{"type": "string"}, {"type": "string",
       "pattern": "^\\s(\\[|\\(|\\{)\\s'([^'])'(\\s,\\s'([^'])')\\s(\\]|\\)|\\})\\s*$"}]},
     "iterable" : {"oneOf": [{"type": "string"}, {"type": "string",

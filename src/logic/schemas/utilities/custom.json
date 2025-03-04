@@ -25,7 +25,7 @@
       "required" : ["functionName", "functionBody"]
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "input": {"type":  "array", "items": {"$ref": "definitions.json#/definitions/input"} }
+    "input": {"$ref": "definitions.json#/definitions/input"}
 
   },
   "required": ["id", "parameters", "outputs"]
