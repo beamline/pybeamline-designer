@@ -6,9 +6,7 @@
       "parameters": {
         "iterable": "['A', 'B', 'C']"
       },
-      "outputs": [
-        "2"
-      ]
+      "outputs": ["2"]
     },
     {
       "id": "1",
@@ -16,21 +14,13 @@
       "parameters": {
         "iterable": "['x', 'y', 'z']"
       },
-      "outputs": [
-        "2"
-      ]
+      "outputs": ["2"]
     },
     {
       "id": "2",
       "name": "concat",
       "parameters": {},
-      "input": [
-        "1",
-        "0"
-      ],
-      "outputs": [
-        "3"
-      ]
+      "outputs": ["3"]
     },
     {
       "id": "3",
