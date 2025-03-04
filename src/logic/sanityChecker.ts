@@ -33,10 +33,10 @@ function sanityChecker(diagram:Object, ajv : Ajv, schemaData : any): boolean{
             //@ts-ignore
             const stopBlock = diagram.blocks.filter(element => element.id == match)[0];
             //@ts-ignore
-            const errorBlocks = diagram.blocks.filter( element => stopBlock.outputs.includes(element.id))
+            //const errorBlocks = diagram.blocks.filter( element => stopBlock.outputs.includes(element.id))
             //@ts-ignore
-            const errorBlocksName = errorBlocks.map (element => element.descriptors.name)
-            throw (Error(`Error: at block(s) ${errorBlocksName}`))
+            //const errorBlocksName = errorBlocks.map (element => element.descriptors.name)
+            throw (Error(`Error: at block ${stopBlock}`))
 
         } else throw (Error("Unknown error"))
 

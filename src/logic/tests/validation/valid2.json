@@ -3,14 +3,16 @@
     {
       "id": "0",
       "descriptors": "string_test_source",
-      "parameters": {},
+      "parameters": {
+        "iterable" : "[]"
+      },
       "outputs": [
         "1"
       ]
     },
     {
       "id": "1",
-      "descriptors": ".subscribe",
+      "descriptors": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

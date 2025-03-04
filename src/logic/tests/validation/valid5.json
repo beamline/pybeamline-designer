@@ -7,15 +7,14 @@
         "iterable": "['x', 'y', 'z']"
       },
       "outputs": [
-        "1"
+        "2"
       ]
     },
     {
       "id": "1",
-      "descriptors": "simple_dfg_miner",
+      "descriptors": "string_test_source",
       "parameters": {
-        "model_update_frequency": 20,
-        "min_relative_frequency": 3
+        "iterable": "['A', 'B', 'C']"
       },
       "outputs": [
         "2"

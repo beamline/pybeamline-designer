@@ -36,20 +36,24 @@ function generateCode (filePathToJSON : string) {
 
 
     const translator : Translator = new Translator(ajv);
-    const extendedPipe : ExtendedPipeline = translator.translatePipeline(userPipeline)
-
+    let extendedPipe : ExtendedPipeline;
 
     //TODO: Fix sanity checker to allow for this new intermediate json to pass
     //console.log(JSON.stringify(extendedPipe))
     try {
+        extendedPipe = translator.translatePipeline(userPipeline)
+    } catch (error : any) {
+        return error
+    }
+    try {
         sanityChecker(extendedPipe, ajv, schemaData);
     } catch (error : any) {
-        return error.message
+        return "Error when validating pipeline"
     }
 
     return compiler.compilePipeline(extendedPipe);
 }
 
-//console.log(generateCode("./tests/block/filters/retains_activity_filter.test.json"))
+console.log(generateCode("./tests/validation/valid2.json"))
 
 export { generateCode }

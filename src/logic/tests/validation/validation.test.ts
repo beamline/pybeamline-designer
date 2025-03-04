@@ -11,11 +11,11 @@ let pathToTests : string = "src/logic/tests/validation/";
 //  ########
 //  Test 1 : [source] -> [sinks]
 //  ######## string_test_source is not written correctly
-/*
+
 
 test("Validation test 1", () => {
     expect(generateCode(pathToTests + "valid1.json"))
-        .toBe(
+        .toBe("Error when parsing"
 )})
 
 
@@ -24,19 +24,20 @@ test("Validation test 1", () => {
 //  Test 2 : [source] -> [sinks]
 //  ######## string_test_source is missing argument 'iterable' (required)
 
-test("Validation test 1", () => {
+test("Validation test 2", () => {
     expect(generateCode(pathToTests + "valid2.json"))
-        .toBe(
+        .toBe("Error when parsing"
 )})
+
 
 
 //  ########
 //  Test 3 : [sinks]  ERROR
 //  ########
 
-test("Validation test 1", () => {
+test("Validation test 3", () => {
     expect(generateCode(pathToTests + "valid3.json"))
-        .toBe(
+        .toBe("Error when parsing"
 )})
 
 //  ########
@@ -44,10 +45,14 @@ test("Validation test 1", () => {
 //  ########  ERROR: Output type of miner not compatible with input of filter
 
 
-test("Validation test 1", () => {
+test("Validation test 4", () => {
     expect(generateCode(pathToTests + "valid4.json"))
-        .toBe(
+        .toBe("Error when parsing"
 )})
 
 
-*/
+test("Validation test 5", () => {
+    expect(generateCode(pathToTests + "valid5.json"))
+        .toBe("Error when parsing"
+        )})
+
