@@ -2,7 +2,7 @@
   "blocks": [
     {
       "id": "0",
-      "descriptors": "string_test_source",
+      "name": "string_test_source",
       "parameters": {
         "iterable": "['x', 'y']"
       },
@@ -13,7 +13,7 @@
     },
     {
       "id": "1",
-      "descriptors": "retains_activity_filter",
+      "name": "retains_activity_filter",
       "parameters": {
         "activity_names": "'y'"
       },
@@ -23,7 +23,7 @@
     },
     {
       "id": "2",
-      "descriptors": "retains_activity_filter",
+      "name": "retains_activity_filter",
       "parameters": {
         "activity_names": "'x'"
       },
@@ -33,7 +33,7 @@
     },
     {
       "id": "3",
-      "descriptors": "sink",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },
@@ -41,7 +41,7 @@
     },
     {
       "id": "4",
-      "descriptors": "sink",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

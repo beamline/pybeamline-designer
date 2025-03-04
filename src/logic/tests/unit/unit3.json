@@ -2,7 +2,7 @@
   "blocks": [
     {
       "id": "0",
-      "descriptors": "string_test_source",
+      "name": "string_test_source",
       "parameters": {
         "iterable": "'x'"
       },
@@ -12,7 +12,7 @@
     },
     {
       "id": "1",
-      "descriptors": "string_test_source",
+      "name": "string_test_source",
       "parameters": {
         "iterable": "'y'"
       },
@@ -22,7 +22,7 @@
     },
     {
       "id": "3",
-      "descriptors": "sink",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },
@@ -30,7 +30,7 @@
     },
     {
       "id": "2",
-      "descriptors": ".subscribe",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

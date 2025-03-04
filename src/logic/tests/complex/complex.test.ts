@@ -28,7 +28,7 @@ union_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
 union_0.pipe( 
 \tsimple_dfg_miner()
-).subscribe(on_next = lambda y : print(str(y)))
+).subscribe(on_next = lambda x : print(str(x)))
 `
 )})
 
