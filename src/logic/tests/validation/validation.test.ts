@@ -15,7 +15,7 @@ let pathToTests : string = "src/logic/tests/validation/";
 
 test("Validation test 1", () => {
     expect(generateCode(pathToTests + "valid1.json"))
-        .toBe("Error when parsing"
+        .toBe("Error when parsing pipeline."
 )})
 
 
@@ -26,7 +26,8 @@ test("Validation test 1", () => {
 
 test("Validation test 2", () => {
     expect(generateCode(pathToTests + "valid2.json"))
-        .toBe("Error when parsing"
+        .toBe("Error: at block string_test_source\n" +
+            "Check for missing arguments or incorrect connections according to type."
 )})
 
 
@@ -37,7 +38,8 @@ test("Validation test 2", () => {
 
 test("Validation test 3", () => {
     expect(generateCode(pathToTests + "valid3.json"))
-        .toBe("Error when parsing"
+        .toBe("Error: at block sink\n" +
+            "Check for missing arguments or incorrect connections according to type."
 )})
 
 //  ########
@@ -47,12 +49,14 @@ test("Validation test 3", () => {
 
 test("Validation test 4", () => {
     expect(generateCode(pathToTests + "valid4.json"))
-        .toBe("Error when parsing"
+        .toBe("Error: at block simple_dfg_miner\n" +
+            "Check for missing arguments or incorrect connections according to type."
 )})
 
 
 test("Validation test 5", () => {
     expect(generateCode(pathToTests + "valid5.json"))
-        .toBe("Error when parsing"
+        .toBe("Error: at block retains_activity_filter\n" +
+            "Check for missing arguments or incorrect connections according to type."
         )})
 

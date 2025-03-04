@@ -2,7 +2,7 @@
   "blocks": [
     {
       "id": "0",
-      "descriptors": "string_source",
+      "name": "string_source",
       "parameters": {
         "iterable": "['A', 'B', 'C']"
       },
@@ -12,7 +12,7 @@
     },
     {
       "id": "1",
-      "descriptors": "sink",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

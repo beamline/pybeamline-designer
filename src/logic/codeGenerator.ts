@@ -43,17 +43,17 @@ function generateCode (filePathToJSON : string) {
     try {
         extendedPipe = translator.translatePipeline(userPipeline)
     } catch (error : any) {
-        return error
+        return "Error when parsing pipeline."
     }
     try {
         sanityChecker(extendedPipe, ajv, schemaData);
     } catch (error : any) {
-        return "Error when validating pipeline"
+        return error.message
     }
 
     return compiler.compilePipeline(extendedPipe);
 }
 
-console.log(generateCode("./tests/validation/valid2.json"))
+//console.log(generateCode("./tests/validation/valid5.json"))
 
 export { generateCode }

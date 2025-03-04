@@ -2,7 +2,7 @@
   "blocks": [
     {
       "id": "0",
-      "descriptors": "string_test_source",
+      "name": "string_test_source",
       "parameters": {
         "iterable": "['x', 'y', 'z']"
       },
@@ -12,7 +12,7 @@
     },
     {
       "id": "1",
-      "descriptors": "string_test_source",
+      "name": "string_test_source",
       "parameters": {
         "iterable": "['A', 'B', 'C']"
       },
@@ -22,7 +22,7 @@
     },
     {
       "id": "2",
-      "descriptors": "retains_activity_filter",
+      "name": "retains_activity_filter",
       "parameters": {
         "activity_names": "{'x', 'z'}"
       },
@@ -32,7 +32,7 @@
     },
     {
       "id": "3",
-      "descriptors": "sink",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },
