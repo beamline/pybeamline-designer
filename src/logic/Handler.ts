@@ -71,7 +71,7 @@ export class Handler {
 
             this.unionData[block.id] = {
                 //@ts-ignore
-                counter: block.input.length,
+                counter: block.input,
                 //open the bracket of the union()
                 mergeString: functionName.slice(0, -1),
                 pass : false
@@ -82,7 +82,7 @@ export class Handler {
         this.compiler.appendBodyString(`pipe_${this.counters.pipe} = ${currentString.slice(0, -2)})\n`);
 
         //@ts-ignore
-        this.unionData[block.id].mergeString += `${this.unionData[block.id].counter < block.input.length ? ", " : ""}pipe_${this.counters.pipe}`;
+        this.unionData[block.id].mergeString += `${this.unionData[block.id].counter < block.input ? ", " : ""}pipe_${this.counters.pipe}`;
         this.unionData[block.id].counter--;
         this.counters.pipe++;
 

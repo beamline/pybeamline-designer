@@ -30,7 +30,7 @@ export class Translator {
         let inputCounter = 0
         const inputType = this.getType("inputType",blockSchema)
         const outputType = this.getType("outputType",blockSchema)
-        const funName = this.getFunction(blockSchema)
+        const funName = this.getFunction(blockSchema,guiBlock)
 
         const extendedBlockTemplate: ExtendedBlock = {
             "id": guiBlock.id,
@@ -49,6 +49,8 @@ export class Translator {
             if (element.outputs.includes(guiBlock.id)){inputCounter++}
         }
         if (inputCounter>1){extendedBlockTemplate["input"]=inputCounter}
+        if (inputCounter == 0){extendedBlockTemplate.descriptors["inputType"]=null}
+        if (guiBlock.outputs.length<1){extendedBlockTemplate.descriptors["outputType"]=null}
 
         return extendedBlockTemplate
 
@@ -64,11 +66,13 @@ export class Translator {
             const sc = this.ajv.getSchema(type["$ref"])
             return sc?.schema.const
         }
+        return "any"
     }
 
-    private getFunction(blockSchema : any) {
+    private getFunction(blockSchema : any, guiBlock: GuiBlock) {
         const type = blockSchema.properties.function;
-        return type.const
+        if (type.const) return type.const
+        if (guiBlock.parameters.functionName){return guiBlock.parameters.functionName}
     }
 
 
