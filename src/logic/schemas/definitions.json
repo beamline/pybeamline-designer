@@ -15,7 +15,7 @@
       "heuristics": {"const":  ["heuristics"]},
       "model": {"const": ["model"]},
       "conformance": {"const":  ["conformance"]},
-      "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance", "dataframe", "tuples"]}
+      "any": {"const": ["event", "petrinet", "heuristics", "model", "conformance", "dataframe", "tuple"]}
     }
   }
 }
