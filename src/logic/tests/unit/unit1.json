@@ -12,7 +12,7 @@
     },
     {
       "id": "1",
-      "name": ".subscribe",
+      "name": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },
