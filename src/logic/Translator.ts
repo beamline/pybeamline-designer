@@ -66,7 +66,7 @@ export class Translator {
             const sc = this.ajv.getSchema(type["$ref"])
             return sc?.schema.const
         }
-        return "any"
+        return ["any"]
     }
 
     private getFunction(blockSchema : any, guiBlock: GuiBlock) {
