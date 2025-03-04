@@ -22,7 +22,7 @@
     },
     {
       "id": "2",
-      "descriptors": ".subscribe",
+      "descriptors": "sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },
