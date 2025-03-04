@@ -4,6 +4,14 @@
       "id": "0",
       "name": "ais_source",
       "parameters": {},
+      "outputs": ["1"]
+    },
+    {
+      "id": "1",
+      "name": "sink",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
+      },
       "outputs": []
     }
   ]

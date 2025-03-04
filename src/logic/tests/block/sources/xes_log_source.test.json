@@ -6,6 +6,14 @@
       "parameters": {
         "log": "pm4py.read_xes(\"test.xes\")"
       },
+      "outputs": ["1"]
+    },
+    {
+      "id": "1",
+      "name": "sink",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
+      },
       "outputs": []
     }
   ]

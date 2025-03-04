@@ -12,6 +12,7 @@ export class Handler {
     };
     private unionData: UnionData = {
     };
+    private customDefinitions : string[] = []
 
     public constructor(compiler : Compiler) {
      this.compiler = compiler;
@@ -25,6 +26,7 @@ export class Handler {
             "union" : 0
         };
         this.unionData = {};
+        this.customDefinitions = [];
     }
 
     public processBlock (block : ExtendedBlock, currentString : string) : string {
@@ -109,7 +111,10 @@ export class Handler {
     private defineCustom (block : ExtendedBlock, currentString : string) : void {
 
         //Add the function definition to the head code
-        this.compiler.appendHeadString(block.parameters.functionBody + "\n")
+        if (!(this.customDefinitions.includes(block.id))) {
+            this.compiler.appendHeadString(block.parameters.functionBody + "\n")
+            this.customDefinitions.push(block.id)
+        }
 
 
     }
@@ -130,7 +135,7 @@ export class Handler {
         //TODO: Move this block of code to the customHandler maybe
         if (block.descriptors.name === "custom") {
             //add custom function name to pipeline
-            return block.parameters.functionName + "()"
+            return block.parameters.functionName
         }
 
         //Open bracket
