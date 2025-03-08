@@ -57,7 +57,7 @@ const selectedNode = ref(null);
 
 // Handle node click event
 const onNodeClick = (event) => {
-  if (selectedNode.value == event.node){
+  if (selectedNode.value === event.node){
     selectedNode.value = null;
   }else{
     selectedNode.value = event.node;

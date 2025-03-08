@@ -25,7 +25,7 @@ import Canvas from "@/components/Canvas.vue";
   grid-template-areas:
     "header header"
     "nav main";
-  grid-gap: 0em;
+  grid-gap: 0;
 }
 header{
   grid-area: header;
