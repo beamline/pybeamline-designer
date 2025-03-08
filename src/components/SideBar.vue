@@ -41,42 +41,42 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sidebar">
-    <ul>
-      <div v-for="(jsonNames, folder) in jsonByFolder" :key="folder" @click="click_handler(jsonNames)">
-        <div class="options">{{ folder }}</div>
-      </div>
-    </ul>
-  </div>
-  <div class="subsidebar" v-if="show">
-    <ul>
-      <div v-for="(jsonNames) in namesType">
-        <div class="options">{{ jsonNames }}</div>
-      </div>
-    </ul>
+  <div class="main">
+    <div class="sidebar">
+      <ul>
+        <div v-for="(jsonNames, folder) in jsonByFolder" :key="folder" @click="click_handler(jsonNames)">
+          <div class="options">{{ folder }}</div>
+        </div>
+      </ul>
+    </div>
+    <div class="subsidebar" v-if="show">
+      <ul>
+        <div v-for="(jsonNames) in namesType">
+          <div class="options">{{ jsonNames }}</div>
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.sidebar {
-  width: 150px;
-  background-color: #333;
-  color: white;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px;
+.main {
+  display: flex; /* Align children horizontally */
+  height: 100%;
 }
-.subsidebar{
-  width: 350px;
-  background-color: #333;
+
+.sidebar {
+  width: 100%; /* Set a fixed width */
+  background-color: #2d3748;
   color: white;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 150px;
-  padding: 20px;
+  padding: 10px;
+}
+
+.subsidebar {
+  width: 100%; /* Set a fixed width */
+  background-color: #4a5568;
+  color: white;
+  padding: 10px;
 }
 .options{
   display: flex;
