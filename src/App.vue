@@ -18,8 +18,9 @@ import chat from "@/components/chat.vue";
 .sidebar{
   top:0;
   left:0;
+  z-index: 1;
 }
 .mainzone{
-
+  z-index: 0;
 }
 </style>

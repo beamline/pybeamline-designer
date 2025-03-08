@@ -9,19 +9,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="standardNode">
+  <div class="endNode">
     <p>{{ props.data.name }}</p>
-    <Handle type="source" :position="Position.Right" />
     <Handle type="target" :position="Position.Left" />
   </div>
 </template>
 
 <style scoped>
-.standardNode {
+.endNode {
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 5px;
-  color: crimson;
+  color: blue;
 }
 </style>

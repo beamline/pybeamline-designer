@@ -3,11 +3,22 @@
     <!-- VueFlow Diagram -->
     <div class="flex-1">
       <VueFlow
-          v-model="nodes"
+          :nodes="nodes"
           v-model:edges="edges"
           class="h-full"
           @node-click="onNodeClick"
-      >      <background />
+      >
+        <template #node-standard="props">
+        <StandardNode v-bind="props" />
+        </template>
+        <template #node-start="props">
+          <StartNode v-bind="props" />
+        </template>
+        <template #node-end="props">
+          <EndNode v-bind="props" />
+        </template>
+          <background />
+
       </VueFlow>
     </div>
 
@@ -48,18 +59,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import { VueFlow } from "@vue-flow/core";
+import {useVueFlow, VueFlow} from "@vue-flow/core";
 import Background from "@/components/Background.vue";
+import StandardNode from "./StandardNode.vue";
+import StartNode from "./StartNode.vue";
+import EndNode from "./EndNode.vue";
+
+
 
 // Example nodes and edges
-const nodes = ref([
-  { id: "1", type: "default", position: { x: 100, y: 100 }, data: { parameter1: "Node 1", parameter2: "papaya" , label: "node 1"} },
-  { id: "2", type: "default", position: { x: 300, y: 100 }, data: { parameter1: "Node 2" ,paramater2: "jolines", label: "node 2"} },
+const nodes = ref ([
+  { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters: {"par1":"papaya"} , label: "node 1"} },
+  { id: "2", type: "standard", position: { x: 800, y: 300}, data: { name: "example_intermediate_block"} },
+  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: { name: "example_sink" ,parameters: {"par2":"hehe"} , label: "node 3"} }
 ]);
 
-const edges = ref([{ id: "e1-2", source: "1", target: "2" }]);
+const edges = ref([
+    { id: "e1-2", source: "1", target: "2" , animated:true},
+  { id: "e2-3", source: "2", target: "3" , animated:true}
+]);
 
 const selectedNode = ref(null);
 
@@ -93,7 +113,8 @@ const onNodeClick = (event) => {
 .mamamia{
   width: 100%;
   height: 100%;
-
 }
+
+
 </style>
 
