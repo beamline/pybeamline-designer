@@ -7,6 +7,9 @@
           v-model:edges="edges"
           class="canva"
           @node-click="onNodeClick"
+          @dragover="onDragOver"
+          @dragleave="onDragLeave"
+          @drop="onDrop"
       >
         <template #node-standard="props">
           <StandardNode v-bind="props" />
@@ -39,6 +42,9 @@ import StandardNode from "./StandardNode.vue";
 import StartNode from "./StartNode.vue";
 import EndNode from "./EndNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
+import useDragAndDrop from './useDnD.js'
+
+const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 
 // Example nodes and edges
 const nodes = ref ([

@@ -4,6 +4,10 @@ const jsonByFolder = ref({});
 const namesType = ref([])
 const show = ref (false)
 
+import useDragAndDrop from './useDnD.js'
+
+const { onDragStart } = useDragAndDrop()
+
 // Load all JSON files dynamically
 const loadJSONs = async () => {
   const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
@@ -52,7 +56,7 @@ onMounted(() => {
     <div class="subsidebar" v-if="show">
       <ul>
         <div v-for="(jsonNames) in namesType">
-          <div class="options">{{ jsonNames }}</div>
+          <div class="options" :draggable="true" @dragstart="onDragStart($event, 'start')">{{ jsonNames }}</div>
         </div>
       </ul>
     </div>
