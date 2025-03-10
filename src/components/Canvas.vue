@@ -54,6 +54,7 @@ import {CustomData} from "@/components/edges.js";
 import {Connection, ConnectionMode} from "@vue-flow/core";
 import {GuiBlock, GuiPipeline} from "@/logic/Syntax.js";
 import UnionNode from "@/components/UnionNode.vue";
+import {ConnectionMode} from "@vue-flow/core";
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
