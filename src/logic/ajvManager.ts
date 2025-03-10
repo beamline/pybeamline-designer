@@ -1,7 +1,7 @@
 import Ajv, {AnySchema} from "ajv";
 import {readdirSync, readFileSync} from "fs";
 import {resolve} from "path";
-import {ExtendedBlock} from "../Syntax.js";
+import {ExtendedBlock} from "./Syntax.js";
 
 class ajvManager extends Ajv{
 
@@ -21,6 +21,7 @@ class ajvManager extends Ajv{
     }
     public getSchemabyName(name: string, clean: boolean = false){
         const schema = this.getSchema(name+".json")?.schema
+
         if (!schema) {throw new Error("There is no schema with that name")}
         if (!clean) {return schema}
         else {return this.cleanSchema(schema)}
@@ -81,6 +82,7 @@ class ajvManager extends Ajv{
     }
 
     private cleanSchema(schema: AnySchema){
+
 
     }
 
