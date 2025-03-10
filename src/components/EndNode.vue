@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import {Handle, Position} from "@vue-flow/core";
+import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });
 
+
+const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
+  return connectedEdges.length < 1;
+}
+
+
 </script>
 
 <template>
   <div class="endNode">
     <p>{{ props.data.name }}</p>
-    <Handle type="target" :position="Position.Left" />
+    <Handle type="target" :position="Position.Left" :connectable="handleConnectableIn"/>
   </div>
 </template>
 

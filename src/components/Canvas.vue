@@ -25,6 +25,9 @@
         <template #node-end="props">
           <EndNode v-bind="props" />
         </template>
+        <template #node-union="props">
+          <UnionNode v-bind="props" />
+        </template>
         <background />
       </VueFlow>
     </div>
@@ -50,6 +53,7 @@ import CustomEdge from "@/components/CustomEdge.vue";
 import {CustomData} from "@/components/edges.js";
 import {Connection, ConnectionMode} from "@vue-flow/core";
 import {GuiBlock, GuiPipeline} from "@/logic/Syntax.js";
+import UnionNode from "@/components/UnionNode.vue";
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
@@ -63,10 +67,6 @@ function onConnect(params : Connection) {
   edges.value.push(newEdge);
 }
 
-type CustomEdgeTypes = 'custom'
-
-type CustomEdge = Edge<CustomData, any, CustomEdgeTypes>
-
 import BlockSidebar from "@/components/BlockSidebar.vue";
 import useDragAndDrop from './useDnD.ts'
 
@@ -74,17 +74,17 @@ const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 
 // Example nodes and edges
 const nodes = ref ([
-  { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters: {"par1":"papaya"} , label: "node 1"} },
-  { id: "2", type: "standard", position: { x: 800, y: 300}, data: { name: "example_intermediate_block"} },
+  { id: "55", type: "start", position: { x: 500, y: 200}, data: { name: "example_source2", parameters: {"par1":"papaya"} , label: "node 1"} },
+  { id: "235", type: "standard", position: { x: 900, y: 300}, data: { name: "example_intermediate_block2"} },
+  { id: "287987", type: "union", position: { x: 400, y:200}, data: { name: "merge"} },
+
+
+  { id: "3896875", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink2" ,parameters: {"par2":"hehe"} , label: "node 3"} }
   { id: "3", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink" ,parameters: {"par2":"hehe"} , label: "node 3"} }
   { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters:{
         "iterable": "required",
         "scheduler": ""
       },required:["iterable", "scheduler"] , label: "node 1"} },
-  { id: "2", type: "standard", position: { x: 800, y: 300}, data: { name: "example_intermediate_block", parameters:{}} },
-  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: { name: "example_sink" ,parameters:{
-        "on_next": ""
-      } , label: "node 3"} }
 ]);
 
 const edges = ref<CustomEdge[]>([
