@@ -23,7 +23,7 @@ async function createNode(name: string, folder: string, id: string, position : X
     else if (schema.properties.descriptors.properties.outputType === null) {
         nodeType = "end";
     }
-    else if (schema.required.includes("input")) {
+    else if ("input" in schema) {
         nodeType = "union";
     }
 
