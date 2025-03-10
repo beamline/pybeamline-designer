@@ -1,4 +1,4 @@
-import Ajv, {AnySchema} from "ajv";
+import Ajv, {AnySchema, Schema} from "ajv";
 import {readdirSync, readFileSync} from "fs";
 import {resolve} from "path";
 import {ExtendedBlock} from "./Syntax.js";
@@ -19,7 +19,7 @@ class ajvManager extends Ajv{
         }
         return ajvManager.instance;
     }
-    public getSchemabyName(name: string, clean: boolean = false){
+    public getSchemaByName(name: string, clean: boolean = false){
         const schema = this.getSchema(name+".json")?.schema
 
         if (!schema) {throw new Error("There is no schema with that name")}
@@ -44,6 +44,20 @@ class ajvManager extends Ajv{
                 this.addAllReferences(filePath)
             }
         })
+    }
+
+    private addAllReferencesfromWeb(){
+        const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
+        const groupedFiles = {};
+
+        for (const path in files) {
+            const module = await files[path](); // Load the JSON dynamically
+            const parts = path.split("/"); // Split path to extract folder
+            const filename = parts[parts.length -1 ]; // Get the folder name (second last part)
+            this.addSchema(module, filename)
+        }
+
+
     }
 
     private addKeywords (){
@@ -81,9 +95,42 @@ class ajvManager extends Ajv{
         });
     }
 
-    private cleanSchema(schema: AnySchema){
+    private cleanSchema(schema: Schema){
 
+        const inputType = this.getType("inputType", schema)
+        const outputType = this.getType("outputType", schema)
 
+        let parameters: Record<string, any> = {}
+        Object.keys(schema.properties.parameters.properties).forEach((key => {
+            parameters[key] = '';  // Set the value to empty string
+        }))
+
+        const cleanedSchema = {
+            descriptors: {
+                "name": schema.properties.descriptors.properties.name.const,
+                "inputType": inputType,
+                "outputType": outputType
+            },
+            parameters: parameters,
+            required: schema.properties.parameters.required,
+            function:  schema.properties.function.const
+        }
+
+        if (schema.required.includes("input")) {cleanedSchema["input"]: "number" }
+
+        return cleanedSchema
+
+    }
+
+    private getType(typeName:string, schema : any){
+        const type = schema.properties.descriptors.properties[typeName]
+        if ("const" in type){
+            return type.const
+        }
+        if ("$ref" in type) {
+            const sc = this.getSchema(type["$ref"])
+            return sc?.schema.const
+        }
     }
 
 
