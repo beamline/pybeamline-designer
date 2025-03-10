@@ -9,8 +9,13 @@ const props = defineProps({
 
 
 const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
-  return connectedEdges.length < 1;
-}
+  let count = 0;
+  for (let edge of connectedEdges) {
+    if (edge.target === node.id) {
+      count++;
+    }
+  }
+  return count < 1;}
 
 
 </script>

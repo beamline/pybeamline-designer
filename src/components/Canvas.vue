@@ -34,8 +34,7 @@
 
     <div
         v-if="selectedNode"
-        class="optionTab"
-    >
+        class="optionTab" >
       <BlockSidebar v-model="selectedNode" />
     </div>
 
@@ -54,7 +53,6 @@ import {CustomData} from "@/components/edges.js";
 import {Connection, ConnectionMode} from "@vue-flow/core";
 import {GuiBlock, GuiPipeline} from "@/logic/Syntax.js";
 import UnionNode from "@/components/UnionNode.vue";
-import {ConnectionMode} from "@vue-flow/core";
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
@@ -80,8 +78,8 @@ const nodes = ref ([
   { id: "287987", type: "union", position: { x: 400, y:200}, data: { name: "merge"} },
 
 
-  { id: "3896875", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink2" ,parameters: {"par2":"hehe"} , label: "node 3"} }
-  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink" ,parameters: {"par2":"hehe"} , label: "node 3"} }
+  { id: "3896875", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink2" ,parameters: {"par2":"hehe"} , label: "node 3"} },
+  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink", parameters: {"par2":"hehe"} , label: "node 3"} },
   { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters:{
         "iterable": "required",
         "scheduler": ""
@@ -89,7 +87,6 @@ const nodes = ref ([
 ]);
 
 const edges = ref<CustomEdge[]>([
-  { id: "e1-2", source: "1", target: "2" , type: "custom", animated:true},
 ]);
 
 const selectedNode = ref(null);
