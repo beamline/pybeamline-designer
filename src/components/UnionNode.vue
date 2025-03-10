@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
-import * as string_decoder from "node:string_decoder";
+
+
 
 
 const props = defineProps({

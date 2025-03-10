@@ -2,6 +2,7 @@
 import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 
 
+
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });

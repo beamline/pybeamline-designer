@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
+import {useVueFlow} from "@vue-flow/core";
 
 
 const props = defineProps({

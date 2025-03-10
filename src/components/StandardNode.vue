@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
-import * as string_decoder from "node:string_decoder";
+
 
 
 const props = defineProps({
@@ -18,7 +18,7 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
 <template>
   <div class="standardNode">
     <p>{{ props.data.name }}</p>
-    <Handle type="source" :position="Position.Right"  />
+    <Handle type="source" :position="Position.Right" />
     <Handle type="target" :position="Position.Left" :connectable="handleConnectableIn"/>
   </div>
 </template>
@@ -31,4 +31,6 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   border-radius: 5px;
   color: crimson;
 }
+
+
 </style>
