@@ -80,7 +80,7 @@ export default function useDragAndDrop() {
      *
      * @param {DragEvent} event
      */
-    function onDrop(event: DragEvent) {
+    async function onDrop(event: DragEvent) {
         const position = screenToFlowCoordinate({
             x: event.clientX,
             y: event.clientY,
@@ -88,14 +88,8 @@ export default function useDragAndDrop() {
 
         const nodeId = getId()
 
-        const newNode = {
-            id: nodeId,
-            type: "standard",
-            position,
-            data: { name: draggedType.value },
-        }
 
-        //const newNode = createNode(draggedType.value,draggedClassifier.value, nodeId)
+        const newNode = await createNode(draggedType.value, draggedClassifier.value, nodeId, position)
 
 
         /**
@@ -103,9 +97,12 @@ export default function useDragAndDrop() {
          *
          * We can hook into events even in a callback, and we can remove the event listener after it's been called.
          */
-        const { off } = onNodesInitialized(() => {
+        const {off} = onNodesInitialized(() => {
             updateNode(nodeId, (node) => ({
-                position: { x: node.position.x - node.dimensions.width / 2, y: node.position.y - node.dimensions.height / 2 },
+                position: {
+                    x: node.position.x - node.dimensions.width / 2,
+                    y: node.position.y - node.dimensions.height / 2
+                },
             }))
 
             off()

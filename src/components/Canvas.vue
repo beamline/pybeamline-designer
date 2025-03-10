@@ -48,12 +48,12 @@ const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 
 // Example nodes and edges
 const nodes = ref ([
-  { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", "properties":{
+  { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters:{
         "iterable": "required",
         "scheduler": ""
       },required:["iterable", "scheduler"] , label: "node 1"} },
-  { id: "2", type: "standard", position: { x: 800, y: 300}, data: { name: "example_intermediate_block", properties:{}} },
-  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: { name: "example_sink" ,"properties":{
+  { id: "2", type: "standard", position: { x: 800, y: 300}, data: { name: "example_intermediate_block", parameters:{}} },
+  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: { name: "example_sink" ,parameters:{
         "on_next": ""
       } , label: "node 3"} }
 ]);

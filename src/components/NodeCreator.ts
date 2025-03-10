@@ -1,6 +1,4 @@
 import {XYPosition} from "@vue-flow/core";
-import {getEventHandlerParams} from "@vue-flow/core/dist/utils/index.js";
-import {validateAdditionalItems} from "ajv/dist/vocabularies/applicator/additionalItems.js";
 
 
 async function createNode(name: string, folder: string, id: string, position : XYPosition) {
@@ -8,9 +6,10 @@ async function createNode(name: string, folder: string, id: string, position : X
     const files = import.meta.glob("/src/logic/schemas/**/*.json");
     const module = await files[path]();
     const schema = module.default
+    let keys: string[] = []
 
-
-    const keys = Object.keys(schema.properties.parameters.properties);
+    if (schema.properties.parameters.properties){    keys = Object.keys(schema.properties.parameters.properties);}
+    else {keys = []}
     let params = {} as { [key: string]: string | number };
     for (let key of keys) {
         params[key] = "";
@@ -32,7 +31,7 @@ async function createNode(name: string, folder: string, id: string, position : X
     const node = {
         id : id,
         position,
-        type : nodeType,
+        type : "standard",
         data : {
             name : name,
             inputType : schema.properties.descriptors.properties.inputType,
