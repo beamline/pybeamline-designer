@@ -50,4 +50,13 @@ interface UnionData {
     }
 }
 
-export { ExtendedPipeline, Descriptor, Params, ExtendedBlock, Graph, UnionData , GuiBlock, GuiPipeline};
+interface cleanSchema {
+    descriptors : Descriptor,
+    parameters : Params,
+    required : string[],
+    input? : string,
+    function : string
+}
+
+
+export { ExtendedPipeline, Descriptor, Params, ExtendedBlock, Graph, UnionData , GuiBlock, GuiPipeline, cleanSchema};

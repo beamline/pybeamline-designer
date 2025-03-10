@@ -1,13 +1,14 @@
-import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline} from "./Syntax.js";
-import Ajv from "ajv";
+import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline, cleanSchema} from "./Syntax.js";
+
+import ajvManager from "./ajvManager.js";
 
 
 export class Translator {
 
-    private ajv: Ajv
+    private ajv: ajvManager
 
-    public constructor(ajv: Ajv) {
-        this.ajv = ajv
+    public constructor() {
+        this.ajv = ajvManager.getInstance();
     }
 
 
@@ -26,54 +27,39 @@ export class Translator {
 
     public translateBlock(guiBlock: GuiBlock, guiPipeline: GuiPipeline): ExtendedBlock {
 
-        const blockSchema = this.ajv.getSchema(guiBlock.name+".json")?.schema;
+        const blockSchema : cleanSchema = this.ajv.getSchemaByName(guiBlock.name, true);
         let inputCounter = 0
-        const inputType = this.getType("inputType",blockSchema)
-        const outputType = this.getType("outputType",blockSchema)
-        const funName = this.getFunction(blockSchema,guiBlock)
+
 
         const extendedBlockTemplate: ExtendedBlock = {
             "id": guiBlock.id,
             descriptors: {
                 "name": guiBlock.name,
-                "inputType": inputType,
-                "outputType": outputType
+                "inputType": blockSchema.descriptors.inputType,
+                "outputType": blockSchema.descriptors.outputType
             },
             parameters: guiBlock.parameters,
             outputs: guiBlock.outputs,
-            function : funName
+            function : blockSchema.function
         }
 
         for (let element of guiPipeline.blocks) {
             //@ts-ignore
             if (element.outputs.includes(guiBlock.id)){inputCounter++}
         }
-        if (inputCounter>1){extendedBlockTemplate["input"]=inputCounter}
-        if (inputCounter == 0){extendedBlockTemplate.descriptors["inputType"]=null}
-        if (guiBlock.outputs.length<1){extendedBlockTemplate.descriptors["outputType"]=null}
+        if (inputCounter > 1) {
+            extendedBlockTemplate["input"] = inputCounter
+        }
+        if (inputCounter == 0) {
+            extendedBlockTemplate.descriptors["inputType"] = null
+        }
+        if (guiBlock.outputs.length<1){
+            extendedBlockTemplate.descriptors["outputType"] = null
+        }
 
         return extendedBlockTemplate
 
 
     }
-
-    private getType(typeName:string,blockSchema : any){
-        const type = blockSchema.properties.descriptors.properties[typeName]
-        if ("const" in type){
-            return type.const
-        }
-        if ("$ref" in type) {
-            const sc = this.ajv.getSchema(type["$ref"])
-            return sc?.schema.const
-        }
-        return ["any"]
-    }
-
-    private getFunction(blockSchema : any, guiBlock: GuiBlock) {
-        const type = blockSchema.properties.function;
-        if (type.const) return type.const
-        if (guiBlock.parameters.functionName){return guiBlock.parameters.functionName}
-    }
-
 
 }

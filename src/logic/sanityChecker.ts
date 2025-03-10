@@ -1,17 +1,15 @@
-import Ajv from "ajv";
-import { readFileSync,readdirSync } from "fs";
-import {resolve, dirname} from "path";
-import { fileURLToPath } from "url";
+
 import {ExtendedBlock, ExtendedPipeline} from "./Syntax.js";
-import {addKeywords, addAllReferences} from "./ajvConfig.js";
+import ajvManager from "./ajvManager.js";
 export {sanityChecker}
 
 
-function sanityChecker(diagram:ExtendedPipeline, ajv : Ajv, schemaData : any): boolean{
+function sanityChecker(diagram:ExtendedPipeline, schemaData : any): boolean{
 
     // Read the schema from a separate file
 
 
+    const ajv : ajvManager = ajvManager.getInstance();
     // Create a schema instance
     const validator = ajv.compile(schemaData);
 
