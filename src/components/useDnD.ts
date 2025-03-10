@@ -1,5 +1,6 @@
 import { useVueFlow } from '@vue-flow/core'
 import { ref, watch } from 'vue'
+import {createNode} from "./NodeCreator.js"
 
 let id = 0
 
@@ -18,13 +19,14 @@ const state = {
     /**
      * The type of the node being dragged.
      */
-    draggedType: ref(null),
+    draggedType: ref(""),
+    draggedClassifier: ref(""),
     isDragOver: ref(false),
     isDragging: ref(false),
 }
 
 export default function useDragAndDrop() {
-    const { draggedType, isDragOver, isDragging } = state
+    const { draggedType,draggedClassifier, isDragOver, isDragging } = state
 
     const { addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode } = useVueFlow()
 
@@ -32,13 +34,14 @@ export default function useDragAndDrop() {
         document.body.style.userSelect = dragging ? 'none' : ''
     })
 
-    function onDragStart(event, type) {
+    function onDragStart(event: DragEvent, type: string, classifier: string) {
         if (event.dataTransfer) {
             event.dataTransfer.setData('application/vueflow', type)
             event.dataTransfer.effectAllowed = 'move'
         }
 
         draggedType.value = type
+        draggedClassifier.value = classifier
         isDragging.value = true
 
         document.addEventListener('drop', onDragEnd)
@@ -49,7 +52,7 @@ export default function useDragAndDrop() {
      *
      * @param {DragEvent} event
      */
-    function onDragOver(event) {
+    function onDragOver(event: DragEvent) {
         event.preventDefault()
 
         if (draggedType.value) {
@@ -68,7 +71,7 @@ export default function useDragAndDrop() {
     function onDragEnd() {
         isDragging.value = false
         isDragOver.value = false
-        draggedType.value = null
+        draggedType.value = ""
         document.removeEventListener('drop', onDragEnd)
     }
 
@@ -77,7 +80,7 @@ export default function useDragAndDrop() {
      *
      * @param {DragEvent} event
      */
-    function onDrop(event) {
+    function onDrop(event: DragEvent) {
         const position = screenToFlowCoordinate({
             x: event.clientX,
             y: event.clientY,
@@ -87,10 +90,13 @@ export default function useDragAndDrop() {
 
         const newNode = {
             id: nodeId,
-            type: draggedType.value,
+            type: "standard",
             position,
-            data: { label: nodeId },
+            data: { name: draggedType.value },
         }
+
+        //const newNode = createNode(draggedType.value,draggedClassifier.value, nodeId)
+
 
         /**
          * Align node position after drop, so it's centered to the mouse
@@ -106,7 +112,6 @@ export default function useDragAndDrop() {
         })
 
         addNodes(newNode)
-        console.log(position)
     }
 
     return {

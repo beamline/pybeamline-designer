@@ -42,7 +42,7 @@ import StandardNode from "./StandardNode.vue";
 import StartNode from "./StartNode.vue";
 import EndNode from "./EndNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
-import useDragAndDrop from './useDnD.js'
+import useDragAndDrop from './useDnD.ts'
 
 const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 

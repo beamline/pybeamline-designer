@@ -3,8 +3,9 @@ import { ref, onMounted } from "vue";
 const jsonByFolder = ref({});
 const namesType = ref([])
 const show = ref (false)
+const jsonFolder = ref("")
 
-import useDragAndDrop from './useDnD.js'
+import useDragAndDrop from './useDnD.ts'
 
 const { onDragStart } = useDragAndDrop()
 
@@ -31,9 +32,10 @@ const loadJSONs = async () => {
   jsonByFolder.value = groupedFiles;
 };
 
-function click_handler(jsonNames: string[]){
+function click_handler(jsonNames: string[], folder:string){
   if ( namesType.value == jsonNames){  show.value = !show.value} else{
     namesType.value = jsonNames
+    jsonFolder.value = folder
     show.value = true
   }
 
@@ -48,7 +50,7 @@ onMounted(() => {
   <div class="main">
     <div class="sidebar">
       <ul>
-        <div v-for="(jsonNames, folder) in jsonByFolder" :key="folder" @click="click_handler(jsonNames)">
+        <div v-for="(jsonNames, folder) in jsonByFolder" :key="folder" @click="click_handler(jsonNames, folder)">
           <div class="options">{{ folder }}</div>
         </div>
       </ul>
@@ -56,7 +58,7 @@ onMounted(() => {
     <div class="subsidebar" v-if="show">
       <ul>
         <div v-for="(jsonNames) in namesType">
-          <div class="options" :draggable="true" @dragstart="onDragStart($event, 'start')">{{ jsonNames }}</div>
+          <div class="options" :draggable="true" @dragstart="onDragStart($event, jsonNames, jsonFolder)">{{ jsonNames }}</div>
         </div>
       </ul>
     </div>
