@@ -46,7 +46,7 @@ class ajvManager extends Ajv{
         })
     }
 
-    private addAllReferencesfromWeb(){
+    private async addAllReferencesfromWeb(){
         const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
         const groupedFiles = {};
 
@@ -116,7 +116,7 @@ class ajvManager extends Ajv{
             function:  schema.properties.function.const
         }
 
-        if (schema.required.includes("input")) {cleanedSchema["input"]: "number" }
+        if (schema.required.includes("input")) {cleanedSchema["input"] = "number" }
 
         return cleanedSchema
 
