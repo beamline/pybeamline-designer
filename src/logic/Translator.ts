@@ -16,7 +16,6 @@ export class Translator {
         const ExtendedBlocksArr: ExtendedBlock[] = [];
 
         for (let guiBlock of guiPipeline.blocks) {
-
             ExtendedBlocksArr.push(this.translateBlock(guiBlock, guiPipeline))
         }
 
@@ -32,7 +31,7 @@ export class Translator {
 
 
         const extendedBlockTemplate: ExtendedBlock = {
-            "id": guiBlock.id,
+            id: guiBlock.id,
             descriptors: {
                 "name": guiBlock.name,
                 "inputType": blockSchema.descriptors.inputType,

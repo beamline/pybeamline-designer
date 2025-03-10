@@ -1,16 +1,23 @@
 import Ajv, {AnySchema, Schema} from "ajv";
 import {readdirSync, readFileSync} from "fs";
-import {resolve} from "path";
+import {dirname, resolve} from "path";
 import {ExtendedBlock} from "./Syntax.js";
+import {fileURLToPath} from "url";
 
 class ajvManager extends Ajv{
 
     private static instance: ajvManager;
     private constructor(){
         super({ allErrors: true })
+
+        // Create __filename and __dirname
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const path= resolve(__dirname, "./schemas")
+
         this.addKeywords()
         //adding reference schemas
-        this.addAllReferences("/src/logic/schemas")
+        this.addAllReferences(path)
     }
     // Public method to get the instance of the Singleton
     public static getInstance(): ajvManager {
@@ -101,9 +108,12 @@ class ajvManager extends Ajv{
         const outputType = this.getType("outputType", schema)
 
         let parameters: Record<string, any> = {}
-        Object.keys(schema.properties.parameters.properties).forEach((key => {
-            parameters[key] = '';  // Set the value to empty string
-        }))
+
+        if (schema.properties.parameters.properties){
+            Object.keys(schema.properties.parameters.properties).forEach((key => {
+                parameters[key] = '';  // Set the value to empty string
+            }))
+        }
 
         const cleanedSchema = {
             descriptors: {
@@ -118,6 +128,7 @@ class ajvManager extends Ajv{
 
         if (schema.required.includes("input")) {cleanedSchema["input"] = "number" }
 
+
         return cleanedSchema
 
     }
@@ -131,6 +142,7 @@ class ajvManager extends Ajv{
             const sc = this.getSchema(type["$ref"])
             return sc?.schema.const
         }
+        return ["any"]
     }
 
 
