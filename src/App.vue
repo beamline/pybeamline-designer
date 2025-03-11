@@ -1,7 +1,10 @@
-<script setup>
+<script setup lang="ts">
 
 import SideBar from "@/components/SideBar.vue";
 import Canvas from "@/components/Canvas.vue";
+import ajvManager from "@/logic/ajvManager.js";
+ajvManager.getInstance()
+
 </script>
 
 <template>

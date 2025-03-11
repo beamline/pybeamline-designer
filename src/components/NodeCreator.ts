@@ -7,9 +7,6 @@ async function createNode(name: string, folder: string, id: string, position : X
 
     const ajv = ajvManager.getInstance()
     const schema : cleanSchema = ajv.getSchemaByName(name,  true);
-    let keys: string[] = []
-
-    keys = Object.keys(schema.parameters)
 
     let nodeType = "standard";
 
