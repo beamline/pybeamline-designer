@@ -12,6 +12,7 @@
           @dragover="onDragOver"
           @dragleave="onDragLeave"
           @drop="onDrop"
+          :connection-radius="20"
       >
         <template #edge-custom="customEdgeProps">
           <CustomEdge v-bind="customEdgeProps" />
@@ -73,18 +74,7 @@ const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 
 // Example nodes and edges
 const nodes = ref ([
-  { id: "55", type: "start", position: { x: 500, y: 200}, data: { name: "example_source2", parameters: {"par1":"papaya"} , label: "node 1"} },
-  { id: "235", type: "standard", position: { x: 900, y: 300}, data: { name: "example_intermediate_block2"} },
-  { id: "287987", type: "union", position: { x: 400, y:200}, data: { name: "merge"} },
-
-
-  { id: "3896875", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink2" ,parameters: {"par2":"hehe"} , label: "node 3"} },
-  { id: "3", type: "end", position: { x: 1200, y: 200 }, data: {  name: "example_sink", parameters: {"par2":"hehe"} , label: "node 3"} },
-  { id: "1", type: "start", position: { x: 400, y: 200}, data: { name: "example_source", parameters:{
-        "iterable": "required",
-        "scheduler": ""
-      },required:["iterable", "scheduler"] , label: "node 1"} },
-]);
+  ]);
 
 const edges = ref<CustomEdge[]>([
 ]);
