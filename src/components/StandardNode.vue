@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Connection, connectionExists, Handle, HandleConnectableFunc, Position, useVueFlow} from "@vue-flow/core";
+import {Connection, Handle, HandleConnectableFunc, Position, useVueFlow} from "@vue-flow/core";
 const {getNodes} = useVueFlow();
 
 const props = defineProps({

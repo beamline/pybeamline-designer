@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import {Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
+import {Connection, Handle, Position, useVueFlow} from "@vue-flow/core";
+const {getNodes} = useVueFlow();
 
 
 
@@ -10,14 +11,31 @@ const props = defineProps({
 });
 
 
+const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
+  return arr1.some(item => arr2.includes(item));
+};
+
+const isValidConnection = (connection : Connection) : boolean => {
+  const nodes = getNodes.value;
+
+  const outNode = nodes.filter(elemt => elemt.id === connection.source)[0]
+  const inNode = nodes.filter(elemt => elemt.id === connection.target)[0]
+
+  if (outNode.data.outputType.includes("any") || inNode.data.inputType.includes("any")) {
+    return true
+  }
+
+  return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
+}
+
 
 </script>
 
 <template>
   <div class="standardNode">
     <p>{{ props.data.name }}</p>
-    <Handle type="source" :position="Position.Right"  />
-    <Handle type="target" :position="Position.Left"/>
+    <Handle type="source" :position="Position.Right" :is-valid-connection="isValidConnection" />
+    <Handle type="target" :position="Position.Left" :is-valid-connection="isValidConnection"/>
   </div>
 </template>
 
