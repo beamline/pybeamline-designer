@@ -1,26 +1,22 @@
 import {XYPosition} from "@vue-flow/core";
+import ajvManager from "../logic/ajvManager.js";
+import {cleanSchema} from "../logic/Syntax.js";
 
 
 async function createNode(name: string, folder: string, id: string, position : XYPosition) {
-    const path = `/src/logic/schemas/${folder}/${name}.json`;
-    const files = import.meta.glob("/src/logic/schemas/**/*.json");
-    const module = await files[path]();
-    const schema = module.default
+
+    const ajv = ajvManager.getInstance()
+    const schema : cleanSchema = ajv.getSchemaByName(name,  true);
     let keys: string[] = []
 
-    if (schema.properties.parameters.properties){    keys = Object.keys(schema.properties.parameters.properties);}
-    else {keys = []}
-    let params = {} as { [key: string]: string | number };
-    for (let key of keys) {
-        params[key] = "";
-    }
+    keys = Object.keys(schema.parameters)
 
     let nodeType = "standard";
 
-    if (schema.properties.descriptors.properties.inputType === null) {
+    if (schema.descriptors.inputType === null) {
         nodeType = "start";
     }
-    else if (schema.properties.descriptors.properties.outputType === null) {
+    else if (schema.descriptors.outputType === null) {
         nodeType = "end";
     }
     else if ("input" in schema) {
@@ -31,12 +27,12 @@ async function createNode(name: string, folder: string, id: string, position : X
     const node = {
         id : id,
         position,
-        type : "standard",
+        type : nodeType,
         data : {
             name : name,
-            inputType : schema.properties.descriptors.properties.inputType,
-            outputType : schema.properties.descriptors.properties.outputType,
-            parameters : params
+            inputType : schema.descriptors.inputType,
+            outputType : schema.descriptors.outputType,
+            parameters : schema.parameters
         }
     }
 
