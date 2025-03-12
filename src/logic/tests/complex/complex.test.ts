@@ -1,5 +1,6 @@
 import { generateCode } from "../../codeGenerator.ts";
 import { expect, test } from 'vitest';
+import {readFileSync} from "fs";
 
 
 //Initial setup
@@ -15,7 +16,7 @@ let importString : string = "from pybeamline import *\nfrom reactivex import mer
 
 
 test("Complex pipeline 1", () => {
-    expect(generateCode(pathToTests + "complex1.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "complex1.json", "utf-8"))))
         .toBe(
 importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
@@ -41,7 +42,7 @@ union_0.pipe(
 
 
 test("Complex pipeline 2", () => {
-    expect(generateCode(pathToTests + "complex2.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "complex2.json", "utf-8"))))
         .toBe(
 importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
@@ -65,7 +66,7 @@ union_1.pipe(
 
 
 test("Complex pipeline 3 - 3 sources merging", () => {
-    expect(generateCode(pathToTests + "complex3.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "complex3.json", "utf-8"))))
         .toBe(
             importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
@@ -88,7 +89,7 @@ union_0.pipe(
 
 
 test("Complex pipeline 4 - long single pipeline", () => {
-    expect(generateCode(pathToTests + "complex4.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "complex4.json", "utf-8"))))
         .toBe(
             importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C', 'D', 'E'])

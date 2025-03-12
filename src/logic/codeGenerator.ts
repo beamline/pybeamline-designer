@@ -6,13 +6,9 @@ import {Compiler} from "./Compiler.js";
 import {Translator} from "./Translator.js";
 
 
+function generateCode (userPipeline : GuiPipeline) {
 
-
-
-
-function generateCode (filePathToJSON : string) {
-
-    let userPipeline : GuiPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
+    //let userPipeline : GuiPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
     const compiler : Compiler = new Compiler();
 
 

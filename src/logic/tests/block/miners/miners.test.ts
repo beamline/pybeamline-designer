@@ -1,5 +1,6 @@
 import { generateCode } from "../../../codeGenerator.ts";
 import { expect, test } from 'vitest';
+import {readFileSync} from "fs";
 
 
 //Initial setup
@@ -12,7 +13,7 @@ let importString : string = "from pybeamline import *\nfrom reactivex import mer
 
 
 test("sliding_window_to_log", () => {
-    expect(generateCode(pathToTests + "sliding_window_to_log.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "sliding_window_to_log.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -22,7 +23,7 @@ source_0.pipe(
 })
 
 test("simple_dfg_miner", () => {
-    expect(generateCode(pathToTests + "simple_dfg_miner.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "simple_dfg_miner.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -33,7 +34,7 @@ source_0.pipe(
 
 
 test("infinite_size_directly_follows_mapper", () => {
-    expect(generateCode(pathToTests + "infinite_size_directly_follows_mapper.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "infinite_size_directly_follows_mapper.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -43,7 +44,7 @@ source_0.pipe(
 })
 
 test("heuristics_miner_lossy_counting_budget", () => {
-    expect(generateCode(pathToTests + "heuristics_miner_lossy_counting_budget.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "heuristics_miner_lossy_counting_budget.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -53,7 +54,7 @@ source_0.pipe(
 })
 
 test("heuristics_miner_lossy_counting", () => {
-    expect(generateCode(pathToTests + "heuristics_miner_lossy_counting.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "heuristics_miner_lossy_counting.test.json", "utf-8"))))
         .toBe(importString +
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -63,7 +64,7 @@ source_0.pipe(
 })
 
 test("behavioral_conformance", () => {
-    expect(generateCode(pathToTests + "behavioral_conformance.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "behavioral_conformance.test.json", "utf-8"))))
         .toBe(importString +
             `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 

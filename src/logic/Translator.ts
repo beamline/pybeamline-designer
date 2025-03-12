@@ -1,6 +1,7 @@
 import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline, cleanSchema} from "./Syntax.js";
 
 import ajvManager from "./ajvManager.js";
+import {GraphEdge, GraphNode} from "@vue-flow/core";
 
 
 export class Translator {
@@ -11,6 +12,32 @@ export class Translator {
         this.ajv = ajvManager.getInstance();
     }
 
+    public getGuiPipelineFromVue (nodes : GraphNode[], edges : GraphEdge[]) {
+        let guiBlocksArr = [];
+        for (let block of nodes) {
+            //New array of output ids for each block, to add to the GuiBlock
+            let blockOuts : string[] = [];
+            for (let edge of edges) {
+                if (block.id === edge.source) {
+                    blockOuts.push(edge.target)
+
+                }
+            }
+            let guiBlock : GuiBlock = {
+                id : block.id,
+                name : block.data.name,
+                parameters : block.data.parameters,
+                outputs : blockOuts
+
+            }
+            guiBlocksArr.push(guiBlock);
+        }
+        const guiPipe : GuiPipeline = {
+            blocks : guiBlocksArr
+        }
+
+        return guiPipe
+    }
 
     public translatePipeline(guiPipeline: GuiPipeline): ExtendedPipeline {
         const ExtendedBlocksArr: ExtendedBlock[] = [];

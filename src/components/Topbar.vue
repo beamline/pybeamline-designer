@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import {generateCode} from "@/logic/codeGenerator.js";
-import {useVueFlow} from "@vue-flow/core";
+
+
 
 
 const editor = ref("");
@@ -39,6 +40,7 @@ const downloadPythonFile = () => {
 const closeEditor = () => {
   editor.value=""
 }
+
 
 
 
