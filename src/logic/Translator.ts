@@ -1,15 +1,15 @@
 import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline, CleanSchema} from "./Syntax.js";
 
-import ajvManager from "./ajvManager.js";
+import AjvManager from "./AjvManager.js";
 import {GraphEdge, GraphNode} from "@vue-flow/core";
 
 
 export class Translator {
 
-    private ajv: ajvManager
+    private ajv: AjvManager
 
     public constructor() {
-        this.ajv = ajvManager.getInstance();
+        this.ajv = AjvManager.getInstance();
     }
 
     public getGuiPipelineFromVue (nodes : GraphNode[], edges : GraphEdge[]) {

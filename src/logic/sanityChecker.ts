@@ -1,5 +1,5 @@
 import { ExtendedPipeline} from "./Syntax.js";
-import ajvManager from "./ajvManager.js";
+import AjvManager from "./AjvManager.js";
 export {sanityChecker}
 
 
@@ -8,7 +8,7 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
     // Read the schema from a separate file
 
 
-    const ajv : ajvManager = ajvManager.getInstance();
+    const ajv : AjvManager = AjvManager.getInstance();
     // Create a schema instance
     const validator = ajv.compile(ajv.getSchemaByName("main"));
 

@@ -1,12 +1,12 @@
-import Ajv, {AnySchema, Schema} from "ajv";
+import Ajv from "ajv";
 import {ExtendedBlock, CleanSchema, BlockSchema} from "./Syntax.js";
 //import {readdirSync, readFileSync} from "fs";
 //import {dirname, resolve} from "path";
 //import {fileURLToPath} from "url";
 
-class ajvManager extends Ajv{
+class AjvManager extends Ajv{
 
-    private static instance: ajvManager;
+    private static instance: AjvManager;
     private constructor(){
         super({ allErrors: true })
 
@@ -14,19 +14,20 @@ class ajvManager extends Ajv{
         //const __filename = fileURLToPath(import.meta.url);
         //const __dirname = dirname(__filename);
         //const path= resolve(__dirname, "./schemas")
-        //this.addAllReferences(path)
 
         this.addKeywords()
         //adding reference schemas
         this.addAllReferencesfromWeb()
+        //this.addAllReferences(path)
+
 
     }
     // Public method to get the instance of the Singleton
-    public static getInstance(): ajvManager {
-        if (!ajvManager.instance) {
-            ajvManager.instance = new ajvManager(); // Create instance if it doesn't exist
+    public static getInstance(): AjvManager {
+        if (!AjvManager.instance) {
+            AjvManager.instance = new AjvManager(); // Create instance if it doesn't exist
         }
-        return ajvManager.instance;
+        return AjvManager.instance;
     }
     public getSchemaByName(name: string) {
         const schema = this.getSchema(name+".json")?.schema
@@ -161,4 +162,4 @@ class ajvManager extends Ajv{
 
 }
 
-export default ajvManager
+export default AjvManager

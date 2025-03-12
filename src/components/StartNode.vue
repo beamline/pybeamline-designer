@@ -14,7 +14,6 @@ const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
 
 const isValidConnection = (connection : Connection) : boolean => {
   const nodes = getNodes.value;
-  console.log(nodes)
 
   const outNode = nodes.filter(elemt => elemt.id === connection.source)[0]
   const inNode = nodes.filter(elemt => elemt.id === connection.target)[0]

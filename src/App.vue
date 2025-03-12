@@ -2,9 +2,9 @@
 
 import SideBar from "@/components/SideBar.vue";
 import Canvas from "@/components/Canvas.vue";
-import ajvManager from "@/logic/ajvManager.ts";
+import AjvManager from "@/logic/AjvManager.js";
 import Topbar from "@/components/Topbar.vue";
-ajvManager.getInstance()
+AjvManager.getInstance()
 
 </script>
 
