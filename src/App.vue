@@ -2,14 +2,15 @@
 
 import SideBar from "@/components/SideBar.vue";
 import Canvas from "@/components/Canvas.vue";
-import ajvManager from "@/logic/ajvManager.js";
+import ajvManager from "@/logic/ajvManager.ts";
+import Topbar from "@/components/Topbar.vue";
 ajvManager.getInstance()
 
 </script>
 
 <template>
   <div class="container">
-    <header>HEADER</header>
+    <header><topbar/></header>
     <nav><SideBar/></nav>
     <main><Canvas/></main>
   </div>
