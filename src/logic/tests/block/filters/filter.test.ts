@@ -1,5 +1,6 @@
 import { generateCode } from "../../../codeGenerator.ts";
 import { expect, test } from 'vitest';
+import {readFileSync} from "fs";
 
 
 //Initial setup
@@ -12,7 +13,8 @@ let importString : string = "from pybeamline import *\nfrom reactivex import mer
 
 
 test("retains_on_event_attribute_equal_filter", () => {
-    expect(generateCode(pathToTests + "retains_on_event_attribute_equal_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "retains_on_event_attribute_equal_filter.test.json", "utf-8"))))
+
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -24,7 +26,7 @@ source_0.pipe(
 
 
 test("excludes_on_event_attribute_equal_filter", () => {
-    expect(generateCode(pathToTests + "excludes_on_event_attribute_equal_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "excludes_on_event_attribute_equal_filter.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -38,7 +40,7 @@ source_0.pipe(
 
 
 test("retains_on_trace_attribute_equal_filter", () => {
-    expect(generateCode(pathToTests + "retains_on_trace_attribute_equal_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "retains_on_trace_attribute_equal_filter.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -52,7 +54,7 @@ source_0.pipe(
 
 
 test("excludes_on_trace_attribute_equal_filter", () => {
-    expect(generateCode(pathToTests + "excludes_on_trace_attribute_equal_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "excludes_on_trace_attribute_equal_filter.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
@@ -64,7 +66,7 @@ source_0.pipe(
 
 
 test("retains_activity_filter", () => {
-    expect(generateCode(pathToTests + "retains_activity_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "retains_activity_filter.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
@@ -75,7 +77,7 @@ source_0.pipe(
 
 
 test("excludes_activity_filter", () => {
-    expect(generateCode(pathToTests + "excludes_activity_filter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "excludes_activity_filter.test.json", "utf-8"))))
         .toBe(importString +
 `source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 

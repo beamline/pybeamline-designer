@@ -1,5 +1,6 @@
 import { generateCode } from "../../../codeGenerator.ts";
 import { expect, test } from 'vitest';
+import {readFileSync} from "fs";
 
 
 //Initial setup
@@ -8,7 +9,7 @@ let importString : string = "from pybeamline import *\nfrom reactivex import mer
 
 
 test("union (concat)", () => {
-    expect(generateCode(pathToTests + "concat.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "concat.test.json", "utf-8"))))
         .toBe( importString +
 `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
@@ -23,7 +24,7 @@ union_0.pipe(
 
 
 test("union (merge)", () => {
-    expect(generateCode(pathToTests + "merge.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "merge.test.json", "utf-8"))))
         .toBe(importString +
             `source_0 = string_test_source(iterable = ['A', 'B', 'C'])
 pipe_0 = source_0.pipe()
@@ -37,7 +38,7 @@ union_0.pipe(
 
 
 test("custom (as source)", () => {
-    expect(generateCode(pathToTests + "customSource.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "customSource.test.json", "utf-8"))))
         .toBe(importString +
             `example_function_body
 \toperation1
@@ -49,7 +50,7 @@ source_0 = user_made_function_as_source()
 
 
 test("custom (as filter)", () => {
-    expect(generateCode(pathToTests + "customFilter.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "customFilter.test.json", "utf-8"))))
         .toBe(importString +
             `example_function_body
 \toperation1
@@ -64,7 +65,7 @@ source_0.pipe(
 
 
 test("custom (as miner)", () => {
-    expect(generateCode(pathToTests + "customMiner.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "customMiner.test.json", "utf-8"))))
         .toBe(importString +
             `example_function_body
 \toperation1
@@ -78,7 +79,7 @@ source_0.pipe(
 
 
 test("custom (as union)", () => {
-    expect(generateCode(pathToTests + "customUnion.test.json"))
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "customUnion.test.json", "utf-8"))))
         .toBe(importString +
             `example_function_body
 \toperation1
