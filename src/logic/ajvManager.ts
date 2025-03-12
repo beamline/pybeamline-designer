@@ -1,8 +1,8 @@
 import Ajv, {AnySchema, Schema} from "ajv";
-//import {readdirSync, readFileSync} from "fs";
-//import {dirname, resolve} from "path";
 import {ExtendedBlock} from "./Syntax.js";
-//import {fileURLToPath} from "url";
+import {readdirSync, readFileSync} from "fs";
+import {dirname, resolve} from "path";
+import {fileURLToPath} from "url";
 
 class ajvManager extends Ajv{
 
@@ -11,13 +11,15 @@ class ajvManager extends Ajv{
         super({ allErrors: true })
 
         // Create __filename and __dirname
-        //const __filename = fileURLToPath(import.meta.url);
-        //const __dirname = dirname(__filename);
-        //const path= resolve(__dirname, "./schemas")
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const path= resolve(__dirname, "./schemas")
+        this.addAllReferences(path)
 
         this.addKeywords()
         //adding reference schemas
-        this.addAllReferencesfromWeb()
+        //this.addAllReferencesfromWeb()
+
     }
     // Public method to get the instance of the Singleton
     public static getInstance(): ajvManager {

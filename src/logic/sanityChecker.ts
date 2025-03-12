@@ -4,14 +4,14 @@ import ajvManager from "./ajvManager.js";
 export {sanityChecker}
 
 
-function sanityChecker(diagram:ExtendedPipeline, schemaData : any): boolean{
+function sanityChecker(diagram:ExtendedPipeline): boolean{
 
     // Read the schema from a separate file
 
 
     const ajv : ajvManager = ajvManager.getInstance();
     // Create a schema instance
-    const validator = ajv.compile(schemaData);
+    const validator = ajv.compile(ajv.getSchemaByName("main"));
 
     // Validate the JSON data against the schema
     if  (validator(diagram)){

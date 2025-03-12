@@ -3,8 +3,6 @@ import {sanityChecker} from "./sanityChecker.ts";
 import {readFileSync} from "fs";
 import {ExtendedPipeline, GuiPipeline} from "./Syntax.js";
 import {Compiler} from "./Compiler.js";
-import {fileURLToPath} from "url";
-import {dirname, resolve} from "path";
 import {Translator} from "./Translator.js";
 
 
@@ -18,17 +16,6 @@ function generateCode (filePathToJSON : string) {
     const compiler : Compiler = new Compiler();
 
 
-    // Create __filename and __dirname
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    const path= resolve(__dirname, "./schemas")
-
-
-
-
-    const schemaData= JSON.parse(readFileSync(resolve(path,"main.json"), "utf8"));
-
-
     const translator : Translator = new Translator();
     let extendedPipe : ExtendedPipeline;
 
@@ -39,7 +26,7 @@ function generateCode (filePathToJSON : string) {
         return "Error when parsing pipeline."
     }
     try {
-        sanityChecker(extendedPipe, schemaData);
+        sanityChecker(extendedPipe);
     } catch (error : any) {
         return error.message
     }
