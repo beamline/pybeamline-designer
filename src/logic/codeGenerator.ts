@@ -8,12 +8,6 @@ import {dirname, resolve} from "path";
 import {Translator} from "./Translator.js";
 
 
-function readParseJSON(filePathToJSON : string) : GuiPipeline {
-    return JSON.parse(readFileSync(filePathToJSON, "utf-8"));
-}
-
-
-
 function generateCode (userPipeline : GuiPipeline) {
 
     //let userPipeline : GuiPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
