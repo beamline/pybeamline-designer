@@ -1,12 +1,12 @@
 import {XYPosition} from "@vue-flow/core";
 import ajvManager from "../logic/ajvManager.js";
-import {cleanSchema} from "../logic/Syntax.js";
+import {CleanSchema} from "../logic/Syntax.js";
 
 
 async function createNode(name: string, folder: string, id: string, position : XYPosition) {
 
     const ajv = ajvManager.getInstance()
-    const schema : cleanSchema = ajv.getSchemaByName(name,  true);
+    const schema : CleanSchema = ajv.getCleanSchemaByName(name);
 
     let nodeType = "standard";
 

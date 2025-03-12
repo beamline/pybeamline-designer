@@ -1,6 +1,4 @@
-
 import {sanityChecker} from "./sanityChecker.ts";
-import {readFileSync} from "fs";
 import {ExtendedPipeline, GuiPipeline} from "./Syntax.js";
 import {Compiler} from "./Compiler.js";
 import {Translator} from "./Translator.js";

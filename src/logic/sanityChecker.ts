@@ -1,5 +1,4 @@
-
-import {ExtendedBlock, ExtendedPipeline} from "./Syntax.js";
+import { ExtendedPipeline} from "./Syntax.js";
 import ajvManager from "./ajvManager.js";
 export {sanityChecker}
 

@@ -50,7 +50,20 @@ interface UnionData {
     }
 }
 
-interface cleanSchema {
+interface BlockSchema  {
+    Object : any,
+    properties : {
+        parameters : {
+            properties : any
+            required : string[]
+        },
+        descriptors : {properties : any}
+        function : { const : string }
+    }
+    required : string[]
+}
+
+interface CleanSchema {
     descriptors : Descriptor,
     parameters : Params,
     required : string[],
@@ -59,4 +72,5 @@ interface cleanSchema {
 }
 
 
-export { ExtendedPipeline, Descriptor, Params, ExtendedBlock, Graph, UnionData , GuiBlock, GuiPipeline, cleanSchema};
+
+export { ExtendedPipeline, Descriptor, Params, ExtendedBlock, Graph, UnionData , GuiBlock, GuiPipeline, CleanSchema, BlockSchema};

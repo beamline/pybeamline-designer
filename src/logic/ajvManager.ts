@@ -1,5 +1,5 @@
 import Ajv, {AnySchema, Schema} from "ajv";
-import {ExtendedBlock} from "./Syntax.js";
+import {ExtendedBlock, CleanSchema, BlockSchema} from "./Syntax.js";
 //import {readdirSync, readFileSync} from "fs";
 //import {dirname, resolve} from "path";
 //import {fileURLToPath} from "url";
@@ -28,11 +28,18 @@ class ajvManager extends Ajv{
         }
         return ajvManager.instance;
     }
-    public getSchemaByName(name: string, clean: boolean = false){
+    public getSchemaByName(name: string) {
         const schema = this.getSchema(name+".json")?.schema
 
         if (!schema) {throw new Error("There is no schema with that name")}
-        if (!clean) {return schema}
+        else {return schema}
+
+    }
+
+    public getCleanSchemaByName (name: string) : CleanSchema{
+        const schema = this.getSchema(name+".json")?.schema
+
+        if (!schema) {throw new Error("There is no schema with that name")}
         else {return this.cleanSchema(schema)}
 
     }
@@ -104,7 +111,7 @@ class ajvManager extends Ajv{
         });
     }
 
-    private cleanSchema(schema: Schema){
+    private cleanSchema(schema : BlockSchema) : CleanSchema {
 
         const inputType = this.getType("inputType", schema)
         const outputType = this.getType("outputType", schema)
@@ -128,20 +135,24 @@ class ajvManager extends Ajv{
             function:  schema.properties.function.const
         }
 
-        if (schema.required.includes("input")) {cleanedSchema["input"] = "number" }
+        if (schema.required.includes("input")) {
+            //@ts-ignore
+            cleanedSchema["input"] = "number"
+        }
 
 
         return cleanedSchema
 
     }
 
-    private getType(typeName:string, schema : any){
+    private getType(typeName:string, schema : BlockSchema){
         const type = schema.properties.descriptors.properties[typeName]
         if ("const" in type){
             return type.const
         }
         if ("$ref" in type) {
             const sc = this.getSchema(type["$ref"])
+            //@ts-ignore
             return sc?.schema.const
         }
         return ["any"]

@@ -1,4 +1,4 @@
-import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline, cleanSchema} from "./Syntax.js";
+import {ExtendedBlock, ExtendedPipeline, GuiBlock, GuiPipeline, CleanSchema} from "./Syntax.js";
 
 import ajvManager from "./ajvManager.js";
 import {GraphEdge, GraphNode} from "@vue-flow/core";
@@ -53,7 +53,7 @@ export class Translator {
 
     public translateBlock(guiBlock: GuiBlock, guiPipeline: GuiPipeline): ExtendedBlock {
 
-        const blockSchema : cleanSchema = this.ajv.getSchemaByName(guiBlock.name, true);
+        const blockSchema : CleanSchema = this.ajv.getCleanSchemaByName(guiBlock.name);
         let inputCounter = 0
 
 
