@@ -8,7 +8,7 @@ let id = 0
  * @returns {string} - A unique id.
  */
 function getId() {
-    return `dndnode_${id++}`
+    return `${id++}`
 }
 
 /**

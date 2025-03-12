@@ -3,7 +3,7 @@
     <!-- VueFlow Diagram -->
     <div>
       <VueFlow
-          v-model="nodes"
+          v-model:nodes="nodes"
           v-model:edges="edges"
           class="canva"
           @node-click="onNodeClick"
@@ -73,11 +73,9 @@ import useDragAndDrop from './useDnD.ts'
 const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
 
 // Example nodes and edges
-const nodes = ref ([
-  ]);
+const nodes = ref ([]);
 
-const edges = ref<CustomEdge[]>([
-]);
+const edges = ref<CustomEdge[]>([]);
 
 const selectedNode = ref(null);
 
