@@ -2,19 +2,6 @@
   <div class="main">
     <!-- VueFlow Diagram -->
     <div>
-      <div class="main">
-        <button @click="showCode">generate code</button>
-        <button @click="clearDesign">Clear All</button>
-      </div>
-
-      <div
-          v-if="editor"
-          class="optionTab" >
-        <button @click="closeEditor">Cancel</button>
-        <button @click="downloadPythonFile">Download</button>
-        <textarea v-model="editor" class="code-box" spellcheck="false"></textarea>
-
-      </div>
       <VueFlow
           v-model:nodes="nodes"
           v-model:edges="edges"
@@ -27,6 +14,7 @@
           @drop="onDrop"
           :connection-radius="20"
       >
+        <OptionsPanel/>
         <template #edge-custom="customEdgeProps">
           <CustomEdge v-bind="customEdgeProps" />
         </template>
@@ -64,14 +52,11 @@ import StandardNode from "./StandardNode.vue";
 import StartNode from "./StartNode.vue";
 import EndNode from "./EndNode.vue";
 import CustomEdge from "@/components/CustomEdge.vue";
-import {CustomData} from "@/components/edges.js";
 import {Connection, ConnectionMode} from "@vue-flow/core";
-import {GuiBlock, GuiPipeline} from "@/logic/Syntax.js";
 import UnionNode from "@/components/UnionNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
 import useDragAndDrop from './useDnD.ts'
-import {Translator} from "@/logic/Translator.js";
-import {generateCode} from "@/logic/codeGenerator.js";
+import OptionsPanel from "@/components/OptionsPanel.vue";
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
@@ -85,38 +70,10 @@ function onConnect(params : Connection) {
   edges.value.push(newEdge);
 }
 
-const translator = new Translator();
-
-const editor = ref("");
-
-function showCode() {
-  editor.value = generateCode(translator.getGuiPipelineFromVue(nodes.value,  edges.value));
-}
-
-function clearDesign() {
-    edges.value = [];
-    nodes.value = [];
-    closeEditor();
-
-}
-
-const downloadPythonFile = () => {
-  const blob = new Blob([editor.value], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "script.py";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  editor.value=""
-};
-
-const closeEditor = () => {
-  editor.value=""
-}
 
 
-const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
+
+const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
 
 // Example nodes and edges
 const nodes = ref ([]);
@@ -143,15 +100,10 @@ const onNodeClick = (event) => {
 
 
 .canva{
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   position: fixed;
   z-index: 0;
-}
-.main{
-  width: 100%;
-  height: 100%;
-
 }
 .optionTab{
   width: 30%;
@@ -160,19 +112,6 @@ const onNodeClick = (event) => {
   position: fixed;
   right:0;
   z-index:1;
-}
-
-.code-box {
-  width: 100%;
-  height: 100%;
-  font-family: monospace;
-  background-color: #1e1e1e;
-  color: #dcdcdc;
-  border: 1px solid #444;
-  padding: 10px;
-  resize: none;
-  white-space: pre;
-  overflow: auto;
 }
 </style>
 
