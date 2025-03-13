@@ -35,7 +35,6 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
 
 
 
-
 </script>
 
 <template>
@@ -43,10 +42,14 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnection"
+            :style="{backgroundColor : props.data.sourceColor, width:'10px', height:'10px'}"
+            :connection-radius="30"
     />
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"
             :is-valid-connection="isValidConnection"
+            :style="{backgroundColor : props.data.targetColor, width:'10px', height:'10px'}"
+            :connection-radius="30"
     />
   </div>
 </template>
