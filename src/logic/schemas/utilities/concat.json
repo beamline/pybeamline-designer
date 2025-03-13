@@ -11,10 +11,7 @@
       }
     },
     "parameters": {
-      "type": "object",
-      "properties": {
-        "null": {"type":  "string", "pattern": "^[^,]+(, [^,]+)*$"}
-      }
+
     },
     "outputs":{"$ref": "definitions.json#/definitions/output"},
     "input": {"$ref": "definitions.json#/definitions/input"},

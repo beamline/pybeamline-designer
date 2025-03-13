@@ -3,7 +3,6 @@ import {Connection, Handle, HandleConnectableFunc, Position, useVueFlow} from "@
 const {getNodes} = useVueFlow();
 
 const props = defineProps({
-  id : String,
   data: Object,  // This will be the 'data' property passed from the node definition
 });
 

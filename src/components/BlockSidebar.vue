@@ -12,8 +12,8 @@ const emit = defineEmits(['update:modelValue']);
     </button>
 
     <h2 class="text-xl font-bold mb-2">Block: {{modelValue.data.name}}</h2>
-    <i class="i">Input type: {{modelValue.data.name}}</i>
-    <i class="i">Output type: {{modelValue.data.name}}</i>
+    <i class="i">Input type: {{modelValue.data.inputType}}</i>
+    <i class="i">Output type: {{modelValue.data.outputType}}</i>
     <h2 class="text-xl font-bold mb-2">Parameters:</h2>
 
     <div v-for="(value, key) in modelValue.data.parameters" :key="key" class="mb-2">
