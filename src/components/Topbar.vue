@@ -48,7 +48,7 @@ const closeEditor = () => {
 
 <template>
   <div class="main">
-    <button @click="showCode">generate code</button>
+
   </div>
 
   <div
