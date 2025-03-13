@@ -10,7 +10,6 @@ AjvManager.getInstance()
 
 <template>
   <div class="container">
-    <header><topbar/></header>
     <nav><SideBar/></nav>
     <main><Canvas/></main>
   </div>

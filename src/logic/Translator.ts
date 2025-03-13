@@ -23,10 +23,16 @@ export class Translator {
 
                 }
             }
+
+            //Removes parameters that have not been specified
+            const filteredParams = Object.fromEntries(
+                Object.entries(block.data.parameters).filter(([key, value]) => value !== "")
+            );
+
             let guiBlock : GuiBlock = {
                 id : block.id,
                 name : block.data.name,
-                parameters : block.data.parameters,
+                parameters : filteredParams,
                 outputs : blockOuts
 
             }
