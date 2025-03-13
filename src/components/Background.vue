@@ -16,7 +16,8 @@ import { Background } from '@vue-flow/background'
 .dropzone-background {
   position:relative;
   height:100%;
-  width:100%
+  width:100%;
+  z-index: 1;
 }
 
 .dropzone-background .overlay {
