@@ -4,7 +4,7 @@ import {ref} from "vue";
 import {generateCode} from "@/logic/codeGenerator.js";
 import {useVueFlow, Panel} from "@vue-flow/core";
 
-const {nodes, edges}=useVueFlow()
+const {nodes, edges, setNodes, setEdges }=useVueFlow()
 
 const translator = new Translator();
 
@@ -33,9 +33,68 @@ const downloadPythonFile = () => {
   editor.value=""
 };
 
+const downloadPipeline = () => {
+  const graphData = {
+    nodes : nodes.value,
+    edges : edges.value
+  }
+  //pretty prints the json
+  const json = JSON.stringify(graphData, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); // Create a URL for the Blob
+  a.download = 'pybeamline-design.json'; // Set the download file name
+  a.click();
+}
+
 const closeEditor = () => {
   editor.value=""
 }
+
+
+const fileInput = ref<HTMLInputElement | null>(null);
+
+//acts like the user clicking the hidden input to show file selection
+const triggerFileSelection = () => {
+  fileInput.value?.click();
+};
+
+const handleFileSelection = (event: Event) => {
+  console.log("here")
+  const input = event.target as HTMLInputElement;
+  let file = input.files?.[0];
+  if (file) {
+    console.log('File selected:', file.name);
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const json = e.target?.result as string;
+
+      try {
+        // Parse the JSON string into an object
+        const data = JSON.parse(json);
+
+        // Assuming the structure of your JSON contains 'nodes' and 'edges'
+        if (data.nodes && data.edges) {
+          // Set the new nodes and edges into VueFlow's state
+          setNodes(data.nodes);
+          setEdges(data.edges);
+          input.value = '';
+        } else {
+          alert('Invalid JSON structure. Expected "nodes" and "edges" properties.');
+        }
+      } catch (err) {
+        alert('Error parsing JSON. Please make sure the file is valid.');
+      }
+    };
+
+    // Read the file as text (this will trigger the onload event)
+    reader.readAsText(file);
+  }
+
+};
+
 
 </script>
 
@@ -43,6 +102,15 @@ const closeEditor = () => {
   <Panel class="main" position="top-left">
     <button class= "button" @click="showCode">generate code</button>
     <button class= "button" @click="clearDesign">Clear All</button>
+    <button class= "button" @click="downloadPipeline">download pipeline</button>
+    <button class= "button" @click="triggerFileSelection">load pipeline</button>
+    <input
+        type="file"
+        ref="fileInput"
+        style="display: none;"
+        @change="handleFileSelection"
+        accept=".json"
+    />
   </Panel>
 
   <div
