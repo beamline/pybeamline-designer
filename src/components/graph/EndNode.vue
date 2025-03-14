@@ -45,8 +45,7 @@ onMounted(() => {
   setInterval(() => {
     const colors = ['red', 'blue', '#90EE90'];
     color.value = colors[index];
-    index++;
-    index >= colors.length ? index = 0 : true;
+    index = (index + 1) % colors.length;
   }, 1000); // Change color every second
 });
 
