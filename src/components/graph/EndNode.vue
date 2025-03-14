@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {Connection, Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 import {useVueFlow} from "@vue-flow/core";
+import {ref, onMounted} from "vue";
 
 
 const props = defineProps({
@@ -37,6 +38,17 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   }
   return count < 1;}
 
+const color = ref('red'); // Initial color
+
+onMounted(() => {
+  let index = 0;
+  setInterval(() => {
+    const colors = ['red', 'blue', '#90EE90'];
+    color.value = colors[index];
+    index++;
+    index >= colors.length ? index = 0 : true;
+  }, 1000); // Change color every second
+});
 
 </script>
 
@@ -46,8 +58,9 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"
             :is-valid-connection="isValidConnection"
-            :style="{backgroundColor : props.data.targetColor, width:'10px', height:'10px'}"
+            :style="{backgroundColor : color, width:'10px', height:'10px'}"
             :connection-radius="30"
+            class="animated-handle"
     />
   </div>
 </template>
@@ -59,5 +72,9 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   background-color: #fff;
   border-radius: 5px;
   color: blue;
+}
+
+.animated-handle {
+  transition: background-color 0.5s linear; /* Smooth transition */
 }
 </style>

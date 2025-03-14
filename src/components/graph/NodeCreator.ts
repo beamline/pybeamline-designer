@@ -1,6 +1,6 @@
 import {XYPosition} from "@vue-flow/core";
-import AjvManager from "../logic/AjvManager.js";
-import {CleanSchema} from "../logic/Syntax.js";
+import AjvManager from "../../logic/AjvManager.js";
+import {CleanSchema} from "../../logic/Syntax.js";
 
 
 async function createNode(name: string, folder: string, id: string, position : XYPosition) {
@@ -21,23 +21,27 @@ async function createNode(name: string, folder: string, id: string, position : X
     }
 
     const stringToHexColor = (types: string[] | null): string => {
-        if (types !== null) {
-            const str = types[0];
-            if (str === "any") {
-                return "blue"
-            }
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                hash = str.charCodeAt(i) + ((hash << 5) - hash);
-            }
-            let color = "#";
-            for (let i = 0; i < 3; i++) {
-                color += ("00" + ((hash >> (i * 8)) & 0xff).toString(16)).slice(-2);
-            }
-            return color ;
+        if (types == null) {
+            return "#000000";
         }
-        return "#000000";
-    };
+
+        const str = types[0];
+        if (str === "any") {
+            return "blue"
+        }
+        let hash = 0;
+
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        let color = "#";
+        for (let i = 0; i < 3; i++) {
+            color += ("00" + ((hash >> (i * 8)) & 0xff).toString(16)).slice(-2);
+        }
+        return color ;
+    }
+
+
 
     const node = {
         id : id,

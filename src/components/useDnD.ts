@@ -1,6 +1,6 @@
 import { useVueFlow } from '@vue-flow/core'
 import { ref, watch } from 'vue'
-import {createNode} from "./NodeCreator.js"
+import {createNode} from "./graph/NodeCreator.js"
 
 let id = 0
 

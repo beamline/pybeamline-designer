@@ -48,18 +48,21 @@
 import { ref } from "vue";
 import { VueFlow } from "@vue-flow/core";
 import Background from "@/components/Background.vue";
-import StandardNode from "./StandardNode.vue";
-import StartNode from "./StartNode.vue";
-import EndNode from "./EndNode.vue";
-import CustomEdge from "@/components/CustomEdge.vue";
+import StandardNode from "./graph/StandardNode.vue";
+import StartNode from "./graph/StartNode.vue";
+import EndNode from "./graph/EndNode.vue";
+import CustomEdge from "@/components/graph/CustomEdge.vue";
 import {Connection, ConnectionMode} from "@vue-flow/core";
-import UnionNode from "@/components/UnionNode.vue";
+import UnionNode from "@/components/graph/UnionNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
 import useDragAndDrop from './useDnD.ts'
 import OptionsPanel from "@/components/OptionsPanel.vue";
 
+
+
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
+
   const newEdge = {
     id: `e${params.source}-${params.target}`,
     source: params.source,
