@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import {useVueFlow} from "@vue-flow/core";
+
 defineProps(['modelValue']);
 const emit = defineEmits(['update:modelValue']);
-
+const {removeSelectedElements} = useVueFlow()
+function on_click(){
+  emit('update:modelValue', null)
+  removeSelectedElements()
+}
 
 </script>
 
 <template>
   <div class="main">
-    <button class="absolute top-2 right-2 text-xl" @click="emit('update:modelValue', null)">
+    <button class="absolute top-2 right-2 text-xl" @click="on_click">
       ✖
     </button>
 
