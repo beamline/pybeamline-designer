@@ -2,17 +2,12 @@
 import {Connection, Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 import {useVueFlow} from "@vue-flow/core";
 import {ref, onMounted} from "vue";
+import {hasCommonElement, handleConnectableIn} from "./node-utils.js";
 
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });
-
-const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
-  return arr1.some(item => arr2.includes(item));
-};
-
-
 
 const { getNodes } = useVueFlow();
 
@@ -29,14 +24,6 @@ const isValidConnection = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
 }
 
-const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
-  let count = 0;
-  for (let edge of connectedEdges) {
-    if (edge.target === node.id) {
-      count++;
-    }
-  }
-  return count < 1;}
 
 const color = ref('red'); // Initial color
 

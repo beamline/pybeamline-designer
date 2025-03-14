@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {Connection, Handle, Position} from "@vue-flow/core";
 import {useVueFlow} from "@vue-flow/core";
+import {hasCommonElement} from "./node-utils.js";
 
 const { getNodes } = useVueFlow();
 
@@ -8,11 +9,7 @@ const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });
 
-const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
-  return arr1.some(item => arr2.includes(item));
-};
-
-const isValidConnection = (connection : Connection) : boolean => {
+const isValidConnectionStart = (connection : Connection) : boolean => {
   const nodes = getNodes.value;
 
   const outNode = nodes.filter(elemt => elemt.id === connection.source)[0]
@@ -25,13 +22,14 @@ const isValidConnection = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
 }
 
+
 </script>
 
 <template>
   <div class="startNode">
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
-            :is-valid-connection="isValidConnection"
+            :is-valid-connection="isValidConnectionStart"
             :connection-radius="30"
             :style="{backgroundColor : props.data.sourceColor, width:'10px', height:'10px'}"
     />

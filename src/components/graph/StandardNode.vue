@@ -1,27 +1,13 @@
 <script setup lang="ts">
-import {Connection, GraphEdge, GraphNode, Handle, HandleConnectableFunc, Position, useVueFlow} from "@vue-flow/core";
-import {elementSelectionKeys, nodeToRect} from "@vue-flow/core/dist/utils/index.js";
+import {Connection, Handle, HandleConnectableFunc, Position, useVueFlow} from "@vue-flow/core";
 const {getNodes, getEdges} = useVueFlow();
+import {hasCommonElement, isConnectedToAncestors, handleConnectableIn} from "./node-utils.js";
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });
 
-const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
-  return arr1.some(item => arr2.includes(item));
-};
 
-
-function isConnectedToAncestors (connection : Connection, edges : GraphEdge[], currNodeId : string) {
-  const directAncestorIds = edges.filter(edge => edge.target == currNodeId).map(edges => edges.source);
-
-  if (directAncestorIds.includes(connection.target)) {
-    return true;
-  } else {
-    const boolArr : boolean[] = directAncestorIds.map(nodeId => isConnectedToAncestors(connection,  edges,  nodeId));
-    return boolArr.includes(true);
-  }
-}
 
 const isValidConnection = (connection : Connection) : boolean => {
   const nodes = getNodes.value;
@@ -35,7 +21,6 @@ const isValidConnection = (connection : Connection) : boolean => {
   }
 
   if (isConnectedToAncestors(connection, getEdges.value, outNode.id )) {
-    console.log("illegal connection")
     return false
   }
 
@@ -46,15 +31,6 @@ const isValidConnection = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType) && (connection.target !== connection.source)
 }
 
-const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
-  let count = 0;
-  for (let edge of connectedEdges) {
-    if (edge.target === node.id) {
-      count++;
-    }
-  }
-  return count < 1;
-}
 
 
 
