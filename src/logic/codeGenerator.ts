@@ -1,4 +1,4 @@
-import {sanityChecker} from "./sanityChecker.ts";
+import {PipelineSyntaxError, sanityChecker} from "./sanityChecker.ts";
 import {ExtendedPipeline, GuiPipeline} from "./Syntax.js";
 import {Compiler} from "./Compiler.js";
 import {Translator} from "./Translator.js";
@@ -22,7 +22,7 @@ function generateCode (userPipeline : GuiPipeline) {
     try {
         sanityChecker(extendedPipe);
     } catch (error : any) {
-        return error.message
+        return error
     }
 
     return compiler.compilePipeline(extendedPipe);
