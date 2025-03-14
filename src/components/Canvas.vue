@@ -14,7 +14,13 @@
           @drop="onDrop"
           :connection-radius="20"
       >
+        <div
+            v-if="getSelectedElements.length > 0"
+            class="optionTab" >
+          <BlockSidebar v-model="selectedNode" />
+        </div>
         <OptionsPanel/>
+
         <template #edge-custom="customEdgeProps">
           <CustomEdge v-bind="customEdgeProps" />
         </template>
@@ -31,22 +37,19 @@
           <UnionNode v-bind="props" />
         </template>
         <background />
+        <ErrorDetector/>
 
       </VueFlow>
     </div>
 
-    <div
-        v-if="selectedNode"
-        class="optionTab" >
-      <BlockSidebar v-model="selectedNode" />
-    </div>
+
 
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { VueFlow } from "@vue-flow/core";
+import {useVueFlow, VueFlow} from "@vue-flow/core";
 import Background from "@/components/Background.vue";
 import StandardNode from "./StandardNode.vue";
 import StartNode from "./StartNode.vue";
@@ -57,6 +60,7 @@ import UnionNode from "@/components/UnionNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
 import useDragAndDrop from './useDnD.ts'
 import OptionsPanel from "@/components/OptionsPanel.vue";
+import ErrorDetector from "@/components/ErrorDetector.vue";
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
@@ -74,6 +78,7 @@ function onConnect(params : Connection) {
 
 
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
+const {removeSelectedElements, getSelectedElements} = useVueFlow()
 
 // Example nodes and edges
 const nodes = ref ([]);
@@ -85,6 +90,7 @@ const selectedNode = ref(null);
 // Handle node click event
 const onNodeClick = (event) => {
   if (selectedNode.value === event.node){
+    removeSelectedElements()
     selectedNode.value = null;
   }else{
     selectedNode.value = event.node;
@@ -111,7 +117,7 @@ const onNodeClick = (event) => {
   background: gray;
   position: fixed;
   right:0;
-  z-index:1;
+  z-index:5;
 }
 </style>
 
