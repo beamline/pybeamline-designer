@@ -15,7 +15,7 @@
           :connection-radius="20"
       >
         <div
-            v-if="getSelectedElements.length > 0"
+            v-if="selectedNode"
             class="optionTab" >
           <BlockSidebar v-model="selectedNode" />
         </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref, watch} from "vue";
 import {useVueFlow, VueFlow} from "@vue-flow/core";
 import Background from "@/components/Background.vue";
 import StandardNode from "./StandardNode.vue";
@@ -97,6 +97,11 @@ const onNodeClick = (event) => {
 
   }
 };
+watch(getSelectedElements, (newValue, oldValue) => {
+  if (newValue.length === 0) {
+    selectedNode.value = null;
+  }
+});
 
 </script>
 
