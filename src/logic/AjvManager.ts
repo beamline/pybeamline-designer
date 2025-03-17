@@ -133,7 +133,8 @@ class AjvManager extends Ajv{
             },
             parameters: parameters,
             required: schema.properties.parameters.required,
-            function:  schema.properties.function.const
+            function:  schema.properties.function.const,
+            hint: schema.properties.hint.const
         }
 
         if (schema.required.includes("input")) {
