@@ -8,7 +8,6 @@ import AjvManager from "./AjvManager.js";
 
 function generateCode (userPipeline : GuiPipeline) {
 
-    //let userPipeline : GuiPipeline = JSON.parse(readFileSync(filePathToJSON, "utf-8"));
     const compiler : Compiler = new Compiler();
 
 
