@@ -1,25 +1,48 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-        "name": {"const" : "retains_activity_filter"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
-        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "retains_activity_filter"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
       }
     },
     "parameters": {
       "type": "object",
-      "properties":{
-        "activity_names": {"$ref": "definitions.json#/definitions/iterableStr"}
+      "properties": {
+        "activity_names": {
+          "$ref": "definitions.json#/definitions/iterableStr"
+        }
       },
-      "required": ["activity_names"]
+      "required": [
+        "activity_names"
+      ]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "retains_activity_filter()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "retains_activity_filter()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }

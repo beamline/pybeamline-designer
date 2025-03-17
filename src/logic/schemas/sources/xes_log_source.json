@@ -1,18 +1,26 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-        "name": {"const": "xes_log_source"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
-        "inputType": {"const": null}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "xes_log_source"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        },
+        "inputType": {
+          "const": null
+        }
       }
     },
     "parameters": {
       "type": "object",
-      "properties":{
+      "properties": {
         "log": {
           "type": "string"
         },
@@ -20,11 +28,24 @@
           "type": "string"
         }
       },
-      "required": ["log"]
+      "required": [
+        "log"
+      ]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "xes_log_source()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "xes_log_source()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }

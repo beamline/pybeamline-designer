@@ -1,27 +1,54 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-      "name": {"const": "heuristics_miner_lossy_counting"},
-      "outputType": {"$ref": "definitions.json#/definitions/streamTypes/heuristics"},
-      "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "heuristics_miner_lossy_counting"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/heuristics"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
       }
     },
     "parameters": {
       "type": "object",
       "properties": {
-        "model_update_frequency": {"type":  "number"},
-        "max_approx_error": {"type":  "number"},
-        "dependency_threshold": {"type":  "number"},
-        "and_threshold": {"type":  "number"}
+        "model_update_frequency": {
+          "type": "number"
+        },
+        "max_approx_error": {
+          "type": "number"
+        },
+        "dependency_threshold": {
+          "type": "number"
+        },
+        "and_threshold": {
+          "type": "number"
+        }
       }
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "heuristics_miner_lossy_counting()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "heuristics_miner_lossy_counting()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }

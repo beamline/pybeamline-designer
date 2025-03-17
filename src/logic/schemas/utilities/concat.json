@@ -1,22 +1,42 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-        "name": {"const" : "concat"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
-        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "concat"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
       }
     },
-    "parameters": {
-
+    "parameters": {},
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "input": {"$ref": "definitions.json#/definitions/input"},
-    "function" : {"const" : "concat()"}
+    "input": {
+      "$ref": "definitions.json#/definitions/input"
+    },
+    "function": {
+      "const": "concat()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs", "input"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs",
+    "input"
+  ],
   "additionalProperties": false
 }

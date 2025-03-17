@@ -1,19 +1,38 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-        "name": {"const": "sliding_window_to_log"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/dataframe"},
-        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "sliding_window_to_log"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/dataframe"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
       }
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "sliding_window_to_log()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "sliding_window_to_log()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }

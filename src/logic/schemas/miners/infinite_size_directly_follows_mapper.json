@@ -1,19 +1,38 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
-      "type" : "object",
-      "properties" : {
-        "name": {"const": "infinite_size_directly_follows_mapper"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/tuple"},
-        "inputType": {"$ref": "definitions.json#/definitions/streamTypes/event"}
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "infinite_size_directly_follows_mapper"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/tuple"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
       }
     },
     "parameters": {},
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "infinite_size_directly_follows_mapper()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "infinite_size_directly_follows_mapper()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }

@@ -1,18 +1,26 @@
 {
   "type": "object",
   "properties": {
-    "id": {"$ref": "definitions.json#/definitions/id"},
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
     "descriptors": {
       "type": "object",
       "properties": {
-        "name": {"const": "mqttxes_source"},
-        "outputType": {"$ref": "definitions.json#/definitions/streamTypes/event"},
-        "inputType": {"const":  null}
+        "name": {
+          "const": "mqttxes_source"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        },
+        "inputType": {
+          "const": null
+        }
       }
     },
     "parameters": {
       "type": "object",
-      "properties":{
+      "properties": {
         "broker": {
           "type": "string"
         },
@@ -24,11 +32,26 @@
           "type": "string"
         }
       },
-      "required": ["broker","port","base_topic"]
+      "required": [
+        "broker",
+        "port",
+        "base_topic"
+      ]
     },
-    "outputs":{"$ref": "definitions.json#/definitions/output"},
-    "function" : {"const" : "mqttxes_source()"}
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "mqttxes_source()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
   },
-  "required": ["id", "parameters", "outputs"],
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
   "additionalProperties": false
 }
