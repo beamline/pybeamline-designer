@@ -28,6 +28,7 @@ export class Compiler {
     private blocks : Graph = {};
 
     private headString : string = `from pybeamline.sources import *
+from pybeamline.sources.real_world_sources import *
 from pybeamline.mappers import *
 from pybeamline.algorithms import *
 from pybeamline.filters import *
@@ -54,6 +55,7 @@ from reactivex import merge, concat
 
         //Variable reset
         this.headString = `from pybeamline.sources import *
+from pybeamline.sources.real_world_sources import *
 from pybeamline.mappers import *
 from pybeamline.algorithms import *
 from pybeamline.filters import *

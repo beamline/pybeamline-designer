@@ -6,8 +6,13 @@ import AjvManager from "../../../AjvManager.js";
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/utilities/";
-let importString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n\n"
-
+let importString : string = `from pybeamline.sources import *
+from pybeamline.sources.real_world_sources import *
+from pybeamline.mappers import *
+from pybeamline.algorithms import *
+from pybeamline.filters import *
+from reactivex import merge, concat
+\n`
 beforeAll(async () => {
     // This code runs once before all tests
     await AjvManager.getInstance().manageReferences()
