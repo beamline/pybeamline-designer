@@ -1,5 +1,6 @@
 import {ExtendedBlock, ExtendedPipeline} from "./Syntax.js";
 import AjvManager from "./AjvManager.js";
+import {ErrorObject} from "ajv";
 export {sanityChecker, PipelineSyntaxError, checkBlockProperties}
 
 class PipelineSyntaxError extends Error {
@@ -10,11 +11,9 @@ class PipelineSyntaxError extends Error {
     }
 }
 
-function sanityChecker(diagram:ExtendedPipeline): boolean{
+function sanityChecker(diagram:ExtendedPipeline){
 
     // Read the schema from a separate file
-
-
     const ajv : AjvManager = AjvManager.getInstance();
     // Create a schema instance
     const validator = ajv.compile(ajv.getSchemaByName("main"));
@@ -23,9 +22,6 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
     if  (validator(diagram)){
         return true
     } else {
-
-
-
         //Get the position of a block that raised an error
         //@ts-ignore
         const sampledError = validator.errors[0].instancePath;
@@ -36,7 +32,19 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
         if (match !== null) {
             //@ts-ignore
             const errorBlock = diagram.blocks[match]
-            throw (new PipelineSyntaxError(`Error: at block ${errorBlock.descriptors.name}\nCheck for missing arguments or incorrect connections according to type.`, errorBlock.id));
+
+            const parametersCheck=checkBlockProperties("parameters", errorBlock)
+            if (!parametersCheck.isOk) {
+                throw (new PipelineSyntaxError(`Error at block ${errorBlock.descriptors.name}\n${parametersCheck.error.message}`, errorBlock.id));
+            }
+
+            const descriptorsCheck=checkBlockProperties("descriptors", errorBlock)
+            if (!descriptorsCheck.isOk) {
+                throw (new PipelineSyntaxError(`Error at block ${errorBlock.descriptors.name}\nInvalid ${descriptorsCheck.error.instancePath}`, errorBlock.id));
+            }
+
+            throw (new PipelineSyntaxError(`Error at block ${errorBlock.descriptors.name}\nInvalid connections`, errorBlock.id));
+
 
         } else throw (Error("Unknown error"))
 
@@ -46,13 +54,16 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
     }
 }
 
-function checkBlockProperties(propertyName:string, block:ExtendedBlock): boolean{
+function checkBlockProperties(propertyName:string, block:ExtendedBlock): {isOk:boolean, error: ErrorObject}{
     const ajv : AjvManager = AjvManager.getInstance();
     const schema=ajv.getSchemaByName(block.descriptors.name)
     // Create a schema instance
     const validator = ajv.compile(schema.properties[propertyName]);
-    if (validator(block[propertyName])) {return true}
-    return false
+    if (validator(block[propertyName])) {return {isOk: true, error:{instancePath: '', schemaPath: '', keyword: '',params:{}}}}
+    console.log(validator.errors)
+    if (validator.errors){ return {isOk: false, error:validator.errors[0]}}
+    throw new Error("Unknown property name");
+
 }
 
 

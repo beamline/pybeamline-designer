@@ -15,7 +15,7 @@ onNodesChange((changes)=>{
   const node = nodes.value.filter(elemt => elemt.id === changes[0].id)
   const block: ExtendedBlock = translator.translatePipeline(translator.getGuiPipelineFromVue(node,  [])).blocks[0]
 
-  if (checkBlockProperties("parameters", block)){
+  if (checkBlockProperties("parameters", block).isOk){
     updateNode(changes[0].id, { style: {border: 'none'} })
   } else {
     updateNode(changes[0].id, { style: {border: '2px solid red'} })
