@@ -12,7 +12,6 @@ const editor = ref("");
 
 function showCode() {
   editor.value = generateCode(translator.getGuiPipelineFromVue(nodes.value,  edges.value));
-  console.log(editor.value);
 }
 
 function clearDesign() {
