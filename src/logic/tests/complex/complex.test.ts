@@ -7,7 +7,7 @@ import AjvManager from "../../AjvManager.js";
 //Initial setup
 let pathToTests : string = "src/logic/tests/complex/";
 
-let importString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n\n"
+let importString : string = "from pybeamline.sources import *\nfrom pybeamline.mappers import *\nfrom pybeamline.algorithms import *\nfrom pybeamline.filters import *\nfrom reactivex import merge, concat\n\n"
 
 beforeAll(async () => {
     // This code runs once before all tests

@@ -27,13 +27,19 @@ export class Compiler {
 
     private blocks : Graph = {};
 
-    private headString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n";
+    private headString : string = `from pybeamline.sources import *
+from pybeamline.mappers import *
+from pybeamline.algorithms import *
+from pybeamline.filters import *
+from reactivex import merge, concat
+\n`
     private bodyString : string = "";
     private handler : Handler;
 
     public constructor () {
         this.handler = new Handler(this);
     }
+
 
     private readUserPipeline (userPipeline : ExtendedPipeline) {
 
@@ -47,7 +53,12 @@ export class Compiler {
     public compilePipeline (userPipeline : ExtendedPipeline) {
 
         //Variable reset
-        this.headString = "from pybeamline import *\nfrom reactivex import merge, concat\n\n";
+        this.headString = `from pybeamline.sources import *
+from pybeamline.mappers import *
+from pybeamline.algorithms import *
+from pybeamline.filters import *
+from reactivex import merge, concat
+\n`
         this.bodyString = "";
         this.handler.resetCounters();
 

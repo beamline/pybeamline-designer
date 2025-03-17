@@ -30,6 +30,5 @@ function generateCode (userPipeline : GuiPipeline) {
     return compiler.compilePipeline(extendedPipe);
 }
 
-//console.log(generateCode("./tests/validation/valid5.json"))
 
 export { generateCode }
