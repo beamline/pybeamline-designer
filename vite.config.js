@@ -15,4 +15,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  define: {
+    'process.env.VITEST': JSON.stringify(process.env.VITEST || 'false'),
+  }
 })
