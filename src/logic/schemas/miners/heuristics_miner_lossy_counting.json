@@ -22,16 +22,20 @@
       "type": "object",
       "properties": {
         "model_update_frequency": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         },
         "max_approx_error": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         },
         "dependency_threshold": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         },
         "and_threshold": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         }
       }
     },
