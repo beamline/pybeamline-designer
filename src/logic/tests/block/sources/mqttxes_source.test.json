@@ -5,7 +5,7 @@
       "name": "mqttxes_source",
       "parameters": {
         "broker": "'broker.mqtt.cool'",
-        "port": 1883,
+        "port": "1883",
         "base_topic": "'base/topic/'"
       },
       "outputs": ["1"]

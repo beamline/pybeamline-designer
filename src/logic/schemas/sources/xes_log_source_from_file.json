@@ -22,8 +22,7 @@
       "type": "object",
       "properties": {
         "log": {
-          "type": "string",
-          "pattern": ".*\\.xes\"$"
+          "type": "string"
         }
       },
       "required": [
