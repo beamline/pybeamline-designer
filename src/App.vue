@@ -4,7 +4,7 @@ import SideBar from "@/components/SideBar.vue";
 import Canvas from "@/components/Canvas.vue";
 import AjvManager from "@/logic/AjvManager.js";
 import Topbar from "@/components/Topbar.vue";
-AjvManager.getInstance()
+AjvManager.getInstance().manageReferences()
 
 </script>
 
