@@ -22,10 +22,12 @@
       "type": "object",
       "properties": {
         "model_update_frequency": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         },
         "min_relative_frequency": {
-          "type": "number"
+          "type": "string",
+          "pattern": "^[0-9]+$"
         }
       }
     },
