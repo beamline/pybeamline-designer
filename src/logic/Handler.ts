@@ -57,7 +57,7 @@ export class Handler {
 
     private handleSink(block : ExtendedBlock, currentString : string) :string {
 
-        this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n`)
+        this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${this.addParametersToPipeline(block)}\n\n`)
         return currentString
 
     }
@@ -81,7 +81,7 @@ export class Handler {
         }
 
 
-        this.compiler.appendBodyString(`pipe_${this.counters.pipe} = ${currentString.slice(0, -2)})\n`);
+        this.compiler.appendBodyString(`pipe_${this.counters.pipe} = ${currentString.slice(0, -2)})\n\n`);
 
         //@ts-ignore
         this.unionData[block.id].mergeString += `${this.unionData[block.id].counter < block.input ? ", " : ""}pipe_${this.counters.pipe}`;
@@ -90,7 +90,7 @@ export class Handler {
 
         //close the function and continue with the diagram
         if (this.unionData[block.id].counter === 0) {
-            this.compiler.appendBodyString("union_" + this.counters.union + " = " + this.unionData[block.id].mergeString + ")\n")
+            this.compiler.appendBodyString("\nunion_" + this.counters.union + " = " + this.unionData[block.id].mergeString + ")\n\n")
             newString = "union_" + this.counters.union + ".pipe( \n"
             this.unionData[block.id].pass = true;
             this.counters.union++;
