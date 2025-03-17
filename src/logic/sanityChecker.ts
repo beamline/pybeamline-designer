@@ -1,7 +1,14 @@
-import { ExtendedPipeline} from "./Syntax.js";
+import {ExtendedBlock, ExtendedPipeline} from "./Syntax.js";
 import AjvManager from "./AjvManager.js";
-export {sanityChecker}
+export {sanityChecker, PipelineSyntaxError, checkBlockProperties}
 
+class PipelineSyntaxError extends Error {
+    nodeId: string
+    public constructor(message: string, id: string) {
+        super(message); // Call parent constructor (Error)
+        this.nodeId = id; // Add custom argument
+    }
+}
 
 function sanityChecker(diagram:ExtendedPipeline): boolean{
 
@@ -29,7 +36,7 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
         if (match !== null) {
             //@ts-ignore
             const errorBlock = diagram.blocks[match]
-            throw (Error(`Error: at block ${errorBlock.descriptors.name}\nCheck for missing arguments or incorrect connections according to type.`))
+            throw (new PipelineSyntaxError(`Error: at block ${errorBlock.descriptors.name}\nCheck for missing arguments or incorrect connections according to type.`, errorBlock.id));
 
         } else throw (Error("Unknown error"))
 
@@ -37,6 +44,15 @@ function sanityChecker(diagram:ExtendedPipeline): boolean{
         //throw (validator.errors)
 
     }
+}
+
+function checkBlockProperties(propertyName:string, block:ExtendedBlock): boolean{
+    const ajv : AjvManager = AjvManager.getInstance();
+    const schema=ajv.getSchemaByName(block.descriptors.name)
+    // Create a schema instance
+    const validator = ajv.compile(schema.properties[propertyName]);
+    if (validator(block[propertyName])) {return true}
+    return false
 }
 
 
