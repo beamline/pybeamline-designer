@@ -28,7 +28,7 @@ function on_click(){
       <input v-model="modelValue.data.parameters[key]" class="border p-1 rounded w-full" />
     </div>
     <h2 class="text-xl font-bold mb-2">Additional information:</h2>
-    <i>Sabes porque supe que comias las uvas dos a dos, lazaro? Porque yo comia tres a tres y tu callabas</i>
+    <i>{{modelValue.data.hint}}</i>
   </div>
 
 
