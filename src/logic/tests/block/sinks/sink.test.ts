@@ -24,6 +24,7 @@ test("sink", () => {
 `source_0 = ais_source()
 source_0.pipe(
 ).subscribe(on_next = lambda x : print(str(x)))
+
 `
 )})
 

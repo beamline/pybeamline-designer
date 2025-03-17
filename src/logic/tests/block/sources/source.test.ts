@@ -25,7 +25,8 @@ test("ais_source", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "ais_source.test.json", "utf-8"))))
         .toBe(
             importString + `source_0 = ais_source()\nsource_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -34,7 +35,8 @@ test("log_source", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "log_source.test.json", "utf-8"))))
         .toBe(
             importString +   `source_0 = log_source(log = ['T', 'E', 'S', 'T'])\nsource_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -47,7 +49,8 @@ test("mqttxes_source", () => {
             importString +
 `source_0 = mqttxes_source(broker = 'broker.mqtt.cool', port = 1883, base_topic = 'base/topic/')
 source_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -55,7 +58,8 @@ test("string_test_source", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "string_test_source.test.json", "utf-8"))))
         .toBe(
             importString + `source_0 = string_test_source(iterable = ['T', 'E', 'S', 'T'])\nsource_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -68,7 +72,8 @@ test("wikimedia_source", () => {
             importString +
             `source_0 = wikimedia_source()
 source_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -79,7 +84,8 @@ test("xes_log_source", () => {
         .toBe(
             importString +
             `source_0 = xes_log_source(log = pm4py.read_xes("test.xes"))\nsource_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })
 
 
@@ -88,5 +94,6 @@ test("xes_log_source_from_file", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "xes_log_source_from_file.test.json", "utf-8"))))
         .toBe(importString +
             `source_0 = xes_log_source_from_file(log = "test.xes")\nsource_0.pipe(
-).subscribe(on_next = lambda x : print(str(x)))\n`)
+).subscribe(on_next = lambda x : print(str(x)))\n
+`)
 })

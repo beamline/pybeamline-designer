@@ -90,7 +90,7 @@ export class Handler {
 
         //close the function and continue with the diagram
         if (this.unionData[block.id].counter === 0) {
-            this.compiler.appendBodyString("\nunion_" + this.counters.union + " = " + this.unionData[block.id].mergeString + ")\n\n")
+            this.compiler.appendBodyString("union_" + this.counters.union + " = " + this.unionData[block.id].mergeString + ")\n\n")
             newString = "union_" + this.counters.union + ".pipe( \n"
             this.unionData[block.id].pass = true;
             this.counters.union++;
