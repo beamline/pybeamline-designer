@@ -54,6 +54,7 @@ async function createNode(name: string, folder: string, id: string, position : X
             parameters : schema.parameters,
             sourceColor : stringToHexColor(schema.descriptors.outputType),
             targetColor : stringToHexColor(schema.descriptors.inputType),
+            hint : schema.hint
         }
     }
 
