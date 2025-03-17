@@ -88,6 +88,9 @@ export class Translator {
         if (guiBlock.outputs.length<1){
             extendedBlockTemplate.descriptors["outputType"] = null
         }
+        if (blockSchema.header) {
+            extendedBlockTemplate.header = blockSchema.header;
+        }
 
         return extendedBlockTemplate
 

@@ -1,5 +1,6 @@
 import {Compiler} from "./Compiler.js";
 import {ExtendedBlock, UnionData } from "./Syntax.js";
+import {maxHeaderSize} from "node:http";
 
 
 export class Handler {
@@ -52,6 +53,11 @@ export class Handler {
     }
 
     private handleDefault (block : ExtendedBlock, currentString : string) : string {
+        if (block.header) {
+
+            this.compiler.appendHeadString(block.header + block.id + " = reference_model\n\n")
+
+        }
         return `${currentString}\t${this.addParametersToPipeline(block)},\n`
     }
 
@@ -140,6 +146,10 @@ export class Handler {
 
         //Open bracket
         let resultString : string = block.function.slice(0, -1);
+
+        if (Object.keys(block).includes("header")) {
+            resultString += block.id;
+        }
 
         //If there are no parameters return
         if (Object.keys(block.parameters).length == 0) {

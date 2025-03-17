@@ -83,9 +83,13 @@ source_0.pipe(
 test("behavioral_conformance", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "behavioral_conformance.test.json", "utf-8"))))
         .toBe(importString +
-            `source_0 = xes_log_source_from_file(log = "test.xes")
+            `
+#TODO: Define your reference model
+user_defined_parameter1 = reference_model
+
+source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
-\tbehavioral_conformance(model = user_defined_parameter)
+\tbehavioral_conformance(model = user_defined_parameter1)
 ).subscribe(on_next = lambda x : print(str(x)))
 
 `)

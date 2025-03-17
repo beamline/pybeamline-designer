@@ -15,6 +15,7 @@ interface ExtendedBlock {
     input?: number;         // Optional: Not all blocks have an input
     outputs: string[];      // Outputs will always be an array of strings
     function : string       //python code that calls the function
+    header? : string
 }
 
 interface GuiBlock {
@@ -58,8 +59,9 @@ interface BlockSchema  {
             required : string[]
         },
         descriptors : {properties : any}
-        function : { const : string }
-        hint: {const: string}
+        function : { const : string },
+        hint: {const: string},
+        header? : {const : string},
     }
     required : string[]
 }
@@ -70,6 +72,7 @@ interface CleanSchema {
     required : string[],
     input? : string,
     function : string,
+    header? : string,
     hint : string
 }
 

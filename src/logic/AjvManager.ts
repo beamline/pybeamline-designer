@@ -152,6 +152,11 @@ class AjvManager extends Ajv{
             cleanedSchema["input"] = "number"
         }
 
+        if (Object.keys(schema.properties).includes("header")) {
+            //@ts-ignore
+            cleanedSchema["header"] = schema.properties.header.const;
+        }
+
 
         return cleanedSchema
 

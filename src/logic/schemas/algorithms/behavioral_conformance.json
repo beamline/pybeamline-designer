@@ -25,6 +25,9 @@
     "function": {
       "const": "behavioral_conformance(model = user_defined_parameter)"
     },
+    "header" : {
+      "const": "\n#TODO: Define your reference model\nuser_defined_parameter"
+    },
     "hint": {
       "const": "This is a great hint that will help you a lot"
     }
