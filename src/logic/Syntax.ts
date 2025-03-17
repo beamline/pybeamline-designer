@@ -59,6 +59,7 @@ interface BlockSchema  {
         },
         descriptors : {properties : any}
         function : { const : string }
+        hint: {const: string}
     }
     required : string[]
 }
@@ -68,7 +69,8 @@ interface CleanSchema {
     parameters : Params,
     required : string[],
     input? : string,
-    function : string
+    function : string,
+    hint : string
 }
 
 
