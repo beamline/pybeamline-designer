@@ -30,7 +30,8 @@ export class Compiler {
     private headString : string = `from pybeamline.sources import *
 from pybeamline.sources.real_world_sources import *
 from pybeamline.mappers import *
-from pybeamline.algorithms import *
+from pybeamline.algorithms.discovery import *
+from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
 \n`
@@ -57,7 +58,8 @@ from reactivex import merge, concat
         this.headString = `from pybeamline.sources import *
 from pybeamline.sources.real_world_sources import *
 from pybeamline.mappers import *
-from pybeamline.algorithms import *
+from pybeamline.algorithms.discovery import *
+from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
 \n`
