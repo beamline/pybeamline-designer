@@ -1,8 +1,6 @@
 import Ajv from "ajv";
 import {ExtendedBlock, CleanSchema, BlockSchema} from "./Syntax.js";
-//import {readdirSync, readFileSync} from "fs";
-//import {dirname, resolve} from "path";
-//import {fileURLToPath} from "url";
+
 
 class AjvManager extends Ajv{
 
@@ -10,15 +8,7 @@ class AjvManager extends Ajv{
     private constructor(){
         super({ allErrors: true })
 
-        // Create __filename and __dirname
-        //const __filename = fileURLToPath(import.meta.url);
-        //const __dirname = dirname(__filename);
-        //const path= resolve(__dirname, "./schemas")
-
         this.addKeywords()
-        //adding reference schemas
-        this.addAllReferencesfromWeb()
-        //this.addAllReferences(path)
 
 
     }
@@ -44,28 +34,48 @@ class AjvManager extends Ajv{
         else {return this.cleanSchema(schema)}
 
     }
+    public async manageReferences() {
+        const isTest = process.env.VITEST === "true";
 
-    private addReference(filePath:string, reference : string) {
+        if (isTest) {
+            const {readdirSync, readFileSync} = await import("fs");
+            const {dirname, resolve} = await import("path");
+            const {fileURLToPath} = await import("url");
+
+            // Create __filename and __dirname
+            const __filename = fileURLToPath(import.meta.url);
+            const __dirname = dirname(__filename);
+            const path= resolve(__dirname, "./schemas")
+
+            this.addAllReferences(path,readdirSync,resolve,readFileSync)
+
+
+        } else {
+            this.addAllReferencesfromWeb()
+        }
+    }
+
+
+    private addReference(filePath:string, reference : string, readFileSync: Function) {
         const schema = JSON.parse(readFileSync(filePath, "utf8"));
         // Add schema to Ajv, using the filename (or a URL-like identifier) as the schema ID
         this.addSchema(schema,reference);
     }
 
-    private addAllReferences(directoryPath: string){
+    private addAllReferences(directoryPath: string, readdirSync: Function, resolve: Function, readFileSync: Function){
         const schemasReferences=readdirSync(directoryPath)
-        schemasReferences.forEach((reference) => {
+        schemasReferences.forEach((reference: string) => {
             const filePath = resolve(directoryPath, reference)
             if (reference.endsWith(".json")) {
-                this.addReference(filePath, reference)
+                this.addReference(filePath, reference, readFileSync)
             } else {
-                this.addAllReferences(filePath)
+                this.addAllReferences(filePath,readdirSync,resolve,readFileSync)
             }
         })
     }
 
     private async addAllReferencesfromWeb(){
         const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
-        const groupedFiles = {};
 
         for (const path in files) {
             const module = await files[path](); // Load the JSON dynamically
