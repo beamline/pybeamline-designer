@@ -1,11 +1,16 @@
 import { generateCode } from "../../../codeGenerator.ts";
-import { expect, test } from 'vitest';
+import { expect, test, beforeAll } from 'vitest';
 import {readFileSync} from "fs";
-
+import AjvManager from "../../../AjvManager.js";
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/filters/";
 let importString : string = "from pybeamline import *\nfrom reactivex import merge, concat\n\n"
+
+beforeAll(async () => {
+    // This code runs once before all tests
+    await AjvManager.getInstance().manageReferences()
+});
 
 
 //This test series will cover each single filter used within a legal unit pipeline

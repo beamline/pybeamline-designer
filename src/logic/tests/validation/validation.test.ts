@@ -1,12 +1,17 @@
 import { generateCode } from "../../codeGenerator.ts";
-import { expect, test } from 'vitest';
+import {beforeAll, expect, test} from 'vitest';
 import {readFileSync} from "fs";
+import AjvManager from "../../AjvManager.js";
 
 
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/validation/";
 
+beforeAll(async () => {
+    // This code runs once before all tests
+    await AjvManager.getInstance().manageReferences()
+});
 
 
 //  ########
