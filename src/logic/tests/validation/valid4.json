@@ -14,8 +14,8 @@
       "id": "1",
       "name": "simple_dfg_miner",
       "parameters": {
-        "model_update_frequency": 20,
-        "min_relative_frequency": 3
+        "model_update_frequency": "20",
+        "min_relative_frequency": "3"
       },
       "outputs": [
         "2"

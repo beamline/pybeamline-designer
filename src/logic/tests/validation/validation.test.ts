@@ -2,6 +2,7 @@ import { generateCode } from "../../codeGenerator.ts";
 import {beforeAll, expect, test} from 'vitest';
 import {readFileSync} from "fs";
 import AjvManager from "../../AjvManager.js";
+import {PipelineSyntaxError} from "../../sanityChecker.js";
 
 
 
@@ -11,13 +12,13 @@ let pathToTests : string = "src/logic/tests/validation/";
 beforeAll(async () => {
     // This code runs once before all tests
     await AjvManager.getInstance().manageReferences()
+
 });
 
 
 //  ########
 //  Test 1 : [source] -> [sinks]
 //  ######## string_test_source is not written correctly
-
 
 test("Validation test 1", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "valid1.json", "utf-8"))))
