@@ -6,6 +6,7 @@ import useDragAndDrop from "@/components/useDnD.js";
 import {StandardNode, StartNode, EndNode, UnionNode, CustomEdge} from "@/components/graph/index.ts"
 import Drawer from 'primevue/drawer';
 import BlockOptions from "@/componentsPrime/BlockOptions.vue";
+import ActionPanel from "@/componentsPrime/ActionPanel.vue";
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
 const nodes = ref ([]);
 const edges = ref<CustomEdge[]>([]);
@@ -76,6 +77,8 @@ const onNodeRemoved = (change: NodeChange[]) => {
     <Drawer v-model:visible="visible" :modal="modalRef" position="right" header="Block Information">
       <BlockOptions :blockId="selectedNodeId" />
     </Drawer>
+
+    <ActionPanel/>
 
 
     <background />
