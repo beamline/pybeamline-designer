@@ -1,30 +1,12 @@
 <script setup lang="ts">
 import {Connection, GraphEdge, Handle, Position, useVueFlow} from "@vue-flow/core";
+import {hasCommonElement, isConnectedToAncestors} from "@/components/graph/nodes/node-utils.js";
 const {getNodes, getEdges} = useVueFlow();
 
 
-
-
 const props = defineProps({
-  id : String,
   data: Object,  // This will be the 'data' property passed from the node definition
 });
-
-
-const hasCommonElement = (arr1: any[], arr2: any[]): boolean => {
-  return arr1.some(item => arr2.includes(item));
-};
-
-function isConnectedToAncestors (connection : Connection, edges : GraphEdge[], currNodeId : string) {
-  const directAncestorIds = edges.filter(edge => edge.target == currNodeId).map(edges => edges.source);
-
-  if (directAncestorIds.includes(connection.target)) {
-    return true;
-  } else {
-    const boolArr : boolean[] = directAncestorIds.map(nodeId => isConnectedToAncestors(connection,  edges,  nodeId));
-    return boolArr.includes(true);
-  }
-}
 
 const isValidConnection = (connection : Connection) : boolean => {
   const nodes = getNodes.value;
@@ -35,11 +17,9 @@ const isValidConnection = (connection : Connection) : boolean => {
   if ((outNode.id === inNode.id)) {
     return false;
   }
-
   if (isConnectedToAncestors(connection, getEdges.value, outNode.id )) {
     return false
   }
-
 
   if (outNode.data.outputType.includes("any") || inNode.data.inputType.includes("any")) {
     return true

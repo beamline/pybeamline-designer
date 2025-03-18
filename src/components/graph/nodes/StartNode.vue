@@ -45,7 +45,5 @@ const isValidConnectionStart = (connection : Connection) : boolean => {
   color: darkviolet;
 }
 
-#hasParams {
-  color: crimson;
-}
+
 </style>

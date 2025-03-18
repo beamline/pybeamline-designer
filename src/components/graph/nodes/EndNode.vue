@@ -24,10 +24,10 @@ const isValidConnection = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
 }
 
-
+/*
 const color = ref('red'); // Initial color
 
-/*
+
 onMounted(() => {
   let index = 0;
   setInterval(() => {
