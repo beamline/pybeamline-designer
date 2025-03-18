@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import {Connection, Handle, Position} from "@vue-flow/core";
+import {Connection, Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 import {useVueFlow} from "@vue-flow/core";
 import {hasCommonElement} from "./node-utils.js";
+import {ref} from "vue";
 
-const { getNodes } = useVueFlow();
+const { getNodes, getEdges } = useVueFlow();
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
@@ -22,15 +23,29 @@ const isValidConnectionStart = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
 }
 
+const handleConnectableOut: HandleConnectableFunc = (node, connectedEdges) => {
+
+  const thisNode = getNodes.value.filter( abc => abc.id === node.id)[0]
+  dynamicColor.value = "grey"
+
+  if (connectedEdges.length > 0) {
+    dynamicColor.value = thisNode.data.sourceHandleStyle.backgroundColor
+  }
+  return true
+}
+
+const dynamicColor = ref("")
+
 
 </script>
 
 <template>
-  <div class="startNode">
+  <div class="startNode" :style="{borderColor : dynamicColor}">
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnectionStart"
             :connection-radius="30"
+            :connectable="handleConnectableOut"
             :style="props.data.sourceHandleStyle"
     />
   </div>
