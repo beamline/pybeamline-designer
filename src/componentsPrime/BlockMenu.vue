@@ -32,10 +32,10 @@ function createItems(groupedFiles: {string:string[]}) {
   for (const folder in groupedFiles) {
     items.value.push({
       label: folder,
-      icon: 'pi pi-file',
+      icon: 'pi pi-folder',
       items: groupedFiles[folder].map((item:string) => ({
         label: item,
-        icon: 'pi pi-file',
+        icon: 'pi pi-box',
         parent: folder
       }))
     })
