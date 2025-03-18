@@ -62,18 +62,22 @@ import useDragAndDrop from './useDnD.ts'
 import OptionsPanel from "@/components/OptionsPanel.vue";
 import ErrorDetector from "@/components/ErrorDetector.vue";
 
-
+const {getNodes, getEdges} = useVueFlow();
 
 function onConnect(params : Connection) {
   // You can generate a unique id for the new edge.
+  const nodes = getNodes.value;
+  const outNode = nodes.filter(elemt => elemt.id === params.source)[0]
 
   const newEdge = {
     id: `e${params.source}-${params.target}`,
     source: params.source,
     target: params.target,
     type: 'custom',
-    animated:true
+    animated:true,
+    data: { color : outNode.data.sourceHandleStyle.backgroundColor }
   };
+
   edges.value.push(newEdge);
 }
 

@@ -43,7 +43,7 @@ nav{
 }
 main{
   grid-area: main;
-  background-color: lightblue;
+  background-color: whitesmoke;
   z-index: 0;
 }
 </style>

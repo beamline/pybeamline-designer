@@ -44,7 +44,7 @@ export const stylePalette = {
 //Mapping of types to colors
 export const colorPalette = {
     "tuple": "#ffbd00",
-    "dataframe": "#FF1493",
+    "dataframe": "#FF69B4",
     "event": "#32CD32",
     "petrinet": "#450045",
     "heuristics": "#8A2BE2",

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { EdgeProps } from '@vue-flow/core';
 import { BezierEdge } from '@vue-flow/core';
+import {stylePalette} from "@/components/graph/handleStyles.js";
 
-import { CustomData } from './edges.js'
 
 // props were passed from the slot using `v-bind="customEdgeProps"`
-const props = defineProps<EdgeProps<CustomData>>(
+const props = defineProps<EdgeProps>(
+
 );
 
 const edgeStyle = { stroke: props.data.color || 'grey', strokeWidth: 2 };
