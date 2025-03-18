@@ -7,10 +7,19 @@ import {GraphEdge, GraphNode} from "@vue-flow/core";
 export class Translator {
 
     private ajv: AjvManager
+    private static instance : Translator;
 
-    public constructor() {
+    private constructor() {
         this.ajv = AjvManager.getInstance();
     }
+
+    public static getInstance(): Translator {
+        if (!Translator.instance) {
+            Translator.instance = new Translator(); // Create instance if it doesn't exist
+        }
+        return Translator.instance;
+    }
+
 
     public getGuiPipelineFromVue (nodes : GraphNode[], edges : GraphEdge[]) {
         let guiBlocksArr = [];

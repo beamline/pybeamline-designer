@@ -6,7 +6,7 @@ import {useVueFlow, Panel} from "@vue-flow/core";
 
 const {nodes, edges, setNodes, setEdges }=useVueFlow()
 
-const translator = new Translator();
+const translator = Translator.getInstance();
 
 const editor = ref("");
 

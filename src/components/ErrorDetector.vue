@@ -11,7 +11,7 @@ const { nodes, edges, onNodesChange, onEdgesChange, updateNode } = useVueFlow();
 onNodesChange((changes)=>{
   if (changes.length === 0) {return}
   if (changes[0].type !== "select"){return}
-  const translator = new Translator();
+  const translator = Translator.getInstance();
   const node = nodes.value.filter(elemt => elemt.id === changes[0].id)
   const block: ExtendedBlock = translator.translatePipeline(translator.getGuiPipelineFromVue(node,  [])).blocks[0]
 

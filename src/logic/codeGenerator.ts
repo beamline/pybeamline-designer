@@ -11,7 +11,7 @@ function generateCode (userPipeline : GuiPipeline) {
     const compiler : Compiler = new Compiler();
 
 
-    const translator : Translator = new Translator();
+    const translator : Translator = Translator.getInstance();
     let extendedPipe : ExtendedPipeline;
 
 
