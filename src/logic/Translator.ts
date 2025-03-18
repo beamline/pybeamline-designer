@@ -85,7 +85,6 @@ export class Translator {
         }
 
         for (let element of guiPipeline.blocks) {
-            //@ts-ignore
             if (element.outputs.includes(guiBlock.id)){inputCounter++}
         }
         if (inputCounter > 1) {
