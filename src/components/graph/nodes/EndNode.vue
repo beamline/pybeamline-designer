@@ -2,14 +2,15 @@
 import {Connection, Handle, HandleConnectableFunc, Position} from "@vue-flow/core";
 import {useVueFlow} from "@vue-flow/core";
 import {ref, onMounted} from "vue";
-import {hasCommonElement, handleConnectableIn} from "./node-utils.js";
+import {hasCommonElement} from "./node-utils.js";
+
 
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
 });
 
-const { getNodes } = useVueFlow();
+const { getNodes, getEdges } = useVueFlow();
 
 const isValidConnection = (connection : Connection) : boolean => {
   const nodes = getNodes.value;
@@ -24,19 +25,31 @@ const isValidConnection = (connection : Connection) : boolean => {
   return hasCommonElement(outNode.data.outputType, inNode.data.inputType)
 }
 
-/*
-const color = ref('red'); // Initial color
+const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
+
+  const edge = getEdges.value.filter(abc => abc.target === node.id)[0]
+  const thisNode = getNodes.value.filter( abc => abc.id === node.id)[0]
 
 
-onMounted(() => {
-  let index = 0;
-  setInterval(() => {
-    const colors = ['red', 'blue', '#90EE90'];
-    color.value = colors[index];
-    index = (index + 1) % colors.length;
-  }, 1000); // Change color every second
-});
-*/
+  //Edge has been connected, set the handle color to the input type
+  if (thisNode.data.inputType.includes("any") && edge !== undefined) {
+    thisNode.data.targetHandleStyle.backgroundColor = edge.data.color;
+  }
+
+  //Edge has been deleted, reset the handle color back to grey
+  if (edge === undefined) {
+    thisNode.data.targetHandleStyle.backgroundColor = "grey"
+  }
+
+  let count = 0;
+  for (let edge of connectedEdges) {
+    if (edge.target === node.id) {
+      count++;
+    }
+  }
+
+  return count < 1;
+}
 
 
 </script>
@@ -61,10 +74,6 @@ onMounted(() => {
   border-radius: 5px;
   color: blue;
 }
-/*
-.animated-handle {
-  transition: background-color 0.5s linear;
-}
-*/
+
 
 </style>
