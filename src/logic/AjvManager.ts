@@ -137,7 +137,7 @@ class AjvManager extends Ajv{
             }))
         }
 
-        const cleanedSchema = {
+        const cleanedSchema : CleanSchema = {
             descriptors: {
                 "name": schema.properties.descriptors.properties.name.const,
                 "inputType": inputType,
@@ -150,7 +150,6 @@ class AjvManager extends Ajv{
         }
 
         if (schema.required.includes("input")) {
-            //@ts-ignore
             cleanedSchema["input"] = "number"
         }
 
