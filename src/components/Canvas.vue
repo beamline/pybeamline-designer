@@ -51,12 +51,12 @@
 import {ref, watch} from "vue";
 import {useVueFlow, VueFlow} from "@vue-flow/core";
 import Background from "@/components/Background.vue";
-import StandardNode from "./graph/StandardNode.vue";
-import StartNode from "./graph/StartNode.vue";
-import EndNode from "./graph/EndNode.vue";
-import CustomEdge from "@/components/graph/CustomEdge.vue";
+import StandardNode from "./graph/nodes/StandardNode.vue";
+import StartNode from "./graph/nodes/StartNode.vue";
+import EndNode from "./graph/nodes/EndNode.vue";
+import CustomEdge from "@/components/graph/edges/CustomEdge.vue";
 import {Connection, ConnectionMode} from "@vue-flow/core";
-import UnionNode from "@/components/graph/UnionNode.vue";
+import UnionNode from "@/components/graph/nodes/UnionNode.vue";
 import BlockSidebar from "@/components/BlockSidebar.vue";
 import useDragAndDrop from './useDnD.ts'
 import OptionsPanel from "@/components/OptionsPanel.vue";
