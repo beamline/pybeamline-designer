@@ -31,15 +31,17 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   const thisNode = getNodes.value.filter( abc => abc.id === node.id)[0]
 
 
-  //Edge has been deleted, reset the handle color back to grey
-  dynamicColor.value = "grey"
-
   //Edge has been connected, set the handle color to the input type
   if (thisNode.data.inputType.includes("any") && edge !== undefined) {
     thisNode.data.targetHandleStyle.backgroundColor = edge.data.color;
     dynamicColor.value = edge.data.color
   }
 
+  //Edge has been deleted, reset the handle color back to grey
+  if (edge === undefined) {
+    thisNode.data.targetHandleStyle.backgroundColor = "grey"
+    dynamicColor.value = "grey"
+  }
 
   let count = 0;
   for (let edge of connectedEdges) {
