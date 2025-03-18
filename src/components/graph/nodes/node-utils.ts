@@ -19,16 +19,3 @@ export function isConnectedToAncestors (connection : Connection, edges : GraphEd
     }
 }
 
-export const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
-    let count = 0;
-    for (let edge of connectedEdges) {
-        if (edge.target === node.id) {
-            count++;
-        }
-    }
-
-    return count < 1;
-}
-
-
-

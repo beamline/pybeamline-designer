@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {Connection, Handle, HandleConnectableFunc, Position, useVueFlow} from "@vue-flow/core";
 const {getNodes, getEdges} = useVueFlow();
-import {hasCommonElement, isConnectedToAncestors, handleConnectableIn} from "./node-utils.js";
+import {hasCommonElement, isConnectedToAncestors} from "./node-utils.js";
+import {ref} from "vue";
 
 const props = defineProps({
   data: Object,  // This will be the 'data' property passed from the node definition
@@ -32,10 +33,40 @@ const isValidConnection = (connection : Connection) : boolean => {
 }
 
 
+const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
+
+  const thisNode = getNodes.value.filter( abc => abc.id === node.id)[0]
+
+  dynamicColor1.value = "grey"
+  dynamicColor2.value = "grey"
+
+  let count = 0;
+  for (let edge of connectedEdges) {
+
+
+    if (edge.source === node.id) {
+      dynamicColor2.value = thisNode.data.sourceHandleStyle.backgroundColor
+    }
+
+    if (edge.target === node.id) {
+      dynamicColor1.value = thisNode.data.targetHandleStyle.backgroundColor
+      count++;
+    }
+  }
+
+  return count < 1;
+}
+
+const dynamicColor1 = ref("grey");
+const dynamicColor2 = ref("grey");
+
 </script>
 
 <template>
-  <div class="standardNode">
+  <div class="standardNode"
+       :style="{ borderRadius: '5px',
+       borderImage: `linear-gradient(to right, ${dynamicColor1}, ${dynamicColor2}) 1`,
+       }">
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnection"
