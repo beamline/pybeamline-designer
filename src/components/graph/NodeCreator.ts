@@ -1,7 +1,7 @@
 import {XYPosition} from "@vue-flow/core";
 import AjvManager from "../../logic/AjvManager.js";
 import {CleanSchema} from "../../logic/Syntax.js";
-
+import {colorPalette, stylePalette} from "./handleStyles.js";
 
 async function createNode(name: string, folder: string, id: string, position : XYPosition) {
 
@@ -20,51 +20,6 @@ async function createNode(name: string, folder: string, id: string, position : X
         nodeType = "union";
     }
 
-    const stringToHexColor = (types: string[] | null): string => {
-        if (types == null) {
-            return "#000000";
-        }
-
-        const str = types[0];
-        if (str === "any") {
-            return "grey"
-        }
-        let hash = 0;
-
-        for (let i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        let color = "#";
-        for (let i = 0; i < 3; i++) {
-            color += ("00" + ((hash >> (i * 8)) & 0xff).toString(16)).slice(-2);
-        }
-        return color ;
-    }
-
-    const stringToHexColor2 = (types: string[] | null): string => {
-        if (types == null) {
-            return "#000000";
-        }
-        if (Object.keys(colorPalette).includes(types[0]))
-            //@ts-ignore
-            return colorPalette[types[0]];
-        else {
-            return stringToHexColor(types)
-        }
-    }
-
-    const colorPalette = {
-        "tuple": "#ffbd00",
-        "dataframe": "#FF1493",
-        "event": "#32CD32",
-        "petrinet": "#FFD700",
-        "heuristics": "#8A2BE2",
-        "model": "#DC143C",
-        "conformance": "#4682B4",
-        "any": "grey"            // Wildcard color
-    };
-
-
     const node = {
         id : id,
         position,
@@ -74,8 +29,8 @@ async function createNode(name: string, folder: string, id: string, position : X
             inputType : schema.descriptors.inputType,
             outputType : schema.descriptors.outputType,
             parameters : schema.parameters,
-            sourceColor : stringToHexColor2(schema.descriptors.outputType),
-            targetColor : stringToHexColor2(schema.descriptors.inputType),
+            sourceHandleStyle : getHandleStyle(schema.descriptors.outputType),
+            targetHandleStyle : getHandleStyle(schema.descriptors.inputType),
             hint : schema.hint
         }
     }
@@ -83,5 +38,48 @@ async function createNode(name: string, folder: string, id: string, position : X
     return node
 
 }
+
+const stringToHexColor = (types: string[] | null): string => {
+    if (types == null) {
+        return "#000000";
+    }
+
+    const str = types[0];
+    if (str === "any") {
+        return "grey"
+    }
+    let hash = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let color = "#";
+    for (let i = 0; i < 3; i++) {
+        color += ("00" + ((hash >> (i * 8)) & 0xff).toString(16)).slice(-2);
+    }
+    return color ;
+}
+
+const stringToHexColor2 = (types: string[] | null): string => {
+    if (types == null) {
+        return "#000000";
+    }
+    if (Object.keys(colorPalette).includes(types[0]))
+        //@ts-ignore
+        return colorPalette[types[0]];
+    else {
+        return stringToHexColor(types)
+    }
+}
+
+const getHandleStyle = (types: string[] | null) => {
+    if (types == null) {
+        return {};
+    }
+    //@ts-ignore
+    //Makes a new object to pass
+    return Object.assign({}, stylePalette[types[0]], {backgroundColor: stringToHexColor2(types)})
+}
+
 
 export {createNode}
