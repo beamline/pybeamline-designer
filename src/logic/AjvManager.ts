@@ -28,7 +28,8 @@ class AjvManager extends Ajv{
     }
 
     public getCleanSchemaByName (name: string) : CleanSchema{
-        const schema = this.getSchema(name+".json")?.schema
+        //@ts-ignore
+        const schema: BlockSchema = this.getSchema(name+".json")?.schema
 
         if (!schema) {throw new Error("There is no schema with that name")}
         else {return this.cleanSchema(schema)}
@@ -75,6 +76,7 @@ class AjvManager extends Ajv{
     }
 
     private async addAllReferencesfromWeb(){
+        //@ts-ignore
         const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
 
         for (const path in files) {
