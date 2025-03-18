@@ -27,7 +27,7 @@ async function createNode(name: string, folder: string, id: string, position : X
 
         const str = types[0];
         if (str === "any") {
-            return "blue"
+            return "grey"
         }
         let hash = 0;
 
@@ -41,6 +41,28 @@ async function createNode(name: string, folder: string, id: string, position : X
         return color ;
     }
 
+    const stringToHexColor2 = (types: string[] | null): string => {
+        if (types == null) {
+            return "#000000";
+        }
+        if (Object.keys(colorPalette).includes(types[0]))
+            //@ts-ignore
+            return colorPalette[types[0]];
+        else {
+            return stringToHexColor(types)
+        }
+    }
+
+    const colorPalette = {
+        "tuple": "#ffbd00",
+        "dataframe": "#FF1493",
+        "event": "#32CD32",
+        "petrinet": "#FFD700",
+        "heuristics": "#8A2BE2",
+        "model": "#DC143C",
+        "conformance": "#4682B4",
+        "any": "grey"            // Wildcard color
+    };
 
 
     const node = {
@@ -52,8 +74,8 @@ async function createNode(name: string, folder: string, id: string, position : X
             inputType : schema.descriptors.inputType,
             outputType : schema.descriptors.outputType,
             parameters : schema.parameters,
-            sourceColor : stringToHexColor(schema.descriptors.outputType),
-            targetColor : stringToHexColor(schema.descriptors.inputType),
+            sourceColor : stringToHexColor2(schema.descriptors.outputType),
+            targetColor : stringToHexColor2(schema.descriptors.inputType),
             hint : schema.hint
         }
     }
