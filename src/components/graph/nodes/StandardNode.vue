@@ -32,37 +32,6 @@ const isValidConnection = (connection : Connection) : boolean => {
 }
 
 
-const triangleStyle = {
-  width: '11px',
-  height: '11px',
-  backgroundColor: props.data.sourceColor, // Adjust color as needed
-  clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-  borderRadius: '0', // Ensure no rounding
-  border: '0px solid white',
-  outline: 'none', // Ensure no outline affects the look
-  boxShadow: 'none', // Prevent any shadow artifacts
-  padding: '0', // Ensure no spacing issues
-  margin: '0', // Remove any unwanted margins
-};
-
-const squareStyle = {
-  width: '10px',
-  height: '10px',
-  backgroundColor: props.data.sourceColor, // Use the color passed via props
-  borderRadius: '0', // No rounding, keep it square
-  border: '1px solid white', // Remove any default borders
-  outline: 'none', // Ensure no outline affects the look
-  boxShadow: 'none', // Prevent any shadow artifacts
-  padding: '0', // Ensure no spacing issues
-  margin: '0px', // Remove any unwanted margins
-};
-
-const circleStyle = {
-  backgroundColor : props.data.targetColor,
-  width:'10px',
-  height:'10px'
-}
-
 </script>
 
 <template>
@@ -70,13 +39,13 @@ const circleStyle = {
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnection"
-            :style="triangleStyle"
+            :style="props.data.sourceHandleStyle"
             :connection-radius="30"
     />
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"
             :is-valid-connection="isValidConnection"
-            :style="circleStyle"
+            :style="props.data.targetHandleStyle"
             :connection-radius="30"
     />
   </div>

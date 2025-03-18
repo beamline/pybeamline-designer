@@ -55,11 +55,11 @@ const isValidConnection = (connection : Connection) : boolean => {
   <div class="standardNode">
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right" :is-valid-connection="isValidConnection"
-            :style="{backgroundColor : props.data.sourceColor, width:'10px', height:'10px'}"
+            :style="props.data.sourceHandleStyle"
             :connection-radius="30"
     />
     <Handle type="target" :position="Position.Left" :is-valid-connection="isValidConnection"
-            :style="{backgroundColor : props.data.targetColor, width:'10px', height:'10px'}"
+            :style="props.data.targetHandleStyle"
             :connection-radius="30"
 
     />

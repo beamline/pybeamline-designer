@@ -27,6 +27,7 @@ const isValidConnection = (connection : Connection) : boolean => {
 
 const color = ref('red'); // Initial color
 
+/*
 onMounted(() => {
   let index = 0;
   setInterval(() => {
@@ -35,6 +36,8 @@ onMounted(() => {
     index = (index + 1) % colors.length;
   }, 1000); // Change color every second
 });
+*/
+
 
 </script>
 
@@ -44,9 +47,8 @@ onMounted(() => {
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"
             :is-valid-connection="isValidConnection"
-            :style="{backgroundColor : color, width:'10px', height:'10px'}"
+            :style="props.data.targetHandleStyle"
             :connection-radius="30"
-            class="animated-handle"
     />
   </div>
 </template>
@@ -59,8 +61,10 @@ onMounted(() => {
   border-radius: 5px;
   color: blue;
 }
-
+/*
 .animated-handle {
-  transition: background-color 0.5s linear; /* Smooth transition */
+  transition: background-color 0.5s linear;
 }
+*/
+
 </style>

@@ -31,7 +31,7 @@ const isValidConnectionStart = (connection : Connection) : boolean => {
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnectionStart"
             :connection-radius="30"
-            :style="{backgroundColor : props.data.sourceColor, width:'10px', height:'10px'}"
+            :style="props.data.sourceHandleStyle"
     />
   </div>
 </template>
