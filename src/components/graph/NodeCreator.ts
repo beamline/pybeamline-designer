@@ -3,42 +3,6 @@ import AjvManager from "../../logic/AjvManager.js";
 import {CleanSchema} from "../../logic/Syntax.js";
 import {colorPalette, stylePalette} from "./handleStyles.js";
 
-async function createNode(name: string, folder: string, id: string, position : XYPosition) {
-
-    const ajv = AjvManager.getInstance()
-    const schema : CleanSchema = ajv.getCleanSchemaByName(name);
-
-    let nodeType = "standard";
-
-    if (schema.descriptors.inputType === null) {
-        nodeType = "start";
-    }
-    else if (schema.descriptors.outputType === null) {
-        nodeType = "end";
-    }
-    else if ("input" in schema) {
-        nodeType = "union";
-    }
-
-    const node = {
-        id : id,
-        position,
-        type : nodeType,
-        data : {
-            name : name,
-            inputType : schema.descriptors.inputType,
-            outputType : schema.descriptors.outputType,
-            parameters : schema.parameters,
-            sourceHandleStyle : getHandleStyle(schema.descriptors.outputType),
-            targetHandleStyle : getHandleStyle(schema.descriptors.inputType),
-            hint : schema.hint
-        }
-    }
-
-    return node
-
-}
-
 const stringToHexColor = (types: string[] | null): string => {
     if (types == null) {
         return "#000000";
@@ -79,6 +43,45 @@ const getHandleStyle = (types: string[] | null) => {
     //@ts-ignore
     //Makes a new object to pass
     return Object.assign({}, stylePalette[types[0]], {backgroundColor: stringToHexColor2(types)})
+}
+
+
+
+
+async function createNode(name: string, folder: string, id: string, position : XYPosition) {
+
+    const ajv = AjvManager.getInstance()
+    const schema : CleanSchema = ajv.getCleanSchemaByName(name);
+
+    let nodeType = "standard";
+
+    if (schema.descriptors.inputType === null) {
+        nodeType = "start";
+    }
+    else if (schema.descriptors.outputType === null) {
+        nodeType = "end";
+    }
+    else if ("input" in schema) {
+        nodeType = "union";
+    }
+
+    const node = {
+        id : id,
+        position,
+        type : nodeType,
+        data : {
+            name : name,
+            inputType : schema.descriptors.inputType,
+            outputType : schema.descriptors.outputType,
+            parameters : schema.parameters,
+            sourceHandleStyle : getHandleStyle(schema.descriptors.outputType),
+            targetHandleStyle : getHandleStyle(schema.descriptors.inputType),
+            hint : schema.hint
+        }
+    }
+
+    return node
+
 }
 
 

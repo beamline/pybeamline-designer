@@ -34,11 +34,13 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   //Edge has been connected, set the handle color to the input type
   if (thisNode.data.inputType.includes("any") && edge !== undefined) {
     thisNode.data.targetHandleStyle.backgroundColor = edge.data.color;
+    dynamicColor.value = edge.data.color
   }
 
   //Edge has been deleted, reset the handle color back to grey
   if (edge === undefined) {
     thisNode.data.targetHandleStyle.backgroundColor = "grey"
+    dynamicColor.value = "grey"
   }
 
   let count = 0;
@@ -51,11 +53,12 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   return count < 1;
 }
 
+const dynamicColor = ref("")
 
 </script>
 
 <template>
-  <div class="endNode">
+  <div class="endNode" :style="{borderColor : dynamicColor}">
     <p>{{ props.data.name }}</p>
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"
@@ -72,7 +75,7 @@ const handleConnectableIn: HandleConnectableFunc = (node, connectedEdges) => {
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 5px;
-  color: blue;
+  color: black;
 }
 
 

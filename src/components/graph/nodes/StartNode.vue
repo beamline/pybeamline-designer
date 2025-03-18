@@ -42,7 +42,7 @@ const isValidConnectionStart = (connection : Connection) : boolean => {
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 5px;
-  color: darkviolet;
+  color: black;
 }
 
 
