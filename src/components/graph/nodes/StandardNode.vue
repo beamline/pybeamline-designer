@@ -32,8 +32,18 @@ const isValidConnection = (connection : Connection) : boolean => {
 }
 
 
-
-
+const triangleStyle = {
+  width: '12px',
+  height: '12px',
+  backgroundColor: props.data.sourceColor, // Adjust color as needed
+  clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+  borderRadius: '0', // Ensure no rounding
+  border: '0px solid white', // Remove any default borders
+  outline: 'none', // Ensure no outline affects the look
+  boxShadow: 'none', // Prevent any shadow artifacts
+  padding: '0', // Ensure no spacing issues
+  margin: '0', // Remove any unwanted margins
+};
 </script>
 
 <template>
@@ -41,7 +51,7 @@ const isValidConnection = (connection : Connection) : boolean => {
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnection"
-            :style="{backgroundColor : props.data.sourceColor, width:'10px', height:'10px'}"
+            :style="triangleStyle"
             :connection-radius="30"
     />
     <Handle type="target" :position="Position.Left"
