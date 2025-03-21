@@ -156,6 +156,7 @@ class AjvManager extends Ajv{
         if (Object.keys(schema.properties).includes("header")) {
             //@ts-ignore
             cleanedSchema["header"] = schema.properties.header.const;
+            cleanedSchema["auxHeader"] = schema.properties.auxHeader.const;
         }
 
 

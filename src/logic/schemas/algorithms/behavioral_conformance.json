@@ -28,6 +28,9 @@
     "header" : {
       "const": "\n#TODO: Define your reference model\nuser_defined_parameter"
     },
+    "auxHeader" : {
+      "const": "= reference_model"
+    },
     "hint": {
       "const": "This is a great hint that will help you a lot"
     }

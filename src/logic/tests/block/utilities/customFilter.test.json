@@ -14,7 +14,7 @@
       "id": "1",
       "name": "custom",
       "parameters": {
-        "functionName": "user_made_function_as_filter()",
+        "functionName": "user_made_function_as_filter",
         "functionBody": "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
       "outputs": [

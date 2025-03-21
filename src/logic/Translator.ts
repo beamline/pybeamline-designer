@@ -98,6 +98,7 @@ export class Translator {
         }
         if (blockSchema.header) {
             extendedBlockTemplate.header = blockSchema.header;
+            extendedBlockTemplate.auxHeader = blockSchema.auxHeader;
         }
 
         return extendedBlockTemplate

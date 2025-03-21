@@ -32,9 +32,8 @@ export class Handler {
 
     public processBlock (block : ExtendedBlock, currentString : string) : string {
 
-        if (block.descriptors.name === "custom") {
-            this.defineCustom(block, currentString)
-            block["function"] = block.parameters.functionName
+        if (block.descriptors.name == ("custom") || block.descriptors.name == "lambda_operator") {
+            return this.handleCustom(block,  currentString)
         }
 
         //Checks if the block has an input property, i.e. is a union (or a custom union)
@@ -53,10 +52,33 @@ export class Handler {
 
     }
 
+    private handleCustom (block : ExtendedBlock, currentString : string) : string {
+        this.defineCustom(block, currentString)
+        block["function"] = block.parameters.functionName + "()"
+
+        if (block.input) {
+            return this.handleUnion(block,  currentString)
+        }
+        if (block.descriptors.inputType === null) {
+            this.compiler.appendBodyString(`source_${this.counters.source} = ${block.function}\n`)
+            currentString += `source_${this.counters.source}.pipe( \n`
+            this.counters.source++
+            return currentString
+        }
+        if (block.descriptors.outputType === null) {
+
+            this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${block.function}\n\n`)
+            return currentString
+        }
+
+        return `${currentString}\t${block.function},\n` + ""
+
+    }
+
 
     private handleDefault (block : ExtendedBlock, currentString : string) : string {
         if (block.header) {
-            this.compiler.appendHeadString(block.header + block.id + " = reference_model\n\n")
+            this.compiler.appendHeadString(`${block.header}${block.id} ${block.auxHeader}\n\n`)
         }
 
         return `${currentString}\t${this.addParametersToPipeline(block)},\n`
@@ -136,16 +158,11 @@ export class Handler {
 
     private addParametersToPipeline (block : ExtendedBlock) : string {
 
-        //TODO: Move this block of code to the customHandler maybe
-        if (block.descriptors.name === "custom") {
-            //add custom function name to pipeline
-            return block.function
-        }
-
         //Open bracket
         let resultString : string = block.function.slice(0, -1);
 
         if (Object.keys(block).includes("header")) {
+            //@ts-ignore
             resultString += block.id;
         }
 
