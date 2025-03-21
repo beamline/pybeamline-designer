@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "descriptors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "lambda_operator"
+        },
+        "outputType": {
+          "oneOf": [
+            {
+              "const": null
+            },
+            {
+              "$ref": "definitions.json#/definitions/streamTypes/any"
+            }
+          ]
+        },
+        "inputType": {
+          "oneOf": [
+            {
+              "const": null
+            },
+            {
+              "$ref": "definitions.json#/definitions/streamTypes/any"
+            }
+          ]
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "functionName": {
+          "type": "string"
+        },
+        "functionBody": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "functionName",
+        "functionBody"
+      ]
+    },
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "input": {
+      "$ref": "definitions.json#/definitions/input"
+    },
+    "function": {
+      "const": "lambda_operator()"
+    },
+    "hint": {
+      "const": "This is a great hint that will help you a lot"
+    }
+  },
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ]
+}

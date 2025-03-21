@@ -31,7 +31,7 @@
           {"$ref": "print_sink.json"},
           {"$ref": "dummy_sink.json"},
 
-
+          {"$ref": "lambda_operator.json"},
           {"$ref": "concat.json"},
           {"$ref": "merge.json"},
           {"$ref": "custom.json"}
