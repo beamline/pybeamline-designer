@@ -30,12 +30,40 @@ const loadJSONs = async () => {
 
 function createItems(groupedFiles: {string:string[]}) {
   for (const folder in groupedFiles) {
+
+    let folderIcon = 'pi pi-folder'
+    let itemIcon = 'pi pi-box';
+
+    switch (folder) {
+      case "filters":
+        folderIcon = 'pi pi-filter'
+        break;
+      case "algorithms":
+        folderIcon = 'pi pi-hammer'
+        break;
+      case "mappers":
+        folderIcon = 'pi pi-eye'
+        break;
+      case "sources":
+        folderIcon = 'pi pi-plus-circle'
+        break;
+      case "sinks":
+        folderIcon = 'pi pi-minus-circle'
+        break;
+      case "utilities":
+        folderIcon = 'pi pi-cog'
+        break;
+      default:
+        break;
+    }
+
+
     items.value.push({
       label: folder,
-      icon: 'pi pi-folder',
+      icon: folderIcon,
       items: groupedFiles[folder].map((item:string) => ({
         label: item,
-        icon: 'pi pi-box',
+        icon: itemIcon,
         parent: folder
       }))
     })
