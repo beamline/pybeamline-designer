@@ -34,6 +34,7 @@ export class Handler {
 
         if (block.descriptors.name === "custom") {
             this.defineCustom(block, currentString)
+            block["function"] = block.parameters.functionName
         }
 
         //Checks if the block has an input property, i.e. is a union (or a custom union)
@@ -52,12 +53,12 @@ export class Handler {
 
     }
 
+
     private handleDefault (block : ExtendedBlock, currentString : string) : string {
         if (block.header) {
-
             this.compiler.appendHeadString(block.header + block.id + " = reference_model\n\n")
-
         }
+
         return `${currentString}\t${this.addParametersToPipeline(block)},\n`
     }
 
@@ -74,14 +75,11 @@ export class Handler {
 
         //Adds the union block to the counter if not already existing
         if (!(block.id in this.unionData)) {
-            const functionName =
-                block.descriptors.name === "custom" ? block.parameters.functionName : block.function
-
             this.unionData[block.id] = {
                 //@ts-ignore
                 counter: block.input,
                 //open the bracket of the union()
-                mergeString: functionName.slice(0, -1),
+                mergeString: block.function.slice(0, -1),
                 pass : false
             };
         }
@@ -116,7 +114,7 @@ export class Handler {
 
     private defineCustom (block : ExtendedBlock, currentString : string) : void {
 
-        //Add the function definition to the head code
+        //Add the function definition to the head code if not already present
         if (!(this.customDefinitions.includes(block.id))) {
             this.compiler.appendHeadString(block.parameters.functionBody + "\n")
             this.customDefinitions.push(block.id)
@@ -141,7 +139,7 @@ export class Handler {
         //TODO: Move this block of code to the customHandler maybe
         if (block.descriptors.name === "custom") {
             //add custom function name to pipeline
-            return block.parameters.functionName
+            return block.function
         }
 
         //Open bracket
