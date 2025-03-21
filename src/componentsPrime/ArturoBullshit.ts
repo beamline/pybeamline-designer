@@ -5,7 +5,7 @@ import {useVueFlow} from "@vue-flow/core";
 
 
 
-export default function arturoBullshit(visible, editor){
+export default function arturoBullshit(visible, editor, fileInput){
     const {nodes, edges, setNodes, setEdges }=useVueFlow()
 
     const translator = new Translator();
@@ -44,7 +44,7 @@ export default function arturoBullshit(visible, editor){
         const blob = new Blob([json], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob); // Create a URL for the Blob
-        a.download = 'pybeamline-design.json'; // Set the download file name
+        a.download = 'pybeamline-design.pdb'; // Set the download file name
         a.click();
     }
 
@@ -53,7 +53,6 @@ export default function arturoBullshit(visible, editor){
     }
 
 
-    const fileInput = ref<HTMLInputElement | null>(null);
 
 //acts like the user clicking the hidden input to show file selection
     const triggerFileSelection = () => {
@@ -61,11 +60,9 @@ export default function arturoBullshit(visible, editor){
     };
 
     const handleFileSelection = (event: Event) => {
-        console.log("here")
         const input = event.target as HTMLInputElement;
         let file = input.files?.[0];
         if (file) {
-            console.log('File selected:', file.name);
 
             const reader = new FileReader();
 
