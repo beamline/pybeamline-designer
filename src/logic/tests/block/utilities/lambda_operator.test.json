@@ -1,0 +1,31 @@
+{
+  "blocks": [
+    {
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+        "iterable": "['x', 'y', 'z']"
+      },
+      "outputs": [
+        "1"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "lambda_operator",
+      "parameters": {
+        "functionName": "user_made_function_as_filter",
+        "functionBody": "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
+      },
+      "outputs": [
+        "2"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "print_sink",
+      "parameters": {},
+      "outputs": []
+    }
+  ]
+}

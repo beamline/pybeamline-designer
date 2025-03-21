@@ -64,6 +64,7 @@ test("custom (as source)", () => {
 \toperation1
 \toperation2
 \treturn ans
+
 source_0 = user_made_function_as_source()
 `
         )})
@@ -76,6 +77,7 @@ test("custom (as filter)", () => {
 \toperation1
 \toperation2
 \treturn ans
+
 source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
 \tuser_made_function_as_filter()
@@ -85,6 +87,23 @@ source_0.pipe(
 )})
 
 
+test("lambda_operator", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "lambda_operator.test.json", "utf-8"))))
+        .toBe(importString +
+            `example_function_body
+\toperation1
+\toperation2
+\treturn ans
+
+source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+source_0.pipe( 
+\tlambda_operator(user_made_function_as_filter)
+).subscribe(on_next = lambda x : print(str(x)))
+
+`
+        )})
+
+
 test("custom (as miner)", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customMiner.test.json", "utf-8"))))
         .toBe(importString +
@@ -92,6 +111,7 @@ test("custom (as miner)", () => {
 \toperation1
 \toperation2
 \treturn ans
+
 source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
 \tuser_made_function_as_miner()
@@ -107,6 +127,7 @@ test("custom (as union)", () => {
 \toperation1
 \toperation2
 \treturn ans
+
 source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_0 = source_0.pipe()
 
