@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Connection, ConnectionMode, NodeChange, NodeMouseEvent, VueFlow} from "@vue-flow/core";
+import {Connection, ConnectionMode, NodeChange, NodeMouseEvent, useVueFlow, VueFlow} from "@vue-flow/core";
 import Background from "@/components/background.vue";
 import {ref} from "vue";
 import useDragAndDrop from "@/components/useDnD.js";
@@ -8,10 +8,12 @@ import Drawer from 'primevue/drawer';
 import BlockOptions from "@/components/BlockOptions.vue";
 import ActionPanel from "@/components/ActionPanel.vue";
 import { MiniMap } from '@vue-flow/minimap'
+import ErrorDetector from "@/components/ErrorDetector.vue";
 
 
 
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
+const {addEdges} = useVueFlow()
 const nodes = ref ([]);
 const edges = ref<CustomEdge[]>([]);
 
@@ -30,7 +32,7 @@ function onConnect(params : Connection) {
     animated:true,
     data: { color : outNode.data.sourceHandleStyle.backgroundColor }
   };
-  edges.value.push(newEdge);
+  addEdges(newEdge);
 }
 // Handle node click event
 const onNodeClick = (event: NodeMouseEvent) => {
@@ -42,6 +44,7 @@ const onNodeClick = (event: NodeMouseEvent) => {
   }
 };
 const onNodeRemoved = (change: NodeChange[]) => {
+  if (change.length === 0) {return}
   if (change[0].type === "remove"){
     visible.value = false;
   }
@@ -87,6 +90,7 @@ const onNodeRemoved = (change: NodeChange[]) => {
     <ActionPanel/>
 
     <MiniMap style="background: gray;"/>
+    <ErrorDetector/>
     <background />
 
   </VueFlow>
