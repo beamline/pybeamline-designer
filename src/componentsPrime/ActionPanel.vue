@@ -9,8 +9,10 @@ import BlockOptions from "@/componentsPrime/BlockOptions.vue";
 import CodeGeneratorEditor from "@/componentsPrime/CodeGeneratorEditor.vue";
 const visible = ref(false);
 const editor = ref("");
+const fileInput = ref<HTMLInputElement | null>(null);
 
-const {showCode,clearDesign,downloadPipeline,triggerFileSelection,handleFileSelection} = arturoBullshit(visible, editor)
+
+const {showCode,clearDesign,downloadPipeline,triggerFileSelection,handleFileSelection} = arturoBullshit(visible, editor, fileInput)
 
 const items = ref([
   {
@@ -45,11 +47,11 @@ const items = ref([
         ref="fileInput"
         style="display: none;"
         @change="handleFileSelection"
-        accept=".json"
+        accept=".pdb"
     />
   </Panel>
 
-  <Drawer v-model:visible="visible" modal position="right" header="Code generated" style="width: 600px">
+  <Drawer v-model:visible="visible" modal position="right" header="Code generated" style="width: 400px">
     <CodeGeneratorEditor :codeGenerated="editor"/>
   </Drawer>
 </template>
