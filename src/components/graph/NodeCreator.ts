@@ -76,7 +76,8 @@ async function createNode(name: string, folder: string, id: string, position : X
             parameters : schema.parameters,
             sourceHandleStyle : getHandleStyle(schema.descriptors.outputType),
             targetHandleStyle : getHandleStyle(schema.descriptors.inputType),
-            hint : schema.hint
+            hint : schema.hint,
+            required: schema.required ? schema.required : []
         }
     }
 
