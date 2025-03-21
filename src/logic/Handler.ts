@@ -32,8 +32,12 @@ export class Handler {
 
     public processBlock (block : ExtendedBlock, currentString : string) : string {
 
-        if (block.descriptors.name == ("custom") || block.descriptors.name == "lambda_operator") {
+        if (block.descriptors.name == ("custom")) {
             return this.handleCustom(block,  currentString)
+        }
+
+        if (block.descriptors.name == ("lambda_operator")) {
+            return this.handleLambdaOp(block, currentString)
         }
 
         //Checks if the block has an input property, i.e. is a union (or a custom union)
@@ -52,8 +56,15 @@ export class Handler {
 
     }
 
+    private handleLambdaOp (block : ExtendedBlock, currentString : string) : string {
+        this.defineFunction(block, currentString);
+
+        return currentString + "\t" + block.function.slice(0, -1) + block.parameters.functionName + "),\n"
+
+    }
+
     private handleCustom (block : ExtendedBlock, currentString : string) : string {
-        this.defineCustom(block, currentString)
+        this.defineFunction(block, currentString)
         block["function"] = block.parameters.functionName + "()"
 
         if (block.input) {
@@ -71,7 +82,7 @@ export class Handler {
             return currentString
         }
 
-        return `${currentString}\t${block.function},\n` + ""
+        return `${currentString}\t${block.function},\n`
 
     }
 
@@ -134,11 +145,11 @@ export class Handler {
 
     }
 
-    private defineCustom (block : ExtendedBlock, currentString : string) : void {
+    private defineFunction (block : ExtendedBlock, currentString : string) : void {
 
         //Add the function definition to the head code if not already present
         if (!(this.customDefinitions.includes(block.id))) {
-            this.compiler.appendHeadString(block.parameters.functionBody + "\n")
+            this.compiler.appendHeadString(block.parameters.functionBody + "\n\n")
             this.customDefinitions.push(block.id)
         }
 
