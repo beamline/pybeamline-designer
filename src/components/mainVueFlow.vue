@@ -37,7 +37,7 @@ const onNodeClick = (event: NodeMouseEvent) => {
   visible.value = true;
   selectedNodeId.value = event.node.id
   modalRef.value = false;
-  if (event.node.data.name === "custom") {
+  if (event.node.data.name === "custom" || event.node.data.name === "lambda_operator") {
     modalRef.value = true;
   }
 };

@@ -40,7 +40,7 @@ const node: GraphNode | undefined = nodes.value.find(node => node.id === props.b
 
   </div>
   <Divider/>
-  <div v-if="node.data.name !== 'custom'">
+  <div v-if="node.data.name !== 'custom' && node.data.name !== 'lambda_operator'">
     <h2>Parameters</h2>
     <div v-for='(_,key) in node.data.parameters'>
       <FloatLabel variant="in" class="params">
