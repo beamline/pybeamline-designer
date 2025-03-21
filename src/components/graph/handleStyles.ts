@@ -1,8 +1,7 @@
 
 const triangleStyle = {
-    width: '11px',
-    height: '11px',
-
+    width: '13px',
+    height: '13px',
     clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
     borderRadius: '0', // Ensure no rounding
     border: '0px solid white',
@@ -12,10 +11,21 @@ const triangleStyle = {
     margin: '0', // Remove any unwanted margins
 };
 
+const clippedCircleStyle = {
+    width: '12px',
+    height: '12px',
+    clipPath: 'polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%)',
+    borderRadius: '50%', // Keeps the circular shape while trimming
+    border: '1px solid white',
+    outline: 'none',
+    boxShadow: 'none',
+    padding: '0',
+    margin: '0px',
+};
+
 const squareStyle = {
     width: '10px',
     height: '10px',
-
     borderRadius: '0', // No rounding, keep it square
     border: '1px solid white', // Remove any default borders
     outline: 'none', // Ensure no outline affects the look
@@ -31,11 +41,11 @@ const circleStyle = {
 
 //Mapping of types to styles
 export const stylePalette = {
-    "tuple": squareStyle,
+    "event": clippedCircleStyle,
+    "tuple": clippedCircleStyle,
     "dataframe": squareStyle,
-    "event": circleStyle,
     "petrinet": squareStyle,
-    "heuristics": circleStyle,
+    "heuristics": clippedCircleStyle,
     "model": triangleStyle,
     "conformance": triangleStyle,
     "any": squareStyle

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { EdgeProps } from '@vue-flow/core';
 import { BezierEdge } from '@vue-flow/core';
-import {stylePalette} from "@/components/graph/handleStyles.js";
 
 
 // props were passed from the slot using `v-bind="customEdgeProps"`

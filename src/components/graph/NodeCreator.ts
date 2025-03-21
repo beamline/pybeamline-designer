@@ -2,6 +2,7 @@ import {XYPosition} from "@vue-flow/core";
 import AjvManager from "../../logic/AjvManager.js";
 import {CleanSchema} from "../../logic/Syntax.js";
 import {colorPalette, stylePalette} from "./handleStyles.js";
+import {reactive} from "vue";
 
 const stringToHexColor = (types: string[] | null): string => {
     if (types == null) {
@@ -42,7 +43,13 @@ const getHandleStyle = (types: string[] | null) => {
     }
     //@ts-ignore
     //Makes a new object to pass
-    return Object.assign({}, stylePalette[types[0]], {backgroundColor: stringToHexColor2(types)})
+
+    let t1 = { backgroundColor: stringToHexColor2(types) };
+
+    // Clone the object to prevent VueFlow from mutating the original styles
+    let t2 = { ...stylePalette[types[0]] };
+
+    return reactive({...t1, ...t2})
 }
 
 
