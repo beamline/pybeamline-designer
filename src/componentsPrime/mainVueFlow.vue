@@ -7,6 +7,10 @@ import {StandardNode, StartNode, EndNode, UnionNode, CustomEdge} from "@/compone
 import Drawer from 'primevue/drawer';
 import BlockOptions from "@/componentsPrime/BlockOptions.vue";
 import ActionPanel from "@/componentsPrime/ActionPanel.vue";
+import { MiniMap } from '@vue-flow/minimap'
+
+
+
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
 const nodes = ref ([]);
 const edges = ref<CustomEdge[]>([]);
@@ -80,7 +84,7 @@ const onNodeRemoved = (change: NodeChange[]) => {
 
     <ActionPanel/>
 
-
+    <MiniMap style="background: gray;"/>
     <background />
 
   </VueFlow>
