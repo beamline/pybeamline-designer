@@ -6,7 +6,7 @@ import Divider from 'primevue/divider';
 import Chip from 'primevue/chip';
 import Button from 'primevue/button';
 import Dialog from 'primevue/dialog';
-import CustomFunctionEditor from "@/componentsPrime/customFunctionEditor.vue";
+import CustomFunctionEditor from "@/components/customFunctionEditor.vue";
 
 import {ref} from "vue";
 

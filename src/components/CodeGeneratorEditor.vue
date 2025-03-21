@@ -5,7 +5,7 @@ import {basicSetup} from "codemirror";
 import {Codemirror} from "vue-codemirror";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
-import CodeEditor from "@/componentsPrime/CodeEditor.vue";
+import CodeEditor from "@/components/CodeEditor.vue";
 
 const props = defineProps({
   codeGenerated: String,

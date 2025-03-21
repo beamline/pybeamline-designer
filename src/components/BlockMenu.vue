@@ -46,7 +46,7 @@ onMounted(() => {
   loadJSONs();
 });
 
-import useDragAndDrop from '../components/useDnD.js'
+import useDragAndDrop from './useDnD.js'
 const { onDragStart } = useDragAndDrop()
 </script>
 

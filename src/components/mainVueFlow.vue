@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {Connection, ConnectionMode, NodeChange, NodeMouseEvent, VueFlow} from "@vue-flow/core";
-import Background from "@/componentsPrime/background.vue";
+import Background from "@/components/background.vue";
 import {ref} from "vue";
 import useDragAndDrop from "@/components/useDnD.js";
 import {StandardNode, StartNode, EndNode, UnionNode, CustomEdge} from "@/components/graph/index.ts"
 import Drawer from 'primevue/drawer';
-import BlockOptions from "@/componentsPrime/BlockOptions.vue";
-import ActionPanel from "@/componentsPrime/ActionPanel.vue";
+import BlockOptions from "@/components/BlockOptions.vue";
+import ActionPanel from "@/components/ActionPanel.vue";
 import { MiniMap } from '@vue-flow/minimap'
 
 
@@ -20,13 +20,15 @@ const selectedNodeId = ref("");
 const modalRef = ref(false);
 
 function onConnect(params : Connection) {
+  const outNode = nodes.value.filter(elemt => elemt.id === params.source)[0]
   // You can generate a unique id for the new edge.
   const newEdge = {
     id: `e${params.source}-${params.target}`,
     source: params.source,
     target: params.target,
     type: 'custom',
-    animated:true
+    animated:true,
+    data: { color : outNode.data.sourceHandleStyle.backgroundColor }
   };
   edges.value.push(newEdge);
 }

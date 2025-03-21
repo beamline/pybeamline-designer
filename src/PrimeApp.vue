@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BlockMenu from "@/componentsPrime/BlockMenu.vue";
-import MainVueFlow from "@/componentsPrime/mainVueFlow.vue";
+import BlockMenu from "@/components/BlockMenu.vue";
+import MainVueFlow from "@/components/mainVueFlow.vue";
 import AjvManager from "@/logic/AjvManager.js";
 AjvManager.getInstance().manageReferences()
 

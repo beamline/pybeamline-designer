@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {useVueFlow, Panel} from "@vue-flow/core";
 import Menubar from 'primevue/menubar';
-import arturoBullshit from "@/componentsPrime/ArturoBullshit.js";
+import arturoBullshit from "@/components/ArturoBullshit.js";
 
 import {ref} from "vue";
 import Drawer from "primevue/drawer";
-import BlockOptions from "@/componentsPrime/BlockOptions.vue";
-import CodeGeneratorEditor from "@/componentsPrime/CodeGeneratorEditor.vue";
+import BlockOptions from "@/components/BlockOptions.vue";
+import CodeGeneratorEditor from "@/components/CodeGeneratorEditor.vue";
 const visible = ref(false);
 const editor = ref("");
 const fileInput = ref<HTMLInputElement | null>(null);
