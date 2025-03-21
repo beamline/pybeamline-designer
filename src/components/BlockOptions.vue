@@ -43,10 +43,18 @@ const node: GraphNode | undefined = nodes.value.find(node => node.id === props.b
   <div v-if="node.data.name !== 'custom'">
     <h2>Parameters</h2>
     <div v-for='(_,key) in node.data.parameters'>
-      <FloatLabel variant="in" class="params">
+      <FloatLabel v-if="node.data.required.includes(key)" variant="in" class="params">
+        <InputText :id="'in_label_' + key" v-model="node.data.parameters[key]" variant="filled" style="width: 100%" :invalid="!node.data.parameters[key]"
+                   v-tooltip.top="'This parameter is required'"/>
+        <label :for="'in_label_' + key">{{key}}</label>
+      </FloatLabel>
+
+      <FloatLabel v-else variant="in" class="params">
         <InputText :id="'in_label_' + key" v-model="node.data.parameters[key]" variant="filled" style="width: 100%"/>
         <label :for="'in_label_' + key">{{key}}</label>
       </FloatLabel>
+
+
     </div>
   </div>
   <div v-else class="information">
