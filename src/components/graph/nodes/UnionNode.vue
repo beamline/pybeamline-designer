@@ -55,7 +55,7 @@ const dynamicColor2 = ref("grey");
 </script>
 
 <template>
-  <div class="unionNode" :style="{ borderRadius: '5px',
+  <div v-tooltip="props.data.error" class="unionNode" :style="{ borderRadius: '5px',
        borderImage: `linear-gradient(to right, ${dynamicColor1}, ${dynamicColor2}) 1`,
        }">
     <p>{{ props.data.name }}</p>

@@ -58,7 +58,7 @@ const dynamicColor = ref("")
 </script>
 
 <template>
-  <div class="endNode" :style="{borderColor : dynamicColor}">
+  <div v-tooltip="props.data.error" class="endNode" :style="{borderColor : dynamicColor}">
     <p>{{ props.data.name }}</p>
     <Handle type="target" :position="Position.Left"
             :connectable="handleConnectableIn"

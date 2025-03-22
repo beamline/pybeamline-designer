@@ -40,7 +40,7 @@ const dynamicColor = ref("")
 </script>
 
 <template>
-  <div class="startNode" :style="{borderColor : dynamicColor}">
+  <div v-tooltip="props.data.error" class="startNode" :style="{borderColor : dynamicColor}">
     <p>{{ props.data.name }}</p>
     <Handle type="source" :position="Position.Right"
             :is-valid-connection="isValidConnectionStart"
