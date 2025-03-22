@@ -35,12 +35,12 @@ function checkPipeline(){
               "-webkit-box-shadow": " 0px 0px 10px 1px red",
               "box-shadow": " 0px 0px 10px 1px red",
               "border-radius": " 5px",
-            } })
+            }, data:{...node.data, error:e.message}})
         } else {
           updateNode(node.id, { style: {
               "-webkit-box-shadow": " none",
               "box-shadow": " none",
-            } })
+            }, data:{...node.data, error:''}})
         }
       })
       return
@@ -50,7 +50,7 @@ function checkPipeline(){
     updateNode(node.id, { style: {
         "-webkit-box-shadow": " none",
         "box-shadow": " none",
-      } })})
+      },data:{...node.data, error:''} })})
 
 }
 
