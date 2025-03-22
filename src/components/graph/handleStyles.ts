@@ -42,7 +42,7 @@ const circleStyle = {
 //Mapping of types to styles
 export const stylePalette = {
     "event": clippedCircleStyle,
-    "tuple": clippedCircleStyle,
+    "tuple": squareStyle,
     "dataframe": squareStyle,
     "petrinet": squareStyle,
     "heuristics": clippedCircleStyle,
