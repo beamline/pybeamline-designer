@@ -78,7 +78,7 @@ let error = "" // Error messages
 let connecting = false
 const kernel = ref(null) // Connected kernel instance
 let kernelManager= null
-let currentFuture =null
+const currentFuture = ref(null)
 
 
 async function connectToServer() {
@@ -111,29 +111,47 @@ async function executeCode() {
   try {
     // Initiate code execution
     const future = kernel.value.requestExecute({ code: code.value });
-    currentFuture = future; // Track the execution
+    currentFuture.value = future; // Track the execution
 
     // Listen for output
     future.onIOPub = (msg) => {
-      if (msg.content.text) {
-        output.value += msg.content.text + "\n";
+      if (msg.header.msg_type === "stream") {
+        // Capture stdout and stderr
+        if (msg.content.name === "stdout") {
+          output.value += msg.content.text + "\n";
+        } else if (msg.content.name === "stderr") {
+          error = stripAnsiCodes(msg.content.text);
+          output.value += "Error: " + msg.content.text + "\n";
+        }
+      } else if (msg.header.msg_type === "error") {
+        // Capture traceback
+        error = stripAnsiCodes(msg.content.traceback.join("\n"));
+        output.value += "Error: " + error + "\n";
       }
     };
 
     // Wait for execution to complete
     await future.done;
-    currentFuture = null; // Clear once done
+
+    currentFuture.value = null; // Clear once done
   } catch (err) {
     error = `Failed to execute code: ${err.message}`;
-    currentFuture = null; // Clear on error
+    output.value = `Failed to execute code: ${err.message}`;
+    currentFuture.value = null; // Clear on error
   }
 }
+
+function stripAnsiCodes(text) {
+  return text.replace(/\x1B\[[0-9;]*[mK]/g, ""); // Removes ANSI color codes
+}
+
 async function stopExecution() {
   if (currentFuture) {
-    currentFuture.dispose(); // Stop execution
-    currentFuture = null;
+    currentFuture.value.dispose(); // Stop execution
+    currentFuture.value = null;
     kernel.value = await kernelManager.startNew();
     error = "Execution stopped by the user.";
+    output.value = "Execution stopped by the user.";
   }
 }
 async function copyText() {
