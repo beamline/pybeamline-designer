@@ -28,14 +28,15 @@ function checkPipeline(){
     sanityChecker(translator.translatePipeline(translator.getGuiPipelineFromVue(nodes.value,  edges.value)));
   }catch (e) {
     if (e instanceof PipelineSyntaxError){
-      const id =  e.nodeId
-      nodes.value.forEach((node)=>{
-        if (node.id === id){
+      const ids =  e.nodesId
+      const errors = e.message.split("\n");
+      nodes.value.forEach((node, index)=>{
+        if (ids.includes(node.id)){
           updateNode(node.id, { style: {
               "-webkit-box-shadow": " 0px 0px 10px 1px red",
               "box-shadow": " 0px 0px 10px 1px red",
               "border-radius": " 5px",
-            }, data:{...node.data, error:e.message}})
+            }, data:{...node.data, error:errors[index]}})
         } else {
           updateNode(node.id, { style: {
               "-webkit-box-shadow": " none",

@@ -1,9 +1,7 @@
-import {PipelineSyntaxError, sanityChecker} from "./sanityChecker.ts";
+import {sanityChecker} from "./sanityChecker.ts";
 import {ExtendedPipeline, GuiPipeline} from "./Syntax.js";
 import {Compiler} from "./Compiler.js";
 import {Translator} from "./Translator.js";
-import {readFileSync} from "fs";
-import AjvManager from "./AjvManager.js";
 
 
 function generateCode (userPipeline : GuiPipeline) {
