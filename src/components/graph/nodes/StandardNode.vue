@@ -63,7 +63,7 @@ const dynamicColor2 = ref("grey");
 </script>
 
 <template>
-  <div v-tooltip="props.data.error" class="standardNode"
+  <div v-tooltip.top="props.data.error" class="standardNode"
        :style="{ borderRadius: '5px',
        borderImage: `linear-gradient(to right, ${dynamicColor1}, ${dynamicColor2}) 1`,
        }">
