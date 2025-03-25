@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useVueFlow, Panel} from "@vue-flow/core";
+import { Panel} from "@vue-flow/core";
 import Menubar from 'primevue/menubar';
 import arturoBullshit from "@/components/ArturoBullshit.js";
 

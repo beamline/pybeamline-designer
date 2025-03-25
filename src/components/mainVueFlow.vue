@@ -9,9 +9,9 @@ import BlockOptions from "@/components/BlockOptions.vue";
 import ActionPanel from "@/components/ActionPanel.vue";
 import { MiniMap } from '@vue-flow/minimap'
 import ErrorDetector from "@/components/ErrorDetector.vue";
-import { ControlButton, Controls } from '@vue-flow/controls'
-import Icon from "@/components/Icon.vue";
+import { Controls } from '@vue-flow/controls'
 import '@vue-flow/controls/dist/style.css'
+import BlockMenu from "@/components/BlockMenu.vue";
 
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
 const {addEdges, setViewport} = useVueFlow()
@@ -94,6 +94,8 @@ const dark = ref(false)
       <UnionNode v-bind="props" />
     </template>
 
+    <BlockMenu/>
+
     <Drawer v-model:visible="visible" :modal="modalRef" position="right" header="Block Information">
       <BlockOptions :blockId="selectedNodeId" />
     </Drawer>
@@ -105,7 +107,7 @@ const dark = ref(false)
     <background />
 
 
-    <Controls position="top-left" />
+    <Controls position="top-right" />
 
   </VueFlow>
 </template>

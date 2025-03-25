@@ -2,6 +2,8 @@
 <script setup lang="ts">
 import TieredMenu from 'primevue/tieredmenu';
 import {ref, onMounted, Ref} from "vue";
+import { Panel} from "@vue-flow/core";
+
 
 const items: Ref<{ label: string; icon: string; items: any; }[]> = ref([])
 
@@ -79,8 +81,8 @@ const { onDragStart } = useDragAndDrop()
 </script>
 
 <template>
-  <div class="menu-container">
-    <TieredMenu :model="items" style="height: 100%; padding: 5px; border-radius: 0" >
+  <Panel class="menu-container" position="top-left">
+    <TieredMenu :model="items" style="height: 100%; padding: 5px; border-radius: 10px" >
         <template #item="{ item, props, hasSubmenu }" >
           <a class="flex items-center" v-bind="props.action" draggable="true" @dragstart="onDragStart($event, item.label, item.parent)">
             <span :class="item.icon" />
@@ -90,12 +92,12 @@ const { onDragStart } = useDragAndDrop()
           </a>
         </template>
     </TieredMenu>
-  </div>
+  </Panel>
 </template>
 
 <style scoped>
 .menu-container {
-  height: 100vh; /* Make sure the parent container is full height */
+  height: auto; /* Make sure the parent container is full height */
   display: flex;
   flex-direction: column;
 }
