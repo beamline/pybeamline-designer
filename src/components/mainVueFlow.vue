@@ -9,11 +9,12 @@ import BlockOptions from "@/components/BlockOptions.vue";
 import ActionPanel from "@/components/ActionPanel.vue";
 import { MiniMap } from '@vue-flow/minimap'
 import ErrorDetector from "@/components/ErrorDetector.vue";
-
-
+import { ControlButton, Controls } from '@vue-flow/controls'
+import Icon from "@/components/Icon.vue";
+import '@vue-flow/controls/dist/style.css'
 
 const { onDragOver, onDrop, onDragLeave } = useDragAndDrop()
-const {addEdges} = useVueFlow()
+const {addEdges, setViewport} = useVueFlow()
 const nodes = ref ([]);
 const edges = ref<CustomEdge[]>([]);
 
@@ -50,11 +51,21 @@ const onNodeRemoved = (change: NodeChange[]) => {
   }
 }
 
+function resetTransform() {
+  setViewport({ x: 0, y: 0, zoom: 1 })
+}
+
+function toggleDarkMode() {
+  dark.value = !dark.value
+}
+
+const dark = ref(false)
 
 </script>
 
 <template>
   <VueFlow
+      class="basic-flow"
       v-model:nodes="nodes"
       v-model:edges="edges"
       @node-click="onNodeClick"
@@ -93,9 +104,27 @@ const onNodeRemoved = (change: NodeChange[]) => {
     <ErrorDetector/>
     <background />
 
+
+    <Controls position="top-left" />
+
   </VueFlow>
 </template>
 
 <style scoped>
+
+
+.basic-flow .vue-flow__controls {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center
+}
+
+
+.basic-flow .vue-flow__controls .vue-flow__controls-button svg {
+  height:100%;
+  width:100%
+}
+
+
 
 </style>
