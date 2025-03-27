@@ -82,15 +82,18 @@ const { onDragStart } = useDragAndDrop()
 
 <template>
   <Panel class="menu-container" position="top-left">
-    <TieredMenu :model="items" style="height: 100%; padding: 5px; border-radius: 10px" >
-        <template #item="{ item, props, hasSubmenu }" >
-          <a class="flex items-center" v-bind="props.action" draggable="true" @dragstart="onDragStart($event, item.label, item.parent)">
-            <span :class="item.icon" />
-            <span class="ml-2">{{ item.label }}</span>
-            <span v-if="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
-            <i v-if="hasSubmenu" class="ml-auto pi pi-angle-right"></i>
-          </a>
-        </template>
+    <TieredMenu :model="items" style="height: 100%; padding: 5px; border-radius: 10px">
+      <template #item="{ item, props, hasSubmenu }">
+        <a class="flex items-center"
+           v-bind="props.action"
+           :draggable="!!item.parent"
+           @dragstart="onDragStart($event, item.label, item.parent)">
+          <span :class="item.icon" />
+          <span class="ml-2">{{ item.label }}</span>
+          <span v-if="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+          <i v-if="hasSubmenu" class="ml-auto pi pi-angle-right"></i>
+        </a>
+      </template>
     </TieredMenu>
   </Panel>
 </template>
