@@ -100,5 +100,6 @@ const { onDragStart } = useDragAndDrop()
   height: auto; /* Make sure the parent container is full height */
   display: flex;
   flex-direction: column;
+  z-index: 6;
 }
 </style>
