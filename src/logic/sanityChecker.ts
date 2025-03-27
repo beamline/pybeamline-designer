@@ -27,7 +27,6 @@ function sanityChecker(diagram:ExtendedPipeline){
         const uniquePaths = [...new Set(errors.map(err =>
             err.instancePath.split("/")[2]
         ))];
-        console.log(uniquePaths);
         let errorString =""
         let errorsIds = []
         for (const id of uniquePaths) {
