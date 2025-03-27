@@ -63,3 +63,19 @@ test("Validation test 5", () => {
         .toBe("Error at block retains_activity_filter: Invalid connections"
         )})
 
+
+test("Validation test 6", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "valid6.json", "utf-8"))))
+        .toBe("Error at block string_test_source: must have required property 'iterable'\n" +
+            "Error at block mqttxes_source: must have required property 'broker'\n" +
+            "Error at block log_source: must have required property 'log'\n" +
+            "Error at block sliding_window_to_log: Invalid /outputType\n" +
+            "Error at block behavioral_conformance: Invalid /outputType\n" +
+            "Error at block excludes_activity_filter: must have required property 'activity_names'\n" +
+            "Error at block simple_dfg_miner: Invalid /outputType\n" +
+            "Error at block heuristics_miner_lossy_counting: Invalid /outputType\n" +
+            "Error at block heuristics_miner_lossy_counting: Invalid /outputType\n" +
+            "Error at block retains_activity_filter: must have required property 'activity_names'\n" +
+            "Error at block dummy_sink: Invalid /inputType\n" +
+            "Error at block print_sink: Invalid /inputType\n"
+        )})

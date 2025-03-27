@@ -1,0 +1,120 @@
+{
+  "blocks": [
+    {
+      "id": "0",
+      "name": "string_test_source",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    },
+    {
+      "id": "000",
+      "name": "mqttxes_source",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    },
+    {
+      "id": "010",
+      "name": "log_source",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    },
+    {
+      "id": "0100",
+      "name": "sliding_window_to_log",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "01900",
+      "name": "behavioral_conformance",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "91900",
+      "name": "excludes_activity_filter",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "91980",
+      "name": "simple_dfg_miner",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "919865",
+      "name": "heuristics_miner_lossy_counting",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "919865",
+      "name": "heuristics_miner_lossy_counting",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "917865",
+      "name": "retains_activity_filter",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "263536",
+      "name": "dummy_sink",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ,
+    {
+      "id": "76757r",
+      "name": "print_sink",
+      "parameters": {
+
+      },
+      "outputs": [
+      ]
+    }
+  ]
+}
