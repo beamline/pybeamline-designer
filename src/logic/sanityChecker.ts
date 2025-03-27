@@ -24,7 +24,10 @@ function sanityChecker(diagram:ExtendedPipeline){
     } else {
         if (!validator.errors) {throw (Error("Unknown error"))}
         const errors: ErrorObject[]=validator.errors
-        const uniquePaths = [...new Set(errors.map(err => err.instancePath[8]))];
+        const uniquePaths = [...new Set(errors.map(err =>
+            err.instancePath.split("/")[2]
+        ))];
+        console.log(uniquePaths);
         let errorString =""
         let errorsIds = []
         for (const id of uniquePaths) {

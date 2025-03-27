@@ -10,7 +10,7 @@ const items: Ref<{ label: string; icon: string; items: any; }[]> = ref([])
 // Load all JSON files dynamically
 const loadJSONs = async () => {
   const files = import.meta.glob(["/src/logic/schemas/**/*.json"]); // Match JSONs inside subfolders
-  const groupedFiles: {string:string[]} = {};
+  const groupedFiles: {[key: string]: string[]} = {};
 
   for (const path in files) {
     if ((path.includes("definitions")) || path.includes("main")){
@@ -30,7 +30,7 @@ const loadJSONs = async () => {
   createItems(groupedFiles)
 };
 
-function createItems(groupedFiles: {string:string[]}) {
+function createItems(groupedFiles:{[key: string]: string[]}) {
   for (const folder in groupedFiles) {
 
     let folderIcon = 'pi pi-folder'
