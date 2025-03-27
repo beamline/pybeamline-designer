@@ -30,13 +30,14 @@ function checkPipeline(){
     if (e instanceof PipelineSyntaxError){
       const ids =  e.nodesId
       const errors = e.message.split("\n");
-      nodes.value.forEach((node, index)=>{
-        if (ids.includes(node.id)){
+      nodes.value.forEach((node)=>{
+        const index = ids.indexOf(node.id)
+        if (index != -1){
           updateNode(node.id, { style: {
               "-webkit-box-shadow": " 0px 0px 10px 1px red",
               "box-shadow": " 0px 0px 10px 1px red",
               "border-radius": " 5px",
-            }, data:{...node.data, error:errors[index]}})
+            }, data:{...node.data, error:errors[index]}});
         } else {
           updateNode(node.id, { style: {
               "-webkit-box-shadow": " none",
