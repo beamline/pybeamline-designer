@@ -2,8 +2,10 @@
 <script setup lang="ts">
 import TieredMenu from 'primevue/tieredmenu';
 import {ref, onMounted, Ref} from "vue";
-import { Panel} from "@vue-flow/core";
+import {Panel} from "@vue-flow/core";
+import useDragAndDrop from './useDnD.js'
 
+const { onDragStart , onClickAdd} = useDragAndDrop()
 
 const items: Ref<{ label: string; icon: string; items: any; }[]> = ref([])
 
@@ -66,7 +68,10 @@ function createItems(groupedFiles:{[key: string]: string[]}) {
       items: groupedFiles[folder].map((item:string) => ({
         label: item,
         icon: itemIcon,
-        parent: folder
+        parent: folder,
+        command: (event:any) => {
+          onClickAdd(event, item)
+        }
       }))
     })
   }
@@ -76,8 +81,7 @@ onMounted(() => {
   loadJSONs();
 });
 
-import useDragAndDrop from './useDnD.js'
-const { onDragStart } = useDragAndDrop()
+
 </script>
 
 <template>

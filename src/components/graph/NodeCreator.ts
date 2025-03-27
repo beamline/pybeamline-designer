@@ -55,7 +55,7 @@ const getHandleStyle = (types: string[] | null) => {
 
 
 
-async function createNode(name: string, folder: string, id: string, position : XYPosition) {
+async function createNode(name: string, id: string, position : XYPosition) {
 
     const ajv = AjvManager.getInstance()
     const schema : CleanSchema = ajv.getCleanSchemaByName(name);

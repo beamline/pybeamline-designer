@@ -1,4 +1,4 @@
-import { useVueFlow } from '@vue-flow/core'
+import {pointToRendererPoint, useVueFlow} from '@vue-flow/core'
 import { ref, watch } from 'vue'
 import {createNode} from "./graph/NodeCreator.js"
 
@@ -28,7 +28,7 @@ const state = {
 export default function useDragAndDrop() {
     const { draggedType,draggedClassifier, isDragOver, isDragging } = state
 
-    const { addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode } = useVueFlow()
+    const { addNodes, screenToFlowCoordinate, onNodesInitialized, updateNode, viewport } = useVueFlow()
 
     watch(isDragging, (dragging) => {
         document.body.style.userSelect = dragging ? 'none' : ''
@@ -89,7 +89,7 @@ export default function useDragAndDrop() {
         const nodeId = getId()
 
 
-        const newNode = await createNode(draggedType.value, draggedClassifier.value, nodeId, position)
+        const newNode = await createNode(draggedType.value, nodeId, position)
 
 
         /**
@@ -111,6 +111,14 @@ export default function useDragAndDrop() {
         addNodes(newNode)
     }
 
+    async function onClickAdd(event: any, name:string) {
+        const position = {x:event.originalEvent.clientX , y: event.originalEvent.clientY}
+        const canvaPosition = pointToRendererPoint(position, viewport.value)
+
+        const newNode = await createNode(name, getId(), canvaPosition)
+        addNodes(newNode)
+    }
+
     return {
         draggedType,
         isDragOver,
@@ -119,5 +127,6 @@ export default function useDragAndDrop() {
         onDragLeave,
         onDragOver,
         onDrop,
+        onClickAdd
     }
 }
