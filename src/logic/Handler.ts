@@ -67,21 +67,26 @@ export class Handler {
         this.defineFunction(block, currentString)
         block["function"] = block.parameters.functionName + "()"
 
+
+        //CASE: Custom block is a union
         if (block.input) {
             return this.handleUnion(block,  currentString)
         }
+        //CASE: Custom block is a source
         if (block.descriptors.inputType === null) {
             this.compiler.appendBodyString(`source_${this.counters.source} = ${block.function}\n`)
             currentString += `source_${this.counters.source}.pipe( \n`
             this.counters.source++
             return currentString
         }
+        //CASE: Custom block is a sink
         if (block.descriptors.outputType === null) {
             block.function = ".subscribe(" + block.function.slice(0, -2) + ")";
             this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${block.function}\n\n`)
             return currentString
         }
 
+        //CASE: Custom block is an operator
         return `${currentString}\t${block.function},\n`
 
     }
