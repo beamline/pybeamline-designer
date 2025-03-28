@@ -71,7 +71,7 @@ const code = computed({
 });
 
 
-const text ="jupyter notebook --NotebookApp.allow_origin='http://localhost:5173' --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True\n"
+const text ="jupyter notebook --NotebookApp.allow_origin='*' --NotebookApp.token='' --NotebookApp.disable_check_xsrf=True\n"
 const serverUrl = ref("http://localhost:8888") // Default Jupyter Kernel Gateway URL
 const output= ref("") // Output from the kernel
 let error = "" // Error messages

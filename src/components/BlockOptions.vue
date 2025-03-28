@@ -16,8 +16,21 @@ const props = defineProps({
   blockId: String,
 })
 
-const node: GraphNode | undefined = nodes.value.find(node => node.id === props.blockId)
 
+const node: GraphNode | undefined = nodes.value.find(node => node.id === props.blockId)
+let savedFunctionName = ""
+let savedFunctionBody = ""
+function openEditor(){
+  customEditor.value = true
+  savedFunctionName = node.data.parameters.functionName
+  savedFunctionBody = node.data.parameters.functionBody
+};
+
+function reset(closeCallback){
+  node.data.parameters.functionName = savedFunctionName
+  node.data.parameters.functionBody = savedFunctionBody
+  closeCallback()
+};
 
 </script>
 
@@ -59,13 +72,17 @@ const node: GraphNode | undefined = nodes.value.find(node => node.id === props.b
   </div>
   <div v-else class="information">
     <h2>Code Editor</h2>
-    <Button label="Open Function Editor" raised @click="customEditor = true"/>
+    <Button label="Open Function Editor" raised @click="openEditor"/>
   </div>
   <Divider/>
   <h2>Additional Information</h2>
   <p>{{node.data.hint}}</p>
 
   <Dialog v-model:visible="customEditor" modal header="Edit function" style="width:50rem"  >
+    <template #closebutton="{closeCallback}">
+      <Button @click="closeCallback" icon="pi pi-save" variant="text" severity="contrast" label="Save"/>
+      <Button @click="reset(closeCallback)" icon="pi pi-times" variant="text" severity="contrast" label="Cancel"/>
+    </template>
     <CustomFunctionEditor :blockId="blockId"/>
   </Dialog>
 </template>
