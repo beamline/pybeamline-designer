@@ -11,24 +11,10 @@
           "const": "custom"
         },
         "outputType": {
-          "oneOf": [
-            {
-              "const": null
-            },
-            {
-              "$ref": "definitions.json#/definitions/streamTypes/any"
-            }
-          ]
+          "$ref": "definitions.json#/definitions/streamTypes/event"
         },
         "inputType": {
-          "oneOf": [
-            {
-              "const": null
-            },
-            {
-              "$ref": "definitions.json#/definitions/streamTypes/any"
-            }
-          ]
+          "$ref": "definitions.json#/definitions/streamTypes/event"
         }
       }
     },

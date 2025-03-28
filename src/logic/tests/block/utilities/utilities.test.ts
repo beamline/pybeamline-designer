@@ -57,18 +57,18 @@ union_0.pipe(
 )})
 
 
-test("custom (as source)", () => {
+test("custom (as source) - Should fail", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customSource.test.json", "utf-8"))))
-        .toBe(importString +
-            `example_function_body
-\toperation1
-\toperation2
-\treturn ans
+        .toBe(`Error at block custom: Invalid /inputType
+`
+)})
 
-source_0 = user_made_function_as_source()
+
+test("custom (as sink) - Should fail", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "customSink.test.json", "utf-8"))))
+        .toBe(`Error at block custom: Invalid /outputType
 `
         )})
-
 
 test("custom (as filter)", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customFilter.test.json", "utf-8"))))

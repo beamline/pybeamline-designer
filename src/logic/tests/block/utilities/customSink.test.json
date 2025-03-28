@@ -1,20 +1,20 @@
 {
   "blocks": [
     {
-      "id": "0",
+      "id": "1",
       "name": "custom",
       "parameters": {
         "functionName": "user_made_function_as_source",
         "functionBody": "example_function_body\n\toperation1\n\toperation2\n\treturn ans"
       },
-      "outputs": ["1"]
+      "outputs": []
     },
     {
-      "id": "1",
-      "name": "print_sink",
+      "id": "0",
+      "name": "ais_source",
       "parameters": {
       },
-      "outputs": []
+      "outputs": ["1"]
     }
   ]
 }
