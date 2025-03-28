@@ -2,18 +2,15 @@ import { generateCode } from "../../../codeGenerator.ts";
 import {beforeAll, expect, test} from 'vitest';
 import {readFileSync} from "fs";
 import AjvManager from "../../../AjvManager.js";
+import {Compiler} from "../../../Compiler.js";
 
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/utilities/";
-let importString : string = `from pybeamline.sources import *
-from pybeamline.sources.real_world_sources import *
-from pybeamline.mappers import *
-from pybeamline.algorithms.discovery import *
-from pybeamline.algorithms.conformance import *
-from pybeamline.filters import *
-from reactivex import merge, concat
-\n`
+const compiler : Compiler = new Compiler()
+let importString : string = compiler.getHeadString() + compiler.getHeadClosingString();
+
+
 beforeAll(async () => {
     // This code runs once before all tests
     await AjvManager.getInstance().manageReferences()
@@ -72,13 +69,16 @@ test("custom (as sink) - Should fail", () => {
 
 test("custom (as filter)", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customFilter.test.json", "utf-8"))))
-        .toBe(importString +
+        .toBe(
+            compiler.getHeadString() +
             `example_function_body
 \toperation1
 \toperation2
 \treturn ans
 
-source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+`
++ compiler.getHeadClosingString() +
+`source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
 \tuser_made_function_as_filter()
 ).subscribe(on_next = lambda x : print(str(x)))
@@ -89,13 +89,15 @@ source_0.pipe(
 
 test("lambda_operator", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "lambda_operator.test.json", "utf-8"))))
-        .toBe(importString +
-            `example_function_body
+        .toBe(
+        compiler.getHeadString() +
+        `example_function_body
 \toperation1
 \toperation2
 \treturn ans
 
-source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+` + compiler.getHeadClosingString() +
+`source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
 \tlambda_operator(user_made_function_as_filter)
 ).subscribe(on_next = lambda x : print(str(x)))
@@ -106,29 +108,34 @@ source_0.pipe(
 
 test("custom (as miner)", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customMiner.test.json", "utf-8"))))
-        .toBe(importString +
-            `example_function_body
+        .toBe(compiler.getHeadString() +
+`example_function_body
 \toperation1
 \toperation2
 \treturn ans
 
-source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+`
++ compiler.getHeadClosingString() +
+            `source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 source_0.pipe( 
 \tuser_made_function_as_miner()
 ).subscribe(on_next = lambda x : print(str(x)))
 
-`)})
+`
+        )})
 
 
 test("custom (as union)", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "customUnion.test.json", "utf-8"))))
-        .toBe(importString +
-            `example_function_body
+        .toBe(compiler.getHeadString() +
+        `example_function_body
 \toperation1
 \toperation2
 \treturn ans
 
-source_0 = string_test_source(iterable = ['x', 'y', 'z'])
+`
+        + compiler.getHeadClosingString() +
+`source_0 = string_test_source(iterable = ['x', 'y', 'z'])
 pipe_0 = source_0.pipe()
 
 source_1 = string_test_source(iterable = ['A', 'B', 'C'])

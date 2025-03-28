@@ -2,18 +2,14 @@ import { generateCode } from "../../../codeGenerator.ts";
 import {beforeAll, expect, test} from 'vitest';
 import {readFileSync} from "fs";
 import AjvManager from "../../../AjvManager.js";
+import {Compiler} from "../../../Compiler.js";
 
 
 //Initial setup
 let pathToTests : string = "src/logic/tests/block/miners/";
-let importString : string = `from pybeamline.sources import *
-from pybeamline.sources.real_world_sources import *
-from pybeamline.mappers import *
-from pybeamline.algorithms.discovery import *
-from pybeamline.algorithms.conformance import *
-from pybeamline.filters import *
-from reactivex import merge, concat
-\n`
+const compiler : Compiler = new Compiler()
+let importString : string = compiler.getHeadString() + compiler.getHeadClosingString();
+
 beforeAll(async () => {
     // This code runs once before all tests
     await AjvManager.getInstance().manageReferences()
@@ -82,12 +78,13 @@ source_0.pipe(
 
 test("behavioral_conformance", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "behavioral_conformance.test.json", "utf-8"))))
-        .toBe(importString +
-            `
-#TODO: Define your reference model
+        .toBe(compiler.getHeadString() +
+            `#TODO: Define your reference model
 user_defined_parameter1 = reference_model
 
-source_0 = xes_log_source_from_file(log = "test.xes")
+`
++ compiler.getHeadClosingString() +
+`source_0 = xes_log_source_from_file(log = "test.xes")
 source_0.pipe( 
 \tbehavioral_conformance(model = user_defined_parameter1)
 ).subscribe(on_next = lambda x : print(str(x)))

@@ -34,13 +34,22 @@ from pybeamline.algorithms.discovery import *
 from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
-\n`
+
+########## --User area-- ##########
+
+`
+
+    private headClosingString : string = "##########---------------##########\n\n";
+
     private bodyString : string = "";
     private handler : Handler;
 
     public constructor () {
         this.handler = new Handler(this);
     }
+
+    public getHeadString() : string {return this.headString};
+    public getHeadClosingString() : string {return this.headClosingString;}
 
 
     private readUserPipeline (userPipeline : ExtendedPipeline) {
@@ -62,7 +71,10 @@ from pybeamline.algorithms.discovery import *
 from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
-\n`
+
+########## --User area-- ##########
+
+`
         this.bodyString = "";
         this.handler.resetCounters();
 
@@ -74,7 +86,7 @@ from reactivex import merge, concat
             .filter(block => !block.descriptors.inputType)
             .forEach(block => this.visitBlock(block,""));
 
-        return this.headString + this.bodyString;
+        return this.headString + this.headClosingString + this.bodyString;
 
     }
 

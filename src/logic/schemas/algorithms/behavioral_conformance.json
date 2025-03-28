@@ -26,7 +26,7 @@
       "const": "behavioral_conformance(model = user_defined_parameter)"
     },
     "header" : {
-      "const": "\n#TODO: Define your reference model\nuser_defined_parameter"
+      "const": "#TODO: Define your reference model\nuser_defined_parameter"
     },
     "auxHeader" : {
       "const": "= reference_model"
