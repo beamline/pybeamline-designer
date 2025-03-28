@@ -1,7 +1,7 @@
 import {XYPosition} from "@vue-flow/core";
 import AjvManager from "../../logic/AjvManager.js";
 import {CleanSchema} from "../../logic/Syntax.js";
-import {colorPalette, stylePalette} from "./handleStyles.js";
+import {colorPalette, hexagonStyle, stylePalette} from "./handleStyles.js";
 import {reactive} from "vue";
 
 const stringToHexColor = (types: string[] | null): string => {
@@ -61,6 +61,8 @@ async function createNode(name: string, id: string, position : XYPosition) {
     const schema : CleanSchema = ajv.getCleanSchemaByName(name);
 
     let nodeType = "standard";
+    let targetHandle = getHandleStyle(schema.descriptors.inputType);
+    let sourceHandle = {backgroundColor : stringToHexColor2(schema.descriptors.outputType), ...hexagonStyle};
 
     if (schema.descriptors.inputType === null) {
         nodeType = "start";
@@ -70,6 +72,7 @@ async function createNode(name: string, id: string, position : XYPosition) {
     }
     else if ("input" in schema) {
         nodeType = "union";
+        targetHandle = {backgroundColor : stringToHexColor2(schema.descriptors.outputType), ...hexagonStyle};
     }
 
     const node = {
@@ -81,8 +84,8 @@ async function createNode(name: string, id: string, position : XYPosition) {
             inputType : schema.descriptors.inputType,
             outputType : schema.descriptors.outputType,
             parameters : schema.parameters,
-            sourceHandleStyle : getHandleStyle(schema.descriptors.outputType),
-            targetHandleStyle : getHandleStyle(schema.descriptors.inputType),
+            sourceHandleStyle : sourceHandle,
+            targetHandleStyle : targetHandle,
             hint : schema.hint,
             required: schema.required || [],
             error: ''

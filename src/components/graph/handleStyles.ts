@@ -11,6 +11,14 @@ const triangleStyle = {
     margin: '0', // Remove any unwanted margins
 };
 
+export const hexagonStyle = {
+    height: '25px',
+    width: '8px',
+    aspectRatio: 'cos(30deg)',
+    clipPath: 'polygon(-50% 50%,50% 100%,150% 50%,50% 0)',
+    right: '0.5px', // Shift left slightly
+}
+
 const clippedCircleStyle = {
     width: '12px',
     height: '12px',
@@ -34,10 +42,6 @@ const squareStyle = {
     margin: '0px', // Remove any unwanted margins
 };
 
-const circleStyle = {
-    width:'10px',
-    height:'10px',
-}
 
 //Mapping of types to styles
 export const stylePalette = {
