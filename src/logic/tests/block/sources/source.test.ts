@@ -98,3 +98,18 @@ test("xes_log_source_from_file", () => {
 ).subscribe(on_next = lambda x : print(str(x)))\n
 `)
 })
+
+
+
+test("custom_source", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "custom_source.test.json", "utf-8"))))
+        .toBe(
+            importString + `def myfunc():
+ \treturn2
+
+source_0 = myfunc()
+source_0.pipe(
+).subscribe(on_next = lambda x : print(str(x)))
+
+`)
+})

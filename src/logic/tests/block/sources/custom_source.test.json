@@ -1,0 +1,21 @@
+{
+  "blocks": [
+    {
+      "id": "0",
+      "name": "custom_source",
+      "parameters": {
+        "functionName" : "myfunc",
+        "functionBody" : "def myfunc():\n \treturn2"
+      },
+      "outputs": ["1"]
+    },
+    {
+      "id": "1",
+      "name": "sink",
+      "parameters": {
+        "on_next": "lambda x : print(str(x))"
+      },
+      "outputs": []
+    }
+  ]
+}

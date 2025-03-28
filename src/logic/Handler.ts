@@ -32,7 +32,7 @@ export class Handler {
 
     public processBlock (block : ExtendedBlock, currentString : string) : string {
 
-        if (block.descriptors.name == ("custom")) {
+        if (block.descriptors.name.includes("custom")) {
             return this.handleCustom(block,  currentString)
         }
 
@@ -78,7 +78,7 @@ export class Handler {
         }
         if (block.descriptors.outputType === null) {
 
-            this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${block.function}\n\n`)
+            this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)$.subscribe(${block.function})\n\n`)
             return currentString
         }
 

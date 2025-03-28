@@ -12,6 +12,7 @@
           {"$ref": "log_source.json"},
           {"$ref": "wikimedia_source.json"},
           {"$ref": "ais_source.json"},
+          {"$ref": "custom_source.json"},
 
           {"$ref": "retains_on_trace_attribute_equal_filter.json"},
           {"$ref": "excludes_on_trace_attribute_equal_filter.json"},
