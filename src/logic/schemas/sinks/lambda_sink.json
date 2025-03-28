@@ -8,7 +8,7 @@
       "type": "object",
       "properties": {
         "name": {
-          "const": "sink"
+          "const": "lambda_sink"
         },
         "outputType": {
           "const": null

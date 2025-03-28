@@ -28,7 +28,8 @@
           {"$ref": "behavioral_conformance.json"},
           {"$ref": "sliding_window_to_log.json"},
 
-          {"$ref": "sink.json"},
+          {"$ref": "custom_sink.json"},
+          {"$ref": "lambda_sink.json"},
           {"$ref": "print_sink.json"},
           {"$ref": "dummy_sink.json"},
 

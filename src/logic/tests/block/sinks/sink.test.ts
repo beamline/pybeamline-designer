@@ -19,8 +19,8 @@ beforeAll(async () => {
     await AjvManager.getInstance().manageReferences()
 });
 
-test("sink", () => {
-    expect(generateCode( JSON.parse(readFileSync(pathToTests + "sink.test.json", "utf-8"))))
+test("print_sink", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "print_sink.test.json", "utf-8"))))
         .toBe( importString +
 `source_0 = ais_source()
 source_0.pipe(
@@ -29,3 +29,35 @@ source_0.pipe(
 `
 )})
 
+test("dummy_sink", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "dummy_sink.test.json", "utf-8"))))
+        .toBe( importString +
+            `source_0 = ais_source()
+source_0.pipe(
+).subscribe(lambda _ : None)
+
+`
+        )})
+
+test("lambda_sink", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "lambda_sink.test.json", "utf-8"))))
+        .toBe( importString +
+            `source_0 = ais_source()
+source_0.pipe(
+).subscribe(on_next = lambda x : print(str(x)))
+
+`
+        )})
+
+test("custom_sink", () => {
+    expect(generateCode( JSON.parse(readFileSync(pathToTests + "custom_sink.test.json", "utf-8"))))
+        .toBe( importString +
+`def myfunc():
+ \treturn2
+
+source_0 = ais_source()
+source_0.pipe(
+).subscribe(myfunc)
+
+`
+)})

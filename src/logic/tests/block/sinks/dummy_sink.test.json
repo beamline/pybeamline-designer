@@ -1,0 +1,18 @@
+{
+  "blocks": [
+    {
+      "id": "0",
+      "name": "ais_source",
+      "parameters": {},
+      "outputs": [
+        "1"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "dummy_sink",
+      "parameters": {},
+      "outputs": []
+    }
+  ]
+}

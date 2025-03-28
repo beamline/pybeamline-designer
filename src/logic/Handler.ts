@@ -77,8 +77,8 @@ export class Handler {
             return currentString
         }
         if (block.descriptors.outputType === null) {
-
-            this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)$.subscribe(${block.function})\n\n`)
+            block.function = ".subscribe(" + block.function.slice(0, -2) + ")";
+            this.compiler.appendBodyString(`${currentString.slice(0, -2)}\n)${block.function}\n\n`)
             return currentString
         }
 

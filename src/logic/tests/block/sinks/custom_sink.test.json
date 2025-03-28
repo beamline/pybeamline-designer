@@ -1,0 +1,20 @@
+{
+  "blocks": [
+    {
+      "id": "0",
+      "name": "custom_sink",
+      "parameters": {
+        "functionName" : "myfunc",
+        "functionBody" : "def myfunc():\n \treturn2"
+      },
+      "outputs": []
+    },
+    {
+      "id": "1",
+      "name": "ais_source",
+      "parameters": {
+      },
+      "outputs": ["0"]
+    }
+  ]
+}
