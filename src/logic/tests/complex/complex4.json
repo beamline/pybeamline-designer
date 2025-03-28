@@ -52,7 +52,7 @@
     },
     {
       "id": "5",
-      "name": "sink",
+      "name": "lambda_sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

@@ -2,7 +2,7 @@
   "blocks": [
     {
       "id": "3",
-      "name": "sink",
+      "name": "lambda_sink",
       "parameters": {
         "on_next": "lambda x : print(str(x))"
       },

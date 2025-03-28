@@ -44,7 +44,7 @@ test("Validation test 2", () => {
 
 test("Validation test 3", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "valid3.json", "utf-8"))))
-        .toBe("Error at block sink: Invalid /inputType\n"
+        .toBe("Error at block lambda_sink: Invalid /inputType\n"
 )})
 
 //  ########
