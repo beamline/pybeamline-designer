@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import MainVueFlow from "@/components/mainVueFlow.vue";
 import AjvManager from "@/logic/AjvManager.js";
+import TutorialPanel from "@/components/TutorialPanel.vue";
 AjvManager.getInstance().manageReferences()
 
 </script>
 
 <template>
   <div class="container">
+    <div class="tutorial">
+      <TutorialPanel/>
+    </div>
     <main><main-vue-flow/></main>
   </div>
 </template>
@@ -26,5 +30,12 @@ main{
   z-index: 0;
 }
 
+.tutorial{
+  position: absolute;
+  left:0;
+  bottom: 0;
+  padding: 10px;
+  z-index: 5;
+ }
 
 </style>
