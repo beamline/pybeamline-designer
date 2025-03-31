@@ -336,9 +336,9 @@ watch(index, async (newQuestion, oldQuestion) => {
 </script>
 
 <template>
-  <div style="width: 80vw; height: 80vh; overflow: hidden; border-radius: 11px">
+  <div style="width: 1300px; height: 750px; overflow: hidden; border-radius: 11px">
     <div class="menu">
-      <Stepper v-model:value="index" style="position: absolute; right: 20px; bottom: 150px" >
+      <Stepper v-model:value="index" style="position: absolute; right: 20px; bottom: calc(50% - 150px)" >
         <StepItem :value=0>
           <Step></Step>
           <Divider layout="vertical" style="height: 50px; right: 5%"/>
@@ -567,9 +567,8 @@ watch(index, async (newQuestion, oldQuestion) => {
 .circle {
   --radius: 500px;
   position: relative;
-  margin-top: -20%;
-  margin-bottom: 20px;
-  margin-left: -30%;
+  top: -200px;
+  left: -400px;
   width: calc(var(--radius) * 2);
   height: calc(var(--radius) * 2);
   border-radius: 50%;
