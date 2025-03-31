@@ -362,164 +362,165 @@ watch(index, async (newQuestion, oldQuestion) => {
       <div class="circle">
         <ul :style="{ transform: `rotate(${rotation}deg)`}">
           <li class="t3">
-            <div style="display: flex; left:150px;top: 25px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 3</template>
+            <div style="display: flex; left:130px;top: 0px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-pencil" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title>Custom Block</template>
                 <template #content>
-                  If you look you can see, if you dont look, you cannot see
+                  In case the provided blocks are not enough for you, we offer customs blocks where you can code your own functions
                 </template>
               </Card>
             </div>
-            <div style="display: flex; left:200px;top: 75px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:180px;top: 40px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-file-edit" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title>Edit Code</template>
                 <template #content>
-                  If you look you can see,
-                </template>
-              </Card>
-            </div>
-
-            <div style="display: flex; left:200px;top: 125px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
+                  Once the code is generated you will be able to edit it before the download
                 </template>
               </Card>
             </div>
 
-            <div style="display: flex; left:150px;top: 175px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:175px;top: 80px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-play" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title>Jupyter Kernel</template>
                 <template #content>
-                  If you look you can see,
+                  In the case you have jupyter installed, you will be able to run the code directly from the web
                 </template>
               </Card>
             </div>
 
-          </li>
-          <li class="t3">
-            <div style="display: flex; left:150px;top: 25px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 0</template>
+            <div style="display: flex; left:120px;top: 120px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-info" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title>Where can I learn more?</template>
                 <template #content>
-                  If you look you can see, if you dont look, you cannot see
-                </template>
-              </Card>
-            </div>
-            <div style="display: flex; left:200px;top: 75px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
-                </template>
-              </Card>
-            </div>
-
-            <div style="display: flex; left:200px;top: 125px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
-                </template>
-              </Card>
-            </div>
-
-            <div style="display: flex; left:150px;top: 175px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
+                  All the documentation of pybeamline is specified in its website:
+                  <a href="https://beamline.cloud/pybeamline/" target="_blank">pyBeamline</a>
                 </template>
               </Card>
             </div>
 
           </li>
-          <li class="t3">
-            <div style="display: flex; left:150px;top: 25px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+          <li class="t0">
+            <div style="display: flex; left:150px;top: 5px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-face-smile" size="xlarge" style="height:150px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Welcome</template>
                 <template #content>
-                  If you look you can see, if you dont look, you cannot see
+                  PybeamLine Designer aims to make your process mining analytics as easy as possible. Here you will be able to create diagrams resembling your own system.
                 </template>
               </Card>
             </div>
-            <div style="display: flex; left:200px;top: 75px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:180px;top: 45px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-bolt" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Minimum Requisites</template>
                 <template #content>
-                  If you look you can see,
-                </template>
-              </Card>
-            </div>
-
-            <div style="display: flex; left:200px;top: 125px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
+                  Every valid diagram, must have at least 1 source, and 1 sink. That is, it must have a start and an end
                 </template>
               </Card>
             </div>
 
-            <div style="display: flex; left:150px;top: 175px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:180px;top: 90px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-plus-circle" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> But, what is a Source?</template>
                 <template #content>
-                  If you look you can see,
+                  Sources are any block that contains an output (represented as a colored shape on the right), and no input
+                </template>
+              </Card>
+            </div>
+
+            <div style="display: flex; left:120px;top: 125px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-minus-circle" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> And, what is a Sink?</template>
+                <template #content>
+                  Sinks are any block that contains an input (represented as a colored shape on the left), and no output
                 </template>
               </Card>
             </div>
 
           </li>
-          <li class="t3">
-            <div style="display: flex; left:150px;top: 25px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 2</template>
+          <li class="t1">
+            <div style="display: flex; left:130px;top: 0px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-box" size="xlarge" style="height:100px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Blocks Structure</template>
                 <template #content>
-                  If you look you can see, if you dont look, you cannot see
+                  Blocks are composed of an input (left colored shape), an output (right colored shape) and a name
                 </template>
               </Card>
             </div>
-            <div style="display: flex; left:200px;top: 75px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:180px;top: 30px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-graduation-cap" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Input / Output types</template>
                 <template #content>
-                  If you look you can see,
-                </template>
-              </Card>
-            </div>
-
-            <div style="display: flex; left:200px;top: 125px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
-                <template #content>
-                  If you look you can see,
+                  Every input and output has a type, which is defined by its shape and color.
                 </template>
               </Card>
             </div>
 
-            <div style="display: flex; left:150px;top: 175px; position: relative; height: fit-content">
-              <Avatar icon="pi pi-folder" size="xlarge" style="height:100px; background: none " />
-              <Card style="width: fit-content; height: 100px">
-                <template #title> Specification 1</template>
+            <div style="display: flex; left:180px;top: 60px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-exclamation-triangle" size="xlarge" style="height:170px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Connections </template>
                 <template #content>
-                  If you look you can see,
+                  Connections are always between an input and an output. For a connection to be possible, both connected types need to be the same. That is, an output with a green circle can only be connected with an input with a green circle
+                </template>
+              </Card>
+            </div>
+
+            <div style="display: flex; left:120px;top: 85px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-sitemap" size="xlarge" style="height:100px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Multiple connections</template>
+                <template #content>
+                  Blocks with a long connection shape, can have more than one connection at that input/output
+                </template>
+              </Card>
+            </div>
+
+          </li>
+          <li class="t2">
+            <div style="display: flex; left:130px;top: 0px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-globe" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title>Universal type</template>
+                <template #content>
+                  Blocks with a grey square can be connected to any type
+                </template>
+              </Card>
+            </div>
+            <div style="display: flex; left:180px;top: 25px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-cog" size="xlarge" style="height:120px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Attributes</template>
+                <template #content>
+                  Some blocks have attributes, this are specifications that need to be defined by the user. You can click on a block to see them
+                </template>
+              </Card>
+            </div>
+
+            <div style="display: flex; left:180px;top: 75px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-user-edit" size="xlarge" style="height:100px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Required Attributes</template>
+                <template #content>
+                  Attributes may be mandatory to specify, this will highlight in red until you fill them
+                </template>
+              </Card>
+            </div>
+
+            <div style="display: flex; left:130px;top: 100px; position: relative; height: fit-content">
+              <Avatar icon="pi pi-exclamation-triangle" size="xlarge" style="height:150px; background: none " />
+              <Card style="width: fit-content; height: fit-content">
+                <template #title> Why is the node red?</template>
+                <template #content>
+                  When we detect that you are missing any essential part of your diagram, the block with the missing part will get red. Hover over it to see extra information
                 </template>
               </Card>
             </div>
