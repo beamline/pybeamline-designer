@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import cooltransition from "@/components/cooltransition.vue";
+import cooltransition from "@/components/tutorial/cooltransition.vue";
 import Button from "primevue/button";
 import { ref, watch } from "vue";
 import Background from "@/components/background.vue";

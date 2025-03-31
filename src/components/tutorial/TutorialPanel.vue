@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Tutorial from "@/components/Tutorial.vue";
+import Tutorial from "@/components/tutorial/Tutorial.vue";
 import { Panel} from "@vue-flow/core";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
