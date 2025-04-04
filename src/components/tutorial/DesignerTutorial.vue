@@ -1188,7 +1188,7 @@ watch(index, async (newQuestion, oldQuestion) => {
 </script>
 
 <template>
-  <div>
+  <div style="overflow: hidden">
     <div class="menu">
       <Stepper v-model:value="index" style="position: absolute; right: 20px; bottom: calc(50% - 150px)" >
         <StepItem :value=0>
