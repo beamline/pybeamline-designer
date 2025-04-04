@@ -16,7 +16,7 @@ const products = keys.map(key => (ajv.getCleanSchemaByName(key.slice(0,-5)))).ma
   multipleInputs: !!schema.input,
   outputType: schema.descriptors.outputType,
   multipleOutputs: true,
-  parameters:  Object.entries(schema.parameters).map(([key, value]) => (
+  parameters:  Object.keys(schema.parameters).map((key) => (
       {
     attrName: key,
     required:schema.required? schema.required.includes(key) : false,
