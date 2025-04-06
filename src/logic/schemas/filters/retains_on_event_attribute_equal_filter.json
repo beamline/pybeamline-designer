@@ -40,7 +40,7 @@
       "const": "retains_on_event_attribute_equal_filter()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Retains events based on the equality of an event attribute."
     }
   },
   "required": [
