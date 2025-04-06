@@ -32,7 +32,7 @@
       "const": "= reference_model"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Computes conformance based on behavioral patterns. Aims to compare process models with actual executions, pinpointing deviations."
     }
   },
   "required": [
