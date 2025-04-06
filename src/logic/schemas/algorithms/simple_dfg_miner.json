@@ -38,7 +38,7 @@
       "const": "simple_dfg_miner()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Discovery algorithm that constructs the directly-follows-graph model considering infinite amount of memory available. A DFG model shows the sequence of activities in a process."
     }
   },
   "required": [
