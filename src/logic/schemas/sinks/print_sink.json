@@ -26,7 +26,7 @@
       "const": ".subscribe(on_next = lambda x : print(str(x)))"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Prints its input."
     }
   },
   "required": [

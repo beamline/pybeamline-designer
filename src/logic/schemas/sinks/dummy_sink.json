@@ -26,7 +26,7 @@
       "const": ".subscribe(lambda _ : None)"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Sink that returns none for all possible inputs."
     }
   },
   "required": [
