@@ -38,7 +38,7 @@
       "const": "ais_source()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "The automatic identification system (AIS) is an automatic tracking system that uses transceivers on ships and is used by vessel traffic services. This source considers the MMSI as the case id and the navigation status (when available) as the activity"
     }
   },
   "required": [

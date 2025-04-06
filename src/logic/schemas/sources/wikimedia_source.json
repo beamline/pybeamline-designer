@@ -29,7 +29,7 @@
       "const": "wikimedia_source()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Source that connects to the stream of recent change operations happening on the Media Wiki websites."
     }
   },
   "required": [

@@ -45,7 +45,7 @@
       "const": "mqttxes_source()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Source that connects to an MQTT endpoint and expects events to be published according to the MQTT-XES format (see https://beamline.cloud/mqtt-xes/)."
     }
   },
   "required": [
