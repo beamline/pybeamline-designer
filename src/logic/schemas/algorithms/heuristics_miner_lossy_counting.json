@@ -46,7 +46,7 @@
       "const": "heuristics_miner_lossy_counting()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "A discovery algorithm. Mines a heuristics net using a lossy counting algorithm. This heuristics net is the same as in PM4PY."
     }
   },
   "required": [
