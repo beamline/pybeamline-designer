@@ -29,7 +29,7 @@
       "const": "merge()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Merge may interleave the items emitted by the merged Observables (a similar operator, concat, does not interleave items, but emits all of each source Observable’s items in turn before beginning to emit items from the next source Observable)."
     }
   },
   "required": [

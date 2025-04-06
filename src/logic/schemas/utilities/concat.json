@@ -29,7 +29,7 @@
       "const": "concat()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "Concatenates the output of multiple Observables so that they act like a single Observable, with all of the items emitted by the first Observable being emitted before any of the items emitted by the second Observable (and so forth, if there are more than two)."
     }
   },
   "required": [

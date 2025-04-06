@@ -57,7 +57,7 @@
       "const": "lambda_operator()"
     },
     "hint": {
-      "const": "This is a great hint that will help you a lot"
+      "const": "This function allows the definition of an operator according to a function defined somewhere else. It is the most flexible operator and, in case a value is return, then the pipeline will continue. If None is returned, then the pipeline does not continue."
     }
   },
   "required": [
