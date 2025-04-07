@@ -22,7 +22,7 @@ class AjvManager extends Ajv{
     public getSchemaByName(name: string) {
         const schema = this.getSchema(name+".json")?.schema
 
-        if (!schema) {throw new Error("There is no schema with that name")}
+        if (!schema) {throw new Error(`There is no schema with that name ${name}`)}
         else {return schema}
 
     }
@@ -31,7 +31,7 @@ class AjvManager extends Ajv{
         //@ts-ignore
         const schema: BlockSchema = this.getSchema(name+".json")?.schema
 
-        if (!schema) {throw new Error("There is no schema with that name")}
+        if (!schema) {throw new Error(`There is no schema with that name ${name}`)}
         else {return this.cleanSchema(schema)}
 
     }
