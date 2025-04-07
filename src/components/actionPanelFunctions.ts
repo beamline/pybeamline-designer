@@ -5,7 +5,7 @@ import {useVueFlow} from "@vue-flow/core";
 
 
 
-export default function arturoBullshit(visible, editor, fileInput){
+export default function actionPanelFunctions(visible, editor, fileInput){
     const {nodes, edges, setNodes, setEdges }=useVueFlow()
 
     const translator = new Translator();

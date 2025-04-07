@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { Panel} from "@vue-flow/core";
 import Menubar from 'primevue/menubar';
-import arturoBullshit from "@/components/ArturoBullshit.js";
-
 import {ref} from "vue";
 import Drawer from "primevue/drawer";
-import BlockOptions from "@/components/BlockOptions.vue";
 import CodeGeneratorEditor from "@/components/CodeGeneratorEditor.vue";
+import actionPanelFunctions from "@/components/actionPanelFunctions.js";
 const visible = ref(false);
 const editor = ref("");
 const fileInput = ref<HTMLInputElement | null>(null);
 
 
-const {showCode,clearDesign,downloadPipeline,triggerFileSelection,handleFileSelection} = arturoBullshit(visible, editor, fileInput)
+const {showCode,clearDesign,downloadPipeline,triggerFileSelection,handleFileSelection} = actionPanelFunctions(visible, editor, fileInput)
 
 const items = ref([
   {
