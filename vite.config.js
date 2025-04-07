@@ -17,5 +17,6 @@ export default defineConfig({
   },
   define: {
     'process.env.VITEST': JSON.stringify(process.env.VITEST || 'false'),
-  }
+  },
+  base: '/Development-of-an-interactive-no-code-process-mining-platform-based-on-Beamline-pyBeamline/'
 })
