@@ -68,7 +68,7 @@ const expandedRows = ref({});
         <template #title>Adding Sources</template>
         <template #content>
           <p style="padding-bottom:20px">
-            In PyBeamline, sources are equivalent to observables—they emit event streams that can be processed. Observers can subscribe to these observables and react dynamically to the emitted data.
+            Sources can be easily added by just referencing its name function. We recommend assigning variables to it, so you can use it in multiple instances.
           </p>
           <div class="example">
             source_1 = mySource(attr1= value1, attr2= value2)
@@ -79,7 +79,7 @@ const expandedRows = ref({});
         <template #title>Applying operators</template>
         <template #content>
           <p style="padding-bottom:20px">
-            Filters are operators that do not modify the input stream but selectively allow or block events based on a predicate test. They process an event stream and output a filtered event stream.
+            Operators like miners and filters should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work.
           </p>
           <div class="example">
             result = source_1.pipe( <br> &emsp; &emsp; &emsp; myoperator1(...),<br>&emsp; &emsp; &emsp;
@@ -92,7 +92,7 @@ const expandedRows = ref({});
         <template #title>.subscribe</template>
         <template #content>
           <p style="padding-bottom:20px">
-            Mappers and algorithms transform event streams. The resulting output depends on the specific algorithm being used. For example, discovery miners analyze event logs to construct process models.
+            If once you have processed the whole data you want to apply some function to it, you can use the .subscribe method to apply your personalised lambda function
           </p>
           <div class="example">
             result.subscribe(lambda x: print(x))
