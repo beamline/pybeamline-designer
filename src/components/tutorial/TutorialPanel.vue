@@ -20,7 +20,7 @@ const value = ref("Designer")
         <div v-if="value === 'Designer'" style="overflow: hidden;">
           <DesignerTutorial/>
         </div>
-        <div v-else-if="value === 'Pybeamline'">
+        <div v-else-if="value === 'Pybeamline'" style="overflow: hidden;">
           <PyBeamlineTutorial/>
         </div>
       </template>

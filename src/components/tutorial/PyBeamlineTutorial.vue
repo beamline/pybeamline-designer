@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import Card from 'primevue/card';
-import DataTable from 'primevue/datatable';
-import Column from 'primevue/column';
-import InputText from 'primevue/inputtext';
-import {computed, ref} from "vue";
+import {ref, computed, watch} from 'vue'
+import Button from "primevue/button";
+import Card from "primevue/card";
+import InputText from "primevue/inputtext";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
 import ajvManager from "@/logic/AjvManager.js";
+import StepItem from "primevue/stepitem";
+import Stepper from "primevue/stepper";
+import Divider from "primevue/divider";
+import Step from "primevue/step";
 
 
 
@@ -18,9 +23,9 @@ const products = keys.map(key => (ajv.getCleanSchemaByName(key.slice(0,-5)))).ma
   multipleOutputs: true,
   parameters:  Object.keys(schema.parameters).map((key) => (
       {
-    attrName: key,
-    required:schema.required? schema.required.includes(key) : false,
-  }))
+        attrName: key,
+        required:schema.required? schema.required.includes(key) : false,
+      }))
 }))
 
 
@@ -31,129 +36,176 @@ const filteredData = computed(()=>{
 
 const expandedRows = ref({});
 
+
+const sections = ['part1', 'part2', 'part3']
+const currentIndex = ref(0)
+
+function goToNext() {
+  if (currentIndex.value < sections.length - 1) {
+    currentIndex.value++
+  } else {
+    currentIndex.value = 0
+  }
+  window.location.href = '#' + sections[currentIndex.value]
+}
+
+function onStepChange(event: any){
+  window.location.href = '#' + sections[currentIndex.value]
+}
+
+
 </script>
 
 <template>
-  <div class="main">
-    <div style="height: 30px"></div>
-    <h1>PyBeamline quick Tutorial</h1>
-    <h2 style="padding-left:50px; width:100%">Core Concepts</h2>
-    <div class="core">
-      <Card class="concepts">
-        <template #title>Source</template>
-        <template #content>
-          <p>
-            In PyBeamline, sources are equivalent to observables—they emit event streams that can be processed. Observers can subscribe to these observables and react dynamically to the emitted data.
-          </p>
-        </template>
-      </Card>
-      <Card class="concepts">
-        <template #title>Filters</template>
-        <template #content>
-          <p>
-            Filters are operators that do not modify the input stream but selectively allow or block events based on a predicate test. They process an event stream and output a filtered event stream.          </p>
-        </template>
-      </Card>
-      <Card class="concepts">
-        <template #title>Mappers & Algorithms</template>
-        <template #content>
-          <p>
-            Mappers and algorithms transform event streams. The resulting output depends on the specific algorithm being used. For example, discovery miners analyze event logs to construct process models.          </p>
-        </template>
-      </Card>
+  <div>
+    <Button rounded label="Next" icon="pi pi-play" iconPos="right" @click="goToNext" style="right:10px; z-index:1; bottom:10px; position: absolute"></Button>
+  </div>
+  <Stepper v-model:value="currentIndex" @update:value="onStepChange" style="position: absolute; right: 20px; bottom: calc(50% - 100px)" >
+    <StepItem :value=0>
+      <Step></Step>
+      <Divider layout="vertical" style="height: 50px; right: 5%"/>
+    </StepItem>
+    <StepItem :value=1>
+      <Step></Step>
+      <Divider layout="vertical" style="height: 50px; right: 5%"/>
+    </StepItem>
+    <StepItem :value=2>
+      <Step></Step>
+    </StepItem>
+  </Stepper>
+  <div class="scroll-container">
+    <div class="scroll-page" id="part1">
+      <div class="exampleBox">
+        aaa
+      </div>
+      <div class="explanationBox">
+        <h2 >Core Concepts</h2>
+        <Card class="concepts">
+          <template #title>Source</template>
+          <template #content>
+            <p>
+              In PyBeamline, sources are equivalent to observables—they emit event streams that can be processed. Observers can subscribe to these observables and react dynamically to the emitted data.
+            </p>
+          </template>
+        </Card>
+        <Card class="concepts">
+          <template #title>Filters</template>
+          <template #content>
+            <p>
+              Filters are operators that do not modify the input stream but selectively allow or block events based on a predicate test. They process an event stream and output a filtered event stream.          </p>
+          </template>
+        </Card>
+        <Card class="concepts">
+          <template #title>Mappers & Algorithms</template>
+          <template #content>
+            <p>
+              Mappers and algorithms transform event streams. The resulting output depends on the specific algorithm being used. For example, discovery miners analyze event logs to construct process models.          </p>
+          </template>
+        </Card>
+      </div>
     </div>
-    <h2 style="padding-left:50px; width:100%">Syntax</h2>
-    <div class="core">
-      <Card class="concepts">
-        <template #title>Adding Sources</template>
-        <template #content>
-          <p style="padding-bottom:20px">
-            Sources can be easily added by just referencing its name function. We recommend assigning variables to it, so you can use it in multiple instances.
-          </p>
-          <div class="example">
-            source_1 = mySource(attr1= value1, attr2= value2)
-          </div>
-        </template>
-      </Card>
-      <Card class="concepts">
-        <template #title>Applying operators</template>
-        <template #content>
-          <p style="padding-bottom:20px">
-            Operators like miners and filters should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work.
-          </p>
-          <div class="example">
-            result = source_1.pipe( <br> &emsp; &emsp; &emsp; myoperator1(...),<br>&emsp; &emsp; &emsp;
-                     myoperator2(...)
-            )
-          </div>
-        </template>
-      </Card>
-      <Card class="concepts">
-        <template #title>.subscribe</template>
-        <template #content>
-          <p style="padding-bottom:20px">
-            If once you have processed the whole data you want to apply some function to it, you can use the .subscribe method to apply your personalised lambda function
-          </p>
-          <div class="example">
-            result.subscribe(lambda x: print(x))
-          </div>
-        </template>
-      </Card>
+    <div class="scroll-page" id="part2">
+      <div class="exampleBox">
+        bbbb
+      </div>
+      <div class="explanationBox">
+        <h2>Syntax</h2>
+        <Card class="concepts">
+          <template #title>Adding Sources</template>
+          <template #content>
+            <p style="padding-bottom:20px">
+              Sources can be easily added by just referencing its name function. We recommend assigning variables to it, so you can use it in multiple instances.
+            </p>
+            <div class="example">
+              source_1 = mySource(attr1= value1, attr2= value2)
+            </div>
+          </template>
+        </Card>
+        <Card class="concepts">
+          <template #title>Applying operators</template>
+          <template #content>
+            <p style="padding-bottom:20px">
+              Operators like miners and filters should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work.
+            </p>
+            <div class="example">
+              result = source_1.pipe( <br> &emsp; &emsp; &emsp; myoperator1(...),<br>&emsp; &emsp; &emsp;
+              myoperator2(...)
+              )
+            </div>
+          </template>
+        </Card>
+        <Card class="concepts">
+          <template #title>.subscribe</template>
+          <template #content>
+            <p style="padding-bottom:20px">
+              If once you have processed the whole data you want to apply some function to it, you can use the .subscribe method to apply your personalised lambda function
+            </p>
+            <div class="example">
+              result.subscribe(lambda x: print(x))
+            </div>
+          </template>
+        </Card>
+      </div>
     </div>
-    <h2 style="padding-left:50px; width:100%; padding-bottom: 20px">Functions List</h2>
+    <div class="scroll-page" id="part3">
+      <div style="display: flex; flex-direction: column; align-content: center; padding-top: 50px; height:735px">
+        <h2 style="padding-left:50px; width:100%; padding-bottom: 20px">Functions List</h2>
 
-    <InputText v-model="searchQuery" placeholder="Search..." style="width: 50rem" />
-    <div style="min-height: 50rem">
-      <DataTable v-model:expandedRows="expandedRows" :value="filteredData" tableStyle="min-width: 50rem; padding-bottom: 30%" dataKey="name">
-        <Column expander style="width: 5rem" />
-        <Column field="name" header="Name"></Column>
-        <Column field="inputType" header="Input type"></Column>
-        <Column field="multipleInputs" header="Allow multiple inputs"></Column>
-        <Column field="outputType" header="Output type"></Column>
-        <Column field="multipleOutputs" header="Allow multiple outputs"></Column>
+        <InputText v-model="searchQuery" placeholder="Search..." style="width: 70rem" />
+        <div style="height: 50rem; overflow: scroll; padding-bottom: 30px">
+          <DataTable v-model:expandedRows="expandedRows" :value="filteredData" tableStyle="width: 70rem;" dataKey="name" paginator :rows="8">
+            <Column expander style="width: 5rem" />
+            <Column field="name" header="Name"></Column>
+            <Column field="inputType" header="Input type"></Column>
+            <Column field="multipleInputs" header="Allow multiple inputs"></Column>
+            <Column field="outputType" header="Output type"></Column>
+            <Column field="multipleOutputs" header="Allow multiple outputs"></Column>
 
-        <template #expansion="slotProps">
-          <DataTable :value="slotProps.data.parameters">
-            <Column field="attrName" header="Attribute Name"></Column>
-            <Column field="required" header="Required"></Column>
+            <template #expansion="slotProps">
+              <DataTable :value="slotProps.data.parameters">
+                <Column field="attrName" header="Attribute Name"></Column>
+                <Column field="required" header="Required"></Column>
+              </DataTable>
+            </template>
           </DataTable>
-        </template>
-      </DataTable>
+        </div>
+      </div>
     </div>
-
   </div>
 </template>
 
 <style scoped>
-.main{
-  width: 100%;
+.exampleBox {
+  height: 735px;
+  width: 300px;
+  border: 1px solid black;
+}
 
+.explanationBox {
+  height: 735px;
+  width: 750px;
+  padding-top: 60px;
+  padding-left: 40px;
+}
+
+.scroll-container{
+  height:735px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-
-  justify-content: center;
-  align-items: center;
-
-  overflow: auto;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }
-.core{
-  width: 100%;
 
+.scroll-page{
   display: flex;
-  gap: 16px;
+  flex-direction: row;
   justify-content: center;
-  padding: 10px;
+
 }
 
 .concepts{
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb
-}
-
-.example{
-  padding: 10px;
-  background-color: rgba(127, 127, 127, 0.31);
-  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin-top:10px
 }
 </style>
