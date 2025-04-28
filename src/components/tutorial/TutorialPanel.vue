@@ -15,12 +15,12 @@ const value = ref("Designer")
 
     <Dialog v-model:visible="tutorial" modal :show-header="false" style="padding:0; width: 1300px; height: 750px; overflow:auto; border-radius: 11px">
       <template #container="{closeCallback}">
-        <SelectButton v-model="value" :options="['Pybeamline','Designer']" style="position: absolute;left: 50%;transform: translateX(-50%); z-index: 7"></SelectButton>
+        <SelectButton v-model="value" :options="['pyBeamline','Designer']" style="position: absolute;left: 50%;transform: translateX(-50%); z-index: 7"></SelectButton>
         <Button icon="pi pi-times" @click="closeCallback" rounded variant="text" style="left:96%; position:absolute" severity="secondary" />
         <div v-if="value === 'Designer'" style="overflow: hidden;">
           <DesignerTutorial/>
         </div>
-        <div v-else-if="value === 'Pybeamline'" style="overflow: hidden;">
+        <div v-else-if="value === 'pyBeamline'" style="overflow: hidden;">
           <PyBeamlineTutorial/>
         </div>
       </template>

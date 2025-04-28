@@ -84,7 +84,7 @@ function onStepChange(event: any){
           <template #title>Source</template>
           <template #content>
             <p>
-              In PyBeamline, sources are equivalent to observables—they emit event streams that can be processed. Observers can subscribe to these observables and react dynamically to the emitted data.
+              In pyBeamline, sources are equivalent to observables—they emit event streams that can be processed. Observers can subscribe to these observables and react dynamically to the emitted data.
             </p>
           </template>
         </Card>
@@ -125,7 +125,7 @@ function onStepChange(event: any){
           <template #title>Applying operators</template>
           <template #content>
             <p style="padding-bottom:20px">
-              Operators like miners and filters should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work.
+              Operators should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work, else it may lead to unexpected behaviour.
             </p>
             <div class="example">
               result = source_1.pipe( <br> &emsp; &emsp; &emsp; myoperator1(...),<br>&emsp; &emsp; &emsp;
