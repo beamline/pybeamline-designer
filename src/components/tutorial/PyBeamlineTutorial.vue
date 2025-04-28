@@ -32,6 +32,33 @@ const products = keys.map(key => (ajv.getCleanSchemaByName(key.slice(0,-5)))).ma
 }))
 
 
+const codebox1 =
+`
+`
+
+
+
+const codebox2 =
+`
+
+
+
+src1 = mySource(attr1= value1,
+                attr2= value2)
+
+
+result = src1.pipe(
+    myoperator1(...),
+    myoperator2(...) )
+
+
+
+result.subscribe(
+  lambda x: print(x)
+  )
+`
+
+
 const searchQuery = ref("")
 const filteredData = computed(()=>{
   return products.filter((product)=> product.name.includes(searchQuery.value))
@@ -83,7 +110,7 @@ function onStepChange(event: any){
               :extensions="[python(), basicSetup]"
               :style="{ height: '675px', width:'350px'}"
               :autofocus="true"
-
+              v-model="codebox1"
           />
       </div>
       <div class="explanationBox">
@@ -118,7 +145,7 @@ function onStepChange(event: any){
             :extensions="[python(), basicSetup]"
             :style="{ height: '675px', width:'350px'}"
             :autofocus="true"
-
+            v-model="codebox2"
         />
       </div>
       <div class="explanationBox">
@@ -129,9 +156,7 @@ function onStepChange(event: any){
             <p style="padding-bottom:20px">
               Sources can be easily added by just referencing its name function. We recommend assigning variables to it, so you can use it in multiple instances.
             </p>
-            <div class="example">
-              source_1 = mySource(attr1= value1, attr2= value2)
-            </div>
+
           </template>
         </Card>
         <Card class="concepts">
@@ -140,11 +165,6 @@ function onStepChange(event: any){
             <p style="padding-bottom:20px">
               Operators should be encapsulated in a .pipe() statement, following the source where you want to apply it. Be sure that the input and outputs types match for it to work, else it may lead to unexpected behaviour.
             </p>
-            <div class="example">
-              result = source_1.pipe( <br> &emsp; &emsp; &emsp; myoperator1(...),<br>&emsp; &emsp; &emsp;
-              myoperator2(...)
-              )
-            </div>
           </template>
         </Card>
         <Card class="concepts">
@@ -153,9 +173,6 @@ function onStepChange(event: any){
             <p style="padding-bottom:20px">
               If once you have processed the whole data you want to apply some function to it, you can use the .subscribe method to apply your personalised lambda function
             </p>
-            <div class="example">
-              result.subscribe(lambda x: print(x))
-            </div>
           </template>
         </Card>
       </div>
