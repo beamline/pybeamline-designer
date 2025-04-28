@@ -10,6 +10,9 @@ import StepItem from "primevue/stepitem";
 import Stepper from "primevue/stepper";
 import Divider from "primevue/divider";
 import Step from "primevue/step";
+import {python} from "@codemirror/lang-python";
+import {basicSetup} from "codemirror";
+import {Codemirror} from "vue-codemirror";
 
 
 
@@ -76,7 +79,12 @@ function onStepChange(event: any){
   <div class="scroll-container">
     <div class="scroll-page" id="part1">
       <div class="exampleBox">
-        aaa
+          <codemirror
+              :extensions="[python(), basicSetup]"
+              :style="{ height: '675px', width:'350px'}"
+              :autofocus="true"
+
+          />
       </div>
       <div class="explanationBox">
         <h2 >Core Concepts</h2>
@@ -106,7 +114,12 @@ function onStepChange(event: any){
     </div>
     <div class="scroll-page" id="part2">
       <div class="exampleBox">
-        bbbb
+        <codemirror
+            :extensions="[python(), basicSetup]"
+            :style="{ height: '675px', width:'350px'}"
+            :autofocus="true"
+
+        />
       </div>
       <div class="explanationBox">
         <h2>Syntax</h2>
@@ -147,7 +160,7 @@ function onStepChange(event: any){
         </Card>
       </div>
     </div>
-    <div class="scroll-page" id="part3">
+    <div class="scroll-page" id="part3" style="justify-content: center">
       <div style="display: flex; flex-direction: column; align-content: center; padding-top: 50px; height:735px">
         <h2 style="padding-left:50px; width:100%; padding-bottom: 20px">Functions List</h2>
 
@@ -175,11 +188,16 @@ function onStepChange(event: any){
 </template>
 
 <style scoped>
+
 .exampleBox {
-  height: 735px;
-  width: 300px;
-  border: 1px solid black;
+  height: 675px;
+  width: 350px;
+
+  padding-top: 20px;
+  padding-left: 20px;
 }
+
+
 
 .explanationBox {
   height: 735px;
@@ -199,7 +217,7 @@ function onStepChange(event: any){
 .scroll-page{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
 
 }
 
