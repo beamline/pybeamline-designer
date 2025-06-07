@@ -1,0 +1,304 @@
+{
+  "nodes": [
+    {
+      "id": "0",
+      "type": "start",
+      "dimensions": {
+        "width": 151,
+        "height": 46
+      },
+      "computedPosition": {
+        "x": 164,
+        "y": 422,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "position": "right",
+            "nodeId": "0",
+            "type": "source",
+            "x": 146.6875,
+            "y": 10.5,
+            "width": 8,
+            "height": 25
+          }
+        ],
+        "target": []
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 164,
+        "y": 422
+      },
+      "data": {
+        "name": "string_test_source",
+        "inputType": null,
+        "outputType": [
+          "event"
+        ],
+        "parameters": {
+          "iterable": "['A', 'B', 'C']",
+          "scheduler": ""
+        },
+        "sourceHandleStyle": {
+          "backgroundColor": "#32CD32",
+          "height": "25px",
+          "width": "8px",
+          "aspectRatio": "cos(30deg)",
+          "clipPath": "polygon(-50% 50%,50% 100%,150% 50%,50% 0)",
+          "right": "0.5px"
+        },
+        "targetHandleStyle": {},
+        "hint": "Source that considers each trace as a string provided in the constructor and each event as one character of the string.",
+        "required": [
+          "iterable"
+        ],
+        "error": ""
+      },
+      "events": {},
+      "style": {
+        "-webkit-box-shadow": " none",
+        "box-shadow": " none"
+      }
+    },
+    {
+      "id": "1",
+      "type": "end",
+      "dimensions": {
+        "width": 108,
+        "height": 46
+      },
+      "computedPosition": {
+        "x": 410,
+        "y": 429,
+        "z": 1000
+      },
+      "handleBounds": {
+        "source": [],
+        "target": [
+          {
+            "id": null,
+            "position": "left",
+            "nodeId": "1",
+            "type": "target",
+            "x": -5,
+            "y": 18,
+            "width": 10,
+            "height": 10
+          }
+        ]
+      },
+      "selected": true,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 410,
+        "y": 429
+      },
+      "data": {
+        "name": "print_sink",
+        "inputType": [
+          "any"
+        ],
+        "outputType": null,
+        "parameters": {
+          "on_next": ""
+        },
+        "sourceHandleStyle": {
+          "backgroundColor": "#000000",
+          "height": "25px",
+          "width": "8px",
+          "aspectRatio": "cos(30deg)",
+          "clipPath": "polygon(-50% 50%,50% 100%,150% 50%,50% 0)",
+          "right": "0.5px"
+        },
+        "targetHandleStyle": {
+          "backgroundColor": "#32CD32",
+          "width": "10px",
+          "height": "10px",
+          "borderRadius": "0",
+          "border": "1px solid white",
+          "outline": "none",
+          "boxShadow": "none",
+          "padding": "0",
+          "margin": "0px"
+        },
+        "hint": "Prints its input.",
+        "required": [],
+        "error": ""
+      },
+      "events": {},
+      "style": {
+        "-webkit-box-shadow": " none",
+        "box-shadow": " none"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0-1",
+      "type": "custom",
+      "source": "0",
+      "target": "1",
+      "data": {
+        "color": "#32CD32"
+      },
+      "events": {},
+      "label": "",
+      "animated": true,
+      "sourceNode": {
+        "id": "0",
+        "type": "start",
+        "dimensions": {
+          "width": 151,
+          "height": 46
+        },
+        "computedPosition": {
+          "x": 164,
+          "y": 422,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "position": "right",
+              "nodeId": "0",
+              "type": "source",
+              "x": 146.6875,
+              "y": 10.5,
+              "width": 8,
+              "height": 25
+            }
+          ],
+          "target": []
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 164,
+          "y": 422
+        },
+        "data": {
+          "name": "string_test_source",
+          "inputType": null,
+          "outputType": [
+            "event"
+          ],
+          "parameters": {
+            "iterable": "\"['A', 'B', 'C']\"",
+            "scheduler": ""
+          },
+          "sourceHandleStyle": {
+            "backgroundColor": "#32CD32",
+            "height": "25px",
+            "width": "8px",
+            "aspectRatio": "cos(30deg)",
+            "clipPath": "polygon(-50% 50%,50% 100%,150% 50%,50% 0)",
+            "right": "0.5px"
+          },
+          "targetHandleStyle": {},
+          "hint": "Source that considers each trace as a string provided in the constructor and each event as one character of the string.",
+          "required": [
+            "iterable"
+          ],
+          "error": ""
+        },
+        "events": {},
+        "style": {
+          "-webkit-box-shadow": " none",
+          "box-shadow": " none"
+        }
+      },
+      "targetNode": {
+        "id": "1",
+        "type": "end",
+        "dimensions": {
+          "width": 108,
+          "height": 46
+        },
+        "computedPosition": {
+          "x": 410,
+          "y": 429,
+          "z": 1000
+        },
+        "handleBounds": {
+          "source": [],
+          "target": [
+            {
+              "id": null,
+              "position": "left",
+              "nodeId": "1",
+              "type": "target",
+              "x": -5,
+              "y": 18,
+              "width": 10,
+              "height": 10
+            }
+          ]
+        },
+        "selected": true,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 410,
+          "y": 429
+        },
+        "data": {
+          "name": "lambda_sink",
+          "inputType": [
+            "any"
+          ],
+          "outputType": null,
+          "parameters": {
+            "on_next": ""
+          },
+          "sourceHandleStyle": {
+            "backgroundColor": "#000000",
+            "height": "25px",
+            "width": "8px",
+            "aspectRatio": "cos(30deg)",
+            "clipPath": "polygon(-50% 50%,50% 100%,150% 50%,50% 0)",
+            "right": "0.5px"
+          },
+          "targetHandleStyle": {
+            "backgroundColor": "#32CD32",
+            "width": "10px",
+            "height": "10px",
+            "borderRadius": "0",
+            "border": "1px solid white",
+            "outline": "none",
+            "boxShadow": "none",
+            "padding": "0",
+            "margin": "0px"
+          },
+          "hint": "Sink thats takes a lambda function as input.",
+          "required": [],
+          "error": ""
+        },
+        "events": {},
+        "style": {
+          "-webkit-box-shadow": " none",
+          "box-shadow": " none"
+        }
+      },
+      "sourceX": 318.6875,
+      "sourceY": 445,
+      "targetX": 405,
+      "targetY": 452
+    }
+  ]
+}

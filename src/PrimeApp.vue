@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainVueFlow from "@/components/mainVueFlow.vue";
-import AjvManager from "@/logic/AjvManager.js";
-import TutorialPanel from "@/components/tutorial/TutorialPanel.vue";
+import MainVueFlow from "@/view/mainVueFlow.vue";
+import AjvManager from "@/model/AjvManager.js";
+import TutorialPanel from "@/view/tutorial/TutorialPanel.vue";
 AjvManager.getInstance().manageReferences()
 
 </script>

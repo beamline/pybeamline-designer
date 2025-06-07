@@ -28,7 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-/src/logic/Syntax.js
-/src/logic/Traverser.js
-src/logic/deprecated/Traverser.ts
-src/logic/deprecated/Traverser.js
+/src/model/Syntax.js
+/src/model/Traverser.js
+src/model/deprecated/Traverser.ts
+src/model/deprecated/Traverser.js
