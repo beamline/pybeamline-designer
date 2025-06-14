@@ -61,7 +61,7 @@ function pinpointError(errorBlock:ExtendedBlock): string {
         return `Error at block ${errorBlock.descriptors.name}: Invalid ${descriptorsCheck.error.instancePath}\n`
     }
 
-    return `Error at block ${errorBlock.descriptors.name}: Invalid connections`
+    return `Error at block ${errorBlock.descriptors.name}: Invalid connections\n`
 
 }
 

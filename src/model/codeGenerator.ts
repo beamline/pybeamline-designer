@@ -15,6 +15,7 @@ function generateCode (userPipeline : GuiPipeline) {
 
     try {
         extendedPipe = translator.translatePipeline(userPipeline)
+        console.log(extendedPipe)
     } catch (error : any) {
         return "Error when parsing pipeline."
     }
