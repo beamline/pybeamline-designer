@@ -1,6 +1,7 @@
 import {Translator} from "@/model/Translator.js";
 import {generateCode} from "@/model/codeGenerator.js";
 import {useVueFlow} from "@vue-flow/core";
+import useDragAndDrop from "./useDnD.js";
 
 
 
@@ -61,6 +62,7 @@ export default function actionPanelFunctions(visible, editor, fileInput){
     const handleFileSelection = (event: Event) => {
         const input = event.target as HTMLInputElement;
         let file = input.files?.[0];
+        const {setID} = useDragAndDrop()
         if (file) {
 
             const reader = new FileReader();
@@ -77,6 +79,7 @@ export default function actionPanelFunctions(visible, editor, fileInput){
                         // Set the new nodes and edges into VueFlow's state
                         setNodes(data.nodes);
                         setEdges(data.edges);
+                        setID(1+Math.max(...data.nodes.map(nod => Number(nod.id))))
                         input.value = '';
                     } else {
                         alert('Invalid JSON structure. Expected "nodes" and "edges" properties.');

@@ -7,9 +7,7 @@ let id = 0
 /**
  * @returns {string} - A unique id.
  */
-function getId() {
-    return `${id++}`
-}
+
 
 /**
  * In a real world scenario you'd want to avoid creating refs in a global scope like this as they might not be cleaned up properly.
@@ -33,6 +31,13 @@ export default function useDragAndDrop() {
     watch(isDragging, (dragging) => {
         document.body.style.userSelect = dragging ? 'none' : ''
     })
+
+    function getId() {
+        return `${id++}`
+    }
+    function setID(new_id: number){
+        id = new_id
+    }
 
     function onDragStart(event: DragEvent, type: string, classifier: string) {
         if (event.dataTransfer) {
@@ -127,6 +132,7 @@ export default function useDragAndDrop() {
         onDragLeave,
         onDragOver,
         onDrop,
-        onClickAdd
+        onClickAdd,
+        setID
     }
 }
