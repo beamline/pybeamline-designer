@@ -3,11 +3,13 @@ import MainVueFlow from "@/view/mainVueFlow.vue";
 import AjvManager from "@/model/AjvManager.js";
 import TutorialPanel from "@/view/tutorial/TutorialPanel.vue";
 AjvManager.getInstance().manageReferences()
+import TopToolbar from "@/view/TopToolbar.vue";
 
 </script>
 
 <template>
   <div class="container">
+    <TopToolbar/>
     <div class="tutorial">
       <TutorialPanel/>
     </div>
