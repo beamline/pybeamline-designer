@@ -10,9 +10,6 @@ import TopToolbar from "@/view/TopToolbar.vue";
 <template>
   <div class="container">
     <TopToolbar/>
-    <div class="tutorial">
-      <TutorialPanel/>
-    </div>
     <main><main-vue-flow/></main>
   </div>
 </template>
@@ -32,12 +29,6 @@ main{
   z-index: 0;
 }
 
-.tutorial{
-  position: absolute;
-  left:0;
-  bottom: 0;
-  padding: 10px;
-  z-index: 5;
- }
+
 
 </style>

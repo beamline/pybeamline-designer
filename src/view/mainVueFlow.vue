@@ -107,7 +107,7 @@ const dark = ref(false)
     <background />
 
 
-    <Controls position="top-right" />
+    <Controls position="bottom-left" />
 
   </VueFlow>
 </template>
