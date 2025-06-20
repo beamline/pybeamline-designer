@@ -54,13 +54,13 @@ test("Validation test 3", () => {
 
 test("Validation test 4", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "valid4.json", "utf-8"))))
-        .toBe("Error at block simple_dfg_miner: Invalid connections"
+        .toBe("Error at block simple_dfg_miner: Invalid connections\n"
 )})
 
 
 test("Validation test 5", () => {
     expect(generateCode( JSON.parse(readFileSync(pathToTests + "valid5.json", "utf-8"))))
-        .toBe("Error at block retains_activity_filter: Invalid connections"
+        .toBe("Error at block retains_activity_filter: Invalid connections\n"
         )})
 
 
