@@ -1260,7 +1260,7 @@ watch(index, async (newQuestion, oldQuestion) => {
               <Card style="width: fit-content; height: fit-content">
                 <template #title> Welcome</template>
                 <template #content>
-                  PybeamLine Designer aims to make your process mining analytics as easy as possible. Here you will be able to create diagrams resembling your own system.
+                  pyBeamline Designer aims to make your process mining analytics as easy as possible. Here you will be able to create diagrams resembling your own system.
                 </template>
               </Card>
             </div>
