@@ -1277,7 +1277,7 @@ watch(index, async (newQuestion, oldQuestion) => {
             <div style="display: flex; left:180px;top: 90px; position: relative; height: fit-content">
               <Avatar icon="pi pi-plus-circle" size="xlarge" style="height:120px; background: none " />
               <Card style="width: fit-content; height: fit-content">
-                <template #title> But, what is a Source?</template>
+                <template #title> What is a Source?</template>
                 <template #content>
                   Sources are any block that contains an output (represented as a colored shape on the right), and no input
                 </template>
@@ -1287,7 +1287,7 @@ watch(index, async (newQuestion, oldQuestion) => {
             <div style="display: flex; left:120px;top: 125px; position: relative; height: fit-content">
               <Avatar icon="pi pi-minus-circle" size="xlarge" style="height:120px; background: none " />
               <Card style="width: fit-content; height: fit-content">
-                <template #title> And, what is a Sink?</template>
+                <template #title> What is a Sink?</template>
                 <template #content>
                   Sinks are any block that contains an input (represented as a colored shape on the left), and no output
                 </template>
@@ -1299,7 +1299,7 @@ watch(index, async (newQuestion, oldQuestion) => {
             <div style="display: flex; left:130px;top: 0px; position: relative; height: fit-content">
               <Avatar icon="pi pi-box" size="xlarge" style="height:100px; background: none " />
               <Card style="width: fit-content; height: fit-content">
-                <template #title> Blocks Structure</template>
+                <template #title> Block Structure</template>
                 <template #content>
                   Blocks are composed of an input (left colored shape), an output (right colored shape) and a name
                 </template>
