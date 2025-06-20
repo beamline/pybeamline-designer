@@ -28,7 +28,7 @@ import TopToolbar from "@/view/TopToolbar.vue";
 main{
   background: ghostwhite;
   width: 100%;
-  height: 100%;
+  height: 92.5%;
   z-index: 0;
 }
 
