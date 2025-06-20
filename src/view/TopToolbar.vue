@@ -6,6 +6,7 @@ import dtuLogo from '@/assets/dtu.png';
 import {ref} from "vue";
 import Menu  from 'primevue/menu';
 import Dialog from 'primevue/dialog';
+import TutorialPanel from "@/view/tutorial/TutorialPanel.vue";
 
 const items =[
     {
@@ -14,16 +15,26 @@ const items =[
       command: () => {
         showAbout.value = true;
       }
+    },
+  {
+    label: 'Get Started',
+    icon: 'pi pi-question-circle\n',
+    command: () => {
+      showTutorial.value = true;
     }
+  }
 ]
 
 const menuRef = ref()
 
 const showAbout = ref(false)
-
+const showTutorial = ref(false);
 </script>
 
 <template>
+  <div class="tutorial">
+  <TutorialPanel :render="showTutorial" @close="showTutorial = false"/>
+    </div>
     <Toolbar class="custom-toolbar">
       <template #start>
         <Image :src="dtuLogo" class="mr-3" alt="DTU" height=40 />
@@ -52,7 +63,8 @@ const showAbout = ref(false)
           <p>The complete report is available at: [insert report link]</p>
           <br>
           <p>The source code of this application is available at: <a href="https://github.com/Sotero-Romero/Development-of-an-interactive-no-code-process-mining-platform-based-on-Beamline-pyBeamline">this repository.</a></p>
-        <br>
+        <p>Find out more about prototyping process mining pipelines at the <a href="https://beamline.cloud/">Beamline Framework</a>.</p>
+          <br>
           <p>This project is licensed under the Apache License 2.0.</p>
         </Dialog>
       </template>
@@ -76,6 +88,12 @@ const showAbout = ref(false)
   font-size: 18px;
 }
 
-
+.tutorial{
+  position: absolute;
+  left:0;
+  bottom: 0;
+  padding: 10px;
+  z-index: 5;
+}
 
 </style>
