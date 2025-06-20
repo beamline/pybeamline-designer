@@ -206,25 +206,23 @@ function onStepChange(event: any){
 
 <style scoped>
 
+
 .exampleBox {
-  height: 675px;
-  width: 350px;
 
   padding-top: 20px;
   padding-left: 20px;
 }
 
 
-
 .explanationBox {
-  height: 735px;
-  width: 750px;
-  padding-top: 60px;
+  height: 90%;
+  width: 60%;
+  padding-top: 50px;
   padding-left: 40px;
 }
 
 .scroll-container{
-  height:735px;
+  height: 90%;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
