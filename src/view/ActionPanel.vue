@@ -14,9 +14,14 @@ const {showCode,clearDesign,downloadPipeline,triggerFileSelection,handleFileSele
 
 const items = ref([
   {
-    label: 'Generate Code',
-    icon: 'pi pi-sparkles',
-    command: showCode,
+    label: 'Download',
+    icon: 'pi pi-save',
+    command: downloadPipeline,
+  },
+  {
+    label: 'Load',
+    icon: 'pi pi-folder-open',
+    command: triggerFileSelection,
   },
   {
     label: 'Clear all',
@@ -24,14 +29,9 @@ const items = ref([
     command: clearDesign,
   },
   {
-    label: 'Download Pipeline',
-    icon: 'pi pi-download',
-    command: downloadPipeline,
-  },
-  {
-    label: 'Upload Pipeline',
-    icon: 'pi pi-upload',
-    command: triggerFileSelection,
+    label: 'Generate Code',
+    icon: 'pi pi-sparkles',
+    command: showCode,
   }
 ]);
 </script>
@@ -57,7 +57,6 @@ const items = ref([
 <style scoped>
 
 .panel{
-  width: 640px;
-  left:40%
+  	/* width: 800px; */
 }
 </style>

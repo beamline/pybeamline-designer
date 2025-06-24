@@ -28,7 +28,10 @@ main{
   height: 92.5%;
   z-index: 0;
 }
+</style>
 
-
-
+<style>
+:root {
+	--p-button-text-primary-color: #ffffff: #ff5722; /* Change to your desired primary color */
+}
 </style>

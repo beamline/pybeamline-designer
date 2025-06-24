@@ -43,7 +43,7 @@ const showTutorial = ref(false);
       </template>
 
       <template #end>
-        <Button icon="pi pi-ellipsis-v" raised rounded severity="secondary" @click="menuRef.toggle($event)" aria-haspopup="true" aria-controls="overlay_menu"/>
+        <Button icon="pi pi-ellipsis-v" rounded variant="text" @click="menuRef.toggle($event)" aria-haspopup="true" aria-controls="overlay_menu" style="color:white"/>
         <Menu ref="menuRef" id="overlay_menu" :model="items" :popup="true" />
 
         <Dialog  v-model:visible="showAbout"
@@ -74,18 +74,15 @@ const showTutorial = ref(false);
 <style scoped>
 
 .custom-toolbar {
-  background-color: #186AC0FF;
-  border-color: #186AC0FF;
+  background-color: var(--p-emerald-600);
   color: white; /* Optional: changes text/icon color */
   border-radius: 0rem;
-  height: 7.5%;
   font-family: 'Roboto', sans-serif;
 }
 
 .designer-text {
   margin-left: 10px; /* adjust spacing as needed */
-  font-weight: bold;
-  font-size: 18px;
+  font-size: 1.25rem;
 }
 
 .tutorial{
