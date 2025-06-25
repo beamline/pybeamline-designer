@@ -53,10 +53,3 @@ const items = ref([
     <CodeGeneratorEditor :codeGenerated="editor"/>
   </Drawer>
 </template>
-
-<style scoped>
-
-.panel{
-  	/* width: 800px; */
-}
-</style>
