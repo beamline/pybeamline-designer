@@ -93,22 +93,14 @@ const dark = ref(false)
     <template #node-union="props">
       <UnionNode v-bind="props" />
     </template>
-
     <BlockMenu/>
-
     <Drawer v-model:visible="visible" :modal="modalRef" position="right" header="Block Information">
       <BlockOptions :blockId="selectedNodeId" />
     </Drawer>
-
     <ActionPanel/>
-
-    <MiniMap style="background: gray;"/>
     <ErrorDetector/>
-    <background />
-
-
+    <background />s
     <Controls position="bottom-left" />
-
   </VueFlow>
 </template>
 
