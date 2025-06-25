@@ -75,10 +75,10 @@ const dynamicColor2 = ref("grey");
 
 <style scoped>
 .unionNode {
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 5px;
-  color: black;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	border-radius: 5px;
+	color: black;
 }
 </style>

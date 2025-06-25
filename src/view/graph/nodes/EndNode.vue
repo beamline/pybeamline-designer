@@ -71,11 +71,11 @@ const dynamicColor = ref("")
 
 <style scoped>
 .endNode {
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 5px;
-  color: black;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	border-radius: 5px;
+	color: black;
 }
 
 

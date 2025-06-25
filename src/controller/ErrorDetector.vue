@@ -34,9 +34,9 @@ function checkPipeline(){
         const index = ids.indexOf(node.id)
         if (index != -1){
           updateNode(node.id, { style: {
-              "-webkit-box-shadow": " 0px 0px 10px 1px red",
-              "box-shadow": " 0px 0px 10px 1px red",
-              "border-radius": " 5px",
+              "-webkit-box-shadow": " 0px 0px 0px 5px red",
+              "box-shadow": " 0px 0px 0px 5px red",
+              "border-color": " 5px",
             }, data:{...node.data, error:errors[index]}});
         } else {
           updateNode(node.id, { style: {
