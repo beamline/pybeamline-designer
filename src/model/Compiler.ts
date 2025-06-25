@@ -35,11 +35,12 @@ from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
 
-########## --User area-- ##########
+# Area reserved for user-defined parameters
+# You can define variables here that will be used in the pipeline
 
 `
 
-    private headClosingString : string = "##########---------------##########\n\n";
+    private headClosingString : string = "# pyBeamline code\n";
 
     private bodyString : string = "";
     private handler : Handler;
@@ -72,7 +73,8 @@ from pybeamline.algorithms.conformance import *
 from pybeamline.filters import *
 from reactivex import merge, concat
 
-########## --User area-- ##########
+# Area reserved for user-defined parameters
+# You can define variables here that will be used in the pipeline
 
 `
         this.bodyString = "";

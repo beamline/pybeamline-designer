@@ -29,7 +29,7 @@ const downloadPythonFile = () => {
 <template>
   <div class="main">
     <div class="buttons">
-      <Button label="Download Code" icon="pi pi-cloud-download" raised @click="downloadPythonFile"/>
+      <Button label="Download" icon="pi pi-cloud-download" raised @click="downloadPythonFile"/>
       <Button label="Expand Editor" icon="pi pi-pen-to-square" raised @click="codeEditor=true"/>
     </div>
     <codemirror
