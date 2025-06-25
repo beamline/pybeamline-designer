@@ -99,7 +99,7 @@ const dark = ref(false)
     </Drawer>
     <ActionPanel/>
     <ErrorDetector/>
-    <background />s
+    <background />
     <Controls position="bottom-left" />
   </VueFlow>
 </template>
