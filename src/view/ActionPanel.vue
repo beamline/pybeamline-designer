@@ -49,7 +49,7 @@ const items = ref([
     />
   </Panel>
 
-  <Drawer v-model:visible="visible" modal position="right" header="Code generated" style="width: 400px">
+  <Drawer v-model:visible="visible" modal position="right" header="Code generated" style="width: 800px">
     <CodeGeneratorEditor :codeGenerated="editor"/>
   </Drawer>
 </template>
