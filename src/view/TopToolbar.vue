@@ -60,7 +60,7 @@ const showTutorial = ref(true);
           <p><i>
             Streaming process mining enables real-time analysis of event logs to uncover inefficiencies and deviations in business processes. pyBeamline, a Python-based prototyping library built on RxPY, provides a flexible environment for developing such pipelines. However, there are some usability challenges present due to the complexity behind pipeline logic and operator behavior, particularly for non-experts and rapid prototyping scenarios. To address this, we designed and implemented a no-code development platform (NCDP) for pyBeamline, enabling users to visually construct, execute, and export streaming process mining pipelines through a web-based interface. The tool supports core functionalities such as error detection, diagram-to-code translation, runtime execution, and custom operator extension while requiring minimal setup and no backend dependencies.
           </i></p>
-          <p>The complete report is available at: [insert report link]</p>
+          <p>The complete report is available at: <a href="https://findit.dtu.dk/en/catalog/686f04e2aac7a30102deea0e" target="_blank">https://findit.dtu.dk/en/catalog/686f04e2aac7a30102deea0e</a></p>
           <br>
           <p>The source code of this application is available at: <a target="_blank" href="https://github.com/beamline/pybeamline-designer/">this repository.</a></p>
         <p>Find out more about prototyping process mining pipelines at the <a href="https://beamline.cloud/">Beamline Framework</a>.</p>
