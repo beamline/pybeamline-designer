@@ -29,7 +29,7 @@
     <codemirror
         v-model="code"
         :extensions="[python(), basicSetup]"
-        :style="{ height: '450px', border: '1px solid #ddd' }"
+        :style="{ height: '50%', border: '1px solid #ddd' }"
         :autofocus="true"
     />
   </div>
@@ -39,7 +39,7 @@
 
     <div justify="center" v-if="kernel">
       <Divider/>
-      <ScrollPanel style="width: 100%; height: 100px">
+      <ScrollPanel style="width: 100%; height: 50%">
         <pre class="output">{{ output }}</pre>
       </ScrollPanel>
 
