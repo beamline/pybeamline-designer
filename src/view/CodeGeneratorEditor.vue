@@ -4,7 +4,6 @@ import {python} from "@codemirror/lang-python";
 import {basicSetup} from "codemirror";
 import {Codemirror} from "vue-codemirror";
 import Button from "primevue/button";
-import Dialog from "primevue/dialog";
 import CodeEditor from "@/view/CodeEditor.vue";
 
 const props = defineProps({
@@ -30,7 +29,7 @@ const downloadPythonFile = () => {
   <div class="main">
     <div class="buttons">
       <Button label="Download" icon="pi pi-cloud-download" raised @click="downloadPythonFile"/>
-      <Button label="Expand Editor" icon="pi pi-pen-to-square" raised @click="codeEditor=true"/>
+      <Button label="Execute code" icon="pi pi-play-circle" raised @click="codeEditor=true"/>
     </div>
     <codemirror
         v-model="code"
@@ -40,9 +39,8 @@ const downloadPythonFile = () => {
     />
   </div>
 
-  <Dialog v-model:visible="codeEditor" modal header="Edit code" style="width:50rem"  >
-    <CodeEditor v-model="code"/>
-  </Dialog>
+  
+	<CodeEditor v-model:visible="codeEditor" v-model="code"/>
 </template>
 
 <style scoped>
