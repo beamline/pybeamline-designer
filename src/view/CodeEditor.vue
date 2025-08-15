@@ -12,8 +12,6 @@
 		</template>
 
 		<div v-if="!kernel">
-			<h2>Kernel Connection</h2>
-
 			<p>Specify the URL of your Jupyter Kernel Gateway to connect to it:</p>
 			<InputGroup>
 				<InputText v-model="serverUrl" outlined placeholder="e.g., http://localhost:8888"
@@ -24,15 +22,20 @@
 				</Button>
 			</InputGroup>
 
-			<p>Start your Jupyter Kernel Gateway with:</p>
-			<InputGroup>
-				<InputText :value="text" readonly />
-				<Button icon="pi pi-copy" @click="copyText" />
-			</InputGroup>
-			<Divider />
+
+			<Panel toggleable style="margin-top: 3em; background-color: #f8f8ff;">
+				<template #header>
+					<h3><i class="pi pi-info-circle"></i> Help</h3>
+				</template>
+				<p>You can start your Jupyter Kernel Gateway by executing the following command in your terminal:</p>
+				<InputGroup>
+					<InputText :value="text" readonly />
+					<Button icon="pi pi-copy" @click="copyText" />
+				</InputGroup>
+			</Panel>
 		</div>
 
-		<div class="border-thin">
+		<div v-if="kernel" class="border-thin">
 			<codemirror v-model="code" :extensions="[python(), basicSetup]"
 				:style="{ height: '150px', border: '1px solid #ddd', 'overflow-y': 'auto' }" :autofocus="true" />
 		</div>
@@ -52,6 +55,7 @@
 </template>
 
 <script setup>
+import Panel from 'primevue/panel';
 import Dialog from "primevue/dialog";
 import { KernelManager, ServerConnection } from "@jupyterlab/services";
 import InputText from "primevue/inputtext";
