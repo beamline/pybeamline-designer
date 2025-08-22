@@ -53,6 +53,9 @@ function createItems(groupedFiles: { [key: string]: string[] }) {
 			case "sources":
 				folderIcon = 'pi pi-plus-circle'
 				break;
+			case "sources_real":
+				folderIcon = 'pi pi-plus-circle'
+				break;
 			case "sinks":
 				folderIcon = 'pi pi-minus-circle'
 				break;

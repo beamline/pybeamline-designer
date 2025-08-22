@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "descriptors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "rejseplanen_source"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        },
+        "inputType": {
+          "const": null
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "rejseplanen_source()"
+    },
+    "hint": {
+      "const": "Source that provides real-time information about trains in Denmark."
+    }
+  },
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
+  "additionalProperties": false
+}
