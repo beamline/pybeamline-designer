@@ -1,12 +1,18 @@
 <template>
-	<Dialog modal style="width:50rem">
+	<Dialog modal style="width:90%; height: 90%">
 		<template #header>
 			<h2>
 				Code execution
 				<div v-if="kernel" class="runStop">
-					<Button icon="pi pi-play-circle" :disabled="currentFuture" @click="executeCode"
-						style="margin-left: 15px; margin-right: 5px;" />
-					<Button icon="pi pi-stop-circle" @click="stopExecution" :disabled="!currentFuture" />
+					<Button :disabled="currentFuture" @click="executeCode"
+						style="margin-left: 15px; margin-right: 5px;">
+						<i class="pi pi-play-circle" />
+						Run
+					</Button>
+					<Button :disabled="!currentFuture" @click="stopExecution">
+						<i class="pi pi-stop-circle" />
+						Stop
+					</Button>
 				</div>
 			</h2>
 		</template>
@@ -37,7 +43,7 @@
 
 		<div v-if="kernel" class="border-thin">
 			<codemirror v-model="code" :extensions="[python(), basicSetup]"
-				:style="{ height: '150px', border: '1px solid #ddd', 'overflow-y': 'auto' }" :autofocus="true" />
+				:style="{ height: '300px', border: '1px solid #ddd', 'overflow-y': 'auto' }" :autofocus="true" />
 		</div>
 
 
@@ -45,7 +51,7 @@
 
 			<div justify="center" v-if="kernel">
 				<Divider />
-				<ScrollPanel style="width: 100%; height: 250px; overflow: auto;">
+				<ScrollPanel style="width: 100%;">
 					<pre class="output">{{ output }}</pre>
 				</ScrollPanel>
 
