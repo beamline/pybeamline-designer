@@ -94,7 +94,7 @@ export class Handler {
 
     private handleDefault (block : ExtendedBlock, currentString : string) : string {
         if (block.header) {
-            this.compiler.appendHeadString(`${block.header}${block.id} ${block.auxHeader}\n\n`)
+            this.compiler.appendHeadString(`${block.header} ${block.auxHeader}\n\n`)
         }
 
         return `${currentString}\t${this.addParametersToPipeline(block)},\n`
