@@ -24,6 +24,7 @@
       "graphviz": {"const": ["graphviz"]},
       "conformance": {"const":  ["conformance"]},
       "SoftConformanceReport": {"const": ["SoftConformanceReport"]},
+      "CaseState": {"const": ["CaseState"]},
       "any": {"const": ["any"]}
     }
   }

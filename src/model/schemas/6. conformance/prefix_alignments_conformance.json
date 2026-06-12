@@ -8,10 +8,10 @@
       "type": "object",
       "properties": {
         "name": {
-          "const": "soft_conformance"
+          "const": "prefix_alignments_conformance"
         },
         "outputType": {
-          "$ref": "definitions.json#/definitions/streamTypes/SoftConformanceReport"
+          "$ref": "definitions.json#/definitions/streamTypes/CaseState"
         },
         "inputType": {
           "$ref": "definitions.json#/definitions/streamTypes/event"
@@ -23,16 +23,16 @@
       "$ref": "definitions.json#/definitions/output"
     },
     "function": {
-      "const": "soft_conformance(model = user_defined_model, alpha = user_defined_alpha)"
+      "const": "prefix_alignments_conformance(net = user_defined_net, im = user_defined_im, fm = user_defined_fm)"
     },
     "header" : {
-      "const": "#TODO: Define your reference model\nuser_defined_model = None\nuser_defined_alpha = 0.5"
+      "const": "#TODO: Define your reference model\nuser_defined_net = None\nuser_defined_im = None\nuser_defined_fm = None"
     },
     "auxHeader" : {
       "const": ""
     },
     "hint": {
-      "const": "This conformance approach uses a descriptive model which is not necessarily referring to the control-flow. To create such a model you need to specify the states and the probability of transitioning."
+      "const": "An implementation of the algorithm for incrementally compute prefix-alignments."
     }
   },
   "required": [
