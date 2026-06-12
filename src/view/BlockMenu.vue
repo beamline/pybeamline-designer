@@ -41,25 +41,28 @@ function createItems(groupedFiles: { [key: string]: string[] }) {
 		let itemIcon = 'pi pi-box';
 
 		switch (folder) {
-			case "filters":
+			case "4. filters":
 				folderIcon = 'pi pi-filter'
 				break;
-			case "algorithms":
+			case "5. discovery":
 				folderIcon = 'pi pi-hammer'
 				break;
-			case "mappers":
+			case "6. conformance":
+				folderIcon = 'pi pi-hammer'
+				break;
+			case "7. mappers":
 				folderIcon = 'pi pi-eye'
 				break;
-			case "sources":
+			case "1. sources":
 				folderIcon = 'pi pi-plus-circle'
 				break;
-			case "sources_real":
+			case "2. real sources":
 				folderIcon = 'pi pi-plus-circle'
 				break;
-			case "sinks":
+			case "3. sinks":
 				folderIcon = 'pi pi-minus-circle'
 				break;
-			case "utilities":
+			case "8. utilities":
 				folderIcon = 'pi pi-cog'
 				break;
 			default:

@@ -17,6 +17,7 @@
       "dgf_str": {"const": ["dgf_str"]},
       "graphviz": {"const": ["graphviz"]},
       "conformance": {"const":  ["conformance"]},
+      "SoftConformanceReport": {"const": ["SoftConformanceReport"]},
       "any": {"const": ["any"]}
     }
   }

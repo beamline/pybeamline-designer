@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "descriptors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "soft_conformance"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/SoftConformanceReport"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/event"
+        }
+      }
+    },
+    "parameters": {},
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "soft_conformance(model = user_defined_model, alpha = user_defined_alpha)"
+    },
+    "header" : {
+      "const": "#TODO: Define your reference model\nuser_defined_model\nuser_defined_alpha"
+    },
+    "auxHeader" : {
+      "const": "= reference_model"
+    },
+    "hint": {
+      "const": "This conformance approach uses a descriptive model which is not necessarily referring to the control-flow. To create such a model you need to specify the states and the probability of transitioning."
+    }
+  },
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
+  "additionalProperties": false
+}
