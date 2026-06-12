@@ -17,6 +17,7 @@
          
           {"$ref": "lambda_sink.json"},
           {"$ref": "print_sink.json"},
+          {"$ref": "graphviz_sink.json"},
          
           {"$ref": "retains_on_trace_attribute_equal_filter.json"},
           {"$ref": "excludes_on_trace_attribute_equal_filter.json"},
@@ -30,6 +31,10 @@
           {"$ref": "heuristics_miner_lossy_counting_budget.json"},
 
           {"$ref": "behavioral_conformance.json"},
+    
+          {"$ref": "infinite_size_directly_follows_mapper.json"},
+          {"$ref": "dfg_str_to_graphviz.json"},
+          {"$ref": "sliding_window_to_log.json"},
 
           {"$ref": "lambda_operator.json"},
           {"$ref": "skip_events.json"}

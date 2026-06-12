@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "descriptors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "dfg_str_to_graphviz"
+        },
+        "outputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/graphviz"
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/dgf_str"
+        }
+      }
+    },
+    "parameters": {},
+    "outputs": {
+      "$ref": "definitions.json#/definitions/output"
+    },
+    "function": {
+      "const": "dfg_str_to_graphviz()"
+    },
+    "hint": {
+      "const": "Converts a DFG into a Graphviz string."
+    }
+  },
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
+  "additionalProperties": false
+}

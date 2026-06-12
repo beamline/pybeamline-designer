@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "descriptors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "graphviz_sink"
+        },
+        "outputType": {
+          "const": null
+        },
+        "inputType": {
+          "$ref": "definitions.json#/definitions/streamTypes/graphviz"
+        }
+      }
+    },
+    "parameters": {},
+    "outputs": {
+      "const": []
+    },
+    "function": {
+      "const": ".subscribe(graphviz_sink())"
+    },
+    "hint": {
+      "const": "Outputs the events considering it as a Graphviz graph."
+    }
+  },
+  "required": [
+    "id",
+    "parameters",
+    "outputs"
+  ],
+  "additionalProperties": false
+}

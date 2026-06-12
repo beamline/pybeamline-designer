@@ -14,6 +14,8 @@
       "petrinet": {"const": ["petrinet"]},
       "heuristics": {"const":  ["heuristics"]},
       "model": {"const": ["model"]},
+      "dgf_str": {"const": ["dgf_str"]},
+      "graphviz": {"const": ["graphviz"]},
       "conformance": {"const":  ["conformance"]},
       "any": {"const": ["any"]}
     }
