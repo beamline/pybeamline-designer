@@ -27,13 +27,43 @@ export class Compiler {
 
     private blocks : Graph = {};
 
-    private headString : string = `from pybeamline.sources import *
-from pybeamline.sources.real_world_sources import *
-from pybeamline.mappers import *
-from pybeamline.algorithms.discovery import *
-from pybeamline.algorithms.conformance import *
+    private headString : string = `# Sources
+from pybeamline.sources import *
+from pybeamline.sources.ocel2_log_source_from_file import ocel2_log_source_from_file
+from pybeamline.sources.dict_ocel_test_source import dict_test_ocel_source
+from pybeamline_real_sources.ais import ais_source
+from pybeamline_real_sources.rejseplanen import rejseplanen_source
+from pybeamline_real_sources.wikimedia import wikimedia_source
+# Sinks
+from pybeamline.sinks.print_sink import print_sink
+from pybeamline.sinks.graphviz_sink import graphviz_sink
+from pybeamline.sinks.heatmap_sink import heatmap_sink
+from pybeamline.sinks.dotted_chart_sink import dotted_chart_sink
+from pybeamline.sinks.oc_visualizer_sink import oc_visualizer_sink
+# Filters
 from pybeamline.filters import *
-from reactivex import merge, concat
+# Discovery
+from pybeamline.algorithms.discovery.dfg_miner import simple_dfg_miner
+from pybeamline.algorithms.discovery.heuristics_miner_lossy_counting import heuristics_miner_lossy_counting
+from pybeamline.algorithms.discovery.heuristics_miner_lossy_counting_budget import heuristics_miner_lossy_counting_budget
+from pybeamline.algorithms.discovery.temporal_profile import temporal_profile_discovery_mapper
+from pybeamline.algorithms.oc.oc_operator import oc_operator
+from pybeamline.algorithms.oc.oc_merge_operator import oc_merge_operator
+# Conformance
+from pybeamline.algorithms.conformance import mine_behavioral_model_from_stream, behavioral_conformance
+from pybeamline.algorithms.discovery.temporal_profile import temporal_profile_discovery_mapper
+from pybeamline.algorithms.conformance.temporal_profile.temporal_profile_conformance import temporal_profile_conformance
+from pybeamline.algorithms.conformance.soft.pdfa_conformance import soft_conformance
+from pybeamline.algorithms.conformance.prefix_alignments import prefix_alignments_conformance
+# Mapper
+from pybeamline.mappers import *
+from pybeamline.mappers.dfg_str_to_graphviz import dfg_str_to_graphviz
+# Utility
+from pybeamline.stream.rx_operator import RxOperator
+from pybeamline.mappers.print_operator import print_operator
+from pybeamline.algorithms.lambda_operator import lambda_operator
+from pybeamline.utils.skip_events import skip_events
+
 
 # Area reserved for user-defined parameters
 # You can define variables here that will be used in the pipeline
@@ -65,13 +95,43 @@ from reactivex import merge, concat
     public compilePipeline (userPipeline : ExtendedPipeline) {
 
         //Variable reset
-        this.headString = `from pybeamline.sources import *
-from pybeamline.sources.real_world_sources import *
-from pybeamline.mappers import *
-from pybeamline.algorithms.discovery import *
-from pybeamline.algorithms.conformance import *
+        this.headString = `# Sources
+from pybeamline.sources import *
+from pybeamline.sources.ocel2_log_source_from_file import ocel2_log_source_from_file
+from pybeamline.sources.dict_ocel_test_source import dict_test_ocel_source
+from pybeamline_real_sources.ais import ais_source
+from pybeamline_real_sources.rejseplanen import rejseplanen_source
+from pybeamline_real_sources.wikimedia import wikimedia_source
+# Sinks
+from pybeamline.sinks.print_sink import print_sink
+from pybeamline.sinks.graphviz_sink import graphviz_sink
+from pybeamline.sinks.heatmap_sink import heatmap_sink
+from pybeamline.sinks.dotted_chart_sink import dotted_chart_sink
+from pybeamline.sinks.oc_visualizer_sink import oc_visualizer_sink
+# Filters
 from pybeamline.filters import *
-from reactivex import merge, concat
+# Discovery
+from pybeamline.algorithms.discovery.dfg_miner import simple_dfg_miner
+from pybeamline.algorithms.discovery.heuristics_miner_lossy_counting import heuristics_miner_lossy_counting
+from pybeamline.algorithms.discovery.heuristics_miner_lossy_counting_budget import heuristics_miner_lossy_counting_budget
+from pybeamline.algorithms.discovery.temporal_profile import temporal_profile_discovery_mapper
+from pybeamline.algorithms.oc.oc_operator import oc_operator
+from pybeamline.algorithms.oc.oc_merge_operator import oc_merge_operator
+# Conformance
+from pybeamline.algorithms.conformance import mine_behavioral_model_from_stream, behavioral_conformance
+from pybeamline.algorithms.discovery.temporal_profile import temporal_profile_discovery_mapper
+from pybeamline.algorithms.conformance.temporal_profile.temporal_profile_conformance import temporal_profile_conformance
+from pybeamline.algorithms.conformance.soft.pdfa_conformance import soft_conformance
+from pybeamline.algorithms.conformance.prefix_alignments import prefix_alignments_conformance
+# Mapper
+from pybeamline.mappers import *
+from pybeamline.mappers.dfg_str_to_graphviz import dfg_str_to_graphviz
+# Utility
+from pybeamline.stream.rx_operator import RxOperator
+from pybeamline.mappers.print_operator import print_operator
+from pybeamline.algorithms.lambda_operator import lambda_operator
+from pybeamline.utils.skip_events import skip_events
+
 
 # Area reserved for user-defined parameters
 # You can define variables here that will be used in the pipeline

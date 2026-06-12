@@ -23,7 +23,7 @@
       "const": []
     },
     "function": {
-      "const": ".subscribe(on_next = lambda x : print(str(x)))"
+      "const": ".subscribe(print_sink())"
     },
     "hint": {
       "const": "Prints its input."

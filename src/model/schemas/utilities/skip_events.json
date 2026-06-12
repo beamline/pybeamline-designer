@@ -8,29 +8,40 @@
       "type": "object",
       "properties": {
         "name": {
-          "const": "custom"
+          "const": "skip_events"
         },
         "outputType": {
-          "$ref": "definitions.json#/definitions/streamTypes/event"
+          "oneOf": [
+            {
+              "const": null
+            },
+            {
+              "$ref": "definitions.json#/definitions/streamTypes/any"
+            }
+          ]
         },
         "inputType": {
-          "$ref": "definitions.json#/definitions/streamTypes/event"
+          "oneOf": [
+            {
+              "const": null
+            },
+            {
+              "$ref": "definitions.json#/definitions/streamTypes/any"
+            }
+          ]
         }
       }
     },
     "parameters": {
       "type": "object",
       "properties": {
-        "functionName": {
-          "type": "string"
-        },
-        "functionBody": {
-          "type": "string"
+        "events_to_skip": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
         }
       },
       "required": [
-        "functionName",
-        "functionBody"
+        "events_to_skip"
       ]
     },
     "outputs": {
@@ -40,10 +51,10 @@
       "$ref": "definitions.json#/definitions/input"
     },
     "function": {
-      "type": "string"
+      "const": "skip_events()"
     },
     "hint": {
-      "const": "Totally customizable block, has its own function definition. More high level than the lambda_operator."
+      "const": "Lets the pipeline skips the provided number of events."
     }
   },
   "required": [
